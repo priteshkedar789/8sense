@@ -1,0 +1,121 @@
+This `index.html` page serves as the entry point (Landing Page) for the prototype. It categorizes the four distinct applications you have built and links them to the correct paths in the `Frontend/` folder.
+
+Save this code as **`index.html`** in your **root** folder.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Senses Clinic - System Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-800">
+
+    <header class="bg-teal-600 text-white py-12 px-4 shadow-lg">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="w-20 h-20 bg-white text-teal-600 rounded-2xl flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-md">
+                8S
+            </div>
+            <h1 class="text-4xl font-bold mb-2">8 Senses Clinic</h1>
+            <p class="text-teal-100 text-lg">Operational Framework & Software Prototype</p>
+            <p class="text-sm text-teal-200 mt-4 uppercase tracking-widest">Version 1.0 | Feb 2026</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 -mt-8 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                <div class="h-2 bg-slate-800"></div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-4 group-hover:bg-slate-800 group-hover:text-white transition-colors">
+                        <i data-lucide="layout-dashboard"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">Admin Center</h2>
+                    <p class="text-sm text-slate-500 mb-6 h-20">
+                        High-level oversight dashboard for financial health, master scheduling, and handling operational exceptions.
+                    </p>
+                    <a href="/Frontend/Admin-Center.html" class="block w-full py-3 bg-slate-800 text-white text-center rounded-lg font-bold hover:bg-slate-900 transition">
+                        Launch Admin
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                <div class="h-2 bg-indigo-600"></div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="monitor"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">Front Desk</h2>
+                    <p class="text-sm text-slate-500 mb-6 h-20">
+                        High-volume operational dashboard for check-ins, payment collection, and managing slot refills.
+                    </p>
+                    <a href="/Frontend/Front-desk.html" class="block w-full py-3 bg-indigo-600 text-white text-center rounded-lg font-bold hover:bg-indigo-700 transition">
+                        Launch Desk
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                <div class="h-2 bg-teal-500"></div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center text-teal-600 mb-4 group-hover:bg-teal-500 group-hover:text-white transition-colors">
+                        <i data-lucide="stethoscope"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">Therapist</h2>
+                    <p class="text-sm text-slate-500 mb-6 h-20">
+                        Clinical workspace for session execution, activity adherence tracking, and child routing/handoffs.
+                    </p>
+                    <a href="/Frontend/Therapist.html" class="block w-full py-3 bg-teal-500 text-white text-center rounded-lg font-bold hover:bg-teal-600 transition">
+                        Launch Clinical
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                <div class="h-2 bg-rose-500"></div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-rose-50 rounded-lg flex items-center justify-center text-rose-500 mb-4 group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">Parent Portal</h2>
+                    <p class="text-sm text-slate-500 mb-6 h-20">
+                        Mobile-first interface for parents to track progress, view videos, and manage appointments.
+                    </p>
+                    <a href="/Frontend/Parent-Portal.html" class="block w-full py-3 bg-rose-500 text-white text-center rounded-lg font-bold hover:bg-rose-600 transition">
+                        Launch Mobile
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 text-center">
+            <h3 class="text-slate-400 text-sm font-bold uppercase tracking-wider mb-4">Documentation & Assets</h3>
+            <div class="flex justify-center gap-4 text-sm">
+                <a href="/README.md" class="px-4 py-2 bg-white border border-slate-200 rounded text-slate-600 hover:text-teal-600 flex items-center gap-2">
+                    <i data-lucide="file-text" width="16"></i> README.md
+                </a>
+                <a href="/LICENSE" class="px-4 py-2 bg-white border border-slate-200 rounded text-slate-600 hover:text-teal-600 flex items-center gap-2">
+                    <i data-lucide="shield" width="16"></i> License
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-sm">
+        <p>Restricted Access • Internal Prototype Only</p>
+        <p class="mt-2">&copy; 2026 8 Senses Clinic Operations</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
+```
