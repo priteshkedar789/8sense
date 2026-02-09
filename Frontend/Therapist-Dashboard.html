@@ -341,9 +341,13 @@
             </div>
           );
         }
+        ReactDOM.render(
+        <TherapistDashboard />,
+        document.getElementById('root')
+        );
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<TherapistDashboard />);
+        //const root = ReactDOM.createRoot(document.getElementById('root'));
+        //root.render(<TherapistDashboard />);
     </script>
 </body>
 </html>
