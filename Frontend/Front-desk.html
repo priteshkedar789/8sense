@@ -1,0 +1,375 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Calendar, 
+  Users, 
+  Clock, 
+  Search, 
+  Bell, 
+  DollarSign, 
+  CheckCircle, 
+  XCircle, 
+  AlertTriangle,
+  ArrowRight,
+  RefreshCw,
+  LogOut,
+  CreditCard,
+  UserCheck,
+  Activity
+} from 'lucide-react';
+
+// --- MOCK DATA (Simulating the 85 daily sessions context) ---
+const THERAPISTS = [
+  { id: 't1', name: 'Ms. Ananya (OT)', room: 'Room A' },
+  { id: 't2', name: 'Mr. Rahul (Speech)', room: 'Room B' },
+  { id: 't3', name: 'Ms. Priya (SpEd)', room: 'Room C' },
+  { id: 't4', name: 'Ms. Sarah (OT)', room: 'Room D' },
+];
+
+const TIME_SLOTS = [
+  '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM'
+];
+
+const APPOINTMENTS = [
+  { id: 101, time: '09:00 AM', therapistId: 't1', patient: 'Arav S.', type: 'OT', status: 'checked-in', nextSession: 'Speech - 10:00 AM' },
+  { id: 102, time: '09:00 AM', therapistId: 't2', patient: 'Vihaan K.', type: 'Speech', status: 'confirmed', nextSession: null },
+  { id: 103, time: '10:00 AM', therapistId: 't1', patient: 'Riya M.', type: 'OT', status: 'cancelled-refillable', nextSession: null },
+  { id: 104, time: '11:00 AM', therapistId: 't3', patient: 'Kabir J.', type: 'SpEd', status: 'unconfirmed', nextSession: null },
+  { id: 105, time: '02:00 PM', therapistId: 't4', patient: 'Sana P.', type: 'OT', status: 'confirmed', balanceDue: 1200 },
+];
+
+const REFILL_QUEUE = [
+  { id: 103, time: '10:00 AM', therapist: 'Ms. Ananya', orgPatient: 'Riya M.', type: 'OT', timeLeft: '45 mins' }
+];
+
+const ACTIVE_CHILDREN = [
+  { id: 1, name: 'Arav S.', status: 'In Session', location: 'Room A (OT)', next: 'Speech (Room B)', pickup: false },
+  { id: 2, name: 'Zara T.', status: 'Between Sessions', location: 'Waiting Area', next: 'OT (Room D)', pickup: false },
+  { id: 3, name: 'Ishaan L.', status: 'Ready for Pickup', location: 'Reception', next: null, pickup: true },
+];
+
+// --- COMPONENTS ---
+
+// 1. STATS HEADER
+const StatsHeader = () => (
+  <div className="grid grid-cols-4 gap-4 mb-4">
+    <div className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex items-center justify-between">
+      <div>
+        <p className="text-xs text-gray-500 uppercase font-bold">Today's Volume</p>
+        <p className="text-2xl font-bold text-gray-800">82 / 85</p>
+      </div>
+      <div className="bg-blue-50 p-2 rounded-full text-blue-600"><Activity size={20} /></div>
+    </div>
+    <div className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex items-center justify-between">
+      <div>
+        <p className="text-xs text-gray-500 uppercase font-bold">Collections</p>
+        <p className="text-2xl font-bold text-green-600">₹ 24,600</p>
+      </div>
+      <div className="bg-green-50 p-2 rounded-full text-green-600"><DollarSign size={20} /></div>
+    </div>
+    <div className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex items-center justify-between border-l-4 border-l-red-500">
+      <div>
+        <p className="text-xs text-gray-500 uppercase font-bold">Refill Opps</p>
+        <p className="text-2xl font-bold text-red-600">2 Slots</p>
+      </div>
+      <div className="bg-red-50 p-2 rounded-full text-red-600"><RefreshCw size={20} /></div>
+    </div>
+    <div className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex items-center justify-between">
+      <div>
+        <p className="text-xs text-gray-500 uppercase font-bold">Active Children</p>
+        <p className="text-2xl font-bold text-indigo-600">14 In-Clinic</p>
+      </div>
+      <div className="bg-indigo-50 p-2 rounded-full text-indigo-600"><Users size={20} /></div>
+    </div>
+  </div>
+);
+
+// 2. MAIN SCHEDULE GRID
+const ScheduleGrid = ({ onSlotClick }) => {
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'confirmed': return 'bg-green-100 border-green-300 text-green-800'; // 
+      case 'unconfirmed': return 'bg-yellow-100 border-yellow-300 text-yellow-800'; // 
+      case 'checked-in': return 'bg-blue-100 border-blue-300 text-blue-800'; // 
+      case 'cancelled-refillable': return 'bg-red-50 border-red-300 text-red-800 border-dashed'; // 
+      default: return 'bg-gray-50 border-gray-200 text-gray-400'; // 
+    }
+  };
+
+  return (
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden flex-1 flex flex-col min-h-0">
+      <div className="flex border-b border-gray-200 bg-gray-50">
+        <div className="w-20 p-3 text-xs font-bold text-gray-500 text-center border-r">Time</div>
+        {THERAPISTS.map(t => (
+          <div key={t.id} className="flex-1 p-3 text-center border-r min-w-[140px]">
+            <p className="font-bold text-gray-700 text-sm">{t.name}</p>
+            <p className="text-xs text-gray-500">{t.room}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div className="overflow-y-auto flex-1">
+        {TIME_SLOTS.map(time => (
+          <div key={time} className="flex border-b border-gray-100 h-24">
+            <div className="w-20 p-2 text-xs font-medium text-gray-500 text-center border-r bg-gray-50 flex items-center justify-center">
+              {time}
+            </div>
+            {THERAPISTS.map(therapist => {
+              const apt = APPOINTMENTS.find(a => a.time === time && a.therapistId === therapist.id);
+              return (
+                <div 
+                  key={`${time}-${therapist.id}`} 
+                  className="flex-1 border-r min-w-[140px] p-1 relative group cursor-pointer hover:bg-gray-50 transition-colors"
+                  onClick={() => onSlotClick(apt || { time, therapistId: therapist.id, status: 'empty' })}
+                >
+                  {apt ? (
+                    <div className={`w-full h-full rounded p-2 text-xs border-l-4 flex flex-col justify-between ${getStatusColor(apt.status)}`}>
+                      <div className="flex justify-between items-start">
+                        <span className="font-bold truncate">{apt.patient}</span>
+                        {apt.balanceDue && <span className="text-red-600 font-bold">₹!</span>}
+                      </div>
+                      <div className="mt-1">
+                        <span className="block opacity-75">{apt.type}</span>
+                        {apt.status === 'cancelled-refillable' && (
+                          <span className="bg-red-600 text-white px-1 rounded text-[10px] mt-1 inline-block animate-pulse">REFILL NEEDED</span>
+                        )}
+                      </div>
+                      {/* Next Session Routing Indicator [cite: 78, 80] */}
+                      {apt.nextSession && (
+                        <div className="mt-1 flex items-center gap-1 text-[9px] font-bold text-indigo-700 bg-indigo-50 px-1 rounded">
+                          <ArrowRight size={8} /> {apt.nextSession}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <div className="w-6 h-6 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center">+</div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// 3. RIGHT DRAWER - PATIENT ACTION PANEL
+const PatientDrawer = ({ slot, onClose }) => {
+  if (!slot) return null;
+  const isEmpty = slot.status === 'empty';
+
+  return (
+    <div className="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl border-l border-gray-200 transform transition-transform z-50 flex flex-col">
+      <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+        <h3 className="font-bold text-lg text-gray-800">
+          {isEmpty ? 'New Booking' : slot.patient}
+        </h3>
+        <button onClick={onClose} className="text-gray-400 hover:text-gray-600"><XCircle size={24} /></button>
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+        {isEmpty ? (
+          <div className="text-center py-10 text-gray-500">
+            <p>Select a patient to book this slot.</p>
+            <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-bold">Search Patient</button>
+          </div>
+        ) : (
+          <>
+            {/* Status & Actions */}
+            <div className="grid grid-cols-2 gap-3">
+              {slot.status === 'checked-in' ? (
+                <button className="flex flex-col items-center justify-center p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 hover:bg-red-100 transition">
+                  <LogOut size={24} className="mb-1" />
+                  <span className="text-sm font-bold">Check Out</span>
+                  <span className="text-xs opacity-75">Triggers Notes</span>
+                </button>
+              ) : (
+                <button className="flex flex-col items-center justify-center p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 hover:bg-green-100 transition">
+                  <UserCheck size={24} className="mb-1" />
+                  <span className="text-sm font-bold">Check In</span>
+                  <span className="text-xs opacity-75">Timestamp: {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                </button>
+              )}
+              
+              <button className="flex flex-col items-center justify-center p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 hover:bg-blue-100 transition">
+                <CreditCard size={24} className="mb-1" />
+                <span className="text-sm font-bold">Payment</span>
+                <span className="text-xs opacity-75">Receipt Auto-Gen</span>
+              </button>
+            </div>
+
+            {/* Critical Info Cards */}
+            <div className="bg-yellow-50 p-3 rounded-lg border border-yellow-200">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-xs font-bold text-yellow-800 uppercase">Outstanding Balance</span>
+                <span className="text-lg font-bold text-red-600">₹ 1,200</span>
+              </div>
+              <p className="text-xs text-yellow-700">Pending for 2 sessions. Collection required today.</p>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="text-sm font-bold text-gray-700 border-b pb-1">Routing & Safety [cite: 71, 74]</h4>
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600"><Clock size={16} /></div>
+                <div>
+                  <p className="font-medium">Current: {slot.type}</p>
+                  <p className="text-xs text-gray-500">{slot.time} - Room A</p>
+                </div>
+              </div>
+              <div className="flex justify-center"><ArrowRight size={16} className="text-gray-400 rotate-90 my-1" /></div>
+              <div className="flex items-center gap-3 text-sm">
+                 <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600"><Users size={16} /></div>
+                 <div>
+                   <p className="font-bold text-indigo-700">NEXT: {slot.nextSession || 'Parent Pickup'}</p>
+                   <p className="text-xs text-gray-500">Routing confirmed</p>
+                 </div>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+               <h4 className="text-sm font-bold text-gray-700 border-b pb-1">Plan Status [cite: 48]</h4>
+               <div className="flex justify-between text-sm">
+                 <span className="text-gray-600">Sessions Remaining</span>
+                 <span className="font-bold">12 / 30</span>
+               </div>
+               <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                 <div className="bg-green-500 h-full w-[60%]"></div>
+               </div>
+               <p className="text-xs text-gray-400">Renewal reminder in 6 sessions.</p>
+            </div>
+          </>
+        )}
+      </div>
+      
+      {/* Footer Actions */}
+      {!isEmpty && (
+        <div className="p-4 bg-gray-50 border-t border-gray-200">
+          <button className="w-full py-2 bg-white border border-gray-300 text-gray-700 font-bold rounded hover:bg-gray-100 text-sm mb-2">
+            Reschedule
+          </button>
+          <button className="w-full py-2 bg-white border border-red-200 text-red-600 font-bold rounded hover:bg-red-50 text-sm">
+            Cancel Session
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// 4. AUXILIARY PANELS (Refill & Tracking)
+const AuxPanels = () => (
+  <div className="w-64 flex flex-col gap-4">
+    
+    {/* REFILL DASHBOARD  */}
+    <div className="bg-white rounded-lg border border-red-200 shadow-sm overflow-hidden">
+      <div className="bg-red-50 p-3 border-b border-red-100 flex justify-between items-center">
+        <h3 className="font-bold text-red-800 text-sm">Refill Queue</h3>
+        <span className="text-xs bg-red-200 text-red-800 px-1.5 rounded-full">2</span>
+      </div>
+      <div className="p-2 space-y-2">
+        {REFILL_QUEUE.map(item => (
+          <div key={item.id} className="bg-red-50 border border-red-100 p-2 rounded text-sm relative overflow-hidden group hover:shadow-md transition">
+             <div className="flex justify-between items-start mb-1">
+               <span className="font-bold text-gray-800">{item.time}</span>
+               <span className="text-xs font-bold text-red-600 animate-pulse">{item.timeLeft}</span>
+             </div>
+             <p className="text-xs text-gray-600 truncate">{item.type} • {item.therapist}</p>
+             <button className="mt-2 w-full py-1 bg-white border border-red-300 text-red-700 text-xs font-bold rounded hover:bg-red-600 hover:text-white transition">
+               Fill Slot
+             </button>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* CHILDREN IN CLINIC TRACKER  */}
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm flex-1 flex flex-col">
+      <div className="bg-gray-50 p-3 border-b border-gray-200">
+        <h3 className="font-bold text-gray-700 text-sm">Child Flow</h3>
+      </div>
+      <div className="p-2 space-y-2 overflow-y-auto flex-1 h-64">
+        {ACTIVE_CHILDREN.map(child => (
+          <div key={child.id} className="flex items-center justify-between p-2 rounded bg-white border border-gray-100 hover:bg-gray-50">
+             <div>
+               <p className="font-bold text-sm text-gray-800">{child.name}</p>
+               <p className="text-[10px] text-gray-500">{child.location}</p>
+             </div>
+             <div className={`text-[10px] px-2 py-1 rounded-full font-bold ${
+               child.pickup 
+                ? 'bg-green-100 text-green-700 animate-pulse' 
+                : child.status === 'Between Sessions' 
+                  ? 'bg-yellow-100 text-yellow-700'
+                  : 'bg-blue-50 text-blue-600'
+             }`}>
+               {child.pickup ? 'PICKUP READY' : child.status}
+             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+// --- MAIN LAYOUT ---
+
+export default function FrontDeskDashboard() {
+  const [selectedSlot, setSelectedSlot] = useState(null);
+
+  return (
+    <div className="flex h-screen bg-gray-100 font-sans text-gray-900 overflow-hidden">
+      
+      {/* SIDEBAR NAVIGATION */}
+      <div className="w-16 bg-slate-900 flex flex-col items-center py-6 gap-6 text-slate-400">
+        <div className="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-4">8S</div>
+        <button className="p-2 text-white bg-slate-800 rounded-lg"><Calendar size={24} /></button>
+        <button className="p-2 hover:text-white hover:bg-slate-800 rounded-lg"><Users size={24} /></button>
+        <button className="p-2 hover:text-white hover:bg-slate-800 rounded-lg"><DollarSign size={24} /></button>
+        <button className="p-2 hover:text-white hover:bg-slate-800 rounded-lg"><Bell size={24} /><span className="absolute top-20 left-10 w-3 h-3 bg-red-500 rounded-full border-2 border-slate-900"></span></button>
+      </div>
+
+      {/* MAIN CONTENT AREA */}
+      <div className="flex-1 flex flex-col min-w-0">
+        
+        {/* TOP BAR */}
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
+          <div className="flex items-center gap-4">
+            <h1 className="text-xl font-bold text-gray-800">Mon, 10 Feb 2026</h1>
+            <div className="h-6 w-px bg-gray-300"></div>
+            <div className="relative">
+              <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
+              <input 
+                type="text" 
+                placeholder="Search patient (Alt+S)" 
+                className="pl-10 pr-4 py-2 bg-gray-100 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-indigo-500 outline-none" 
+              />
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+             <button className="px-4 py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg shadow-sm hover:bg-indigo-700">
+               + New Booking
+             </button>
+             <div className="w-8 h-8 rounded-full bg-teal-100 border border-teal-300 flex items-center justify-center text-teal-800 font-bold text-xs">
+               FD
+             </div>
+          </div>
+        </header>
+
+        {/* DASHBOARD CONTENT */}
+        <div className="flex-1 p-6 overflow-hidden flex gap-6">
+          <div className="flex-1 flex flex-col min-w-0">
+            <StatsHeader />
+            <ScheduleGrid onSlotClick={setSelectedSlot} />
+          </div>
+          <AuxPanels />
+        </div>
+
+      </div>
+
+      {/* RIGHT DRAWER */}
+      {selectedSlot && <div className="fixed inset-0 bg-black/20 z-40" onClick={() => setSelectedSlot(null)} />}
+      <PatientDrawer slot={selectedSlot} onClose={() => setSelectedSlot(null)} />
+    </div>
+  );
+}
