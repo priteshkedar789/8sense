@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 Senses Clinic — RBAC Demo</title>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{fontFamily:{sans:['"DM Sans"','system-ui','sans-serif'],mono:['"JetBrains Mono"','monospace']},colors:{clinic:{green:'#16a34a',greenDark:'#14532d',greenLight:'#dcfce7',blue:'#2563eb',blueDark:'#1e3a5f',blueLight:'#dbeafe',amber:'#f59e0b',amberLight:'#fef3c7',red:'#dc2626',slate:'#0f172a'}}}}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#94a3b8}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f8fafc;overflow:hidden}
+.role-glow-green{box-shadow:0 0 0 2px #16a34a,0 0 20px rgba(22,163,74,0.15)}
+.role-glow-blue{box-shadow:0 0 0 2px #2563eb,0 0 20px rgba(37,99,235,0.15)}
+.blocked-overlay{position:relative}
+.blocked-overlay::after{content:'🔒 Access Restricted';position:absolute;inset:0;background:rgba(15,23,42,0.85);color:#f87171;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;border-radius:inherit;z-index:10;backdrop-filter:blur(4px)}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.anim-slide{animation:slideIn 0.3s ease-out}
+.anim-fade{animation:fadeIn 0.25s ease-out}
+.toast-enter{animation:slideIn 0.3s ease-out}
+.pulse-dot{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.badge-bounce{animation:badgePop 0.3s ease-out}
+@keyframes badgePop{0%{transform:scale(0.5)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState,useEffect,useCallback,useMemo,useRef,createContext,useContext}=React;
+
+// ═══════════════════════════════════════════════════════════
+// ICONS (inline SVG components)
+// ═══════════════════════════════════════════════════════════
+const I=(p)=>{const s=p.size||18;const c=p.className||'';
+const props={xmlns:"http://www.w3.org/2000/svg",width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round",className:c};
+const icons={
+dashboard:<svg {...props}><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
+calendar:<svg {...props}><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+users:<svg {...props}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+file:<svg {...props}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
+dollar:<svg {...props}><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
+alert:<svg {...props}><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>,
+trending:<svg {...props}><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>,
+check:<svg {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
+x:<svg {...props}><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>,
+settings:<svg {...props}><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>,
+activity:<svg {...props}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
+chevron:<svg {...props}><polyline points="9 18 15 12 9 6"/></svg>,
+clock:<svg {...props}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+clipboard:<svg {...props}><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>,
+eye:<svg {...props}><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
+lock:<svg {...props}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+unlock:<svg {...props}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>,
+play:<svg {...props}><polygon points="5 3 19 12 5 21 5 3"/></svg>,
+star:<svg {...props}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+upload:<svg {...props}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>,
+send:<svg {...props}><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>,
+shield:<svg {...props}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+user:<svg {...props}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+plus:<svg {...props}><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>,
+minus:<svg {...props}><line x1="5" y1="12" x2="19" y2="12"/></svg>,
+refresh:<svg {...props}><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>,
+bar:<svg {...props}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
+video:<svg {...props}><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>,
+book:<svg {...props}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>,
+home:<svg {...props}><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+logIn:<svg {...props}><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>,
+switchRole:<svg {...props}><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>,
+};
+return icons[p.name]||null;};
+
+// ═══════════════════════════════════════════════════════════
+// GLOBAL STATE CONTEXT
+// ═══════════════════════════════════════════════════════════
+const AppContext=createContext();
+
+const INITIAL_STATE={
+  role:'admin', // 'admin' | 'seniorTherapist'
+  
+  // === PATIENTS ===
+  patients:[
+    {id:'P001',name:'Kabir J.',age:4,diagnosis:'Sensory Processing Disorder',status:'active',domains:['OT'],sessionsTotal:30,sessionsCompleted:14,checkedIn:false,currentTherapist:null,nextSession:'Speech — Ms. Priya 11:00',evalId:'EVAL-001',programId:'PRG-001',parentPhone:'98765-43210'},
+    {id:'P002',name:'Anvi S.',age:6,diagnosis:'Expressive Language Delay',status:'active',domains:['Speech','SpEd'],sessionsTotal:40,sessionsCompleted:28,checkedIn:false,currentTherapist:null,nextSession:null,evalId:'EVAL-002',programId:'PRG-002',parentPhone:'98765-11111'},
+    {id:'P003',name:'Rohan M.',age:5,diagnosis:'ADHD + Fine Motor Delay',status:'eval_pending',domains:[],sessionsTotal:0,sessionsCompleted:0,checkedIn:false,currentTherapist:null,nextSession:null,evalId:null,programId:null,parentPhone:'98765-22222'},
+    {id:'P004',name:'Meera K.',age:3,diagnosis:'Global Developmental Delay',status:'program_pending',domains:['OT','Speech'],sessionsTotal:0,sessionsCompleted:0,checkedIn:false,currentTherapist:null,nextSession:null,evalId:'EVAL-003',programId:null,parentPhone:'98765-33333'},
+    {id:'P005',name:'Ishaan T.',age:7,diagnosis:'Autism Spectrum — Level 1',status:'active',domains:['OT','Speech','SpEd'],sessionsTotal:60,sessionsCompleted:52,checkedIn:false,currentTherapist:null,nextSession:'SpEd — Ms. Priya 2:00 PM',evalId:'EVAL-004',programId:'PRG-003',parentPhone:'98765-44444'},
+  ],
+
+  // === THERAPISTS ===
+  therapists:[
+    {id:'T001',name:'Ms. Ananya',role:'OT',isSenior:true,utilisation:92,noteCompliance:100,deviation:5,sessions:112,payout:56000,status:'active'},
+    {id:'T002',name:'Mr. Rahul',role:'Speech',isSenior:false,utilisation:85,noteCompliance:75,deviation:32,sessions:88,payout:44000,status:'active'},
+    {id:'T003',name:'Ms. Priya',role:'SpEd',isSenior:false,utilisation:78,noteCompliance:95,deviation:12,sessions:96,payout:48000,status:'active'},
+    {id:'T004',name:'Dr. Meghna (Founder)',role:'OT/Speech',isSenior:true,utilisation:65,noteCompliance:100,deviation:2,sessions:40,payout:0,status:'active'},
+  ],
+
+  // === SCHEDULE (today's slots) ===
+  schedule:[
+    {id:'S001',time:'9:00 AM',patient:'P001',therapist:'T001',type:'OT',status:'completed',noteStatus:'done'},
+    {id:'S002',time:'9:00 AM',patient:'P002',therapist:'T002',type:'Speech',status:'completed',noteStatus:'done'},
+    {id:'S003',time:'10:00 AM',patient:'P001',therapist:'T002',type:'Speech',status:'scheduled',noteStatus:null},
+    {id:'S004',time:'10:00 AM',patient:'P005',therapist:'T001',type:'OT',status:'in_progress',noteStatus:null},
+    {id:'S005',time:'11:00 AM',patient:'P002',therapist:'T003',type:'SpEd',status:'scheduled',noteStatus:null},
+    {id:'S006',time:'11:00 AM',patient:'P005',therapist:'T003',type:'SpEd',status:'scheduled',noteStatus:null},
+    {id:'S007',time:'2:00 PM',patient:'P005',therapist:'T003',type:'SpEd',status:'scheduled',noteStatus:null},
+    {id:'S008',time:'2:00 PM',patient:'P001',therapist:'T001',type:'OT',status:'cancelled',noteStatus:null,cancelledRefilled:true},
+  ],
+
+  // === EVALUATIONS ===
+  evaluations:[
+    {id:'EVAL-001',patient:'P001',evaluator:'T004',status:'completed',date:'2026-01-15',findings:'Sensory modulation difficulties, tactile defensiveness, poor bilateral coordination.',recommendation:'30 sessions OT focused on sensory regulation and fine motor development.'},
+    {id:'EVAL-002',patient:'P002',evaluator:'T004',status:'completed',date:'2026-01-18',findings:'Receptive language age-appropriate, expressive language 18-month delay.',recommendation:'20 Speech + 20 SpEd sessions.'},
+    {id:'EVAL-003',patient:'P004',evaluator:'T001',status:'completed',date:'2026-02-05',findings:'Global delays across motor, language, and cognitive domains. Requires multi-disciplinary intervention.',recommendation:'OT + Speech, 50 sessions total.'},
+    {id:'EVAL-004',patient:'P005',evaluator:'T004',status:'completed',date:'2025-11-10',findings:'ASD Level 1. Sensory seeking, social communication deficits, restricted interests.',recommendation:'Triple-domain: OT + Speech + SpEd, 60 sessions.'},
+  ],
+
+  // === PROGRAMS ===
+  programs:[
+    {id:'PRG-001',patient:'P001',evalId:'EVAL-001',status:'active',domains:['OT'],totalSessions:30,activitiesPhase1:'Tactile Desensitization, Vestibular Input (Swing)',activitiesPhase2:'Bilateral Coordination, Fine Motor Grasp',activitiesPhase3:'Functional ADL Integration',milestones:['Tolerates tactile input without withdrawal','Bilateral hand use for 30s tasks','Independent button fastening'],approvedBy:'T004',publishedBy:'admin',cost:18000},
+    {id:'PRG-002',patient:'P002',evalId:'EVAL-002',status:'active',domains:['Speech','SpEd'],totalSessions:40,activitiesPhase1:'Vocabulary Building, Picture Exchange',activitiesPhase2:'Sentence Construction, Narrative Skills',activitiesPhase3:'Conversational Turn-Taking',milestones:['50-word expressive vocabulary','3-word sentences spontaneously','Initiates conversation with peers'],approvedBy:'T004',publishedBy:'admin',cost:24000},
+    {id:'PRG-003',patient:'P005',evalId:'EVAL-004',status:'active',domains:['OT','Speech','SpEd'],totalSessions:60,activitiesPhase1:'Sensory Diet, Social Stories',activitiesPhase2:'Joint Attention, Reciprocal Play',activitiesPhase3:'Self-Regulation, Academic Readiness',milestones:['Follows 2-step instructions','Engages in parallel play 5 min','Tolerates transitions without meltdown','Identifies 3 emotions in self'],approvedBy:'T004',publishedBy:'admin',cost:36000},
+  ],
+
+  // === PLAN CHANGE REQUESTS ===
+  planChanges:[
+    {id:'PC001',patient:'P001',requestor:'T001',date:'2026-02-08',type:'Frequency Increase',detail:'Increase OT from 2x to 3x per week. Child responding well to vestibular input; faster frequency will accelerate bilateral coordination milestone.',currentPlan:'2x/week OT',proposedPlan:'3x/week OT',status:'pending_st',stComment:null,adminExecuted:false},
+    {id:'PC002',patient:'P005',requestor:'T003',date:'2026-02-09',type:'Activity Modification',detail:'Replace Social Stories with Video Modeling for Phase 2. Child is a strong visual learner; video modeling shows better engagement in pilot sessions.',currentPlan:'Social Stories in Phase 2',proposedPlan:'Video Modeling in Phase 2',status:'pending_st',stComment:null,adminExecuted:false},
+  ],
+
+  // === OPERATIONAL EXCEPTIONS ===
+  exceptions:[
+    {id:'EX001',type:'Fee Waiver',requestor:'Front Desk',detail:'10% sibling discount — new registration (Anvi\'s brother)',status:'pending',sla:'4 hours'},
+    {id:'EX002',type:'Schedule Override',requestor:'Parent — P001',detail:'Block recurring Monday 9 AM slot for 8 weeks',status:'pending',sla:'24 hours'},
+    {id:'EX003',type:'Billing Correction',requestor:'Front Desk',detail:'Double payment recorded ₹1,200 — P002 on Feb 7',status:'pending',sla:'4 hours'},
+  ],
+
+  // === FINANCIALS ===
+  financials:{
+    collections:425000,payrollLiability:185000,outstanding:42000,
+    cancellations:{clinicRetained:12000,therapistCredited:6500,totalCharges:18500},
+    dailyExpected:51000,dailyCollected:28500,
+  },
+
+  // === FRONT DESK SESSION STATE ===
+  sessionFlow:{
+    checkedInPatients:['P005'],
+    inSession:['P005'],
+    waitingPickup:[],
+  },
+
+  // === TOASTS ===
+  toasts:[],
+  toastCounter:0,
+
+  // === PROGRAMS PENDING PUBLICATION (approved by ST, waiting Admin) ===
+  pendingPublication:[],
+};
+
+function appReducer(state,action){
+  switch(action.type){
+    case 'SET_ROLE':return{...state,role:action.payload};
+    
+    case 'CHECK_IN_PATIENT':{
+      const pid=action.payload;
+      return{...state,
+        patients:state.patients.map(p=>p.id===pid?{...p,checkedIn:true}:p),
+        sessionFlow:{...state.sessionFlow,checkedInPatients:[...state.sessionFlow.checkedInPatients,pid],inSession:[...state.sessionFlow.inSession,pid]},
+      };
+    }
+    
+    case 'CHECK_OUT_PATIENT':{
+      const pid=action.payload;
+      const pat=state.patients.find(p=>p.id===pid);
+      const hasNext=pat?.nextSession;
+      return{...state,
+        patients:state.patients.map(p=>p.id===pid?{...p,checkedIn:!hasNext?false:p.checkedIn,sessionsCompleted:p.sessionsCompleted+1}:p),
+        sessionFlow:{...state.sessionFlow,
+          inSession:state.sessionFlow.inSession.filter(id=>id!==pid),
+          waitingPickup:hasNext?state.sessionFlow.waitingPickup:[...state.sessionFlow.waitingPickup,pid],
+        },
+        schedule:state.schedule.map(s=>s.patient===pid&&s.status==='in_progress'?{...s,status:'completed',noteStatus:'pending'}:s),
+      };
+    }
+
+    case 'APPROVE_PLAN_CHANGE':{
+      const{id,comment}=action.payload;
+      return{...state,planChanges:state.planChanges.map(pc=>pc.id===id?{...pc,status:'approved_st',stComment:comment}:pc)};
+    }
+
+    case 'REJECT_PLAN_CHANGE':{
+      const{id,comment}=action.payload;
+      return{...state,planChanges:state.planChanges.map(pc=>pc.id===id?{...pc,status:'rejected_st',stComment:comment}:pc)};
+    }
+
+    case 'ADMIN_EXECUTE_PLAN_CHANGE':{
+      const id=action.payload;
+      return{...state,planChanges:state.planChanges.map(pc=>pc.id===id?{...pc,adminExecuted:true}:pc)};
+    }
+
+    case 'RESOLVE_EXCEPTION':{
+      const id=action.payload;
+      return{...state,exceptions:state.exceptions.map(e=>e.id===id?{...e,status:'resolved'}:e)};
+    }
+
+    case 'APPROVE_PROGRAM':{
+      const progId=action.payload;
+      return{...state,
+        programs:state.programs.map(p=>p.id===progId?{...p,status:'clinically_approved'}:p),
+        pendingPublication:[...state.pendingPublication,progId],
+      };
+    }
+
+    case 'PUBLISH_PROGRAM':{
+      const progId=action.payload;
+      const prog=state.programs.find(p=>p.id===progId);
+      return{...state,
+        programs:state.programs.map(p=>p.id===progId?{...p,status:'active',publishedBy:'admin'}:p),
+        patients:state.patients.map(p=>p.id===prog?.patient?{...p,status:'active'}:p),
+        pendingPublication:state.pendingPublication.filter(id=>id!==progId),
+      };
+    }
+
+    case 'CREATE_PROGRAM_FOR_PATIENT':{
+      const{patientId,evalId}=action.payload;
+      const newProg={id:'PRG-NEW-'+Date.now(),patient:patientId,evalId,status:'draft',domains:['OT'],totalSessions:30,activitiesPhase1:'To be defined',activitiesPhase2:'To be defined',activitiesPhase3:'To be defined',milestones:['Milestone 1','Milestone 2'],approvedBy:null,publishedBy:null,cost:18000};
+      return{...state,programs:[...state.programs,newProg],patients:state.patients.map(p=>p.id===patientId?{...p,programId:newProg.id}:p)};
+    }
+
+    case 'ADD_TOAST':{
+      const id=state.toastCounter+1;
+      return{...state,toasts:[...state.toasts,{id,message:action.payload.message,type:action.payload.type||'info'}],toastCounter:id};
+    }
+
+    case 'REMOVE_TOAST':return{...state,toasts:state.toasts.filter(t=>t.id!==action.payload)};
+
+    default:return state;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// SHARED COMPONENTS
+// ═══════════════════════════════════════════════════════════
+const Badge=({children,color='gray'})=>{
+  const colors={green:'bg-green-100 text-green-800',red:'bg-red-100 text-red-800',amber:'bg-amber-100 text-amber-800',blue:'bg-blue-100 text-blue-800',purple:'bg-purple-100 text-purple-800',gray:'bg-gray-100 text-gray-600',teal:'bg-teal-100 text-teal-800'};
+  return<span className={`inline-flex px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider ${colors[color]||colors.gray}`}>{children}</span>;
+};
+
+const KPI=({label,value,sub,icon,color='teal'})=>{
+  const bg=color==='teal'?'bg-teal-50 text-teal-600':color==='blue'?'bg-blue-50 text-blue-600':color==='red'?'bg-red-50 text-red-600':color==='green'?'bg-green-50 text-green-600':'bg-purple-50 text-purple-600';
+  return(
+    <div className="bg-white p-5 rounded-xl border border-gray-200/80 shadow-sm">
+      <div className="flex justify-between items-start mb-3">
+        <div><p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">{label}</p><h3 className="text-2xl font-bold text-gray-800 mt-1">{value}</h3></div>
+        <div className={`p-2.5 rounded-lg ${bg}`}><I name={icon} size={20}/></div>
+      </div>
+      {sub&&<p className="text-xs text-gray-500">{sub}</p>}
+    </div>
+  );
+};
+
+const BlockedPanel=({title,role})=>(
+  <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-10 text-center anim-fade">
+    <I name="lock" size={48} className="text-gray-300 mx-auto mb-4"/>
+    <h3 className="text-lg font-bold text-gray-400">{title}</h3>
+    <p className="text-sm text-gray-400 mt-2">This section requires <span className="font-bold text-gray-500">{role}</span> role access.</p>
+    <p className="text-xs text-gray-400 mt-1">Your current role does not have permission to view or modify this data.</p>
+  </div>
+);
+
+const Toast=({toast,onDismiss})=>{
+  useEffect(()=>{const t=setTimeout(()=>onDismiss(toast.id),4000);return()=>clearTimeout(t);},[toast.id]);
+  const bg=toast.type==='success'?'bg-green-600':toast.type==='error'?'bg-red-600':'bg-blue-600';
+  return(
+    <div className={`${bg} text-white px-4 py-3 rounded-lg shadow-lg text-sm font-medium flex items-center gap-2 toast-enter`}>
+      <I name={toast.type==='success'?'check':toast.type==='error'?'x':'alert'} size={16}/>
+      {toast.message}
+    </div>
+  );
+};
+
+const ToastContainer=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  return(
+    <div className="fixed bottom-6 right-6 z-50 space-y-2">
+      {state.toasts.map(t=><Toast key={t.id} toast={t} onDismiss={(id)=>dispatch({type:'REMOVE_TOAST',payload:id})}/>)}
+    </div>
+  );
+};
+
+const SectionHeader=({title,subtitle,action})=>(
+  <div className="flex justify-between items-start mb-6">
+    <div><h2 className="text-xl font-bold text-gray-800">{title}</h2>{subtitle&&<p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>}</div>
+    {action}
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ROLE SWITCHER (top bar)
+// ═══════════════════════════════════════════════════════════
+const RoleSwitcher=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  const isAdmin=state.role==='admin';
+  return(
+    <div className="h-12 bg-slate-900 flex items-center justify-between px-6 border-b border-slate-700 shrink-0">
+      <div className="flex items-center gap-3">
+        <div className="w-7 h-7 bg-teal-500 rounded flex items-center justify-center text-white text-xs font-bold">8S</div>
+        <span className="text-white font-bold text-sm">8 Senses Clinic</span>
+        <span className="text-slate-500 text-xs">|</span>
+        <span className="text-slate-400 text-xs">RBAC Demo — Role Separation Proof</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-[11px] text-slate-500 uppercase tracking-wider mr-2">Active Role:</span>
+        <button onClick={()=>dispatch({type:'SET_ROLE',payload:'seniorTherapist'})}
+          className={`px-3 py-1.5 rounded-l-lg text-xs font-bold transition-all ${!isAdmin?'bg-green-600 text-white ring-1 ring-green-400':'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>
+          <span className="flex items-center gap-1.5"><I name="shield" size={13}/>Senior Therapist</span>
+        </button>
+        <button onClick={()=>dispatch({type:'SET_ROLE',payload:'admin'})}
+          className={`px-3 py-1.5 rounded-r-lg text-xs font-bold transition-all ${isAdmin?'bg-blue-600 text-white ring-1 ring-blue-400':'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>
+          <span className="flex items-center gap-1.5"><I name="settings" size={13}/>Admin</span>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════
+// SIDEBAR
+// ═══════════════════════════════════════════════════════════
+const Sidebar=({active,onNavigate})=>{
+  const{state}=useContext(AppContext);
+  const isAdmin=state.role==='admin';
+
+  const adminNav=[
+    {id:'overview',label:'Overview',icon:'dashboard'},
+    {id:'schedule',label:'Master Schedule',icon:'calendar'},
+    {id:'session',label:'Session Lifecycle',icon:'activity'},
+    {id:'publication',label:'Program Publication',icon:'send',count:state.pendingPublication.length+state.planChanges.filter(pc=>pc.status==='approved_st'&&!pc.adminExecuted).length},
+    {id:'therapists',label:'Therapist HR',icon:'users'},
+    {id:'financials',label:'Financials',icon:'dollar'},
+    {id:'exceptions',label:'Exceptions',icon:'alert',count:state.exceptions.filter(e=>e.status==='pending').length},
+    {id:'settings',label:'System Settings',icon:'settings'},
+  ];
+
+  const stNav=[
+    {id:'st_overview',label:'Clinical Overview',icon:'dashboard'},
+    {id:'st_evaluations',label:'Evaluations',icon:'clipboard'},
+    {id:'st_programs',label:'Program Design',icon:'file'},
+    {id:'st_planchanges',label:'Plan Change Queue',icon:'alert',count:state.planChanges.filter(pc=>pc.status==='pending_st').length},
+    {id:'st_quality',label:'Clinical Quality',icon:'bar'},
+    {id:'st_protocols',label:'Protocol Library',icon:'book'},
+    {id:'st_video',label:'Video Progress',icon:'video'},
+  ];
+
+  const navItems=isAdmin?adminNav:stNav;
+  const sidebarBg=isAdmin?'bg-slate-900':'bg-[#0a2e1a]';
+  const activeBg=isAdmin?'bg-blue-600':'bg-green-600';
+  const hoverBg=isAdmin?'hover:bg-slate-800':'hover:bg-green-900/40';
+  const roleLabel=isAdmin?'Operations & Finance':'Clinical Authority';
+  const roleColor=isAdmin?'text-blue-400':'text-green-400';
+
+  return(
+    <div className={`w-60 ${sidebarBg} text-slate-300 flex flex-col shrink-0`}>
+      <div className="px-5 py-4 border-b border-white/5">
+        <div className={`text-[10px] font-bold uppercase tracking-widest ${roleColor}`}>{roleLabel}</div>
+        <div className="text-white font-bold text-sm mt-0.5">{isAdmin?'Admin Dashboard':'Sr. Therapist Dashboard'}</div>
+      </div>
+      <nav className="flex-1 px-3 py-3 space-y-1 overflow-y-auto">
+        {navItems.map(item=>(
+          <button key={item.id} onClick={()=>onNavigate(item.id)}
+            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all text-sm ${active===item.id?`${activeBg} text-white shadow-lg`:hoverBg}`}>
+            <div className="flex items-center gap-2.5"><I name={item.icon} size={17}/><span className="font-medium">{item.label}</span></div>
+            {item.count>0&&<span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full badge-bounce">{item.count}</span>}
+          </button>
+        ))}
+      </nav>
+      <div className="px-4 py-3 border-t border-white/5">
+        <div className="flex items-center gap-2 text-[11px] text-slate-500">
+          <div className={`w-2 h-2 rounded-full pulse-dot ${isAdmin?'bg-blue-400':'bg-green-400'}`}/>
+          Logged in as {isAdmin?'Clinic Admin':'Dr. Meghna'}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════
+// ADMIN MODULES
+// ═══════════════════════════════════════════════════════════
+
+// --- ADMIN OVERVIEW ---
+const AdminOverview=()=>{
+  const{state}=useContext(AppContext);
+  const inSession=state.sessionFlow.inSession.length;
+  const waiting=state.patients.filter(p=>p.checkedIn&&!state.sessionFlow.inSession.includes(p.id)).length;
+  const pendingPub=state.pendingPublication.length;
+  const pendingExc=state.exceptions.filter(e=>e.status==='pending').length;
+  const approvedChanges=state.planChanges.filter(pc=>pc.status==='approved_st'&&!pc.adminExecuted).length;
+  return(
+    <div className="space-y-6 anim-slide">
+      <div className="grid grid-cols-4 gap-4">
+        <KPI label="Sessions Today" value={`${state.schedule.filter(s=>s.status==='completed').length} / ${state.schedule.length}`} sub="In progress" icon="activity" color="teal"/>
+        <KPI label="Collections" value={`₹ ${(state.financials.dailyCollected/1000).toFixed(1)}K`} sub={`Expected: ₹ ${(state.financials.dailyExpected/1000).toFixed(1)}K`} icon="dollar" color="blue"/>
+        <KPI label="Pending Actions" value={pendingPub+pendingExc+approvedChanges} sub="Publications + Exceptions" icon="alert" color="red"/>
+        <KPI label="Utilisation" value="85%" sub="Across 11 therapists" icon="bar" color="green"/>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-2 bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+          <h3 className="font-bold text-gray-800 mb-4 text-sm">Clinic Pulse — Live</h3>
+          <div className="grid grid-cols-4 gap-3">
+            <div className="bg-green-50 p-4 rounded-lg text-center border border-green-100"><span className="block text-2xl font-bold text-green-700">{inSession}</span><span className="text-[10px] text-green-800 uppercase font-bold">In Session</span></div>
+            <div className="bg-amber-50 p-4 rounded-lg text-center border border-amber-100"><span className="block text-2xl font-bold text-amber-700">{waiting}</span><span className="text-[10px] text-amber-800 uppercase font-bold">Waiting</span></div>
+            <div className="bg-blue-50 p-4 rounded-lg text-center border border-blue-100"><span className="block text-2xl font-bold text-blue-700">{state.sessionFlow.waitingPickup.length}</span><span className="text-[10px] text-blue-800 uppercase font-bold">Ready Pickup</span></div>
+            <div className="bg-red-50 p-4 rounded-lg text-center border border-red-100"><span className="block text-2xl font-bold text-red-700">{state.schedule.filter(s=>s.status==='cancelled').length}</span><span className="text-[10px] text-red-800 uppercase font-bold">Cancelled</span></div>
+          </div>
+          <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
+            <h4 className="text-[11px] font-bold text-gray-400 uppercase mb-2">Operational Compliance</h4>
+            <div className="grid grid-cols-3 gap-4 text-sm">
+              <div><span className="text-gray-500">Note Completion</span><span className="block font-bold text-gray-800">91%</span></div>
+              <div><span className="text-gray-500">Check-in Accuracy</span><span className="block font-bold text-gray-800">97%</span></div>
+              <div><span className="text-gray-500">SLA Adherence</span><span className="block font-bold text-gray-800">88%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm overflow-hidden">
+          <div className="bg-red-50 px-4 py-3 border-b border-red-100 flex justify-between items-center">
+            <h3 className="font-bold text-red-900 text-sm flex items-center gap-1.5"><I name="alert" size={15}/>Action Required</h3>
+            <Badge color="red">{pendingExc+approvedChanges+pendingPub}</Badge>
+          </div>
+          <div className="divide-y divide-gray-100 max-h-[280px] overflow-y-auto">
+            {approvedChanges>0&&<div className="p-3 hover:bg-blue-50/50 cursor-pointer flex items-start gap-2"><div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"/><div><p className="text-xs font-bold text-gray-800">{approvedChanges} Plan Change(s) — Ready to Execute</p><p className="text-[10px] text-gray-400">Clinically approved by Senior Therapist</p></div></div>}
+            {pendingPub>0&&<div className="p-3 hover:bg-green-50/50 cursor-pointer flex items-start gap-2"><div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0"/><div><p className="text-xs font-bold text-gray-800">{pendingPub} Program(s) — Pending Publication</p><p className="text-[10px] text-gray-400">Clinically approved, awaiting billing link</p></div></div>}
+            {state.exceptions.filter(e=>e.status==='pending').map(e=>(
+              <div key={e.id} className="p-3 hover:bg-gray-50 cursor-pointer flex items-start gap-2"><div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0"/><div><p className="text-xs font-bold text-gray-800">{e.type}: {e.detail.slice(0,50)}...</p><p className="text-[10px] text-gray-400">SLA: {e.sla} | Source: {e.requestor}</p></div></div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* RBAC Boundary Indicator */}
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 flex items-center gap-3">
+        <I name="shield" size={20} className="text-blue-600"/>
+        <div>
+          <p className="text-xs font-bold text-blue-800">Admin Role Boundary</p>
+          <p className="text-[11px] text-blue-600">You can view operational metrics, scheduling, billing, and HR. Clinical program design, evaluations, and plan change approvals require Senior Therapist role.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- MASTER SCHEDULE ---
+const MasterSchedule=()=>{
+  const{state}=useContext(AppContext);
+  const timeSlots=['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM'];
+  const therapists=state.therapists.filter(t=>t.status==='active');
+  
+  const getSlot=(time,therapistId)=>state.schedule.find(s=>s.time===time&&s.therapist===therapistId);
+  const getPatient=(pid)=>state.patients.find(p=>p.id===pid);
+  
+  const statusColors={completed:'bg-green-100 border-green-300 text-green-800',in_progress:'bg-blue-100 border-blue-300 text-blue-800',scheduled:'bg-gray-50 border-gray-200 text-gray-700',cancelled:'bg-red-50 border-red-200 text-red-400 line-through'};
+
+  return(
+    <div className="space-y-4 anim-slide">
+      <SectionHeader title="Master Schedule" subtitle="Today — Monday, 10 Feb 2026" action={<div className="flex gap-2"><button className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-600 hover:bg-gray-50 flex items-center gap-1"><I name="refresh" size={13}/>Template</button><button className="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-bold flex items-center gap-1"><I name="plus" size={13}/>Add Slot</button></div>}/>
+      
+      <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="p-3 text-left font-bold text-gray-500 uppercase tracking-wider w-20">Time</th>
+                {therapists.map(t=><th key={t.id} className="p-3 text-center font-bold text-gray-500 uppercase tracking-wider min-w-[160px]">{t.name}<span className="block font-normal text-gray-400 text-[10px]">{t.role}</span></th>)}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {timeSlots.map(time=>(
+                <tr key={time} className="hover:bg-gray-50/50">
+                  <td className="p-3 font-mono font-bold text-gray-600">{time}</td>
+                  {therapists.map(t=>{
+                    const slot=getSlot(time,t.id);
+                    if(!slot)return<td key={t.id} className="p-2"><div className="h-14 border-2 border-dashed border-gray-200 rounded-lg flex items-center justify-center text-gray-300 cursor-pointer hover:border-blue-300 hover:bg-blue-50/30 transition-all"><I name="plus" size={14}/></div></td>;
+                    const pat=getPatient(slot.patient);
+                    return(
+                      <td key={t.id} className="p-2">
+                        <div className={`p-2.5 rounded-lg border ${statusColors[slot.status]} cursor-pointer hover:shadow-md transition-all`}>
+                          <div className="font-bold">{pat?.name||'—'}</div>
+                          <div className="text-[10px] mt-0.5 opacity-75">{slot.type} • Session</div>
+                          <div className="flex justify-between items-center mt-1">
+                            <Badge color={slot.status==='completed'?'green':slot.status==='in_progress'?'blue':slot.status==='cancelled'?'red':'gray'}>{slot.status==='in_progress'?'LIVE':slot.status}</Badge>
+                            {slot.status==='cancelled'&&slot.cancelledRefilled&&<Badge color="teal">Refilled</Badge>}
+                          </div>
+                        </div>
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-white p-4 rounded-xl border border-gray-200/80 shadow-sm"><h4 className="text-[11px] font-bold text-gray-400 uppercase mb-2">Slot Utilisation</h4><div className="text-2xl font-bold text-gray-800">78%</div><div className="w-full bg-gray-100 h-2 rounded-full mt-2"><div className="bg-blue-500 h-full rounded-full" style={{width:'78%'}}/></div></div>
+        <div className="bg-white p-4 rounded-xl border border-gray-200/80 shadow-sm"><h4 className="text-[11px] font-bold text-gray-400 uppercase mb-2">Refill Opportunities</h4><div className="text-2xl font-bold text-amber-600">2</div><p className="text-xs text-gray-500 mt-1">Cancelled slots available for refill</p></div>
+        <div className="bg-white p-4 rounded-xl border border-gray-200/80 shadow-sm"><h4 className="text-[11px] font-bold text-gray-400 uppercase mb-2">Leave Impact</h4><div className="text-2xl font-bold text-gray-800">0</div><p className="text-xs text-gray-500 mt-1">No therapist leaves today</p></div>
+      </div>
+    </div>
+  );
+};
+
+// --- SESSION LIFECYCLE (Front Desk) ---
+const SessionLifecycle=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  const toast=(msg,type)=>dispatch({type:'ADD_TOAST',payload:{message:msg,type}});
+
+  const activePatients=state.patients.filter(p=>p.status==='active');
+  const todaySlots=state.schedule.filter(s=>s.status!=='cancelled');
+  
+  return(
+    <div className="space-y-4 anim-slide">
+      <SectionHeader title="Session Lifecycle" subtitle="Front Desk Check-In / Check-Out & Child Routing"/>
+      
+      <div className="grid grid-cols-3 gap-3 mb-2">
+        <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-center"><span className="text-2xl font-bold text-green-700">{state.sessionFlow.inSession.length}</span><span className="block text-[10px] uppercase font-bold text-green-600 mt-1">In Session</span></div>
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-center"><span className="text-2xl font-bold text-amber-700">{state.patients.filter(p=>p.checkedIn&&!state.sessionFlow.inSession.includes(p.id)).length}</span><span className="block text-[10px] uppercase font-bold text-amber-600 mt-1">Between Sessions</span></div>
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center"><span className="text-2xl font-bold text-blue-700">{state.sessionFlow.waitingPickup.length}</span><span className="block text-[10px] uppercase font-bold text-blue-600 mt-1">Ready for Pickup</span></div>
+      </div>
+
+      <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm overflow-hidden">
+        <div className="px-5 py-3 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
+          <h3 className="font-bold text-gray-800 text-sm">Today's Patient Flow</h3>
+          <Badge color="blue">{activePatients.length} Active Patients</Badge>
+        </div>
+        <div className="divide-y divide-gray-100">
+          {activePatients.map(p=>{
+            const isCheckedIn=p.checkedIn||state.sessionFlow.checkedInPatients.includes(p.id);
+            const isInSession=state.sessionFlow.inSession.includes(p.id);
+            const isPickup=state.sessionFlow.waitingPickup.includes(p.id);
+            const currentSlot=state.schedule.find(s=>s.patient===p.id&&(s.status==='scheduled'||s.status==='in_progress'));
+            const therapist=currentSlot?state.therapists.find(t=>t.id===currentSlot.therapist):null;
+            
+            return(
+              <div key={p.id} className="p-4 flex items-center gap-4 hover:bg-gray-50/50 transition-colors">
+                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-500 text-sm shrink-0">{p.name.split(' ').map(n=>n[0]).join('')}</div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2"><span className="font-bold text-gray-800 text-sm">{p.name}</span><span className="text-xs text-gray-400">({p.age}y)</span></div>
+                  <div className="text-xs text-gray-500 mt-0.5">{p.diagnosis}</div>
+                  {p.nextSession&&<div className="flex items-center gap-1 mt-1 text-xs text-blue-600 font-medium"><I name="chevron" size={12}/>Next: {p.nextSession}</div>}
+                  {!p.nextSession&&isCheckedIn&&<div className="flex items-center gap-1 mt-1 text-xs text-amber-600 font-medium"><I name="home" size={12}/>Last session today — send home after</div>}
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  {isPickup&&<Badge color="blue">Ready for Pickup</Badge>}
+                  {isInSession&&<Badge color="green">In Session{therapist?` — ${therapist.name}`:''}</Badge>}
+                  {!isCheckedIn&&!isPickup&&(
+                    <button onClick={()=>{dispatch({type:'CHECK_IN_PATIENT',payload:p.id});toast(`${p.name} checked in successfully`,'success');}}
+                      className="px-4 py-2 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 transition-colors flex items-center gap-1.5">
+                      <I name="logIn" size={14}/>Check In
+                    </button>
+                  )}
+                  {isInSession&&(
+                    <button onClick={()=>{dispatch({type:'CHECK_OUT_PATIENT',payload:p.id});toast(`${p.name} checked out — ${p.nextSession?'Routed to next session':'Ready for pickup'}`,'success');}}
+                      className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1.5">
+                      <I name="check" size={14}/>Check Out
+                    </button>
+                  )}
+                  {isCheckedIn&&!isInSession&&!isPickup&&<Badge color="amber">Between Sessions</Badge>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-center gap-3 text-xs text-amber-800">
+        <I name="alert" size={16} className="text-amber-600 shrink-0"/>
+        <span><strong>Routing SOP:</strong> System shows next-session indicator on every patient card. Handoff failures (no confirmation within 5 min) automatically alert front desk.</span>
+      </div>
+    </div>
+  );
+};
+
+// --- PROGRAM PUBLICATION (Admin side — can only publish, not edit clinical content) ---
+const ProgramPublication=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  const toast=(msg,type)=>dispatch({type:'ADD_TOAST',payload:{message:msg,type}});
+
+  const pendingPrograms=state.programs.filter(p=>state.pendingPublication.includes(p.id));
+  const approvedChanges=state.planChanges.filter(pc=>pc.status==='approved_st'&&!pc.adminExecuted);
+  const getPatient=(pid)=>state.patients.find(p=>p.id===pid);
+
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Program Publication & Plan Execution" subtitle="Publish clinically approved programs and execute approved plan changes"/>
+
+      {pendingPrograms.length===0&&approvedChanges.length===0&&(
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
+          <I name="check" size={40} className="text-green-400 mx-auto mb-3"/>
+          <p className="font-bold text-gray-500">All caught up</p>
+          <p className="text-xs text-gray-400 mt-1">No programs pending publication or plan changes pending execution.</p>
+        </div>
+      )}
+
+      {pendingPrograms.length>0&&(
+        <div>
+          <h3 className="text-sm font-bold text-gray-600 mb-3 flex items-center gap-2"><I name="send" size={15} className="text-green-600"/>Programs Pending Publication</h3>
+          {pendingPrograms.map(prog=>{
+            const pat=getPatient(prog.patient);
+            return(
+              <div key={prog.id} className="bg-white rounded-xl border border-green-200 shadow-sm p-5 mb-3">
+                <div className="flex justify-between items-start mb-3">
+                  <div><h4 className="font-bold text-gray-800">{pat?.name} — {prog.domains.join(' + ')}</h4><p className="text-xs text-gray-500">Approved by: Senior Therapist | {prog.totalSessions} sessions | ₹ {prog.cost.toLocaleString()}</p></div>
+                  <Badge color="green">Clinically Approved</Badge>
+                </div>
+                <div className="grid grid-cols-3 gap-3 text-xs mb-4">
+                  <div className="bg-gray-50 p-2.5 rounded"><span className="text-gray-500">Phase 1:</span><span className="block font-medium text-gray-700 mt-0.5">{prog.activitiesPhase1}</span></div>
+                  <div className="bg-gray-50 p-2.5 rounded"><span className="text-gray-500">Phase 2:</span><span className="block font-medium text-gray-700 mt-0.5">{prog.activitiesPhase2}</span></div>
+                  <div className="bg-gray-50 p-2.5 rounded"><span className="text-gray-500">Phase 3:</span><span className="block font-medium text-gray-700 mt-0.5">{prog.activitiesPhase3}</span></div>
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 text-xs text-blue-800 flex items-center gap-2">
+                  <I name="lock" size={14} className="text-blue-600"/>
+                  <span><strong>Read-Only:</strong> Clinical content (activities, milestones, domains) cannot be modified by Admin. You can only publish and link billing.</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-gray-500 flex items-center gap-1"><I name="dollar" size={14}/>Billing: ₹ {prog.cost.toLocaleString()} ({prog.totalSessions} × ₹600)</div>
+                  <button onClick={()=>{dispatch({type:'PUBLISH_PROGRAM',payload:prog.id});toast(`Program for ${pat?.name} published — scheduling activated, parent notified`,'success');}}
+                    className="px-5 py-2 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1.5"><I name="send" size={14}/>Publish & Activate</button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {approvedChanges.length>0&&(
+        <div>
+          <h3 className="text-sm font-bold text-gray-600 mb-3 flex items-center gap-2"><I name="check" size={15} className="text-green-600"/>Approved Plan Changes — Ready to Execute</h3>
+          {approvedChanges.map(pc=>{
+            const pat=getPatient(pc.patient);
+            return(
+              <div key={pc.id} className="bg-white rounded-xl border border-blue-200 shadow-sm p-5 mb-3">
+                <div className="flex justify-between items-start mb-3">
+                  <div><h4 className="font-bold text-gray-800">{pat?.name} — {pc.type}</h4><p className="text-xs text-gray-500">Requested by: {state.therapists.find(t=>t.id===pc.requestor)?.name||pc.requestor}</p></div>
+                  <Badge color="green">ST Approved</Badge>
+                </div>
+                <div className="grid grid-cols-2 gap-3 text-xs mb-3">
+                  <div className="bg-red-50 p-2.5 rounded"><span className="text-red-600 font-bold">Current:</span><span className="block text-gray-700 mt-0.5">{pc.currentPlan}</span></div>
+                  <div className="bg-green-50 p-2.5 rounded"><span className="text-green-600 font-bold">Approved Change:</span><span className="block text-gray-700 mt-0.5">{pc.proposedPlan}</span></div>
+                </div>
+                {pc.stComment&&<div className="bg-green-50 border border-green-200 rounded p-2.5 text-xs text-green-800 mb-3"><strong>ST Note:</strong> {pc.stComment}</div>}
+                <div className="flex justify-end">
+                  <button onClick={()=>{dispatch({type:'ADMIN_EXECUTE_PLAN_CHANGE',payload:pc.id});toast(`Plan change for ${pat?.name} executed — schedule and billing updated`,'success');}}
+                    className="px-5 py-2 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1.5"><I name="check" size={14}/>Execute Change</button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// --- THERAPIST HR (Admin) ---
+const TherapistHR=()=>{
+  const{state}=useContext(AppContext);
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Therapist HR & Operational Performance" subtitle="Onboarding, attendance, operational metrics, leave management"/>
+      <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm overflow-hidden">
+        <table className="w-full text-xs text-left">
+          <thead className="bg-gray-50 border-b border-gray-200">
+            <tr>
+              <th className="p-4 font-bold text-gray-500 uppercase">Therapist</th>
+              <th className="p-4 font-bold text-gray-500 uppercase">Role</th>
+              <th className="p-4 font-bold text-gray-500 uppercase">Utilisation</th>
+              <th className="p-4 font-bold text-gray-500 uppercase">Note Compliance</th>
+              <th className="p-4 font-bold text-gray-500 uppercase">Sessions (MTD)</th>
+              <th className="p-4 font-bold text-gray-500 uppercase">Payout (MTD)</th>
+              <th className="p-4 font-bold text-gray-500 uppercase">Status</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100">
+            {state.therapists.map(t=>(
+              <tr key={t.id} className="hover:bg-gray-50">
+                <td className="p-4"><span className="font-bold text-gray-800">{t.name}</span>{t.isSenior&&<Badge color="green">SR</Badge>}</td>
+                <td className="p-4 text-gray-600">{t.role}</td>
+                <td className="p-4"><div className="flex items-center gap-2"><span className="font-bold">{t.utilisation}%</span><div className="w-16 h-1.5 bg-gray-200 rounded-full"><div className="h-full bg-blue-500 rounded-full" style={{width:`${t.utilisation}%`}}/></div></div></td>
+                <td className="p-4"><Badge color={t.noteCompliance<90?'red':'green'}>{t.noteCompliance}%</Badge></td>
+                <td className="p-4 font-bold">{t.sessions}</td>
+                <td className="p-4 font-bold">₹ {t.payout.toLocaleString()}</td>
+                <td className="p-4"><Badge color="green">{t.status}</Badge></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 flex items-center gap-3 text-xs text-blue-800">
+        <I name="shield" size={16} className="text-blue-600 shrink-0"/>
+        <span><strong>Admin sees:</strong> Operational metrics (utilisation, note compliance, sessions, payout). Clinical performance metrics (program deviation, patient outcomes) are visible only on the Senior Therapist dashboard.</span>
+      </div>
+
+      {/* Blocked Clinical Panel */}
+      <BlockedPanel title="Clinical Performance Metrics" role="Senior Therapist"/>
+    </div>
+  );
+};
+
+// --- FINANCIALS ---
+const Financials=()=>{
+  const{state}=useContext(AppContext);
+  const f=state.financials;
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Financial Health" subtitle="Collections, payroll, cancellation revenue, outstanding"/>
+      <div className="grid grid-cols-4 gap-4">
+        <KPI label="Collections (MTD)" value={`₹ ${(f.collections/1000).toFixed(0)}K`} sub="Month to date" icon="dollar" color="green"/>
+        <KPI label="Payroll Liability" value={`₹ ${(f.payrollLiability/1000).toFixed(0)}K`} sub="Projected this month" icon="users" color="blue"/>
+        <KPI label="Outstanding" value={`₹ ${(f.outstanding/1000).toFixed(0)}K`} sub="12 patients > 15 days" icon="alert" color="red"/>
+        <KPI label="Cancellation Revenue" value={`₹ ${(f.cancellations.totalCharges/1000).toFixed(1)}K`} sub="Total charges this month" icon="activity" color="purple"/>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white p-5 rounded-xl border border-gray-200/80 shadow-sm">
+          <h3 className="font-bold text-gray-800 text-sm mb-4">Cancellation Revenue Logic</h3>
+          <div className="space-y-4">
+            <div><div className="flex justify-between text-sm"><span className="text-gray-600">Clinic Retained (Refilled Slots)</span><span className="font-bold text-green-600">₹ {f.cancellations.clinicRetained.toLocaleString()}</span></div><div className="w-full bg-gray-100 h-2 rounded-full mt-1.5"><div className="bg-green-500 h-full rounded-full" style={{width:`${(f.cancellations.clinicRetained/f.cancellations.totalCharges*100)}%`}}/></div></div>
+            <div><div className="flex justify-between text-sm"><span className="text-gray-600">Therapist Credited (Idle Slots)</span><span className="font-bold text-blue-600">₹ {f.cancellations.therapistCredited.toLocaleString()}</span></div><div className="w-full bg-gray-100 h-2 rounded-full mt-1.5"><div className="bg-blue-500 h-full rounded-full" style={{width:`${(f.cancellations.therapistCredited/f.cancellations.totalCharges*100)}%`}}/></div></div>
+          </div>
+        </div>
+
+        <div className="bg-white p-5 rounded-xl border border-gray-200/80 shadow-sm">
+          <h3 className="font-bold text-gray-800 text-sm mb-4">Payroll Preview</h3>
+          <table className="w-full text-xs">
+            <thead className="text-left text-gray-500 border-b"><tr><th className="pb-2">Therapist</th><th className="pb-2">Sessions</th><th className="pb-2">Payout</th><th className="pb-2">Status</th></tr></thead>
+            <tbody className="divide-y">{state.therapists.filter(t=>t.payout>0).map(t=>(<tr key={t.id}><td className="py-2.5 font-medium">{t.name}</td><td>{t.sessions}</td><td className="font-bold">₹ {t.payout.toLocaleString()}</td><td><Badge color={t.noteCompliance===100?'green':'amber'}>{t.noteCompliance===100?'Verified':'Pending'}</Badge></td></tr>))}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- EXCEPTIONS ---
+const Exceptions=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  const toast=(msg,type)=>dispatch({type:'ADD_TOAST',payload:{message:msg,type}});
+  const pending=state.exceptions.filter(e=>e.status==='pending');
+  const resolved=state.exceptions.filter(e=>e.status==='resolved');
+
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Operational Exceptions" subtitle="Fee waivers, schedule overrides, billing corrections — Admin authority only"/>
+      {pending.length>0&&<div className="space-y-3">{pending.map(e=>(
+        <div key={e.id} className="bg-white rounded-xl border border-amber-200 shadow-sm p-5 flex items-start gap-4">
+          <div className="p-2 bg-amber-50 rounded-lg shrink-0"><I name="alert" size={20} className="text-amber-600"/></div>
+          <div className="flex-1">
+            <div className="flex justify-between items-start"><h4 className="font-bold text-gray-800 text-sm">{e.type}</h4><Badge color="amber">SLA: {e.sla}</Badge></div>
+            <p className="text-xs text-gray-600 mt-1">{e.detail}</p>
+            <p className="text-[10px] text-gray-400 mt-1">Source: {e.requestor}</p>
+          </div>
+          <div className="flex gap-2 shrink-0">
+            <button onClick={()=>{dispatch({type:'RESOLVE_EXCEPTION',payload:e.id});toast(`${e.type} resolved`,'success');}} className="px-3 py-1.5 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700">Approve</button>
+            <button onClick={()=>{dispatch({type:'RESOLVE_EXCEPTION',payload:e.id});toast(`${e.type} rejected`,'error');}} className="px-3 py-1.5 bg-gray-200 text-gray-700 text-xs font-bold rounded-lg hover:bg-gray-300">Reject</button>
+          </div>
+        </div>
+      ))}</div>}
+      {pending.length===0&&<div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center"><I name="check" size={32} className="text-green-400 mx-auto mb-2"/><p className="font-bold text-green-700 text-sm">All exceptions resolved</p></div>}
+      {resolved.length>0&&<div className="mt-4"><h3 className="text-xs font-bold text-gray-400 uppercase mb-2">Resolved</h3>{resolved.map(e=><div key={e.id} className="bg-gray-50 rounded-lg p-3 flex items-center gap-3 mb-2 text-xs text-gray-500"><I name="check" size={14} className="text-green-500"/><span>{e.type}: {e.detail}</span><Badge color="green">Resolved</Badge></div>)}</div>}
+
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-center gap-3 text-xs text-amber-800">
+        <I name="alert" size={16} className="text-amber-600 shrink-0"/>
+        <span><strong>Note:</strong> Clinical exceptions (plan change requests, stalled patient progress) are routed to the Senior Therapist queue, not shown here.</span>
+      </div>
+    </div>
+  );
+};
+
+// --- SYSTEM SETTINGS ---
+const SystemSettings=()=>{
+  const{state}=useContext(AppContext);
+  const seniors=state.therapists.filter(t=>t.isSenior);
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="System Settings & Role Management" subtitle="Admin-only system configuration"/>
+      
+      <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+        <h3 className="font-bold text-gray-800 text-sm mb-4 flex items-center gap-2"><I name="shield" size={16} className="text-green-600"/>Senior Therapist Role Assignments</h3>
+        <p className="text-xs text-gray-500 mb-4">Admin creates and manages Senior Therapist role designations. Every assignment is audit-logged.</p>
+        <div className="space-y-2 mb-4">
+          {seniors.map(t=>(
+            <div key={t.id} className="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-3">
+              <div className="flex items-center gap-3"><div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center text-xs font-bold">{t.name.split(' ').pop()[0]}</div><div><span className="font-bold text-gray-800 text-sm">{t.name}</span><span className="block text-[10px] text-gray-500">Scope: All therapy types | Assigned: Jan 2026</span></div></div>
+              <div className="flex gap-2"><Badge color="green">Active</Badge><button className="text-xs text-red-600 font-bold hover:underline">Revoke</button></div>
+            </div>
+          ))}
+        </div>
+        <button className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-lg hover:bg-blue-700 flex items-center gap-1.5"><I name="plus" size={14}/>Assign New Senior Therapist</button>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+          <h3 className="font-bold text-gray-800 text-sm mb-3">Notification Rules</h3>
+          <div className="space-y-2 text-xs">
+            {['Session note SLA: 4 hours','Plan change review SLA: 48 hours','Outstanding payment alert: 15+ days','Utilisation report: Daily at 6 PM','Handoff failure alert: 5 min timeout'].map((rule,i)=>(
+              <div key={i} className="flex items-center justify-between p-2.5 bg-gray-50 rounded-lg"><span className="text-gray-700">{rule}</span><button className="text-blue-600 font-bold">Edit</button></div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+          <h3 className="font-bold text-gray-800 text-sm mb-3">System Configuration</h3>
+          <div className="space-y-2 text-xs">
+            {['Session rate: ₹ 600','Schedule lock time: Previous day close','No-show auto-mark: 15 min','Cancellation charge: Full session','Outstanding booking block: 3+ unpaid sessions'].map((cfg,i)=>(
+              <div key={i} className="flex items-center justify-between p-2.5 bg-gray-50 rounded-lg"><span className="text-gray-700">{cfg}</span><button className="text-blue-600 font-bold">Edit</button></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════
+// SENIOR THERAPIST MODULES
+// ═══════════════════════════════════════════════════════════
+
+// --- ST OVERVIEW ---
+const STOverview=()=>{
+  const{state}=useContext(AppContext);
+  const pendingPlanChanges=state.planChanges.filter(pc=>pc.status==='pending_st').length;
+  const stalledPatients=state.patients.filter(p=>p.status==='active'&&p.sessionsCompleted>0&&p.sessionsCompleted<p.sessionsTotal*0.3).length;
+  const evalPending=state.patients.filter(p=>p.status==='eval_pending').length;
+  const progPending=state.patients.filter(p=>p.status==='program_pending').length;
+
+  return(
+    <div className="space-y-6 anim-slide">
+      <div className="grid grid-cols-4 gap-4">
+        <KPI label="Plan Changes Pending" value={pendingPlanChanges} sub="Awaiting your review" icon="alert" color="red"/>
+        <KPI label="Evaluations Pending" value={evalPending} sub="Unassessed patients" icon="clipboard" color="purple"/>
+        <KPI label="Programs to Design" value={progPending} sub="Evaluated, awaiting program" icon="file" color="blue"/>
+        <KPI label="Patients Active" value={state.patients.filter(p=>p.status==='active').length} sub={`${stalledPatients} need attention`} icon="users" color="green"/>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+          <h3 className="font-bold text-gray-800 text-sm mb-4">Clinical Pipeline</h3>
+          <div className="space-y-3">
+            {state.patients.map(p=>(
+              <div key={p.id} className="flex items-center gap-3 text-xs">
+                <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-500 text-[10px] shrink-0">{p.name.split(' ').map(n=>n[0]).join('')}</div>
+                <div className="flex-1 min-w-0"><span className="font-bold text-gray-800">{p.name}</span><span className="text-gray-400 ml-1">({p.age}y)</span></div>
+                <Badge color={p.status==='active'?'green':p.status==='eval_pending'?'red':p.status==='program_pending'?'amber':'gray'}>
+                  {p.status==='active'?`${p.sessionsCompleted}/${p.sessionsTotal}`:p.status==='eval_pending'?'Eval Needed':p.status==='program_pending'?'Program Needed':p.status}
+                </Badge>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+          <h3 className="font-bold text-gray-800 text-sm mb-4">Program Adherence — Clinic-Wide</h3>
+          <div className="space-y-3">
+            {state.therapists.map(t=>(
+              <div key={t.id} className="flex items-center justify-between text-xs">
+                <span className="font-bold text-gray-700">{t.name} ({t.role})</span>
+                <div className="flex items-center gap-2">
+                  <span className={`font-bold ${t.deviation>15?'text-red-600':t.deviation>10?'text-amber-600':'text-green-600'}`}>{t.deviation}% deviation</span>
+                  <div className="w-20 h-1.5 bg-gray-200 rounded-full"><div className={`h-full rounded-full ${t.deviation>15?'bg-red-500':t.deviation>10?'bg-amber-500':'bg-green-500'}`} style={{width:`${100-t.deviation}%`}}/></div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 p-2.5 bg-red-50 border border-red-200 rounded text-[10px] text-red-700"><strong>Flag:</strong> Mr. Rahul has 32% deviation rate (threshold: 30%). Clinical review recommended.</div>
+        </div>
+      </div>
+
+      <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
+        <I name="shield" size={20} className="text-green-600"/>
+        <div><p className="text-xs font-bold text-green-800">Senior Therapist Role Boundary</p><p className="text-[11px] text-green-600">You can view and manage evaluations, program design, plan change approvals, and clinical quality. Financial data, payroll, and system configuration require Admin role.</p></div>
+      </div>
+    </div>
+  );
+};
+
+// --- EVALUATIONS ---
+const Evaluations=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  const toast=(msg,type)=>dispatch({type:'ADD_TOAST',payload:{message:msg,type}});
+  const getPatient=(pid)=>state.patients.find(p=>p.id===pid);
+  const pendingEval=state.patients.filter(p=>p.status==='eval_pending');
+
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Evaluations" subtitle="Conduct, review, and manage clinical evaluations"/>
+
+      {pendingEval.length>0&&(
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <h3 className="text-sm font-bold text-amber-800 mb-2 flex items-center gap-2"><I name="alert" size={15}/>Patients Awaiting Evaluation</h3>
+          {pendingEval.map(p=>(
+            <div key={p.id} className="flex items-center justify-between bg-white rounded-lg p-3 mt-2 border border-amber-200">
+              <div><span className="font-bold text-gray-800 text-sm">{p.name}</span><span className="text-xs text-gray-500 ml-2">({p.age}y) — {p.diagnosis}</span></div>
+              <button className="px-3 py-1.5 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 flex items-center gap-1"><I name="clipboard" size={13}/>Conduct Evaluation</button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm overflow-hidden">
+        <div className="px-5 py-3 bg-gray-50 border-b border-gray-200"><h3 className="font-bold text-gray-800 text-sm">Completed Evaluations</h3></div>
+        <div className="divide-y divide-gray-100">
+          {state.evaluations.map(ev=>{
+            const pat=getPatient(ev.patient);
+            const evaluator=state.therapists.find(t=>t.id===ev.evaluator);
+            const hasProgram=state.programs.some(p=>p.evalId===ev.id);
+            const patStatus=pat?.status;
+            return(
+              <div key={ev.id} className="p-4 hover:bg-gray-50/50">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h4 className="font-bold text-gray-800 text-sm">{pat?.name} — {ev.id}</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">Evaluator: {evaluator?.name} | Date: {ev.date}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <Badge color="green">Completed</Badge>
+                    {hasProgram?<Badge color="blue">Program Created</Badge>:<Badge color="amber">Program Needed</Badge>}
+                  </div>
+                </div>
+                <div className="mt-2 bg-gray-50 rounded-lg p-3 text-xs text-gray-700">
+                  <p><strong>Findings:</strong> {ev.findings}</p>
+                  <p className="mt-1"><strong>Recommendation:</strong> {ev.recommendation}</p>
+                </div>
+                {patStatus==='program_pending'&&!hasProgram&&(
+                  <div className="mt-3 flex justify-end">
+                    <button onClick={()=>{dispatch({type:'CREATE_PROGRAM_FOR_PATIENT',payload:{patientId:ev.patient,evalId:ev.id}});toast(`Program draft created for ${pat?.name} — open Program Design to complete`,'success');}}
+                      className="px-4 py-2 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 flex items-center gap-1.5"><I name="plus" size={14}/>Design Program</button>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- PROGRAM DESIGN (ST) ---
+const STProgramDesign=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  const toast=(msg,type)=>dispatch({type:'ADD_TOAST',payload:{message:msg,type}});
+  const getPatient=(pid)=>state.patients.find(p=>p.id===pid);
+
+  const drafts=state.programs.filter(p=>p.status==='draft');
+  const active=state.programs.filter(p=>p.status==='active');
+  const approved=state.programs.filter(p=>p.status==='clinically_approved');
+
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Program Design" subtitle="Design, review, and approve therapy programs (Clinical Authority)"/>
+
+      {drafts.length>0&&<div>
+        <h3 className="text-sm font-bold text-amber-700 mb-3 flex items-center gap-2"><I name="file" size={15}/>Draft Programs</h3>
+        {drafts.map(prog=>{
+          const pat=getPatient(prog.patient);
+          const ev=state.evaluations.find(e=>e.id===prog.evalId);
+          return(
+            <div key={prog.id} className="bg-white rounded-xl border border-amber-200 shadow-sm p-5 mb-3">
+              <div className="flex justify-between items-start mb-4">
+                <div><h4 className="font-bold text-gray-800">{pat?.name} ({pat?.age}y)</h4><p className="text-xs text-gray-500">{pat?.diagnosis} | Eval: {prog.evalId}</p></div>
+                <Badge color="amber">Draft</Badge>
+              </div>
+              {ev&&<div className="bg-gray-50 rounded-lg p-3 text-xs text-gray-700 mb-4"><strong>Evaluation Summary:</strong> {ev.findings}<br/><strong>Recommendation:</strong> {ev.recommendation}</div>}
+              <div className="grid grid-cols-3 gap-3 text-xs mb-4">
+                <div className="bg-green-50 p-3 rounded-lg border border-green-200"><span className="text-green-700 font-bold block mb-1">Domains</span>{prog.domains.join(', ')}</div>
+                <div className="bg-blue-50 p-3 rounded-lg border border-blue-200"><span className="text-blue-700 font-bold block mb-1">Sessions</span>{prog.totalSessions} total</div>
+                <div className="bg-purple-50 p-3 rounded-lg border border-purple-200"><span className="text-purple-700 font-bold block mb-1">Est. Cost</span>₹ {prog.cost.toLocaleString()}</div>
+              </div>
+              <div className="flex justify-end gap-2">
+                <button className="px-4 py-2 text-gray-600 text-xs font-bold">Edit Draft</button>
+                <button onClick={()=>{dispatch({type:'APPROVE_PROGRAM',payload:prog.id});toast(`Program for ${pat?.name} clinically approved — sent to Admin for publication`,'success');}}
+                  className="px-5 py-2 bg-green-600 text-white text-sm font-bold rounded-lg hover:bg-green-700 flex items-center gap-1.5"><I name="check" size={14}/>Approve Program</button>
+              </div>
+            </div>
+          );
+        })}
+      </div>}
+
+      {approved.length>0&&<div>
+        <h3 className="text-sm font-bold text-green-700 mb-3 flex items-center gap-2"><I name="check" size={15}/>Clinically Approved — Awaiting Admin Publication</h3>
+        {approved.map(prog=>{const pat=getPatient(prog.patient);return(
+          <div key={prog.id} className="bg-green-50 border border-green-200 rounded-xl p-4 mb-2 flex justify-between items-center">
+            <div><span className="font-bold text-gray-800 text-sm">{pat?.name}</span><span className="text-xs text-gray-500 ml-2">{prog.domains.join('+')} | {prog.totalSessions} sessions</span></div>
+            <Badge color="green">Approved — Pending Publication</Badge>
+          </div>
+        );})}
+      </div>}
+
+      <div>
+        <h3 className="text-sm font-bold text-gray-600 mb-3">Active Programs</h3>
+        <div className="space-y-2">
+          {active.map(prog=>{
+            const pat=getPatient(prog.patient);
+            const progress=pat?Math.round(pat.sessionsCompleted/prog.totalSessions*100):0;
+            return(
+              <div key={prog.id} className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-4 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-700 text-sm shrink-0">{progress}%</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2"><span className="font-bold text-gray-800 text-sm">{pat?.name}</span><Badge color="teal">{prog.domains.join(' + ')}</Badge></div>
+                  <div className="w-full bg-gray-100 h-1.5 rounded-full mt-1.5"><div className="bg-green-500 h-full rounded-full transition-all" style={{width:`${progress}%`}}/></div>
+                  <p className="text-[10px] text-gray-500 mt-1">{pat?.sessionsCompleted}/{prog.totalSessions} sessions | Milestones: {prog.milestones.length} defined</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <BlockedPanel title="Financial Data (Billing, Pricing, Revenue)" role="Admin"/>
+    </div>
+  );
+};
+
+// --- PLAN CHANGE QUEUE (ST) ---
+const PlanChangeQueue=()=>{
+  const{state,dispatch}=useContext(AppContext);
+  const[comment,setComment]=useState('');
+  const toast=(msg,type)=>dispatch({type:'ADD_TOAST',payload:{message:msg,type}});
+  const getPatient=(pid)=>state.patients.find(p=>p.id===pid);
+
+  const pending=state.planChanges.filter(pc=>pc.status==='pending_st');
+  const reviewed=state.planChanges.filter(pc=>pc.status!=='pending_st');
+
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Plan Change Approvals" subtitle="Review and approve/reject therapist-submitted plan change recommendations"/>
+
+      {pending.length>0?pending.map(pc=>{
+        const pat=getPatient(pc.patient);
+        const requestor=state.therapists.find(t=>t.id===pc.requestor);
+        return(
+          <div key={pc.id} className="bg-white rounded-xl border border-amber-200 shadow-sm p-5">
+            <div className="flex justify-between items-start mb-3">
+              <div><h4 className="font-bold text-gray-800">{pat?.name} — {pc.type}</h4><p className="text-xs text-gray-500">Requested by: {requestor?.name} | {pc.date}</p></div>
+              <Badge color="amber">Pending Your Review</Badge>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-3 text-xs text-gray-700 mb-3">{pc.detail}</div>
+            <div className="grid grid-cols-2 gap-3 text-xs mb-4">
+              <div className="bg-red-50 p-3 rounded border border-red-200"><span className="text-red-600 font-bold">Current Plan:</span><span className="block text-gray-700 mt-0.5">{pc.currentPlan}</span></div>
+              <div className="bg-green-50 p-3 rounded border border-green-200"><span className="text-green-600 font-bold">Proposed Change:</span><span className="block text-gray-700 mt-0.5">{pc.proposedPlan}</span></div>
+            </div>
+            <div className="mb-3">
+              <label className="text-[11px] font-bold text-gray-500 uppercase block mb-1">Clinical Rationale / Comment</label>
+              <textarea value={comment} onChange={e=>setComment(e.target.value)} className="w-full p-2.5 border border-gray-200 rounded-lg text-xs resize-none h-16 focus:outline-none focus:ring-2 focus:ring-green-500/30" placeholder="Add your clinical rationale for approval or rejection..."/>
+            </div>
+            <div className="flex justify-end gap-2">
+              <button onClick={()=>{dispatch({type:'REJECT_PLAN_CHANGE',payload:{id:pc.id,comment:comment||'Insufficient clinical justification'}});setComment('');toast(`Plan change for ${pat?.name} rejected — therapist notified`,'error');}}
+                className="px-4 py-2 bg-red-100 text-red-700 text-xs font-bold rounded-lg hover:bg-red-200 flex items-center gap-1.5"><I name="x" size={14}/>Reject</button>
+              <button onClick={()=>{dispatch({type:'APPROVE_PLAN_CHANGE',payload:{id:pc.id,comment:comment||'Clinically justified — proceed'}});setComment('');toast(`Plan change for ${pat?.name} approved — sent to Admin for execution`,'success');}}
+                className="px-5 py-2 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 flex items-center gap-1.5"><I name="check" size={14}/>Approve</button>
+            </div>
+          </div>
+        );
+      }):<div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center"><I name="check" size={32} className="text-green-400 mx-auto mb-2"/><p className="font-bold text-green-700 text-sm">No pending plan change requests</p></div>}
+
+      {reviewed.length>0&&<div>
+        <h3 className="text-xs font-bold text-gray-400 uppercase mb-2">Previously Reviewed</h3>
+        {reviewed.map(pc=>{const pat=getPatient(pc.patient);return(
+          <div key={pc.id} className="bg-gray-50 rounded-lg p-3 flex items-center justify-between mb-2 text-xs">
+            <div><span className="font-bold text-gray-700">{pat?.name} — {pc.type}</span>{pc.stComment&&<span className="text-gray-500 ml-2">"{pc.stComment}"</span>}</div>
+            <div className="flex gap-2">
+              <Badge color={pc.status==='approved_st'?'green':'red'}>{pc.status==='approved_st'?'Approved':'Rejected'}</Badge>
+              {pc.status==='approved_st'&&<Badge color={pc.adminExecuted?'blue':'amber'}>{pc.adminExecuted?'Executed':'Awaiting Admin'}</Badge>}
+            </div>
+          </div>
+        );})}
+      </div>}
+    </div>
+  );
+};
+
+// --- CLINICAL QUALITY ---
+const ClinicalQuality=()=>{
+  const{state}=useContext(AppContext);
+  return(
+    <div className="space-y-6 anim-slide">
+      <SectionHeader title="Clinical Quality Oversight" subtitle="Patient outcomes, program adherence, therapist clinical benchmarks"/>
+      
+      <div className="grid grid-cols-3 gap-4">
+        <KPI label="On Track" value={state.patients.filter(p=>p.status==='active'&&p.sessionsCompleted/p.sessionsTotal>0.3).length} sub="Patients meeting milestones" icon="check" color="green"/>
+        <KPI label="Needs Attention" value={1} sub="Stalled or behind schedule" icon="alert" color="red"/>
+        <KPI label="Avg Adherence" value="89%" sub="Across all therapists" icon="bar" color="blue"/>
+      </div>
+
+      <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+        <h3 className="font-bold text-gray-800 text-sm mb-4">Therapist Clinical Performance</h3>
+        <table className="w-full text-xs">
+          <thead className="bg-gray-50 border-b"><tr><th className="p-3 text-left font-bold text-gray-500 uppercase">Therapist</th><th className="p-3 text-left font-bold text-gray-500 uppercase">Program Deviation</th><th className="p-3 text-left font-bold text-gray-500 uppercase">Milestone Rate</th><th className="p-3 text-left font-bold text-gray-500 uppercase">Patient Outcomes</th><th className="p-3 text-left font-bold text-gray-500 uppercase">Assessment</th></tr></thead>
+          <tbody className="divide-y">
+            {state.therapists.map(t=>(
+              <tr key={t.id} className="hover:bg-gray-50">
+                <td className="p-3 font-bold text-gray-800">{t.name} ({t.role})</td>
+                <td className="p-3"><span className={`font-bold ${t.deviation>30?'text-red-600':t.deviation>15?'text-amber-600':'text-green-600'}`}>{t.deviation}%</span>{t.deviation>30&&<span className="text-[10px] text-red-500 block">EXCEEDS THRESHOLD</span>}</td>
+                <td className="p-3">{t.deviation<10?'92%':t.deviation<20?'78%':'61%'}</td>
+                <td className="p-3">{t.deviation<10?'Excellent':t.deviation<20?'Good':'Below Standard'}</td>
+                <td className="p-3"><Badge color={t.deviation>30?'red':t.deviation>15?'amber':'green'}>{t.deviation>30?'Review Needed':t.deviation>15?'Monitor':'On Track'}</Badge></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-5">
+        <h3 className="font-bold text-gray-800 text-sm mb-4">Patient Progress Overview</h3>
+        <div className="space-y-3">
+          {state.patients.filter(p=>p.status==='active').map(p=>{
+            const prog=state.programs.find(pr=>pr.patient===p.id);
+            const pct=prog?Math.round(p.sessionsCompleted/prog.totalSessions*100):0;
+            const isStalled=pct>10&&pct<40;
+            return(
+              <div key={p.id} className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-500">{p.name.split(' ').map(n=>n[0]).join('')}</div>
+                <div className="flex-1"><div className="flex items-center gap-2 text-xs"><span className="font-bold text-gray-800">{p.name}</span><span className="text-gray-400">{p.domains.join('+')}</span>{isStalled&&<Badge color="red">Stalled</Badge>}</div><div className="w-full bg-gray-100 h-1.5 rounded-full mt-1"><div className={`h-full rounded-full ${isStalled?'bg-red-400':'bg-green-500'}`} style={{width:`${pct}%`}}/></div></div>
+                <span className="text-xs font-bold text-gray-600 w-10 text-right">{pct}%</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <BlockedPanel title="Operational Compliance Metrics (Note Submission Rates, Check-in Accuracy)" role="Admin"/>
+    </div>
+  );
+};
+
+// --- PROTOCOL LIBRARY ---
+const ProtocolLibrary=()=>(
+  <div className="space-y-6 anim-slide">
+    <SectionHeader title="Therapy Protocol Library" subtitle="Manage clinical protocols — Senior Therapist authority" action={<button className="px-3 py-1.5 bg-green-600 text-white rounded-lg text-xs font-bold flex items-center gap-1"><I name="upload" size={13}/>Upload Protocol</button>}/>
+    <div className="grid grid-cols-3 gap-4">
+      {[
+        {title:'Sensory Integration Protocol',type:'OT',version:'v3.2',linked:true,updated:'Jan 2026'},
+        {title:'Oral Motor Exercise Protocol',type:'Speech',version:'v2.1',linked:true,updated:'Dec 2025'},
+        {title:'Social Skills Group Protocol',type:'SpEd',version:'v1.4',linked:true,updated:'Feb 2026'},
+        {title:'Handwriting Readiness Protocol',type:'OT',version:'v2.0',linked:false,updated:'Nov 2025'},
+        {title:'Augmentative Communication Protocol',type:'Speech',version:'v1.0',linked:false,updated:'Oct 2025'},
+      ].map((proto,i)=>(
+        <div key={i} className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-4 hover:shadow-md transition-all cursor-pointer">
+          <div className="flex items-start justify-between mb-2"><I name="book" size={20} className="text-green-600"/><Badge color={proto.linked?'green':'gray'}>{proto.linked?'Linked':'Unlinked'}</Badge></div>
+          <h4 className="font-bold text-gray-800 text-sm">{proto.title}</h4>
+          <p className="text-xs text-gray-500 mt-1">{proto.type} | {proto.version} | Updated {proto.updated}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// --- VIDEO PROGRESS ---
+const VideoProgress=()=>(
+  <div className="space-y-6 anim-slide">
+    <SectionHeader title="Video Progress Library" subtitle="Baseline vs current session comparison — Clinical assessment tool"/>
+    <div className="space-y-3">
+      {[
+        {patient:'Kabir J.',baseline:'Jan 15, 2026',latest:'Feb 8, 2026',milestone:'Fine Motor Grasp',status:'Improved'},
+        {patient:'Ishaan T.',baseline:'Nov 10, 2025',latest:'Feb 7, 2026',milestone:'Joint Attention',status:'Significant Progress'},
+        {patient:'Anvi S.',baseline:'Jan 18, 2026',latest:'Feb 5, 2026',milestone:'Sentence Construction',status:'On Track'},
+      ].map((v,i)=>(
+        <div key={i} className="bg-white rounded-xl border border-gray-200/80 shadow-sm p-4 flex items-center gap-4">
+          <div className="flex gap-2 shrink-0">
+            <div className="w-24 h-16 bg-gray-200 rounded-lg flex items-center justify-center"><I name="play" size={20} className="text-gray-400"/></div>
+            <div className="w-24 h-16 bg-green-100 rounded-lg flex items-center justify-center"><I name="play" size={20} className="text-green-500"/></div>
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2"><span className="font-bold text-gray-800 text-sm">{v.patient}</span><Badge color="green">{v.status}</Badge></div>
+            <p className="text-xs text-gray-500 mt-0.5">Milestone: {v.milestone}</p>
+            <p className="text-[10px] text-gray-400">Baseline: {v.baseline} → Latest: {v.latest}</p>
+          </div>
+          <button className="px-3 py-1.5 bg-green-50 text-green-700 text-xs font-bold rounded-lg border border-green-200 hover:bg-green-100">Compare</button>
+        </div>
+      ))}
+    </div>
+    <BlockedPanel title="Video Storage Management (Capacity, Cleanup)" role="Admin"/>
+  </div>
+);
+
+
+// ═══════════════════════════════════════════════════════════
+// MAIN APP
+// ═══════════════════════════════════════════════════════════
+function App(){
+  const[state,dispatch]=React.useReducer(appReducer,INITIAL_STATE);
+  const[activeTab,setActiveTab]=useState('overview');
+
+  // Reset tab when role changes
+  useEffect(()=>{
+    if(state.role==='admin'&&activeTab.startsWith('st_'))setActiveTab('overview');
+    if(state.role==='seniorTherapist'&&!activeTab.startsWith('st_'))setActiveTab('st_overview');
+  },[state.role]);
+
+  const renderContent=()=>{
+    switch(activeTab){
+      // Admin modules
+      case 'overview':return<AdminOverview/>;
+      case 'schedule':return<MasterSchedule/>;
+      case 'session':return<SessionLifecycle/>;
+      case 'publication':return<ProgramPublication/>;
+      case 'therapists':return<TherapistHR/>;
+      case 'financials':return<Financials/>;
+      case 'exceptions':return<Exceptions/>;
+      case 'settings':return<SystemSettings/>;
+      // Senior Therapist modules
+      case 'st_overview':return<STOverview/>;
+      case 'st_evaluations':return<Evaluations/>;
+      case 'st_programs':return<STProgramDesign/>;
+      case 'st_planchanges':return<PlanChangeQueue/>;
+      case 'st_quality':return<ClinicalQuality/>;
+      case 'st_protocols':return<ProtocolLibrary/>;
+      case 'st_video':return<VideoProgress/>;
+      default:return<div className="p-10 text-center text-gray-500">Module under development</div>;
+    }
+  };
+
+  const isAdmin=state.role==='admin';
+  const borderClass=isAdmin?'role-glow-blue':'role-glow-green';
+
+  return(
+    <AppContext.Provider value={{state,dispatch}}>
+      <div className="flex flex-col h-screen overflow-hidden">
+        <RoleSwitcher/>
+        <div className="flex flex-1 min-h-0">
+          <Sidebar active={activeTab} onNavigate={setActiveTab}/>
+          <div className="flex-1 flex flex-col min-w-0">
+            <header className={`h-12 bg-white border-b flex items-center justify-between px-6 shrink-0 ${isAdmin?'border-blue-200':'border-green-200'}`}>
+              <div className="flex items-center gap-3">
+                <div className={`w-2 h-2 rounded-full ${isAdmin?'bg-blue-500':'bg-green-500'}`}/>
+                <h1 className="text-sm font-bold text-gray-800 capitalize">{activeTab.replace('st_','').replace(/_/g,' ')}</h1>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] text-gray-400">Mon 10 Feb 2026 • 10:32 AM</span>
+                <div className={`px-2 py-1 rounded text-[10px] font-bold ${isAdmin?'bg-blue-100 text-blue-700':'bg-green-100 text-green-700'}`}>{isAdmin?'ADMIN':'SENIOR THERAPIST'}</div>
+              </div>
+            </header>
+            <main className="flex-1 overflow-y-auto p-6 bg-gray-50/50">
+              {renderContent()}
+            </main>
+          </div>
+        </div>
+      </div>
+      <ToastContainer/>
+    </AppContext.Provider>
+  );
+}
+
+ReactDOM.render(<App/>,document.getElementById('root'));
+</script>
+</body>
+</html>
