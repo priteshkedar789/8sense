@@ -1,0 +1,480 @@
+import React, { useState } from 'react';
+import { 
+  User, 
+  Calendar, 
+  CreditCard, 
+  Activity, 
+  Home, 
+  ChevronRight, 
+  Download, 
+  CheckCircle, 
+  Clock, 
+  Video, 
+  AlertCircle,
+  Phone,
+  FileText
+} from 'lucide-react';
+
+// --- MOCK DATA BASED ON SOP CONTEXT ---
+const MOCK_DATA = {
+  child: {
+    name: "Arav Sharma",
+    age: "5 Yrs",
+    id: "8S-2026-042",
+    diagnosis: "Sensory Processing Disorder",
+    photo: "/api/placeholder/100/100" // Placeholder for avatar
+  },
+  program: {
+    currentBlock: "Feb - April 2026",
+    types: ["Occupational Therapy", "Speech Therapy"],
+    totalSessions: 30,
+    completedSessions: 12,
+    nextMilestone: "Bilateral Integration",
+    milestoneProgress: 65, // percentage
+  },
+  alerts: [
+    { type: 'payment', message: 'Payment due for upcoming 5 sessions.', urgency: 'high' },
+    { type: 'update', message: 'New progress video available.', urgency: 'medium' }
+  ],
+  appointments: [
+    { id: 1, date: "Tomorrow, 10 Feb", time: "4:00 PM", therapist: "Ms. Ananya", type: "Occupational Therapy", status: "confirmed" },
+    { id: 2, date: "Wed, 12 Feb", time: "4:00 PM", therapist: "Mr. Rahul", type: "Speech Therapy", status: "confirmed" }
+  ],
+  homework: [
+    { id: 1, title: "Animal Walk", desc: "Bear walk for 5 mins to improve core strength.", completed: false },
+    { id: 2, title: "Sound Matching", desc: "Identify 3 household sounds.", completed: true }
+  ],
+  billing: {
+    outstanding: 1800, // Rs
+    history: [
+      { id: 101, date: "01 Feb 2026", amount: 6000, items: "10 Session Package", status: "Paid" },
+      { id: 102, date: "15 Jan 2026", amount: 600, items: "Evaluation Fee", status: "Paid" }
+    ]
+  }
+};
+
+// --- COMPONENTS ---
+
+// 1. LOGIN SCREEN
+// SOP Reference: Secure Login & Access, OTP-based mobile login (no password) 
+const LoginScreen = ({ onLogin }) => {
+  const [step, setStep] = useState(1);
+  const [mobile, setMobile] = useState('');
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-teal-50 p-6">
+      <div className="w-24 h-24 bg-teal-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
+        <span className="text-3xl font-bold text-white">8S</span>
+      </div>
+      <h1 className="text-2xl font-bold text-gray-800 mb-2">8 Senses Clinic</h1>
+      <p className="text-gray-500 mb-8 text-center">Parent Portal Login</p>
+
+      <div className="w-full max-w-sm bg-white p-6 rounded-2xl shadow-sm">
+        {step === 1 ? (
+          <>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Mobile Number</label>
+            <div className="flex gap-2 mb-4">
+              <span className="p-3 bg-gray-100 rounded-lg text-gray-600">+91</span>
+              <input 
+                type="tel" 
+                className="flex-1 p-3 bg-gray-50 rounded-lg border-none focus:ring-2 focus:ring-teal-400 outline-none"
+                placeholder="98765 43210"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+              />
+            </div>
+            <button 
+              onClick={() => setStep(2)}
+              className="w-full bg-teal-600 text-white py-3 rounded-xl font-medium hover:bg-teal-700 transition"
+            >
+              Get OTP
+            </button>
+          </>
+        ) : (
+          <>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Enter OTP</label>
+            <input 
+              type="text" 
+              className="w-full p-3 bg-gray-50 rounded-lg border-none focus:ring-2 focus:ring-teal-400 outline-none mb-4 text-center tracking-widest text-xl"
+              placeholder="• • • •"
+            />
+            <button 
+              onClick={onLogin}
+              className="w-full bg-teal-600 text-white py-3 rounded-xl font-medium hover:bg-teal-700 transition"
+            >
+              Verify & Login
+            </button>
+            <button onClick={() => setStep(1)} className="w-full mt-4 text-sm text-gray-500">Change Number</button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// 2. DASHBOARD (HOME)
+// SOP Reference: View child data, progress summary, alerts 
+const Dashboard = ({ data }) => {
+  return (
+    <div className="p-4 space-y-6 pb-24">
+      {/* Header / Profile Card */}
+      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+        <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 text-xl font-bold">
+          {data.child.name.charAt(0)}
+        </div>
+        <div>
+          <h2 className="text-xl font-bold text-gray-800">{data.child.name}</h2>
+          <p className="text-sm text-gray-500">{data.child.age} • {data.child.id}</p>
+          <div className="flex gap-2 mt-1">
+            {data.program.types.map(t => (
+              <span key={t} className="text-xs px-2 py-0.5 bg-teal-50 text-teal-700 rounded-md font-medium">
+                {t.split(' ')[0]}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Alerts Section - SOP Reference: Outstanding balance alerts  */}
+      {data.alerts.map((alert, idx) => (
+        <div key={idx} className={`p-4 rounded-xl flex items-start gap-3 ${alert.urgency === 'high' ? 'bg-red-50 text-red-800' : 'bg-blue-50 text-blue-800'}`}>
+          <AlertCircle size={20} className="mt-0.5" />
+          <div>
+            <p className="font-semibold text-sm">{alert.type === 'payment' ? 'Action Required' : 'Update'}</p>
+            <p className="text-sm opacity-90">{alert.message}</p>
+          </div>
+        </div>
+      ))}
+
+      {/* Progress Summary - SOP Reference: Sessions completed vs total  */}
+      <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-end mb-2">
+          <h3 className="font-bold text-gray-700">Current Program</h3>
+          <span className="text-xs text-gray-400">{data.program.currentBlock}</span>
+        </div>
+        
+        <div className="mb-4">
+          <div className="flex justify-between text-sm mb-1">
+            <span className="text-gray-600">Session Progress</span>
+            <span className="font-bold text-teal-600">{data.program.completedSessions}/{data.program.totalSessions}</span>
+          </div>
+          <div className="w-full bg-gray-100 h-3 rounded-full overflow-hidden">
+            <div 
+              className="bg-teal-500 h-full rounded-full transition-all duration-500" 
+              style={{ width: `${(data.program.completedSessions / data.program.totalSessions) * 100}%` }}
+            ></div>
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center bg-gray-50 p-3 rounded-xl">
+          <div>
+            <p className="text-xs text-gray-500 uppercase font-bold tracking-wide">Next Milestone</p>
+            <p className="text-gray-800 font-medium">{data.program.nextMilestone}</p>
+          </div>
+          <div className="h-10 w-10 rounded-full border-4 border-teal-100 flex items-center justify-center text-xs font-bold text-teal-600">
+            {data.program.milestoneProgress}%
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// 3. PROGRESS & REPORTS
+// SOP Reference: Video progress comparison, Milestone tracking [cite: 67, 52]
+const ProgressScreen = () => {
+  return (
+    <div className="p-4 space-y-6 pb-24">
+      <h2 className="text-2xl font-bold text-gray-800">Therapy Progress</h2>
+
+      {/* Video Comparison - SOP Reference  */}
+      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-bold text-gray-700 flex items-center gap-2">
+            <Video size={18} className="text-teal-500"/> 
+            Video Comparison
+          </h3>
+          <span className="text-xs bg-teal-100 text-teal-800 px-2 py-1 rounded-md">New</span>
+        </div>
+        <p className="text-xs text-gray-500 mb-4">Compare baseline (Start of Plan) vs. Current status.</p>
+        
+        <div className="grid grid-cols-2 gap-3">
+          <div className="space-y-2">
+            <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center relative">
+              <div className="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center shadow">
+                 <div className="w-0 h-0 border-t-4 border-t-transparent border-l-8 border-l-teal-600 border-b-4 border-b-transparent ml-1"></div>
+              </div>
+              <span className="absolute bottom-2 left-2 text-[10px] bg-black/50 text-white px-1.5 rounded">Jan 10</span>
+            </div>
+            <p className="text-xs text-center font-medium text-gray-600">Baseline</p>
+          </div>
+          <div className="space-y-2">
+            <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center relative">
+               <div className="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center shadow">
+                 <div className="w-0 h-0 border-t-4 border-t-transparent border-l-8 border-l-teal-600 border-b-4 border-b-transparent ml-1"></div>
+              </div>
+              <span className="absolute bottom-2 left-2 text-[10px] bg-black/50 text-white px-1.5 rounded">Feb 09</span>
+            </div>
+            <p className="text-xs text-center font-medium text-gray-600">Current</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Milestone Timeline */}
+      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <h3 className="font-bold text-gray-700 mb-4">Milestone Tracker</h3>
+        <div className="space-y-6 pl-2 border-l-2 border-gray-100 ml-2">
+          {[
+            { title: "Sensory Regulation", date: "Jan 15", status: "Achieved", color: "text-green-600" },
+            { title: "Fine Motor Grasp", date: "In Progress", status: "80% Done", color: "text-blue-600" },
+            { title: "Bilateral Integration", date: "Upcoming", status: "Pending", color: "text-gray-400" }
+          ].map((m, i) => (
+            <div key={i} className="relative pl-6">
+              <div className={`absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 border-white shadow-sm ${m.status === 'Achieved' ? 'bg-green-500' : m.status === 'Pending' ? 'bg-gray-300' : 'bg-blue-500'}`}></div>
+              <p className="font-medium text-gray-800 text-sm">{m.title}</p>
+              <div className="flex justify-between items-center mt-1">
+                <span className={`text-xs ${m.color} font-medium`}>{m.status}</span>
+                {m.date && <span className="text-xs text-gray-400">{m.date}</span>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+       <button className="w-full py-3 border border-teal-200 text-teal-700 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-teal-50">
+        <Download size={18} />
+        Download Detailed Report
+      </button>
+    </div>
+  );
+};
+
+// 4. APPOINTMENTS
+// SOP Reference: View upcoming sessions, Reschedule request only (no direct edit) 
+const AppointmentsScreen = ({ data }) => {
+  return (
+    <div className="p-4 space-y-4 pb-24">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">Appointments</h2>
+      
+      {data.appointments.map(apt => (
+        <div key={apt.id} className="bg-white p-5 rounded-2xl shadow-sm border-l-4 border-teal-500 flex flex-col gap-3">
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="text-lg font-bold text-gray-800">{apt.time}</p>
+              <p className="text-sm text-teal-600 font-medium">{apt.date}</p>
+            </div>
+            <span className="px-3 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium">Confirmed</span>
+          </div>
+          
+          <div className="flex items-center gap-3 py-2 border-t border-b border-gray-50">
+            <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+              <User size={20} className="text-gray-500" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-gray-700">{apt.therapist}</p>
+              <p className="text-xs text-gray-500">{apt.type}</p>
+            </div>
+          </div>
+
+          <button className="text-sm text-gray-500 hover:text-teal-600 font-medium border border-gray-200 rounded-lg py-2 mt-1">
+            Request Reschedule
+          </button>
+        </div>
+      ))}
+
+      <p className="text-xs text-center text-gray-400 mt-4 px-8">
+        Need to cancel? Please request at least 24 hours in advance to avoid cancellation charges.
+      </p>
+    </div>
+  );
+};
+
+// 5. BILLING
+// SOP Reference: Paid vs Pending, Payment history, Outstanding balance 
+const BillingScreen = ({ data }) => {
+  return (
+    <div className="p-4 space-y-6 pb-24">
+      <h2 className="text-2xl font-bold text-gray-800">Billing & Payments</h2>
+
+      {/* Outstanding Balance Card */}
+      <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 text-white shadow-lg">
+        <p className="text-gray-300 text-sm mb-1">Outstanding Balance</p>
+        <h3 className="text-3xl font-bold mb-4">₹ {data.billing.outstanding}</h3>
+        <div className="flex gap-3">
+          <button className="flex-1 bg-white text-gray-900 py-2 rounded-lg font-bold text-sm">Pay Now</button>
+          <button className="px-4 py-2 border border-gray-600 rounded-lg text-sm font-medium">History</button>
+        </div>
+      </div>
+
+      {/* Session Balance Visualization */}
+      <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+         <h4 className="font-bold text-gray-700 mb-3 text-sm">Session Balance</h4>
+         <div className="flex gap-2 mb-2">
+            <div className="flex-1 bg-green-100 text-green-800 py-2 rounded-lg text-center">
+              <p className="text-xl font-bold">12</p>
+              <p className="text-[10px] uppercase font-bold">Completed</p>
+            </div>
+            <div className="flex-1 bg-teal-100 text-teal-800 py-2 rounded-lg text-center">
+               <p className="text-xl font-bold">18</p>
+               <p className="text-[10px] uppercase font-bold">Remaining</p>
+            </div>
+         </div>
+         <p className="text-xs text-gray-500 text-center mt-2">Plan renewal due in 12 sessions.</p>
+      </div>
+
+      {/* Recent Transactions */}
+      <div>
+        <h4 className="font-bold text-gray-700 mb-3 text-sm">Recent Transactions</h4>
+        <div className="space-y-3">
+          {data.billing.history.map(txn => (
+            <div key={txn.id} className="bg-white p-4 rounded-xl border border-gray-100 flex justify-between items-center">
+              <div className="flex gap-3 items-center">
+                <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center text-green-600">
+                  <CreditCard size={18} />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-gray-800">{txn.items}</p>
+                  <p className="text-xs text-gray-500">{txn.date}</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-sm font-bold text-gray-800">₹{txn.amount}</p>
+                <div className="flex items-center gap-1 justify-end text-teal-600 mt-1 cursor-pointer">
+                  <span className="text-[10px] font-bold">RECEIPT</span>
+                  <Download size={10} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// 6. HOMEWORK
+// SOP Reference: Mark as done, Feedback loop [cite: 67, 85]
+const HomeworkScreen = ({ data }) => {
+  // Local state for demo interaction
+  const [tasks, setTasks] = useState(data.homework);
+
+  const toggleTask = (id) => {
+    setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+  };
+
+  return (
+    <div className="p-4 space-y-6 pb-24">
+      <h2 className="text-2xl font-bold text-gray-800">Home Practice</h2>
+      <div className="bg-teal-50 p-4 rounded-xl border border-teal-100">
+        <p className="text-sm text-teal-800">
+          <span className="font-bold">Note from Ms. Ananya:</span> "Great job with stability last week. Please focus on the Bear Walk this week to strengthen the core."
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        {tasks.map(task => (
+          <div key={task.id} className={`p-4 rounded-2xl border transition-all ${task.completed ? 'bg-green-50 border-green-200' : 'bg-white border-gray-100 shadow-sm'}`}>
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <h4 className={`font-bold text-lg ${task.completed ? 'text-green-800' : 'text-gray-800'}`}>{task.title}</h4>
+                <p className="text-sm text-gray-600 mt-1">{task.desc}</p>
+              </div>
+              <button 
+                onClick={() => toggleTask(task.id)}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${task.completed ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-300 hover:bg-gray-200'}`}
+              >
+                <CheckCircle size={24} />
+              </button>
+            </div>
+            {task.completed && (
+              <div className="mt-3 pt-3 border-t border-green-200/50 flex justify-between items-center">
+                 <span className="text-xs text-green-700 font-medium">Marked as Done</span>
+                 <span className="text-xs text-green-600">Great job!</span>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+// --- MAIN APP SHELL ---
+
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [activeTab, setActiveTab] = useState('home');
+
+  if (!isLoggedIn) {
+    return <LoginScreen onLogin={() => setIsLoggedIn(true)} />;
+  }
+
+  const renderContent = () => {
+    switch(activeTab) {
+      case 'home': return <Dashboard data={MOCK_DATA} />;
+      case 'progress': return <ProgressScreen />;
+      case 'calendar': return <AppointmentsScreen data={MOCK_DATA} />;
+      case 'billing': return <BillingScreen data={MOCK_DATA} />;
+      case 'homework': return <HomeworkScreen data={MOCK_DATA} />;
+      default: return <Dashboard data={MOCK_DATA} />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto relative shadow-2xl overflow-hidden">
+      
+      {/* Scrollable Content Area */}
+      <div className="h-full overflow-y-auto custom-scrollbar">
+        {renderContent()}
+      </div>
+
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 w-full max-w-md bg-white border-t border-gray-100 px-2 py-2 flex justify-around items-center z-50 rounded-t-2xl shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
+        
+        <NavButton 
+          icon={<Home size={22} />} 
+          label="Home" 
+          isActive={activeTab === 'home'} 
+          onClick={() => setActiveTab('home')} 
+        />
+        <NavButton 
+          icon={<Activity size={22} />} 
+          label="Progress" 
+          isActive={activeTab === 'progress'} 
+          onClick={() => setActiveTab('progress')} 
+        />
+        {/* Central Action Button (Homework) */}
+        <button 
+          onClick={() => setActiveTab('homework')}
+          className={`-mt-8 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform active:scale-95 ${activeTab === 'homework' ? 'bg-teal-600 ring-4 ring-teal-100' : 'bg-teal-500'}`}
+        >
+          <CheckCircle size={24} className="text-white" />
+        </button>
+        
+        <NavButton 
+          icon={<Calendar size={22} />} 
+          label="Schedule" 
+          isActive={activeTab === 'calendar'} 
+          onClick={() => setActiveTab('calendar')} 
+        />
+        <NavButton 
+          icon={<FileText size={22} />} 
+          label="Billing" 
+          isActive={activeTab === 'billing'} 
+          onClick={() => setActiveTab('billing')} 
+        />
+      </div>
+    </div>
+  );
+}
+
+const NavButton = ({ icon, label, isActive, onClick }) => (
+  <button 
+    onClick={onClick} 
+    className={`flex flex-col items-center justify-center p-2 rounded-xl w-16 transition-all ${isActive ? 'text-teal-600' : 'text-gray-400 hover:text-gray-600'}`}
+  >
+    {icon}
+    <span className="text-[10px] font-medium mt-1">{label}</span>
+  </button>
+);
