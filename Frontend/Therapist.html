@@ -1,347 +1,349 @@
-import React, { useState } from 'react';
-import { 
-  Calendar, 
-  Clock, 
-  FileText, 
-  Activity, 
-  CheckCircle, 
-  XCircle, 
-  AlertTriangle, 
-  ChevronRight, 
-  Video, 
-  User, 
-  ArrowRight,
-  ClipboardList,
-  Save,
-  LogOut
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Senses - Therapist Dashboard</title>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide-react@0.263.1/dist/umd/lucide-react.js"></script>
+    
+    <style>
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { 
+          Calendar, Clock, FileText, Activity, CheckCircle, XCircle, 
+          AlertTriangle, ChevronRight, Video, User, ArrowRight,
+          ClipboardList, Save, LogOut
+        } = lucideReact;
 
-// --- MOCK DATA (Scenario: Therapist 'Ms. Sarah' covering a shift) ---
+        // --- MOCK DATA ---
+        const CURRENT_USER = { name: "Ms. Sarah", role: "Occupational Therapist" };
 
-const CURRENT_USER = { name: "Ms. Sarah", role: "Occupational Therapist" };
+        const SCHEDULE_DATA = [
+          { 
+            id: 101, 
+            time: "09:00 AM", 
+            childName: "Arav S.", 
+            age: "5y 2m", 
+            type: "Occupational Therapy", 
+            sessionCount: "12 of 30",
+            status: "completed",
+            nextAction: { type: "handover", to: "Mr. Rahul (Speech)", room: "Room B" }
+          },
+          { 
+            id: 102, 
+            time: "10:00 AM", 
+            childName: "Vihaan K.", 
+            age: "4y", 
+            type: "Occupational Therapy", 
+            sessionCount: "8 of 20", 
+            status: "active",
+            nextAction: { type: "release", to: "Parent (Waiting Area)", room: "Reception" }
+          },
+          { 
+            id: 103, 
+            time: "11:00 AM", 
+            childName: "Riya M.", 
+            age: "6y", 
+            type: "Sensory Integration", 
+            sessionCount: "1 of 10", 
+            status: "upcoming",
+            nextAction: { type: "handover", to: "Ms. Priya (SpEd)", room: "Room C" }
+          }
+        ];
 
-const SCHEDULE_DATA = [
-  { 
-    id: 101, 
-    time: "09:00 AM", 
-    childName: "Arav S.", 
-    age: "5y 2m", 
-    type: "Occupational Therapy", 
-    sessionCount: "12 of 30", // [cite: 112]
-    status: "completed",
-    nextAction: { type: "handover", to: "Mr. Rahul (Speech)", room: "Room B" } // 
-  },
-  { 
-    id: 102, 
-    time: "10:00 AM", 
-    childName: "Vihaan K.", 
-    age: "4y", 
-    type: "Occupational Therapy", 
-    sessionCount: "8 of 20", 
-    status: "active", // Currently in session
-    nextAction: { type: "release", to: "Parent (Waiting Area)", room: "Reception" } // 
-  },
-  { 
-    id: 103, 
-    time: "11:00 AM", 
-    childName: "Riya M.", 
-    age: "6y", 
-    type: "Sensory Integration", 
-    sessionCount: "1 of 10", 
-    status: "upcoming",
-    nextAction: { type: "handover", to: "Ms. Priya (SpEd)", room: "Room C" }
-  }
-];
+        const SESSION_PLAN = {
+          goals: ["Improve Fine Motor Grasp", "Sensory Regulation"],
+          activities: [
+            { id: 1, name: "Theraputty Search", instruction: "Find 5 hidden beads in firm putty.", duration: "10 min" },
+            { id: 2, name: "Scissor Skills", instruction: "Cut along curved lines on cardstock.", duration: "15 min" },
+            { id: 3, name: "Proprioceptive Input", instruction: "Wheelbarrow walk - 3 laps.", duration: "10 min" }
+          ],
+          lastHomework: { task: "Play dough rolling", compliance: "partial" }
+        };
 
-// Prescribed activities for the ACTIVE session (Vihaan K.)
-// [cite: 112] - Program design defines specific activities per session
-const SESSION_PLAN = {
-  goals: ["Improve Fine Motor Grasp", "Sensory Regulation"],
-  activities: [
-    { id: 1, name: "Theraputty Search", instruction: "Find 5 hidden beads in firm putty.", duration: "10 min" },
-    { id: 2, name: "Scissor Skills", instruction: "Cut along curved lines on cardstock.", duration: "15 min" },
-    { id: 3, name: "Proprioceptive Input", instruction: "Wheelbarrow walk - 3 laps.", duration: "10 min" }
-  ],
-  lastHomework: { task: "Play dough rolling", compliance: "partial" } // 
-};
+        const HISTORY_LOG = [
+          { date: "Feb 08", therapist: "Mr. Rahul (Speech)", note: "Good focus. Struggled with 'R' sound." },
+          { date: "Feb 05", therapist: "Ms. Ananya (OT)", note: "High energy. Needed sensory breaks." }
+        ];
 
-const HISTORY_LOG = [
-  { date: "Feb 08", therapist: "Mr. Rahul (Speech)", note: "Good focus. Struggled with 'R' sound." }, // [cite: 50] - Access to other therapists' notes
-  { date: "Feb 05", therapist: "Ms. Ananya (OT)", note: "High energy. Needed sensory breaks." }
-];
+        // --- COMPONENTS ---
 
-// --- COMPONENTS ---
-
-// 1. SCHEDULE CARD (The "Dashboard")
-const ScheduleCard = ({ session, onStart }) => {
-  const isNextHandover = session.nextAction.type === 'handover';
-  
-  return (
-    <div className={`mb-4 rounded-xl border-l-4 shadow-sm bg-white overflow-hidden ${session.status === 'active' ? 'border-teal-500 ring-2 ring-teal-100' : 'border-gray-200'}`}>
-      <div className="p-4 flex justify-between items-start">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="font-bold text-lg text-gray-800">{session.time}</span>
-            {session.status === 'active' && <span className="bg-teal-100 text-teal-700 text-xs px-2 py-0.5 rounded-full font-bold animate-pulse">NOW</span>}
-          </div>
-          <h3 className="text-xl font-bold text-gray-900">{session.childName} <span className="text-sm font-normal text-gray-500">({session.age})</span></h3>
-          <p className="text-sm text-teal-600 font-medium">{session.type} • Session {session.sessionCount}</p>
-        </div>
-        <button 
-          onClick={() => onStart(session)}
-          disabled={session.status === 'completed'}
-          className={`px-4 py-2 rounded-lg font-bold text-sm ${session.status === 'completed' ? 'bg-gray-100 text-gray-400' : 'bg-teal-600 text-white hover:bg-teal-700'}`}
-        >
-          {session.status === 'active' ? 'Resume Session' : session.status === 'completed' ? 'Completed' : 'Start Session'}
-        </button>
-      </div>
-
-      {/* CRITICAL ROUTING FOOTER  */}
-      <div className={`px-4 py-3 flex items-center justify-between ${isNextHandover ? 'bg-indigo-50 text-indigo-900' : 'bg-green-50 text-green-900'}`}>
-        <div className="flex items-center gap-2">
-          <ArrowRight size={18} />
-          <span className="text-xs font-bold uppercase tracking-wider">After this session:</span>
-        </div>
-        <div className="font-bold text-sm flex items-center gap-2">
-          {isNextHandover ? (
-            <>
-              <span>HANDOVER TO:</span>
-              <span className="bg-white px-2 py-1 rounded border border-indigo-200">{session.nextAction.to}</span>
-            </>
-          ) : (
-            <>
-              <span>RELEASE TO:</span>
-              <span className="bg-white px-2 py-1 rounded border border-green-200">{session.nextAction.to}</span>
-            </>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// 2. SESSION EXECUTION SCREEN (The "Work Mode")
-const SessionExecution = ({ session, onBack }) => {
-  const [activities, setActivities] = useState(SESSION_PLAN.activities.map(a => ({ ...a, status: 'pending' })));
-  const [showHandoff, setShowHandoff] = useState(false);
-
-  const handleStatusChange = (id, status) => {
-    setActivities(activities.map(a => a.id === id ? { ...a, status } : a));
-  };
-
-  const allDone = activities.every(a => a.status !== 'pending');
-
-  if (showHandoff) {
-    return <HandoffScreen session={session} onComplete={onBack} />;
-  }
-
-  return (
-    <div className="h-full flex flex-col bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between sticky top-0 z-10">
-        <div>
-          <h2 className="text-xl font-bold text-gray-800">{session.childName}</h2>
-          <p className="text-sm text-gray-500">Session {session.sessionCount} • {session.type}</p>
-        </div>
-        <div className="flex gap-3">
-            <button onClick={onBack} className="text-gray-500 font-medium">Cancel</button>
-            <button 
-              disabled={!allDone}
-              onClick={() => setShowHandoff(true)}
-              className={`px-6 py-2 rounded-lg font-bold flex items-center gap-2 ${allDone ? 'bg-teal-600 text-white' : 'bg-gray-200 text-gray-400'}`}
-            >
-              <Save size={18} /> Complete & Note
-            </button>
-        </div>
-      </div>
-
-      <div className="flex-1 overflow-auto p-6 max-w-5xl mx-auto w-full grid grid-cols-3 gap-6">
-        
-        {/* LEFT COLUMN: CONTEXT & HISTORY [cite: 50] */}
-        <div className="col-span-1 space-y-6">
-            {/* Homework Compliance from Last Session  */}
-            <div className={`p-4 rounded-xl border ${SESSION_PLAN.lastHomework.compliance === 'full' ? 'bg-green-50 border-green-200' : 'bg-yellow-50 border-yellow-200'}`}>
-                <h4 className="text-sm font-bold text-gray-700 mb-1">Homework Check</h4>
-                <p className="text-sm text-gray-800">Task: {SESSION_PLAN.lastHomework.task}</p>
-                <div className="mt-2 text-xs font-bold uppercase tracking-wide flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
-                    Parent Marked: {SESSION_PLAN.lastHomework.compliance}
-                </div>
-            </div>
-
-            {/* Clinical History (Unified) */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                <div className="bg-gray-50 p-3 border-b border-gray-200 font-bold text-gray-700 text-sm">
-                    Recent History
-                </div>
-                <div className="divide-y divide-gray-100">
-                    {HISTORY_LOG.map((log, i) => (
-                        <div key={i} className="p-3">
-                            <div className="flex justify-between text-xs mb-1">
-                                <span className="font-bold text-gray-600">{log.therapist}</span>
-                                <span className="text-gray-400">{log.date}</span>
-                            </div>
-                            <p className="text-sm text-gray-600 italic">"{log.note}"</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-
-        {/* CENTER/RIGHT: PRESCRIBED ACTIVITY PLAN [cite: 112] */}
-        <div className="col-span-2 space-y-6">
-           <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 flex items-start gap-3">
-              <Activity className="text-blue-600 mt-1" size={20} />
-              <div>
-                  <h3 className="font-bold text-blue-900">Today's Goals</h3>
-                  <ul className="list-disc list-inside text-sm text-blue-800 mt-1">
-                      {SESSION_PLAN.goals.map(g => <li key={g}>{g}</li>)}
-                  </ul>
-              </div>
-           </div>
-
-           <h3 className="font-bold text-gray-800 text-lg flex items-center gap-2">
-               <ClipboardList size={20} /> Prescribed Activities
-           </h3>
-
-           <div className="space-y-4">
-              {activities.map(activity => (
-                  <div key={activity.id} className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-md">
-                      <div className="flex justify-between items-start mb-3">
-                          <div>
-                              <h4 className="font-bold text-gray-900 text-lg">{activity.name}</h4>
-                              <p className="text-gray-600 text-sm">{activity.instruction}</p>
-                          </div>
-                          <span className="text-xs font-bold bg-gray-100 text-gray-500 px-2 py-1 rounded">{activity.duration}</span>
-                      </div>
-
-                      {/* EXECUTION CONTROLS  */}
-                      <div className="flex gap-3 mt-4">
-                          <button 
-                            onClick={() => handleStatusChange(activity.id, 'completed')}
-                            className={`flex-1 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 border transition-colors ${activity.status === 'completed' ? 'bg-green-100 border-green-500 text-green-800' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
-                          >
-                             <CheckCircle size={16} /> Completed
-                          </button>
-                          <button 
-                             onClick={() => handleStatusChange(activity.id, 'partial')}
-                             className={`flex-1 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 border transition-colors ${activity.status === 'partial' ? 'bg-yellow-100 border-yellow-500 text-yellow-800' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
-                          >
-                             <Activity size={16} /> Partial
-                          </button>
-                          <button 
-                             onClick={() => handleStatusChange(activity.id, 'skipped')}
-                             className={`flex-1 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 border transition-colors ${activity.status === 'skipped' ? 'bg-red-50 border-red-300 text-red-800' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
-                          >
-                             <XCircle size={16} /> Skipped
-                          </button>
-                      </div>
-                      
-                      {/* DEVIATION REASON  */}
-                      {(activity.status === 'skipped' || activity.status === 'partial') && (
-                          <div className="mt-3">
-                              <input 
-                                type="text" 
-                                placeholder="Reason for deviation (Mandatory)" 
-                                className="w-full p-2 text-sm border border-red-200 rounded bg-red-50 focus:outline-none focus:border-red-400 placeholder-red-300"
-                              />
-                          </div>
-                      )}
+        const ScheduleCard = ({ session, onStart }) => {
+          const isNextHandover = session.nextAction.type === 'handover';
+          
+          return (
+            <div className={`mb-4 rounded-xl border-l-4 shadow-sm bg-white overflow-hidden ${session.status === 'active' ? 'border-teal-500 ring-2 ring-teal-100' : 'border-gray-200'}`}>
+              <div className="p-4 flex justify-between items-start">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-bold text-lg text-gray-800">{session.time}</span>
+                    {session.status === 'active' && <span className="bg-teal-100 text-teal-700 text-xs px-2 py-0.5 rounded-full font-bold animate-pulse">NOW</span>}
                   </div>
-              ))}
-           </div>
-           
-           {/* VIDEO UPLOAD [cite: 52] */}
-           <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:bg-gray-50 cursor-pointer">
-               <Video className="mx-auto text-gray-400 mb-2" size={32} />
-               <p className="font-medium text-gray-600">Attach Session Video</p>
-               <p className="text-xs text-gray-400">Upload or Link from Drive (Start vs End comparison)</p>
-           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// 3. HANDOFF & CONFIRMATION 
-const HandoffScreen = ({ session, onComplete }) => {
-  return (
-    <div className="h-full flex flex-col items-center justify-center bg-gray-50 p-6">
-       <div className="bg-white max-w-lg w-full p-8 rounded-2xl shadow-lg text-center">
-           <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
-               <CheckCircle size={32} />
-           </div>
-           
-           <h2 className="text-2xl font-bold text-gray-800 mb-2">Session Complete!</h2>
-           <p className="text-gray-500 mb-8">Notes saved successfully.</p>
-
-           <div className="bg-gray-100 p-6 rounded-xl mb-8">
-               <p className="text-xs font-bold text-gray-500 uppercase mb-2">Immediate Next Action</p>
-               {session.nextAction.type === 'handover' ? (
-                   <div>
-                       <h3 className="text-xl font-bold text-indigo-700 flex items-center justify-center gap-2">
-                           <User size={24} /> Handover to {session.nextAction.to}
-                       </h3>
-                       <p className="text-indigo-600 font-medium mt-1">{session.nextAction.room}</p>
-                   </div>
-               ) : (
-                   <div>
-                       <h3 className="text-xl font-bold text-green-700 flex items-center justify-center gap-2">
-                           <LogOut size={24} /> Release to Parent
-                       </h3>
-                       <p className="text-green-600 font-medium mt-1">Waiting Area</p>
-                   </div>
-               )}
-           </div>
-
-           <button 
-             onClick={onComplete} 
-             className="w-full py-4 bg-teal-600 text-white rounded-xl font-bold text-lg hover:bg-teal-700 shadow-md"
-           >
-             Confirm Action & Close
-           </button>
-       </div>
-    </div>
-  );
-};
-
-// --- MAIN LAYOUT ---
-
-export default function TherapistDashboard() {
-  const [currentSession, setCurrentSession] = useState(null);
-
-  return (
-    <div className="min-h-screen bg-gray-100 font-sans text-gray-900">
-        {!currentSession ? (
-            // DASHBOARD VIEW
-            <div className="max-w-2xl mx-auto p-4">
-                <header className="flex items-center justify-between mb-8 py-4">
-                    <div>
-                        <h1 className="text-2xl font-bold text-gray-800">Good Morning, {CURRENT_USER.name}</h1>
-                        <p className="text-gray-500">Today's Schedule • Feb 10, 2026</p>
-                    </div>
-                    <div className="w-10 h-10 bg-teal-600 rounded-full text-white flex items-center justify-center font-bold">
-                        MS
-                    </div>
-                </header>
-
-                <div className="space-y-6">
-                    {SCHEDULE_DATA.map(session => (
-                        <ScheduleCard 
-                          key={session.id} 
-                          session={session} 
-                          onStart={setCurrentSession} 
-                        />
-                    ))}
+                  <h3 className="text-xl font-bold text-gray-900">{session.childName} <span className="text-sm font-normal text-gray-500">({session.age})</span></h3>
+                  <p className="text-sm text-teal-600 font-medium">{session.type} • Session {session.sessionCount}</p>
                 </div>
+                <button 
+                  onClick={() => onStart(session)}
+                  disabled={session.status === 'completed'}
+                  className={`px-4 py-2 rounded-lg font-bold text-sm ${session.status === 'completed' ? 'bg-gray-100 text-gray-400' : 'bg-teal-600 text-white hover:bg-teal-700'}`}
+                >
+                  {session.status === 'active' ? 'Resume Session' : session.status === 'completed' ? 'Completed' : 'Start Session'}
+                </button>
+              </div>
+
+              <div className={`px-4 py-3 flex items-center justify-between ${isNextHandover ? 'bg-indigo-50 text-indigo-900' : 'bg-green-50 text-green-900'}`}>
+                <div className="flex items-center gap-2">
+                  <ArrowRight size={18} />
+                  <span className="text-xs font-bold uppercase tracking-wider">After this session:</span>
+                </div>
+                <div className="font-bold text-sm flex items-center gap-2">
+                  {isNextHandover ? (
+                    <>
+                      <span>HANDOVER TO:</span>
+                      <span className="bg-white px-2 py-1 rounded border border-indigo-200">{session.nextAction.to}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>RELEASE TO:</span>
+                      <span className="bg-white px-2 py-1 rounded border border-green-200">{session.nextAction.to}</span>
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
-        ) : (
-            // SESSION VIEW
-            <SessionExecution 
-              session={currentSession} 
-              onBack={() => setCurrentSession(null)} 
-            />
-        )}
-    </div>
-  );
-}
+          );
+        };
+
+        const SessionExecution = ({ session, onBack }) => {
+          const [activities, setActivities] = useState(SESSION_PLAN.activities.map(a => ({ ...a, status: 'pending' })));
+          const [showHandoff, setShowHandoff] = useState(false);
+
+          const handleStatusChange = (id, status) => {
+            setActivities(activities.map(a => a.id === id ? { ...a, status } : a));
+          };
+
+          const allDone = activities.every(a => a.status !== 'pending');
+
+          if (showHandoff) {
+            return <HandoffScreen session={session} onComplete={onBack} />;
+          }
+
+          return (
+            <div className="h-full flex flex-col bg-gray-50">
+              <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between sticky top-0 z-10">
+                <div>
+                  <h2 className="text-xl font-bold text-gray-800">{session.childName}</h2>
+                  <p className="text-sm text-gray-500">Session {session.sessionCount} • {session.type}</p>
+                </div>
+                <div className="flex gap-3">
+                    <button onClick={onBack} className="text-gray-500 font-medium">Cancel</button>
+                    <button 
+                      disabled={!allDone}
+                      onClick={() => setShowHandoff(true)}
+                      className={`px-6 py-2 rounded-lg font-bold flex items-center gap-2 ${allDone ? 'bg-teal-600 text-white' : 'bg-gray-200 text-gray-400'}`}
+                    >
+                      <Save size={18} /> Complete & Note
+                    </button>
+                </div>
+              </div>
+
+              <div className="flex-1 overflow-auto p-6 max-w-5xl mx-auto w-full grid grid-cols-3 gap-6">
+                
+                <div className="col-span-1 space-y-6">
+                    <div className={`p-4 rounded-xl border ${SESSION_PLAN.lastHomework.compliance === 'full' ? 'bg-green-50 border-green-200' : 'bg-yellow-50 border-yellow-200'}`}>
+                        <h4 className="text-sm font-bold text-gray-700 mb-1">Homework Check</h4>
+                        <p className="text-sm text-gray-800">Task: {SESSION_PLAN.lastHomework.task}</p>
+                        <div className="mt-2 text-xs font-bold uppercase tracking-wide flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
+                            Parent Marked: {SESSION_PLAN.lastHomework.compliance}
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div className="bg-gray-50 p-3 border-b border-gray-200 font-bold text-gray-700 text-sm">
+                            Recent History
+                        </div>
+                        <div className="divide-y divide-gray-100">
+                            {HISTORY_LOG.map((log, i) => (
+                                <div key={i} className="p-3">
+                                    <div className="flex justify-between text-xs mb-1">
+                                        <span className="font-bold text-gray-600">{log.therapist}</span>
+                                        <span className="text-gray-400">{log.date}</span>
+                                    </div>
+                                    <p className="text-sm text-gray-600 italic">"{log.note}"</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-span-2 space-y-6">
+                   <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 flex items-start gap-3">
+                      <Activity className="text-blue-600 mt-1" size={20} />
+                      <div>
+                          <h3 className="font-bold text-blue-900">Today's Goals</h3>
+                          <ul className="list-disc list-inside text-sm text-blue-800 mt-1">
+                              {SESSION_PLAN.goals.map(g => <li key={g}>{g}</li>)}
+                          </ul>
+                      </div>
+                   </div>
+
+                   <h3 className="font-bold text-gray-800 text-lg flex items-center gap-2">
+                       <ClipboardList size={20} /> Prescribed Activities
+                   </h3>
+
+                   <div className="space-y-4">
+                      {activities.map(activity => (
+                          <div key={activity.id} className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-md">
+                              <div className="flex justify-between items-start mb-3">
+                                  <div>
+                                      <h4 className="font-bold text-gray-900 text-lg">{activity.name}</h4>
+                                      <p className="text-gray-600 text-sm">{activity.instruction}</p>
+                                  </div>
+                                  <span className="text-xs font-bold bg-gray-100 text-gray-500 px-2 py-1 rounded">{activity.duration}</span>
+                              </div>
+
+                              <div className="flex gap-3 mt-4">
+                                  <button 
+                                    onClick={() => handleStatusChange(activity.id, 'completed')}
+                                    className={`flex-1 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 border transition-colors ${activity.status === 'completed' ? 'bg-green-100 border-green-500 text-green-800' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
+                                  >
+                                     <CheckCircle size={16} /> Completed
+                                  </button>
+                                  <button 
+                                     onClick={() => handleStatusChange(activity.id, 'partial')}
+                                     className={`flex-1 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 border transition-colors ${activity.status === 'partial' ? 'bg-yellow-100 border-yellow-500 text-yellow-800' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
+                                  >
+                                     <Activity size={16} /> Partial
+                                  </button>
+                                  <button 
+                                     onClick={() => handleStatusChange(activity.id, 'skipped')}
+                                     className={`flex-1 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 border transition-colors ${activity.status === 'skipped' ? 'bg-red-50 border-red-300 text-red-800' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
+                                  >
+                                     <XCircle size={16} /> Skipped
+                                  </button>
+                              </div>
+                              
+                              {(activity.status === 'skipped' || activity.status === 'partial') && (
+                                  <div className="mt-3">
+                                      <input 
+                                        type="text" 
+                                        placeholder="Reason for deviation (Mandatory)" 
+                                        className="w-full p-2 text-sm border border-red-200 rounded bg-red-50 focus:outline-none focus:border-red-400 placeholder-red-300"
+                                      />
+                                  </div>
+                              )}
+                          </div>
+                      ))}
+                   </div>
+                   
+                   <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:bg-gray-50 cursor-pointer">
+                       <Video className="mx-auto text-gray-400 mb-2" size={32} />
+                       <p className="font-medium text-gray-600">Attach Session Video</p>
+                       <p className="text-xs text-gray-400">Upload or Link from Drive (Start vs End comparison)</p>
+                   </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        const HandoffScreen = ({ session, onComplete }) => {
+          return (
+            <div className="h-full flex flex-col items-center justify-center bg-gray-50 p-6">
+               <div className="bg-white max-w-lg w-full p-8 rounded-2xl shadow-lg text-center">
+                   <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                       <CheckCircle size={32} />
+                   </div>
+                   
+                   <h2 className="text-2xl font-bold text-gray-800 mb-2">Session Complete!</h2>
+                   <p className="text-gray-500 mb-8">Notes saved successfully.</p>
+
+                   <div className="bg-gray-100 p-6 rounded-xl mb-8">
+                       <p className="text-xs font-bold text-gray-500 uppercase mb-2">Immediate Next Action</p>
+                       {session.nextAction.type === 'handover' ? (
+                           <div>
+                               <h3 className="text-xl font-bold text-indigo-700 flex items-center justify-center gap-2">
+                                   <User size={24} /> Handover to {session.nextAction.to}
+                               </h3>
+                               <p className="text-indigo-600 font-medium mt-1">{session.nextAction.room}</p>
+                           </div>
+                       ) : (
+                           <div>
+                               <h3 className="text-xl font-bold text-green-700 flex items-center justify-center gap-2">
+                                   <LogOut size={24} /> Release to Parent
+                               </h3>
+                               <p className="text-green-600 font-medium mt-1">Waiting Area</p>
+                           </div>
+                       )}
+                   </div>
+
+                   <button 
+                     onClick={onComplete} 
+                     className="w-full py-4 bg-teal-600 text-white rounded-xl font-bold text-lg hover:bg-teal-700 shadow-md"
+                   >
+                     Confirm Action & Close
+                   </button>
+               </div>
+            </div>
+          );
+        };
+
+        // --- MAIN LAYOUT ---
+        function TherapistDashboard() {
+          const [currentSession, setCurrentSession] = useState(null);
+
+          return (
+            <div className="min-h-screen bg-gray-100 font-sans text-gray-900">
+                {!currentSession ? (
+                    <div className="max-w-2xl mx-auto p-4">
+                        <header className="flex items-center justify-between mb-8 py-4">
+                            <div>
+                                <h1 className="text-2xl font-bold text-gray-800">Good Morning, {CURRENT_USER.name}</h1>
+                                <p className="text-gray-500">Today's Schedule • Feb 10, 2026</p>
+                            </div>
+                            <div className="w-10 h-10 bg-teal-600 rounded-full text-white flex items-center justify-center font-bold">
+                                MS
+                            </div>
+                        </header>
+
+                        <div className="space-y-6">
+                            {SCHEDULE_DATA.map(session => (
+                                <ScheduleCard 
+                                  key={session.id} 
+                                  session={session} 
+                                  onStart={setCurrentSession} 
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <SessionExecution 
+                      session={currentSession} 
+                      onBack={() => setCurrentSession(null)} 
+                    />
+                )}
+            </div>
+          );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<TherapistDashboard />);
+    </script>
+</body>
+</html>
