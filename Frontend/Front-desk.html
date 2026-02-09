@@ -370,9 +370,10 @@
             </div>
           );
         }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<FrontDeskDashboard />);
+        ReactDOM.render(
+        <FrontDeskDashboard />,
+        document.getElementById('root')
+        );
     </script>
 </body>
 </html>
