@@ -1,5 +1,5 @@
 {
   "routes": [
-    { "src": "/index.html", "dest": "/" }
+    { "src": "wireframes/demo/Frontend/Index.html", "dest": "/" }
   ]
 }
