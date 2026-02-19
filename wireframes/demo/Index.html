@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8 Senses Clinic - System Prototype</title>
+    <title>Demo Clinic - System Prototype</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -21,72 +21,117 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-6 -mt-8 pb-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
-                <div class="h-2 bg-slate-800"></div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-4 group-hover:bg-slate-800 group-hover:text-white transition-colors">
-                        <i data-lucide="layout-dashboard"></i>
+        <!-- PEDIATRIC -->
+        <div class="mb-3">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 pl-1">Pediatric Workflows</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                    <div class="h-2 bg-slate-800"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-4 group-hover:bg-slate-800 group-hover:text-white transition-colors">
+                            <i data-lucide="layout-dashboard"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800 mb-2">Admin Center</h2>
+                        <p class="text-sm text-slate-500 mb-6 h-20">
+                            High-level oversight dashboard for financial health, master scheduling, and handling operational exceptions.
+                        </p>
+                        <a href="Frontend/pediatric/Admin-Center.html" class="block w-full py-3 bg-slate-800 text-white text-center rounded-lg font-bold hover:bg-slate-900 transition">
+                            Launch Admin
+                        </a>
                     </div>
-                    <h2 class="text-xl font-bold text-slate-800 mb-2">Admin Center</h2>
-                    <p class="text-sm text-slate-500 mb-6 h-20">
-                        High-level oversight dashboard for financial health, master scheduling, and handling operational exceptions.
-                    </p>
-                    <a href="/Frontend/Admin-Center.html" class="block w-full py-3 bg-slate-800 text-white text-center rounded-lg font-bold hover:bg-slate-900 transition">
-                        Launch Admin
-                    </a>
                 </div>
-            </div>
 
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
-                <div class="h-2 bg-indigo-600"></div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                        <i data-lucide="monitor"></i>
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                    <div class="h-2 bg-indigo-600"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                            <i data-lucide="monitor"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800 mb-2">Front Desk</h2>
+                        <p class="text-sm text-slate-500 mb-6 h-20">
+                            High-volume operational dashboard for check-ins, payment collection, and managing slot refills.
+                        </p>
+                        <a href="Frontend/pediatric/Front-desk.html" class="block w-full py-3 bg-indigo-600 text-white text-center rounded-lg font-bold hover:bg-indigo-700 transition">
+                            Launch Desk
+                        </a>
                     </div>
-                    <h2 class="text-xl font-bold text-slate-800 mb-2">Front Desk</h2>
-                    <p class="text-sm text-slate-500 mb-6 h-20">
-                        High-volume operational dashboard for check-ins, payment collection, and managing slot refills.
-                    </p>
-                    <a href="/Frontend/Front-desk.html" class="block w-full py-3 bg-indigo-600 text-white text-center rounded-lg font-bold hover:bg-indigo-700 transition">
-                        Launch Desk
-                    </a>
                 </div>
-            </div>
 
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
-                <div class="h-2 bg-teal-500"></div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center text-teal-600 mb-4 group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                        <i data-lucide="stethoscope"></i>
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                    <div class="h-2 bg-teal-500"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center text-teal-600 mb-4 group-hover:bg-teal-500 group-hover:text-white transition-colors">
+                            <i data-lucide="stethoscope"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800 mb-2">Therapist</h2>
+                        <p class="text-sm text-slate-500 mb-6 h-20">
+                            Clinical workspace for session execution, activity adherence tracking, and child routing/handoffs.
+                        </p>
+                        <a href="Frontend/pediatric/Therapist-Dashboard.html" class="block w-full py-3 bg-teal-500 text-white text-center rounded-lg font-bold hover:bg-teal-600 transition">
+                            Launch Clinical
+                        </a>
                     </div>
-                    <h2 class="text-xl font-bold text-slate-800 mb-2">Therapist</h2>
-                    <p class="text-sm text-slate-500 mb-6 h-20">
-                        Clinical workspace for session execution, activity adherence tracking, and child routing/handoffs.
-                    </p>
-                    <a href="/Frontend/Therapist-Dashboard.html" class="block w-full py-3 bg-teal-500 text-white text-center rounded-lg font-bold hover:bg-teal-600 transition">
-                        Launch Clinical
-                    </a>
                 </div>
-            </div>
 
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
-                <div class="h-2 bg-rose-500"></div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-rose-50 rounded-lg flex items-center justify-center text-rose-500 mb-4 group-hover:bg-rose-500 group-hover:text-white transition-colors">
-                        <i data-lucide="smartphone"></i>
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                    <div class="h-2 bg-rose-500"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-rose-50 rounded-lg flex items-center justify-center text-rose-500 mb-4 group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800 mb-2">Parent Portal</h2>
+                        <p class="text-sm text-slate-500 mb-6 h-20">
+                            Mobile-first interface for parents to track progress, view videos, and manage appointments.
+                        </p>
+                        <a href="Frontend/pediatric/Parent-Portal.html" class="block w-full py-3 bg-rose-500 text-white text-center rounded-lg font-bold hover:bg-rose-600 transition">
+                            Launch Mobile
+                        </a>
                     </div>
-                    <h2 class="text-xl font-bold text-slate-800 mb-2">Parent Portal</h2>
-                    <p class="text-sm text-slate-500 mb-6 h-20">
-                        Mobile-first interface for parents to track progress, view videos, and manage appointments.
-                    </p>
-                    <a href="/Frontend/Parent-Portal.html" class="block w-full py-3 bg-rose-500 text-white text-center rounded-lg font-bold hover:bg-rose-600 transition">
-                        Launch Mobile
-                    </a>
                 </div>
-            </div>
 
+            </div>
+        </div>
+
+        <!-- ADULT REHAB -->
+        <div class="mt-10">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 pl-1">Adult Rehabilitation Workflows</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                    <div class="h-2 bg-blue-700"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-700 mb-4 group-hover:bg-blue-700 group-hover:text-white transition-colors">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800 mb-2">Patient Progress</h2>
+                        <p class="text-sm text-slate-500 mb-6 h-20">
+                            Session-level visibility, program milestone tracking, and documentation compliance for adult rehab patients.
+                        </p>
+                        <a href="Frontend/adult/patient-dashboard.html" class="block w-full py-3 bg-blue-700 text-white text-center rounded-lg font-bold hover:bg-blue-800 transition">
+                            Launch Patient View
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-slate-100">
+                    <div class="h-2 bg-slate-700"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-4 group-hover:bg-slate-700 group-hover:text-white transition-colors">
+                            <i data-lucide="bar-chart-2"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800 mb-2">Owner Control</h2>
+                        <p class="text-sm text-slate-500 mb-6 h-20">
+                            Facility-wide operational visibility covering therapist productivity, slot utilization, revenue, and system integrity.
+                        </p>
+                        <a href="Frontend/adult/owner-dashboard.html" class="block w-full py-3 bg-slate-700 text-white text-center rounded-lg font-bold hover:bg-slate-800 transition">
+                            Launch Owner View
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <div class="mt-12 text-center">
@@ -104,7 +149,7 @@
 
     <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-sm">
         <p>Restricted Access • Internal Prototype Only</p>
-        <p class="mt-2">&copy; 2026 8 Senses Clinic Operations</p>
+        <p class="mt-2">&copy; 2026 Demo Clinic Operations</p>
     </footer>
 
     <script>
@@ -112,5 +157,3 @@
     </script>
 </body>
 </html>
-
-```

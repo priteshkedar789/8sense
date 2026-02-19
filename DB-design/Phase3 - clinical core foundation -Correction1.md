@@ -459,3 +459,23 @@ COMMENT ON TRIGGER trg_program_assignment_freeze_on_close ON therapy_program_ass
 -- Phase 3 foundation is now structurally stable.
 -- phase3_session_records.sql may now be written.
 -- =============================================================================
+
+
+-- =============================================================================
+-- ADDENDUM — version_number NOT NULL guard (reviewer note)
+-- =============================================================================
+-- version_number was made nullable to allow trigger auto-generation.
+-- Without a CHECK, accidentally disabling the trigger allows NULL inserts.
+-- CHECK constraint restores the NOT NULL semantic while keeping column nullable
+-- for the BEFORE INSERT trigger timing (trigger fires before constraint check).
+-- =============================================================================
+
+ALTER TABLE therapy_program_versions
+    ADD CONSTRAINT chk_version_number_not_null
+    CHECK (version_number IS NOT NULL);
+
+COMMENT ON CONSTRAINT chk_version_number_not_null ON therapy_program_versions IS
+    'Protects against trigger being disabled accidentally. '
+    'version_number column is nullable for BEFORE INSERT trigger compatibility '
+    'but must always be non-null in committed rows. '
+    'If this constraint fires, the auto-generation trigger is not running.';
