@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ROYCETRUSS — Digital Transformation & Custom Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF6;
+      --navy: #0F1F3D;
+      --navy-mid: #1A3460;
+      --amber: #C9841A;
+      --amber-light: #E8A030;
+      --sage: #4A7C6F;
+      --text-dark: #1A1612;
+      --text-mid: #4A4440;
+      --text-light: #8A8480;
+      --border: #E2D8CC;
+      --card-bg: #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5%;
+      background: rgba(247,243,238,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(15,31,61,0.08); }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
+
+    .nav-cta {
+      background: var(--navy);
+      color: var(--cream) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--amber) !important; color: var(--cream) !important; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: 0.3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 5%;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        radial-gradient(circle at 70% 30%, rgba(201,132,26,0.07) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(15,31,61,0.05) 0%, transparent 50%);
+    }
+
+    .hero-grid-lines {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(15,31,61,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,31,61,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,132,26,0.1);
+      border: 1px solid rgba(201,132,26,0.25);
+      color: var(--amber);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--amber);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-firm-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-firm-name .accent { color: var(--amber); }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      color: var(--text-mid);
+      margin: 1.2rem 0 0.5rem;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-descriptor {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--sage);
+      letter-spacing: 0.05em;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--cream);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      background: var(--amber);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,132,26,0.25);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--navy);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { border-color: var(--amber); color: var(--amber); }
+
+    .hero-right {
+      position: relative; z-index: 1;
+      display: flex; justify-content: flex-end; align-items: center;
+    }
+
+    .hero-visual {
+      width: 100%; max-width: 460px;
+      opacity: 0;
+      animation: fadeIn 1s 0.8s forwards;
+    }
+
+    .hero-card-stack { position: relative; }
+
+    .domain-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(15,31,61,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .domain-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,31,61,0.1); }
+
+    .domain-card-main {
+      margin-bottom: -1.5rem;
+    }
+
+    .domain-card-float {
+      position: relative;
+      margin-left: 2rem;
+      margin-top: 1rem;
+    }
+
+    .domain-card-sm {
+      background: var(--navy);
+      color: var(--cream);
+      border-color: var(--navy);
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+      margin-right: 2rem;
+    }
+
+    .card-icon {
+      width: 44px; height: 44px;
+      background: rgba(201,132,26,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .card-icon svg { width: 22px; height: 22px; stroke: var(--amber); fill: none; stroke-width: 1.8; }
+    .card-icon.navy-icon { background: rgba(247,243,238,0.15); }
+    .card-icon.navy-icon svg { stroke: var(--amber-light); }
+
+    .card-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+    .domain-card-sm .card-label { color: rgba(247,243,238,0.55); }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .domain-card-sm .card-title { color: var(--cream); font-size: 1rem; }
+
+    .stat-row {
+      display: flex; gap: 1.5rem; margin-top: 1.2rem;
+    }
+    .stat { text-align: left; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .stat-desc {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      max-width: 600px;
+    }
+
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--amber);
+      margin: 1.5rem 0;
+      border-radius: 2px;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--warm-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .value-item {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .value-item:hover { border-color: var(--amber); transform: translateY(-2px); }
+
+    .value-icon {
+      width: 36px; height: 36px;
+      background: rgba(201,132,26,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.8rem;
+    }
+    .value-icon svg { width: 18px; height: 18px; stroke: var(--amber); fill: none; stroke-width: 2; }
+
+    .value-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .value-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; }
+
+    .about-right { }
+
+    .about-highlight {
+      background: var(--navy);
+      color: var(--cream);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-highlight p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(247,243,238,0.9);
+    }
+
+    .about-highlight cite {
+      display: block;
+      margin-top: 1rem;
+      font-style: normal;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--amber-light);
+      text-transform: uppercase;
+    }
+
+    .gst-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(74,124,111,0.08);
+      border: 1px solid rgba(74,124,111,0.25);
+      color: var(--sage);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-family: 'DM Mono', monospace;
+      margin-top: 0.5rem;
+    }
+
+    /* ─── DOMAINS ─── */
+    #domains { background: var(--cream); }
+
+    .domains-intro {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .domains-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .domain-expertise-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: all 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .domain-expertise-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .domain-expertise-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(15,31,61,0.1);
+    }
+    .domain-expertise-card:hover::after { transform: scaleX(1); }
+
+    .domain-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .domain-icon-wrap {
+      width: 52px; height: 52px;
+      background: rgba(201,132,26,0.08);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+      transition: background 0.3s;
+    }
+    .domain-expertise-card:hover .domain-icon-wrap { background: rgba(201,132,26,0.15); }
+    .domain-icon-wrap svg { width: 26px; height: 26px; stroke: var(--amber); fill: none; stroke-width: 1.6; }
+
+    .domain-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .domain-text {
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    .domain-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .domain-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: rgba(15,31,61,0.05);
+      color: var(--navy-mid);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── HOW I WORK ─── */
+    #process {
+      background: var(--navy);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #process::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(247,243,238,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247,243,238,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .process-inner { position: relative; z-index: 1; }
+
+    #process .section-title { color: var(--cream); }
+    #process .section-body { color: rgba(247,243,238,0.6); }
+    #process .divider { background: var(--amber); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .process-step {
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      right: -1px;
+      width: 2px;
+      height: 40px;
+      background: rgba(247,243,238,0.1);
+    }
+
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .step-icon {
+      width: 44px; height: 44px;
+      background: rgba(201,132,26,0.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .step-icon svg { width: 22px; height: 22px; stroke: var(--amber-light); fill: none; stroke-width: 1.8; }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-desc {
+      font-size: 0.82rem;
+      color: rgba(247,243,238,0.55);
+      line-height: 1.65;
+    }
+
+    /* ─── CLIENTS ─── */
+    #clients { background: var(--warm-white); }
+
+    .clients-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      flex-wrap: wrap; gap: 1rem;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .client-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .client-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(201,132,26,0.1);
+    }
+
+    .client-industry {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.6rem;
+    }
+
+    .client-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .client-location {
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    /* ─── PORTFOLIO ─── */
+    #portfolio { background: var(--cream); }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(15,31,61,0.1);
+    }
+
+    .project-header {
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      position: relative;
+      min-height: 130px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+
+    .project-header-alt {
+      background: linear-gradient(135deg, #1A3A2A 0%, var(--sage) 100%);
+    }
+    .project-header-amber {
+      background: linear-gradient(135deg, #3A2000 0%, var(--amber) 100%);
+    }
+    .project-header-slate {
+      background: linear-gradient(135deg, #2A2040 0%, #5A4A80 100%);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(247,243,238,0.15);
+      color: rgba(247,243,238,0.9);
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .project-body { padding: 1.8rem 2rem; }
+
+    .project-desc {
+      font-size: 0.87rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-meta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .project-meta-item {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+    .project-meta-item svg { width: 14px; height: 14px; stroke: var(--amber); fill: none; stroke-width: 2; }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--navy);
+      color: var(--cream);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(201,132,26,0.12) 0%, transparent 60%);
+    }
+
+    .contact-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+    #contact .section-title { color: var(--cream); }
+
+    .contact-tagline {
+      font-size: 1.05rem;
+      color: rgba(247,243,238,0.6);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: var(--cream);
+      padding: 1rem 2.2rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-amber:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+    .btn-outline-light {
+      background: transparent;
+      color: var(--cream);
+      padding: 1rem 2.2rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid rgba(247,243,238,0.25);
+      transition: border-color 0.2s;
+    }
+    .btn-outline-light:hover { border-color: var(--amber); color: var(--amber); }
+
+    .contact-details {
+      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+    }
+    .contact-detail {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.85rem;
+      color: rgba(247,243,238,0.55);
+    }
+    .contact-detail svg { width: 16px; height: 16px; stroke: var(--amber); fill: none; stroke-width: 2; flex-shrink: 0; }
+    .contact-detail a { color: rgba(247,243,238,0.55); text-decoration: none; transition: color 0.2s; }
+    .contact-detail a:hover { color: var(--amber); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080F1E;
+      padding: 2rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(247,243,238,0.5);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--amber); }
+
+    .footer-gst {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(247,243,238,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(247,243,238,0.3);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .domains-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+      .process-step::after { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; padding-top: 100px; }
+      .hero-right { display: none; }
+      #about { grid-template-columns: 1fr; gap: 2.5rem; }
+      .domains-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+      .domains-grid { grid-template-columns: 1fr 1fr; }
+      .clients-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .about-values { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 480px) {
+      .domains-grid { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">ROYCE<span>TRUSS</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#domains">Expertise</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">Digital Transformation Partner</div>
+    <h1 class="hero-firm-name">ROYCE<span class="accent">TRUSS</span></h1>
+    <p class="hero-tagline">Where Technology Meets Purpose.</p>
+    <p class="hero-descriptor">// Medical · IoT · Manufacturing · ERP · Automation</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        View Our Work
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Start a Conversation
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="domain-card domain-card-main">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="card-label">Industry Focus</div>
+          <div class="card-title">Human-Centered Digital Solutions</div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-num">4+</div>
+              <div class="stat-desc">Industry Domains</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">10+</div>
+              <div class="stat-desc">Clients Served</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">GST</div>
+              <div class="stat-desc">Registered Firm</div>
+            </div>
+          </div>
+        </div>
+        <div class="domain-card domain-card-float domain-card-sm">
+          <div class="card-icon navy-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <div class="card-label">Approach</div>
+          <div class="card-title">Built for Your Industry, Not the Shelf</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left reveal">
+    <div class="section-label">About RoyceTruss</div>
+    <h2 class="section-title">Not a vendor.<br/>A technology partner.</h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      RoyceTruss is a GST-registered digital transformation firm that engineers custom software, automation, and IoT solutions tailored to the specific language, workflow, and regulations of your industry. We don't offer shelf products — we build what fits.
+    </p>
+    <div class="about-values">
+      <div class="value-item">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="value-title">People First</div>
+        <div class="value-desc">Every solution is designed around those who use it daily — patients, operators, clinicians.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="value-title">Industry Native</div>
+        <div class="value-desc">Deep understanding of medical, manufacturing, and IoT domain requirements before writing code.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="value-title">Business Aligned</div>
+        <div class="value-desc">Solutions are validated against operational ROI — not just technical specs.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="value-title">Accountable</div>
+        <div class="value-desc">Registered, transparent, and committed to long-term partnerships beyond delivery.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right reveal reveal-delay-2">
+    <div class="about-highlight">
+      <p>"I don't start with a technology stack — I start with the person sitting at the end of the process. Whether that's a doctor tracking a child's therapy or an engineer monitoring a production line, the solution must fit them."</p>
+      <cite>— ROYCETRUSS · Digital Transformation Practice</cite>
+    </div>
+    <div class="gst-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      GST No: 27ABHFR8469G1ZL · Maharashtra, India
+    </div>
+  </div>
+</section>
+
+<!-- DOMAINS -->
+<section id="domains">
+  <div class="domains-intro reveal">
+    <div>
+      <div class="section-label">Areas of Expertise</div>
+      <h2 class="section-title">Built for industries that can't afford to get it wrong.</h2>
+    </div>
+    <p class="section-body">
+      From a pediatric clinic tracking sensory milestones to a manufacturer automating a production floor — we bring the same rigor, customization, and industry fluency to every engagement.
+    </p>
+  </div>
+
+  <div class="domains-grid">
+    <div class="domain-expertise-card reveal reveal-delay-1">
+      <div class="domain-number">01</div>
+      <div class="domain-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="domain-name">Healthcare & Medical</div>
+      <div class="domain-text">Custom solutions for hospitals, therapy clinics, and sports medicine practices — from patient management to clinical workflows and compliance-ready systems.</div>
+      <div class="domain-tags">
+        <span class="domain-tag">EHR/EMR</span>
+        <span class="domain-tag">Patient Portals</span>
+        <span class="domain-tag">Clinic Management</span>
+        <span class="domain-tag">Therapy Tracking</span>
+      </div>
+    </div>
+
+    <div class="domain-expertise-card reveal reveal-delay-2">
+      <div class="domain-number">02</div>
+      <div class="domain-icon-wrap">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 18h8M18 14v8"/></svg>
+      </div>
+      <div class="domain-name">IoT & Connected Systems</div>
+      <div class="domain-text">End-to-end IoT architecture — from sensor firmware to cloud dashboards. Real-time monitoring, alerting, and predictive intelligence for industrial and medical devices.</div>
+      <div class="domain-tags">
+        <span class="domain-tag">Sensor Networks</span>
+        <span class="domain-tag">Real-time Dashboards</span>
+        <span class="domain-tag">MQTT / Edge</span>
+        <span class="domain-tag">Predictive Alerts</span>
+      </div>
+    </div>
+
+    <div class="domain-expertise-card reveal reveal-delay-3">
+      <div class="domain-number">03</div>
+      <div class="domain-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="domain-name">Manufacturing & Automation</div>
+      <div class="domain-text">Production automation, quality control systems, SCADA integration, and shop-floor digitization. Built for MEP, HVAC, and industrial operations that need reliability above all.</div>
+      <div class="domain-tags">
+        <span class="domain-tag">SCADA Integration</span>
+        <span class="domain-tag">Production MES</span>
+        <span class="domain-tag">Quality Control</span>
+        <span class="domain-tag">Shop Floor Apps</span>
+      </div>
+    </div>
+
+    <div class="domain-expertise-card reveal reveal-delay-4">
+      <div class="domain-number">04</div>
+      <div class="domain-icon-wrap">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      </div>
+      <div class="domain-name">ERP / CRM & Business Systems</div>
+      <div class="domain-text">Custom ERP and CRM platforms designed around your actual business processes — not the other way around. Sales pipelines, inventory, billing, and reporting — unified.</div>
+      <div class="domain-tags">
+        <span class="domain-tag">Custom ERP</span>
+        <span class="domain-tag">CRM Workflows</span>
+        <span class="domain-tag">Inventory</span>
+        <span class="domain-tag">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-inner">
+    <div class="reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">A method built on listening<br/>before building.</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <div class="step-title">Discover</div>
+        <div class="step-desc">We immerse in your domain — understanding workflows, users, regulations, and pain points before proposing a single feature.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="step-title">Map</div>
+        <div class="step-desc">We translate real-world processes into precise system blueprints — user journeys, data flows, integration points, and edge cases.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="step-title">Design</div>
+        <div class="step-desc">Interfaces designed for the actual user — not a generic persona. Every screen is reviewed against real workflows.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-num">04</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="step-title">Build</div>
+        <div class="step-desc">Clean, scalable, documented code. Iterative delivery with client checkpoints — no big-bang surprises at handoff.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-num">05</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="step-title">Support</div>
+        <div class="step-desc">Post-launch partnership — training, iteration, and ongoing support. We stay until the system is truly owned by your team.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="clients-header reveal">
+    <div>
+      <div class="section-label">Trusted By</div>
+      <h2 class="section-title">Clients who demanded<br/>precision and got it.</h2>
+    </div>
+    <p style="font-size:0.9rem; color: var(--text-light); max-width:320px;">From Mumbai's top-tier children's hospitals to industrial manufacturers — we serve clients where the stakes are high.</p>
+  </div>
+
+  <div class="clients-grid">
+    <div class="client-card reveal reveal-delay-1">
+      <div class="client-industry">Pediatric Healthcare · Mumbai</div>
+      <div class="client-name">SRCC Children's Hospital</div>
+      <div class="client-location">Mumbai, Maharashtra</div>
+    </div>
+    <div class="client-card reveal reveal-delay-2">
+      <div class="client-industry">Sports Medicine · Mumbai</div>
+      <div class="client-name">The Sports Doc</div>
+      <div class="client-location">Mumbai, Maharashtra</div>
+    </div>
+    <div class="client-card reveal reveal-delay-3">
+      <div class="client-industry">Pediatric OT & Speech Therapy · Nashik</div>
+      <div class="client-name">8Senses Clinic</div>
+      <div class="client-location">Nashik, Maharashtra</div>
+    </div>
+    <div class="client-card reveal reveal-delay-4">
+      <div class="client-industry">MEP / HVAC Manufacturing</div>
+      <div class="client-name">HiTech Supports & Hangers</div>
+      <div class="client-location">India</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="reveal">
+    <div class="section-label">Selected Work</div>
+    <h2 class="section-title">Problems solved.<br/>Industries transformed.</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-header">
+        <span class="project-tag">Healthcare · Web Platform</span>
+        <div class="project-header-title">Pediatric Therapy Management System</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A comprehensive digital platform for tracking children's occupational and speech therapy milestones — enabling therapists to log sessions, monitor progress, and share reports with parents in real time.</p>
+        <div class="project-meta">
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Pediatric Clinics
+          </div>
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
+            Web App
+          </div>
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Progress Tracking
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-header project-header-alt">
+        <span class="project-tag">Manufacturing · IoT</span>
+        <div class="project-header-title">Industrial Support Product Configurator & ERP</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Custom ERP and product catalog system for a leading MEP/HVAC structural support manufacturer — enabling dealer ordering, inventory tracking, and specification sheet generation at scale.</p>
+        <div class="project-meta">
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+            Industrial B2B
+          </div>
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/></svg>
+            Custom ERP
+          </div>
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Automation
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-3">
+      <div class="project-header project-header-amber">
+        <span class="project-tag">Sports Medicine · Mobile + Web</span>
+        <div class="project-header-title">Sports Injury & Rehabilitation Platform</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A digital practice management tool for sports medicine practitioners — appointment scheduling, injury documentation, rehabilitation progress monitoring, and patient communication in one unified platform.</p>
+        <div class="project-meta">
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Sports Medicine
+          </div>
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+            Mobile + Web
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-4">
+      <div class="project-header project-header-slate">
+        <span class="project-tag">Hospital · Infrastructure</span>
+        <div class="project-header-title">Multi-Speciality Hospital Digital Workflow</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Digital transformation engagement for a tertiary care pediatric hospital — covering patient flow digitization, departmental coordination tools, and reporting infrastructure for clinical and administrative teams.</p>
+        <div class="project-meta">
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            Hospital System
+          </div>
+          <div class="project-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+            Workflow Automation
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Let's build something<br/>that actually fits.</h2>
+    <p class="contact-tagline">
+      Whether you're a clinic looking to go paperless, a manufacturer exploring automation, or a business needing a system built from the ground up — let's start with a conversation.
+    </p>
+    <div class="contact-actions">
+      <a href="mailto:hello@roycetruss.com" class="btn-amber">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send a Message
+      </a>
+      <a href="tel:+91" class="btn-outline-light">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.1a16 16 0 0 0 6 6l1.27-.9a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Schedule a Call
+      </a>
+    </div>
+    <div class="contact-details">
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:hello@roycetruss.com">hello@roycetruss.com</a>
+      </div>
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Nashik · Mumbai · Maharashtra, India
+      </div>
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        GST: 27ABHFR8469G1ZL
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">ROYCE<span>TRUSS</span></a>
+  <div class="footer-gst">GST 27ABHFR8469G1ZL · Registered in Maharashtra</div>
+  <div class="footer-copy">© 2025 RoyceTruss. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    const isOpen = links.style.display === 'flex';
+    links.style.display = isOpen ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '70px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'var(--cream)';
+    links.style.padding = '1.5rem 5%';
+    links.style.borderBottom = '1px solid var(--border)';
+    links.style.gap = '1.2rem';
+    if (!isOpen) links.style.display = 'flex';
+    else links.style.display = '';
+  }
+</script>
+</body>
+</html>
