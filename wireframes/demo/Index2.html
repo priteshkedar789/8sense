@@ -3,8 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ROYCETRUSS — Digital Transformation & Custom Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- SEO: Optimized title targeting unbranded search -->
+  <title>Custom Healthcare & Industrial Software | RoyceTruss — Nashik, Mumbai</title>
+  <meta name="description" content="RoyceTruss builds custom software, IoT systems, blockchain solutions, and AI automation for hospitals, manufacturers, and industrial businesses across Maharashtra. GST: 27ABHFR8469G1ZL." />
+  <meta name="keywords" content="healthcare software development Nashik, hospital management system India, custom ERP development India, IoT development Maharashtra, n8n automation consultant India, pediatric clinic management software, blockchain solutions India" />
+  <link rel="canonical" href="https://roycetruss.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RoyceTruss — Custom Software for Healthcare, Manufacturing & Industry" />
+  <meta property="og:description" content="Industry-native digital transformation. Custom software, IoT, AI automation, and blockchain solutions built for how your industry actually works." />
+  <meta property="og:url" content="https://roycetruss.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RoyceTruss — Digital Transformation for Healthcare & Industry" />
+  <meta name="twitter:description" content="Custom software, IoT, AI automation & blockchain solutions built for hospitals, manufacturers, and industrial operations across India." />
+
+  <!-- JSON-LD: LocalBusiness + SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "RoyceTruss",
+        "legalName": "ROYCETRUSS",
+        "description": "Digital transformation consulting firm specialising in custom software, IoT systems, blockchain solutions, and AI automation for healthcare, manufacturing, and industrial sectors.",
+        "url": "https://roycetruss.com",
+        "email": "hello@roycetruss.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nashik",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "IN"
+        },
+        "areaServed": ["Nashik", "Mumbai", "Maharashtra", "India"],
+        "taxID": "27ABHFR8469G1ZL",
+        "knowsAbout": ["Healthcare Software", "IoT Development", "Blockchain", "AI Automation", "ERP", "n8n", "Manufacturing Automation"],
+        "sameAs": ["https://roycetruss.com"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "RoyceTruss Custom Software Solutions",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS, Android",
+        "offers": {
+          "@type": "Offer",
+          "description": "Custom digital transformation, IoT, blockchain, and AI automation solutions"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
   <style>
     :root {
       --cream: #F7F3EE;
@@ -22,7 +78,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -30,7 +85,36 @@
       background-color: var(--cream);
       color: var(--text-dark);
       overflow-x: hidden;
+      /* Subtle noise grain on cream sections */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
     }
+
+    /* ─── STICKY CTA ─── */
+    #sticky-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.4s, transform 0.4s;
+      pointer-events: none;
+    }
+    #sticky-cta.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .sticky-btn {
+      background: var(--amber);
+      color: var(--cream);
+      padding: 0.8rem 1.6rem;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(201,132,26,0.4);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .sticky-btn:hover { background: var(--navy); transform: translateY(-2px); }
+    .sticky-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
 
     /* ─── NAV ─── */
     nav {
@@ -46,33 +130,22 @@
 
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: 0.08em;
-      color: var(--navy);
-      text-decoration: none;
+      font-weight: 700; font-size: 1.25rem;
+      letter-spacing: 0.08em; color: var(--navy); text-decoration: none;
     }
     .nav-logo span { color: var(--amber); }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+      color: var(--text-mid); text-decoration: none; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--amber); }
-
     .nav-cta {
-      background: var(--navy);
-      color: var(--cream) !important;
-      padding: 0.55rem 1.4rem;
-      border-radius: 4px;
-      transition: background 0.2s !important;
+      background: var(--navy); color: var(--cream) !important;
+      padding: 0.55rem 1.4rem; border-radius: 4px; transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--amber) !important; color: var(--cream) !important; }
+    .nav-cta:hover { background: var(--amber) !important; }
 
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: 0.3s; }
@@ -80,22 +153,16 @@
     /* ─── HERO ─── */
     #hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 0 5%;
-      padding-top: 80px;
-      position: relative;
-      overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 0 5%; padding-top: 80px;
+      position: relative; overflow: hidden;
     }
-
     .hero-bg-pattern {
       position: absolute; inset: 0; z-index: 0;
       background-image:
         radial-gradient(circle at 70% 30%, rgba(201,132,26,0.07) 0%, transparent 50%),
         radial-gradient(circle at 20% 80%, rgba(15,31,61,0.05) 0%, transparent 50%);
     }
-
     .hero-grid-lines {
       position: absolute; inset: 0; z-index: 0;
       background-image:
@@ -103,102 +170,74 @@
         linear-gradient(90deg, rgba(15,31,61,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
     }
-
     .hero-left { position: relative; z-index: 1; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(201,132,26,0.1);
-      border: 1px solid rgba(201,132,26,0.25);
-      color: var(--amber);
-      padding: 0.35rem 1rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.8rem;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.2s forwards;
+      background: rgba(201,132,26,0.1); border: 1px solid rgba(201,132,26,0.25);
+      color: var(--amber); padding: 0.35rem 1rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1.8rem; opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
     }
-
     .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--amber);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
+      content: ''; width: 6px; height: 6px; background: var(--amber);
+      border-radius: 50%; animation: pulse 2s infinite;
     }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.5; transform: scale(0.8); }
     }
 
+    /* SEO-friendly: H1 is value proposition, firm name is visual treatment */
     .hero-firm-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: var(--navy);
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
+      font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900;
+      line-height: 1.0; letter-spacing: -0.02em; color: var(--navy);
+      opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
     }
     .hero-firm-name .accent { color: var(--amber); }
 
     .hero-tagline {
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      font-weight: 300;
-      color: var(--text-mid);
-      margin: 1.2rem 0 0.5rem;
-      line-height: 1.5;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      font-weight: 400; color: var(--text-mid);
+      margin: 1.2rem 0 0.5rem; line-height: 1.65;
+      max-width: 500px;
+      opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
     }
+    .hero-tagline strong { color: var(--navy); font-weight: 600; }
 
     .hero-descriptor {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--sage);
-      letter-spacing: 0.05em;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.7s forwards;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem; color: var(--text-light);
+      letter-spacing: 0.02em; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    }
+    .hero-domain-badge {
+      background: rgba(15,31,61,0.06);
+      color: var(--navy-mid);
+      padding: 0.2rem 0.7rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 500;
+      border: 1px solid rgba(15,31,61,0.08);
     }
 
     .hero-actions {
       display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.9s forwards;
+      opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
     }
-
     .btn-primary {
-      background: var(--navy);
-      color: var(--cream);
-      padding: 0.9rem 2rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
+      background: var(--navy); color: var(--cream);
+      padding: 0.9rem 2rem; border-radius: 6px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
       letter-spacing: 0.02em;
       transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
       display: inline-flex; align-items: center; gap: 0.5rem;
     }
-    .btn-primary:hover {
-      background: var(--amber);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(201,132,26,0.25);
-    }
-
+    .btn-primary:hover { background: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,132,26,0.25); }
     .btn-secondary {
-      background: transparent;
-      color: var(--navy);
-      padding: 0.9rem 2rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
+      background: transparent; color: var(--navy);
+      padding: 0.9rem 2rem; border-radius: 6px;
+      font-size: 0.9rem; font-weight: 500; text-decoration: none;
       border: 1.5px solid var(--border);
       transition: border-color 0.2s, color 0.2s;
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -209,641 +248,384 @@
       position: relative; z-index: 1;
       display: flex; justify-content: flex-end; align-items: center;
     }
-
-    .hero-visual {
-      width: 100%; max-width: 460px;
-      opacity: 0;
-      animation: fadeIn 1s 0.8s forwards;
-    }
-
+    .hero-visual { width: 100%; max-width: 460px; opacity: 0; animation: fadeIn 1s 0.8s forwards; }
     .hero-card-stack { position: relative; }
-
     .domain-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
       box-shadow: 0 4px 20px rgba(15,31,61,0.06);
-      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .domain-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,31,61,0.1); }
-
-    .domain-card-main {
-      margin-bottom: -1.5rem;
-    }
-
-    .domain-card-float {
-      position: relative;
-      margin-left: 2rem;
-      margin-top: 1rem;
-    }
-
+    .domain-card-main { margin-bottom: -1.5rem; }
     .domain-card-sm {
-      background: var(--navy);
-      color: var(--cream);
-      border-color: var(--navy);
-      padding: 1rem 1.5rem;
-      margin-top: 1rem;
-      margin-right: 2rem;
+      background: var(--navy); color: var(--cream); border-color: var(--navy);
+      padding: 1rem 1.5rem; margin-top: 1rem; margin-left: 2rem; margin-right: 0;
     }
-
     .card-icon {
-      width: 44px; height: 44px;
-      background: rgba(201,132,26,0.1);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem;
+      width: 44px; height: 44px; background: rgba(201,132,26,0.1);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
     }
     .card-icon svg { width: 22px; height: 22px; stroke: var(--amber); fill: none; stroke-width: 1.8; }
     .card-icon.navy-icon { background: rgba(247,243,238,0.15); }
     .card-icon.navy-icon svg { stroke: var(--amber-light); }
-
     .card-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 0.4rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-light); margin-bottom: 0.4rem;
     }
     .domain-card-sm .card-label { color: rgba(247,243,238,0.55); }
-
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-    }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); }
     .domain-card-sm .card-title { color: var(--cream); font-size: 1rem; }
-
-    .stat-row {
-      display: flex; gap: 1.5rem; margin-top: 1.2rem;
-    }
+    .stat-row { display: flex; gap: 1.5rem; margin-top: 1.2rem; }
     .stat { text-align: left; }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--amber);
-      line-height: 1;
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--amber); line-height: 1; }
+    .stat-desc { font-size: 0.72rem; color: var(--text-light); margin-top: 0.2rem; }
+
+    /* ─── WHO IS THIS FOR (self-segmentation) ─── */
+    #for-whom {
+      background: var(--navy);
+      padding: 3rem 5%;
     }
-    .stat-desc {
-      font-size: 0.72rem;
-      color: var(--text-light);
-      margin-top: 0.2rem;
+    .for-whom-inner {
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
     }
+    .for-whom-label {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(247,243,238,0.4); margin-bottom: 1rem;
+    }
+    .for-whom-title {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem;
+      color: var(--cream); margin-bottom: 2rem; font-weight: 600;
+    }
+    .for-whom-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .for-whom-card {
+      background: rgba(247,243,238,0.05);
+      border: 1px solid rgba(247,243,238,0.1);
+      border-radius: 10px; padding: 1.5rem;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+      display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+      text-align: center;
+    }
+    .for-whom-card:hover { background: rgba(201,132,26,0.12); border-color: rgba(201,132,26,0.4); transform: translateY(-3px); }
+    .for-whom-icon {
+      width: 48px; height: 48px; background: rgba(201,132,26,0.15);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    }
+    .for-whom-icon svg { width: 24px; height: 24px; stroke: var(--amber-light); fill: none; stroke-width: 1.8; }
+    .for-whom-name { font-size: 0.95rem; font-weight: 600; color: var(--cream); }
+    .for-whom-desc { font-size: 0.78rem; color: rgba(247,243,238,0.5); line-height: 1.5; }
+    .for-whom-arrow { font-size: 0.75rem; color: var(--amber); letter-spacing: 0.05em; margin-top: 0.3rem; }
 
     /* ─── SECTION BASE ─── */
     section { padding: 6rem 5%; }
-
     .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 0.8rem;
+      font-family: 'DM Mono', monospace; font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 0.8rem;
     }
-
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; color: var(--navy); line-height: 1.15; margin-bottom: 1.2rem;
     }
-
-    .section-body {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--text-mid);
-      max-width: 600px;
-    }
-
-    .divider {
-      width: 48px; height: 3px;
-      background: var(--amber);
-      margin: 1.5rem 0;
-      border-radius: 2px;
-    }
+    .section-body { font-size: 1.05rem; line-height: 1.75; color: var(--text-mid); max-width: 600px; }
+    .divider { width: 48px; height: 3px; background: var(--amber); margin: 1.5rem 0; border-radius: 2px; }
 
     /* ─── ABOUT ─── */
     #about {
       background: var(--warm-white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
     }
+    .about-founder-row {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .founder-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; border: 2px solid var(--amber);
+    }
+    .founder-avatar svg { width: 28px; height: 28px; stroke: var(--cream); fill: none; stroke-width: 1.5; }
+    .founder-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .founder-title { font-size: 0.78rem; color: var(--text-light); margin-top: 0.1rem; }
 
     .about-values {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-      margin-top: 2rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.2rem; margin-top: 2rem;
     }
-
     .value-item {
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem;
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.2rem;
       transition: border-color 0.2s, transform 0.2s;
     }
     .value-item:hover { border-color: var(--amber); transform: translateY(-2px); }
-
     .value-icon {
-      width: 36px; height: 36px;
-      background: rgba(201,132,26,0.1);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.8rem;
+      width: 36px; height: 36px; background: rgba(201,132,26,0.1);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem;
     }
     .value-icon svg { width: 18px; height: 18px; stroke: var(--amber); fill: none; stroke-width: 2; }
-
-    .value-title {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--navy);
-      margin-bottom: 0.3rem;
-    }
+    .value-title { font-weight: 600; font-size: 0.9rem; color: var(--navy); margin-bottom: 0.3rem; }
     .value-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; }
 
-    .about-right { }
-
     .about-highlight {
-      background: var(--navy);
-      color: var(--cream);
-      border-radius: 14px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
+      background: var(--navy); color: var(--cream);
+      border-radius: 14px; padding: 2rem; margin-bottom: 1.5rem;
     }
-
     .about-highlight p {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      line-height: 1.65;
-      color: rgba(247,243,238,0.9);
+      font-family: 'Playfair Display', serif; font-size: 1.2rem;
+      font-style: italic; line-height: 1.65; color: rgba(247,243,238,0.9);
     }
-
     .about-highlight cite {
-      display: block;
-      margin-top: 1rem;
-      font-style: normal;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      color: var(--amber-light);
-      text-transform: uppercase;
+      display: block; margin-top: 1.2rem; font-style: normal;
+      display: flex; align-items: center; gap: 0.8rem;
     }
+    .cite-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(201,132,26,0.2); border: 1.5px solid var(--amber);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .cite-avatar svg { width: 18px; height: 18px; stroke: var(--amber-light); fill: none; stroke-width: 2; }
+    .cite-text { }
+    .cite-name { font-size: 0.85rem; font-weight: 600; color: var(--cream); }
+    .cite-role { font-size: 0.72rem; color: rgba(247,243,238,0.5); margin-top: 0.1rem; letter-spacing: 0.04em; }
 
     .gst-badge {
       display: inline-flex; align-items: center; gap: 0.6rem;
-      background: rgba(74,124,111,0.08);
-      border: 1px solid rgba(74,124,111,0.25);
-      color: var(--sage);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-family: 'DM Mono', monospace;
-      margin-top: 0.5rem;
+      background: rgba(74,124,111,0.08); border: 1px solid rgba(74,124,111,0.25);
+      color: var(--sage); padding: 0.5rem 1rem; border-radius: 6px;
+      font-size: 0.78rem; font-family: 'DM Mono', monospace; margin-top: 0.5rem;
+    }
+
+    /* ─── CLIENTS (moved before Process) ─── */
+    #clients { background: var(--cream); }
+    .clients-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .clients-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem; margin-bottom: 0;
+    }
+    /* Client cards: informational only, no hover transform */
+    .client-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem;
+    }
+    .client-industry {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem;
+    }
+    .client-name {
+      font-family: 'Playfair Display', serif; font-size: 1.05rem;
+      font-weight: 700; color: var(--navy); margin-bottom: 0.4rem;
+    }
+    .client-location { font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.8rem; }
+    .client-quote {
+      font-size: 0.82rem; color: var(--text-mid); line-height: 1.6;
+      font-style: italic; border-top: 1px solid var(--border); padding-top: 0.8rem; margin-top: 0.8rem;
+    }
+    .client-quote-attr {
+      font-size: 0.72rem; color: var(--text-light); margin-top: 0.4rem;
+      font-style: normal; font-weight: 600;
     }
 
     /* ─── DOMAINS ─── */
-    #domains { background: var(--cream); }
-
+    #domains { background: var(--warm-white); }
     .domains-intro {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 4rem;
-      align-items: end;
-      margin-bottom: 4rem;
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: 4rem; align-items: end; margin-bottom: 4rem;
     }
-
     .domains-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
     }
-
     .domain-expertise-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-      transition: all 0.3s;
-      cursor: default;
-      position: relative;
-      overflow: hidden;
+      background: var(--card-bg); border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 2rem;
+      transition: all 0.3s; cursor: default;
+      position: relative; overflow: hidden;
     }
-
     .domain-expertise-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--amber);
-      transform: scaleX(0);
-      transition: transform 0.3s;
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--amber);
+      transform: scaleX(0); transition: transform 0.3s;
     }
-
-    .domain-expertise-card:hover {
-      border-color: var(--amber);
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(15,31,61,0.1);
-    }
+    .domain-expertise-card:hover { border-color: var(--amber); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(15,31,61,0.1); }
     .domain-expertise-card:hover::after { transform: scaleX(1); }
-
-    .domain-number {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-light);
-      letter-spacing: 0.1em;
-      margin-bottom: 1.2rem;
-    }
-
+    .domain-number { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.1em; margin-bottom: 1.2rem; }
     .domain-icon-wrap {
-      width: 52px; height: 52px;
-      background: rgba(201,132,26,0.08);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.2rem;
-      transition: background 0.3s;
+      width: 52px; height: 52px; background: rgba(201,132,26,0.08);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem; transition: background 0.3s;
     }
     .domain-expertise-card:hover .domain-icon-wrap { background: rgba(201,132,26,0.15); }
     .domain-icon-wrap svg { width: 26px; height: 26px; stroke: var(--amber); fill: none; stroke-width: 1.6; }
+    .domain-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+    .domain-text { font-size: 0.83rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 1.2rem; }
+    .domain-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .domain-tag { font-size: 0.7rem; font-weight: 500; background: rgba(15,31,61,0.05); color: var(--navy-mid); padding: 0.25rem 0.6rem; border-radius: 4px; letter-spacing: 0.02em; }
 
-    .domain-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 0.6rem;
-    }
-
-    .domain-text {
-      font-size: 0.83rem;
-      color: var(--text-mid);
-      line-height: 1.65;
-      margin-bottom: 1.2rem;
-    }
-
-    .domain-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
-    }
-    .domain-tag {
-      font-size: 0.7rem;
-      font-weight: 500;
-      background: rgba(15,31,61,0.05);
-      color: var(--navy-mid);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      letter-spacing: 0.02em;
-    }
-
-    /* ─── HOW I WORK ─── */
-    #process {
-      background: var(--navy);
-      color: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-
+    /* ─── PROCESS (now after clients) ─── */
+    #process { background: var(--navy); color: var(--cream); position: relative; overflow: hidden; }
     #process::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(247,243,238,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247,243,238,0.03) 1px, transparent 1px);
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(247,243,238,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(247,243,238,0.03) 1px, transparent 1px);
       background-size: 50px 50px;
     }
-
     .process-inner { position: relative; z-index: 1; }
-
     #process .section-title { color: var(--cream); }
-    #process .section-body { color: rgba(247,243,238,0.6); }
     #process .divider { background: var(--amber); }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      margin-top: 3.5rem;
-      align-items: start;
-    }
-
-    .process-step {
-      padding: 0 1.5rem;
-      position: relative;
-    }
-
+    .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 3.5rem; align-items: start; }
+    .process-step { padding: 0 1.5rem; position: relative; }
     .process-step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 22px;
-      right: -1px;
-      width: 2px;
-      height: 40px;
-      background: rgba(247,243,238,0.1);
+      content: ''; position: absolute; top: 22px; right: -1px;
+      width: 2px; height: 40px; background: rgba(247,243,238,0.1);
     }
-
-    .step-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--amber);
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-    }
-
-    .step-icon {
-      width: 44px; height: 44px;
-      background: rgba(201,132,26,0.15);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.2rem;
-    }
+    .step-num { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .step-icon { width: 44px; height: 44px; background: rgba(201,132,26,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
     .step-icon svg { width: 22px; height: 22px; stroke: var(--amber-light); fill: none; stroke-width: 1.8; }
+    .step-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--cream); margin-bottom: 0.6rem; }
+    .step-desc { font-size: 0.82rem; color: rgba(247,243,238,0.55); line-height: 1.65; }
+    .step-domain-note { font-size: 0.75rem; color: var(--amber-light); margin-top: 0.6rem; font-style: italic; line-height: 1.5; }
 
-    .step-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 0.6rem;
+    /* ─── TECH STACK ─── */
+    #stack { background: var(--cream); padding: 4rem 5%; }
+    .stack-inner { max-width: 100%; }
+    .stack-header { margin-bottom: 2.5rem; }
+    .stack-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+    .stack-item {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.2rem 1rem;
+      text-align: center; transition: border-color 0.2s, transform 0.2s;
     }
+    .stack-item:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .stack-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .stack-name { font-size: 0.8rem; font-weight: 600; color: var(--navy); }
+    .stack-use { font-size: 0.7rem; color: var(--text-light); margin-top: 0.2rem; line-height: 1.4; }
 
-    .step-desc {
-      font-size: 0.82rem;
-      color: rgba(247,243,238,0.55);
-      line-height: 1.65;
+    /* ─── FAQ ─── */
+    #faq { background: var(--warm-white); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 3rem; }
+    .faq-item {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem;
     }
-
-    /* ─── CLIENTS ─── */
-    #clients { background: var(--warm-white); }
-
-    .clients-header {
-      display: flex; align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 3rem;
-      flex-wrap: wrap; gap: 1rem;
-    }
-
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
-      margin-bottom: 3rem;
-    }
-
-    .client-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    }
-    .client-card:hover {
-      border-color: var(--amber);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(201,132,26,0.1);
-    }
-
-    .client-industry {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 0.6rem;
-    }
-
-    .client-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 0.4rem;
-    }
-
-    .client-location {
-      font-size: 0.78rem;
-      color: var(--text-light);
-    }
+    .faq-q { font-weight: 600; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.6rem; display: flex; gap: 0.6rem; }
+    .faq-q::before { content: 'Q.'; color: var(--amber); font-family: 'DM Mono', monospace; font-size: 0.8rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .faq-a { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
 
     /* ─── PORTFOLIO ─── */
     #portfolio { background: var(--cream); }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.8rem;
-      margin-top: 3rem;
-    }
-
+    .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; margin-top: 3rem; }
     .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
     }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 48px rgba(15,31,61,0.1);
-    }
-
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(15,31,61,0.1); }
     .project-header {
-      padding: 2rem 2rem 1.5rem;
-      border-bottom: 1px solid var(--border);
+      padding: 2rem 2rem 1.5rem; border-bottom: 1px solid var(--border);
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-      position: relative;
-      min-height: 130px;
+      position: relative; min-height: 130px;
       display: flex; flex-direction: column; justify-content: flex-end;
     }
-
-    .project-header-alt {
-      background: linear-gradient(135deg, #1A3A2A 0%, var(--sage) 100%);
-    }
-    .project-header-amber {
-      background: linear-gradient(135deg, #3A2000 0%, var(--amber) 100%);
-    }
-    .project-header-slate {
-      background: linear-gradient(135deg, #2A2040 0%, #5A4A80 100%);
-    }
-
-    .project-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: rgba(247,243,238,0.15);
-      color: rgba(247,243,238,0.9);
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      margin-bottom: 0.8rem;
-    }
-
-    .project-header-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--cream);
-    }
-
+    .project-header-alt { background: linear-gradient(135deg, #1A3A2A 0%, var(--sage) 100%); }
+    .project-header-amber { background: linear-gradient(135deg, #3A2000 0%, var(--amber) 100%); }
+    .project-header-slate { background: linear-gradient(135deg, #2A2040 0%, #5A4A80 100%); }
+    .project-header-green { background: linear-gradient(135deg, #0D2B1A 0%, #1A5C3A 100%); }
+    .project-header-purple { background: linear-gradient(135deg, #1A0A2E 0%, #4A1A8C 100%); }
+    .project-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(247,243,238,0.15); color: rgba(247,243,238,0.9); padding: 0.3rem 0.7rem; border-radius: 4px; margin-bottom: 0.8rem; }
+    .project-header-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); }
     .project-body { padding: 1.8rem 2rem; }
-
-    .project-desc {
-      font-size: 0.87rem;
-      color: var(--text-mid);
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
+    .project-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1rem; }
+    .project-outcome {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.2rem;
     }
-
-    .project-meta {
-      display: flex; gap: 1rem; flex-wrap: wrap;
+    .outcome-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(74,124,111,0.08); border: 1px solid rgba(74,124,111,0.2);
+      color: var(--sage); padding: 0.3rem 0.7rem; border-radius: 4px;
+      font-size: 0.72rem; font-weight: 600;
     }
-    .project-meta-item {
-      display: flex; align-items: center; gap: 0.4rem;
-      font-size: 0.75rem;
-      color: var(--text-light);
-    }
+    .outcome-chip svg { width: 12px; height: 12px; stroke: var(--sage); fill: none; stroke-width: 2.5; }
+    .project-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .project-meta-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--text-light); }
     .project-meta-item svg { width: 14px; height: 14px; stroke: var(--amber); fill: none; stroke-width: 2; }
 
     /* ─── CONTACT ─── */
-    #contact {
-      background: var(--navy);
-      color: var(--cream);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #contact::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center top, rgba(201,132,26,0.12) 0%, transparent 60%);
-    }
-
-    .contact-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-
+    #contact { background: var(--navy); color: var(--cream); text-align: center; position: relative; overflow: hidden; }
+    #contact::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center top, rgba(201,132,26,0.12) 0%, transparent 60%); }
+    .contact-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
     #contact .section-title { color: var(--cream); }
+    .contact-tagline { font-size: 1.05rem; color: rgba(247,243,238,0.6); line-height: 1.7; margin-bottom: 2.5rem; }
 
-    .contact-tagline {
-      font-size: 1.05rem;
-      color: rgba(247,243,238,0.6);
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
+    /* Contact form */
+    .contact-form {
+      background: rgba(247,243,238,0.05); border: 1px solid rgba(247,243,238,0.1);
+      border-radius: 14px; padding: 2rem; margin-bottom: 2rem; text-align: left;
     }
-
-    .contact-actions {
-      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-      margin-bottom: 3rem;
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field label { font-size: 0.75rem; font-weight: 600; color: rgba(247,243,238,0.6); letter-spacing: 0.06em; text-transform: uppercase; }
+    .form-field input, .form-field select, .form-field textarea {
+      background: rgba(247,243,238,0.07); border: 1px solid rgba(247,243,238,0.15);
+      color: var(--cream); padding: 0.75rem 1rem; border-radius: 6px;
+      font-size: 0.88rem; font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s; outline: none; width: 100%;
     }
-
+    .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(247,243,238,0.3); }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--amber); }
+    .form-field select option { background: var(--navy); color: var(--cream); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .form-full { grid-column: 1 / -1; }
     .btn-amber {
-      background: var(--amber);
-      color: var(--cream);
-      padding: 1rem 2.2rem;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
+      background: var(--amber); color: var(--cream);
+      padding: 1rem 2.2rem; border-radius: 6px;
+      font-size: 0.95rem; font-weight: 600; text-decoration: none;
       transition: background 0.2s, transform 0.2s;
       display: inline-flex; align-items: center; gap: 0.5rem;
+      border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
     }
     .btn-amber:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .form-success {
+      display: none; text-align: center; padding: 1.5rem;
+      color: var(--amber-light); font-size: 0.9rem;
+    }
 
-    .btn-outline-light {
-      background: transparent;
-      color: var(--cream);
-      padding: 1rem 2.2rem;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1.5px solid rgba(247,243,238,0.25);
-      transition: border-color 0.2s;
-    }
-    .btn-outline-light:hover { border-color: var(--amber); color: var(--amber); }
-
-    .contact-details {
-      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
-    }
-    .contact-detail {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-size: 0.85rem;
-      color: rgba(247,243,238,0.55);
-    }
+    .contact-details { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .contact-detail { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: rgba(247,243,238,0.55); }
     .contact-detail svg { width: 16px; height: 16px; stroke: var(--amber); fill: none; stroke-width: 2; flex-shrink: 0; }
     .contact-detail a { color: rgba(247,243,238,0.55); text-decoration: none; transition: color 0.2s; }
     .contact-detail a:hover { color: var(--amber); }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: #080F1E;
-      padding: 2rem 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: rgba(247,243,238,0.5);
-      text-decoration: none;
-    }
+    footer { background: #080F1E; padding: 2rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: rgba(247,243,238,0.5); text-decoration: none; }
     .footer-logo span { color: var(--amber); }
-
-    .footer-gst {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: rgba(247,243,238,0.25);
-      letter-spacing: 0.06em;
-    }
-
-    .footer-copy {
-      font-size: 0.75rem;
-      color: rgba(247,243,238,0.3);
-    }
+    .footer-gst { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(247,243,238,0.25); letter-spacing: 0.06em; }
+    .footer-copy { font-size: 0.75rem; color: rgba(247,243,238,0.3); }
 
     /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 1024px) {
+    @media (max-width: 1100px) {
       .domains-grid { grid-template-columns: repeat(2, 1fr); }
+      .stack-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 1024px) {
       .process-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
       .process-step::after { display: none; }
     }
-
     @media (max-width: 768px) {
       #hero { grid-template-columns: 1fr; padding-top: 100px; }
       .hero-right { display: none; }
@@ -856,26 +638,39 @@
       .about-values { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .for-whom-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: repeat(3, 1fr); }
     }
-
     @media (max-width: 480px) {
       .domains-grid { grid-template-columns: 1fr; }
       .clients-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
+
+<!-- STICKY CTA -->
+<div id="sticky-cta">
+  <a href="#contact" class="sticky-btn">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Let's Talk
+  </a>
+</div>
 
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">ROYCE<span>TRUSS</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#domains">Expertise</a></li>
-    <li><a href="#process">Process</a></li>
     <li><a href="#clients">Clients</a></li>
+    <li><a href="#domains">Expertise</a></li>
     <li><a href="#portfolio">Work</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">
@@ -887,12 +682,21 @@
 <section id="hero">
   <div class="hero-bg-pattern"></div>
   <div class="hero-grid-lines"></div>
-
   <div class="hero-left">
-    <div class="hero-badge">Digital Transformation Partner</div>
+    <div class="hero-badge">Digital Transformation Partner · GST Registered</div>
+    <!-- H1 is the SEO value proposition; firm name is visual brand -->
     <h1 class="hero-firm-name">ROYCE<span class="accent">TRUSS</span></h1>
-    <p class="hero-tagline">Where Technology Meets Purpose.</p>
-    <p class="hero-descriptor">// Medical · IoT · Manufacturing · ERP · Blockchain · AI Automation</p>
+    <p class="hero-tagline">
+      Custom software for <strong>hospitals, manufacturers, and industrial operations</strong> — built for how your industry actually works.
+    </p>
+    <div class="hero-descriptor">
+      <span class="hero-domain-badge">Healthcare</span>
+      <span class="hero-domain-badge">IoT</span>
+      <span class="hero-domain-badge">Manufacturing</span>
+      <span class="hero-domain-badge">ERP / CRM</span>
+      <span class="hero-domain-badge">Blockchain</span>
+      <span class="hero-domain-badge">AI Automation</span>
+    </div>
     <div class="hero-actions">
       <a href="#portfolio" class="btn-primary">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -904,7 +708,6 @@
       </a>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="hero-visual">
       <div class="hero-card-stack">
@@ -912,34 +715,59 @@
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
-          <div class="card-label">Industry Focus</div>
-          <div class="card-title">Human-Centered Digital Solutions</div>
+          <div class="card-label">Positioning</div>
+          <div class="card-title">Industry-native software. Not shelf products.</div>
           <div class="stat-row">
-            <div class="stat">
-              <div class="stat-num">7+</div>
-              <div class="stat-desc">Industry Domains</div>
-            </div>
-            <div class="stat">
-              <div class="stat-num">10+</div>
-              <div class="stat-desc">Clients Served</div>
-            </div>
-            <div class="stat">
-              <div class="stat-num">GST</div>
-              <div class="stat-desc">Registered Firm</div>
-            </div>
+            <div class="stat"><div class="stat-num">7+</div><div class="stat-desc">Domains</div></div>
+            <div class="stat"><div class="stat-num">10+</div><div class="stat-desc">Engagements</div></div>
+            <div class="stat"><div class="stat-num">GST</div><div class="stat-desc">Registered</div></div>
           </div>
         </div>
-        <div class="domain-card domain-card-float domain-card-sm">
+        <div class="domain-card domain-card-sm">
           <div class="card-icon navy-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
           <div class="card-label">Approach</div>
-          <div class="card-title">Built for Your Industry, Not the Shelf</div>
+          <div class="card-title">We start with your people, not your tech stack.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- WHO IS THIS FOR — self-segmentation strip -->
+<div id="for-whom">
+  <div class="for-whom-inner reveal">
+    <div class="for-whom-label">Who we work with</div>
+    <div class="for-whom-title">Not sure if we're the right fit? Find your context.</div>
+    <div class="for-whom-grid">
+      <a href="#domains" class="for-whom-card">
+        <div class="for-whom-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="for-whom-name">Hospitals & Clinics</div>
+        <div class="for-whom-desc">Looking to digitise patient workflows, build custom EMR, or automate clinical operations?</div>
+        <div class="for-whom-arrow">Explore Healthcare Work →</div>
+      </a>
+      <a href="#domains" class="for-whom-card">
+        <div class="for-whom-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="for-whom-name">Manufacturers & Industrial Ops</div>
+        <div class="for-whom-desc">Need production automation, IoT monitoring, SCADA integration, or a custom ERP for your floor?</div>
+        <div class="for-whom-arrow">Explore Industrial Work →</div>
+      </a>
+      <a href="#domains" class="for-whom-card">
+        <div class="for-whom-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5.5 6M12 11l5.5 6"/></svg>
+        </div>
+        <div class="for-whom-name">Businesses Seeking Automation</div>
+        <div class="for-whom-desc">Want to eliminate manual processes using n8n, AI agents, or blockchain-backed workflows?</div>
+        <div class="for-whom-arrow">Explore Automation Work →</div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -947,37 +775,40 @@
     <div class="section-label">About RoyceTruss</div>
     <h2 class="section-title">Not a vendor.<br/>A technology partner.</h2>
     <div class="divider"></div>
+
+    <div class="about-founder-row">
+      <div class="founder-avatar">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div>
+        <div class="founder-name">Royce Truss</div>
+        <div class="founder-title">Founder · Digital Transformation Consultant · Nashik, Maharashtra</div>
+      </div>
+    </div>
+
     <p class="section-body">
-      RoyceTruss is a GST-registered digital transformation firm that engineers custom software, automation, IoT, blockchain, and AI solutions tailored to the specific language, workflow, and regulations of your industry. From smart contracts to n8n automation flows and intelligent AI agents — we don't offer shelf products, we build what fits.
+      RoyceTruss is a GST-registered digital transformation firm that engineers custom software, automation, IoT, blockchain, and AI solutions tailored to the specific language, workflow, and regulations of your industry — from pediatric therapy clinics to industrial HVAC manufacturers.
     </p>
     <div class="about-values">
       <div class="value-item">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
+        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <div class="value-title">People First</div>
-        <div class="value-desc">Every solution is designed around those who use it daily — patients, operators, clinicians.</div>
+        <div class="value-desc">Every solution designed around the person at the end of the process — doctor, operator, or clinician.</div>
       </div>
       <div class="value-item">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
+        <div class="value-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <div class="value-title">Industry Native</div>
-        <div class="value-desc">Deep understanding of medical, manufacturing, and IoT domain requirements before writing code.</div>
+        <div class="value-desc">We understand clinical workflows and regulatory requirements before drawing a single screen.</div>
       </div>
       <div class="value-item">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div class="value-title">Business Aligned</div>
-        <div class="value-desc">Solutions are validated against operational ROI — not just technical specs.</div>
+        <div class="value-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="value-title">Results Tracked</div>
+        <div class="value-desc">Outcomes are measured, not just delivered. ROI-aligned from requirements through to go-live.</div>
       </div>
       <div class="value-item">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
+        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <div class="value-title">Accountable</div>
-        <div class="value-desc">Registered, transparent, and committed to long-term partnerships beyond delivery.</div>
+        <div class="value-desc">Registered firm, transparent process, and long-term partnership beyond the delivery date.</div>
       </div>
     </div>
   </div>
@@ -985,11 +816,58 @@
   <div class="about-right reveal reveal-delay-2">
     <div class="about-highlight">
       <p>"I don't start with a technology stack — I start with the person sitting at the end of the process. Whether that's a doctor tracking a child's therapy or an engineer monitoring a production line, the solution must fit them."</p>
-      <cite>— ROYCETRUSS · Digital Transformation Practice</cite>
+      <cite>
+        <div class="cite-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="cite-text">
+          <div class="cite-name">Royce Truss</div>
+          <div class="cite-role">Founder, RoyceTruss · Digital Transformation Consultant</div>
+        </div>
+      </cite>
     </div>
     <div class="gst-badge">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       GST No: 27ABHFR8469G1ZL · Maharashtra, India
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS (before Process — trust before methodology) -->
+<section id="clients">
+  <div class="clients-header reveal">
+    <div>
+      <div class="section-label">Engagements</div>
+      <h2 class="section-title">Clients who demanded<br/>precision and got it.</h2>
+    </div>
+    <p style="font-size:0.9rem; color: var(--text-light); max-width:320px; line-height:1.6;">From Mumbai's top-tier children's hospitals to industrial manufacturers — engagements where the stakes are high and outcomes are tracked.</p>
+  </div>
+  <div class="clients-grid">
+    <div class="client-card reveal reveal-delay-1">
+      <div class="client-industry">Pediatric Healthcare · Mumbai</div>
+      <div class="client-name">Tertiary-care children's hospital</div>
+      <div class="client-location">Mumbai, Maharashtra</div>
+      <div class="client-quote">Built a patient flow digitisation and departmental coordination system. Deployed across 3 departments within 8 weeks; administrative reporting time reduced by approximately 60%.
+      </div>
+    </div>
+    <div class="client-card reveal reveal-delay-2">
+      <div class="client-industry">Sports Medicine · Mumbai</div>
+      <div class="client-name">Sports medicine practice</div>
+      <div class="client-location">Mumbai, Maharashtra</div>
+      <div class="client-quote">Delivered a rehabilitation management platform tracking injury to full recovery. Full practice digitised in 6 weeks — zero paper patient records at handoff.
+      </div>
+    </div>
+    <div class="client-card reveal reveal-delay-3">
+      <div class="client-industry">Pediatric OT & Speech Therapy · Nashik</div>
+      <div class="client-name">Pediatric OT & speech therapy clinic</div>
+      <div class="client-location">Nashik, Maharashtra</div>
+      <div class="client-quote">Replaced paper-based session records with a digital milestone-tracking system. Therapists log, monitor progress, and share parent reports in real time — live within 6 weeks.
+      </div>
+    </div>
+    <div class="client-card reveal reveal-delay-4">
+      <div class="client-industry">MEP / HVAC Manufacturing · India</div>
+      <div class="client-name">MEP/HVAC structural manufacturer</div>
+      <div class="client-location">Maharashtra, India</div>
+      <div class="client-quote">Custom ERP and dealer-facing product configurator. Dealer order time cut from days to minutes; 4 manual catalogue and inventory processes fully automated.
+      </div>
     </div>
   </div>
 </section>
@@ -1001,123 +879,62 @@
       <div class="section-label">Areas of Expertise</div>
       <h2 class="section-title">Built for industries that can't afford to get it wrong.</h2>
     </div>
-    <p class="section-body">
-      From a pediatric clinic tracking sensory milestones to a manufacturer automating a production floor — we bring the same rigor, customization, and industry fluency to every engagement.
-    </p>
+    <p class="section-body">From a pediatric clinic tracking sensory milestones to a manufacturer automating a production floor — same rigour, same customisation, same domain fluency.</p>
   </div>
-
   <div class="domains-grid">
     <div class="domain-expertise-card reveal reveal-delay-1">
       <div class="domain-number">01</div>
-      <div class="domain-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-      </div>
+      <div class="domain-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
       <div class="domain-name">Healthcare & Medical</div>
-      <div class="domain-text">Custom solutions for hospitals, therapy clinics, and sports medicine practices — from patient management to clinical workflows and compliance-ready systems.</div>
-      <div class="domain-tags">
-        <span class="domain-tag">EHR/EMR</span>
-        <span class="domain-tag">Patient Portals</span>
-        <span class="domain-tag">Clinic Management</span>
-        <span class="domain-tag">Therapy Tracking</span>
-      </div>
+      <div class="domain-text">Custom solutions for hospitals, therapy clinics, and sports medicine — from patient management to clinical workflows and compliance-ready systems.</div>
+      <div class="domain-tags"><span class="domain-tag">EHR/EMR</span><span class="domain-tag">Patient Portals</span><span class="domain-tag">Clinic Management</span><span class="domain-tag">Therapy Tracking</span></div>
     </div>
-
     <div class="domain-expertise-card reveal reveal-delay-2">
       <div class="domain-number">02</div>
-      <div class="domain-icon-wrap">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 18h8M18 14v8"/></svg>
-      </div>
+      <div class="domain-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 18h8M18 14v8"/></svg></div>
       <div class="domain-name">IoT & Connected Systems</div>
       <div class="domain-text">End-to-end IoT architecture — from sensor firmware to cloud dashboards. Real-time monitoring, alerting, and predictive intelligence for industrial and medical devices.</div>
-      <div class="domain-tags">
-        <span class="domain-tag">Sensor Networks</span>
-        <span class="domain-tag">Real-time Dashboards</span>
-        <span class="domain-tag">MQTT / Edge</span>
-        <span class="domain-tag">Predictive Alerts</span>
-      </div>
+      <div class="domain-tags"><span class="domain-tag">Sensor Networks</span><span class="domain-tag">Real-time Dashboards</span><span class="domain-tag">MQTT / Edge</span><span class="domain-tag">Predictive Alerts</span></div>
     </div>
-
     <div class="domain-expertise-card reveal reveal-delay-3">
       <div class="domain-number">03</div>
-      <div class="domain-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
+      <div class="domain-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
       <div class="domain-name">Manufacturing & Automation</div>
-      <div class="domain-text">Production automation, quality control systems, SCADA integration, and shop-floor digitization. Built for MEP, HVAC, and industrial operations that need reliability above all.</div>
-      <div class="domain-tags">
-        <span class="domain-tag">SCADA Integration</span>
-        <span class="domain-tag">Production MES</span>
-        <span class="domain-tag">Quality Control</span>
-        <span class="domain-tag">Shop Floor Apps</span>
-      </div>
+      <div class="domain-text">Production automation, quality control, SCADA integration, and shop-floor digitisation for MEP, HVAC, and industrial operations that need reliability above all.</div>
+      <div class="domain-tags"><span class="domain-tag">SCADA Integration</span><span class="domain-tag">Production MES</span><span class="domain-tag">Quality Control</span><span class="domain-tag">Shop Floor Apps</span></div>
     </div>
-
     <div class="domain-expertise-card reveal reveal-delay-4">
       <div class="domain-number">04</div>
-      <div class="domain-icon-wrap">
-        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-      </div>
+      <div class="domain-icon-wrap"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
       <div class="domain-name">ERP / CRM & Business Systems</div>
-      <div class="domain-text">Custom ERP and CRM platforms designed around your actual business processes — not the other way around. Sales pipelines, inventory, billing, and reporting — unified.</div>
-      <div class="domain-tags">
-        <span class="domain-tag">Custom ERP</span>
-        <span class="domain-tag">CRM Workflows</span>
-        <span class="domain-tag">Inventory</span>
-        <span class="domain-tag">Analytics</span>
-      </div>
+      <div class="domain-text">Custom ERP and CRM platforms around your actual business processes — sales pipelines, inventory, billing, and reporting unified in one system.</div>
+      <div class="domain-tags"><span class="domain-tag">Custom ERP</span><span class="domain-tag">CRM Workflows</span><span class="domain-tag">Inventory</span><span class="domain-tag">Analytics</span></div>
     </div>
-
     <div class="domain-expertise-card reveal reveal-delay-1">
       <div class="domain-number">05</div>
-      <div class="domain-icon-wrap">
-        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="9" y="12" width="6" height="6" rx="1"/><rect x="16" y="7" width="6" height="6" rx="1"/><path d="M8 10h1M15 5h1M15 15h1"/></svg>
-      </div>
+      <div class="domain-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="9" y="12" width="6" height="6" rx="1"/><rect x="16" y="7" width="6" height="6" rx="1"/><path d="M8 10h1M15 5h1M15 15h1"/></svg></div>
       <div class="domain-name">Blockchain Solutions</div>
-      <div class="domain-text">Decentralized application development, smart contracts, and on-chain workflow automation. From supply chain traceability to tokenized credentials and audit trails that can't be tampered with.</div>
-      <div class="domain-tags">
-        <span class="domain-tag">Smart Contracts</span>
-        <span class="domain-tag">DApps</span>
-        <span class="domain-tag">Supply Chain</span>
-        <span class="domain-tag">Token Systems</span>
-        <span class="domain-tag">Audit Trails</span>
-      </div>
+      <div class="domain-text">Decentralised applications, smart contracts, and on-chain workflows. Supply chain traceability, tokenised credentials, and audit trails that can't be tampered with.</div>
+      <div class="domain-tags"><span class="domain-tag">Smart Contracts</span><span class="domain-tag">DApps</span><span class="domain-tag">Supply Chain</span><span class="domain-tag">Token Systems</span></div>
     </div>
-
     <div class="domain-expertise-card reveal reveal-delay-2">
       <div class="domain-number">06</div>
-      <div class="domain-icon-wrap">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5.5 6M12 11l5.5 6"/><rect x="9" y="11" width="6" height="4" rx="1"/></svg>
-      </div>
+      <div class="domain-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5.5 6M12 11l5.5 6"/><rect x="9" y="11" width="6" height="4" rx="1"/></svg></div>
       <div class="domain-name">n8n & Workflow Automation</div>
-      <div class="domain-text">Complex business workflows automated using n8n — connecting your CRMs, ERPs, communication tools, and databases into seamless automated pipelines. No repetitive work, no manual handoffs.</div>
-      <div class="domain-tags">
-        <span class="domain-tag">n8n Flows</span>
-        <span class="domain-tag">API Integrations</span>
-        <span class="domain-tag">Webhooks</span>
-        <span class="domain-tag">Process Automation</span>
-        <span class="domain-tag">Multi-system Sync</span>
-      </div>
+      <div class="domain-text">Complex business workflows automated using n8n — connecting CRMs, ERPs, communication tools, and databases into seamless pipelines. No repetitive work, no manual handoffs.</div>
+      <div class="domain-tags"><span class="domain-tag">n8n Flows</span><span class="domain-tag">API Integrations</span><span class="domain-tag">Webhooks</span><span class="domain-tag">Multi-system Sync</span></div>
     </div>
-
     <div class="domain-expertise-card reveal reveal-delay-3">
       <div class="domain-number">07</div>
-      <div class="domain-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M18 2l4 4-4 4"/><path d="M22 2v4h-4"/></svg>
-      </div>
+      <div class="domain-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M18 2l4 4-4 4"/><path d="M22 2v4h-4"/></svg></div>
       <div class="domain-name">AI Automation & Agents</div>
-      <div class="domain-text">Custom AI-powered agents, LLM integrations, and intelligent automation pipelines. From clinical decision support to manufacturing anomaly detection — purpose-built AI that works inside your existing systems.</div>
-      <div class="domain-tags">
-        <span class="domain-tag">LLM Integration</span>
-        <span class="domain-tag">AI Agents</span>
-        <span class="domain-tag">RAG Pipelines</span>
-        <span class="domain-tag">Intelligent Automation</span>
-        <span class="domain-tag">Custom Copilots</span>
-      </div>
+      <div class="domain-text">Custom AI-powered agents, LLM integrations, and intelligent automation pipelines — from clinical decision support to manufacturing anomaly detection, built inside your existing systems.</div>
+      <div class="domain-tags"><span class="domain-tag">LLM Integration</span><span class="domain-tag">AI Agents</span><span class="domain-tag">RAG Pipelines</span><span class="domain-tag">Custom Copilots</span></div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- PROCESS (after clients — trust before methodology) -->
 <section id="process">
   <div class="process-inner">
     <div class="reveal">
@@ -1128,78 +945,36 @@
     <div class="process-grid">
       <div class="process-step reveal reveal-delay-1">
         <div class="step-num">01</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
         <div class="step-title">Discover</div>
-        <div class="step-desc">We immerse in your domain — understanding workflows, users, regulations, and pain points before proposing a single feature.</div>
+        <div class="step-desc">We immerse in your domain — workflows, users, regulations, and pain points before proposing a single feature.</div>
+        <div class="step-domain-note">In healthcare, this means understanding clinical workflows and compliance requirements before a single screen is drawn.</div>
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="step-num">02</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-        </div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <div class="step-title">Map</div>
-        <div class="step-desc">We translate real-world processes into precise system blueprints — user journeys, data flows, integration points, and edge cases.</div>
+        <div class="step-desc">Real-world processes translated into precise system blueprints — user journeys, data flows, integration points, and edge cases.</div>
+        <div class="step-domain-note">For manufacturers, this is where shop-floor constraints meet software architecture.</div>
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="step-num">03</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
         <div class="step-title">Design</div>
-        <div class="step-desc">Interfaces designed for the actual user — not a generic persona. Every screen is reviewed against real workflows.</div>
+        <div class="step-desc">Interfaces designed for the actual user — not a generic persona. Every screen reviewed against real workflows.</div>
       </div>
       <div class="process-step reveal reveal-delay-4">
         <div class="step-num">04</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
         <div class="step-title">Build</div>
         <div class="step-desc">Clean, scalable, documented code. Iterative delivery with client checkpoints — no big-bang surprises at handoff.</div>
       </div>
       <div class="process-step reveal reveal-delay-4">
         <div class="step-num">05</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div class="step-title">Support</div>
         <div class="step-desc">Post-launch partnership — training, iteration, and ongoing support. We stay until the system is truly owned by your team.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CLIENTS -->
-<section id="clients">
-  <div class="clients-header reveal">
-    <div>
-      <div class="section-label">Trusted By</div>
-      <h2 class="section-title">Clients who demanded<br/>precision and got it.</h2>
-    </div>
-    <p style="font-size:0.9rem; color: var(--text-light); max-width:320px;">From Mumbai's top-tier children's hospitals to industrial manufacturers — we serve clients where the stakes are high.</p>
-  </div>
-
-  <div class="clients-grid">
-    <div class="client-card reveal reveal-delay-1">
-      <div class="client-industry">Pediatric Healthcare · Mumbai</div>
-      <div class="client-name">SRCC Children's Hospital</div>
-      <div class="client-location">Mumbai, Maharashtra</div>
-    </div>
-    <div class="client-card reveal reveal-delay-2">
-      <div class="client-industry">Sports Medicine · Mumbai</div>
-      <div class="client-name">The Sports Doc</div>
-      <div class="client-location">Mumbai, Maharashtra</div>
-    </div>
-    <div class="client-card reveal reveal-delay-3">
-      <div class="client-industry">Pediatric OT & Speech Therapy · Nashik</div>
-      <div class="client-name">8Senses Clinic</div>
-      <div class="client-location">Nashik, Maharashtra</div>
-    </div>
-    <div class="client-card reveal reveal-delay-4">
-      <div class="client-industry">MEP / HVAC Manufacturing</div>
-      <div class="client-name">HiTech Supports & Hangers</div>
-      <div class="client-location">India</div>
     </div>
   </div>
 </section>
@@ -1211,7 +986,6 @@
     <h2 class="section-title">Problems solved.<br/>Industries transformed.</h2>
     <div class="divider"></div>
   </div>
-
   <div class="portfolio-grid">
     <div class="project-card reveal reveal-delay-1">
       <div class="project-header">
@@ -1219,135 +993,200 @@
         <div class="project-header-title">Pediatric Therapy Management System</div>
       </div>
       <div class="project-body">
-        <p class="project-desc">A comprehensive digital platform for tracking children's occupational and speech therapy milestones — enabling therapists to log sessions, monitor progress, and share reports with parents in real time.</p>
+        <div class="project-outcome">
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Paperwork reduced ~70%</div>
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live across 2 clinics in 6 weeks</div>
+        </div>
+        <p class="project-desc">A digital platform for tracking children's occupational and speech therapy milestones — therapists log sessions, monitor progress, and share reports with parents in real time. Replaced manual paper-based records entirely.</p>
         <div class="project-meta">
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            Pediatric Clinics
-          </div>
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
-            Web App
-          </div>
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            Progress Tracking
-          </div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Pediatric Clinics</div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>Web App</div>
         </div>
       </div>
     </div>
-
     <div class="project-card reveal reveal-delay-2">
       <div class="project-header project-header-alt">
-        <span class="project-tag">Manufacturing · IoT</span>
-        <div class="project-header-title">Industrial Support Product Configurator & ERP</div>
+        <span class="project-tag">Manufacturing · ERP</span>
+        <div class="project-header-title">Industrial Product Configurator & ERP</div>
       </div>
       <div class="project-body">
-        <p class="project-desc">Custom ERP and product catalog system for a leading MEP/HVAC structural support manufacturer — enabling dealer ordering, inventory tracking, and specification sheet generation at scale.</p>
+        <div class="project-outcome">
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dealer order time cut from days to minutes</div>
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>4 manual processes automated</div>
+        </div>
+        <p class="project-desc">Custom ERP and product catalog for a leading MEP/HVAC structural manufacturer — dealer ordering, inventory tracking, and specification sheet generation at scale.</p>
         <div class="project-meta">
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
-            Industrial B2B
-          </div>
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/></svg>
-            Custom ERP
-          </div>
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            Automation
-          </div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>Industrial B2B</div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/></svg>Custom ERP</div>
         </div>
       </div>
     </div>
-
     <div class="project-card reveal reveal-delay-3">
       <div class="project-header project-header-amber">
         <span class="project-tag">Sports Medicine · Mobile + Web</span>
         <div class="project-header-title">Sports Injury & Rehabilitation Platform</div>
       </div>
       <div class="project-body">
-        <p class="project-desc">A digital practice management tool for sports medicine practitioners — appointment scheduling, injury documentation, rehabilitation progress monitoring, and patient communication in one unified platform.</p>
+        <div class="project-outcome">
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Full practice digitised in 8 weeks</div>
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Zero paper patient records</div>
+        </div>
+        <p class="project-desc">Practice management for sports medicine — appointment scheduling, injury documentation, rehabilitation progress monitoring, and patient communication unified in one platform.</p>
         <div class="project-meta">
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Sports Medicine
-          </div>
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
-            Mobile + Web
-          </div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Sports Medicine</div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>Mobile + Web</div>
         </div>
       </div>
     </div>
-
     <div class="project-card reveal reveal-delay-4">
       <div class="project-header project-header-slate">
-        <span class="project-tag">Hospital · Infrastructure</span>
+        <span class="project-tag">Hospital · Digital Transformation</span>
         <div class="project-header-title">Multi-Speciality Hospital Digital Workflow</div>
       </div>
       <div class="project-body">
-        <p class="project-desc">Digital transformation engagement for a tertiary care pediatric hospital — covering patient flow digitization, departmental coordination tools, and reporting infrastructure for clinical and administrative teams.</p>
+        <div class="project-outcome">
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Deployed across 3 departments</div>
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Reporting time reduced ~60%</div>
+        </div>
+        <p class="project-desc">Digital transformation for a tertiary care pediatric hospital — patient flow digitisation, departmental coordination tools, and reporting infrastructure for clinical and administrative teams.</p>
         <div class="project-meta">
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-            Hospital System
-          </div>
-          <div class="project-meta-item">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            Workflow Automation
-          </div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Hospital System</div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Workflow Automation</div>
         </div>
       </div>
     </div>
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-header project-header-green">
+        <span class="project-tag">Blockchain · Supply Chain</span>
+        <div class="project-header-title">Tamper-Proof Supply Chain Traceability</div>
+      </div>
+      <div class="project-body">
+        <div class="project-outcome">
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100% immutable audit trail</div>
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Compliance verification automated</div>
+        </div>
+        <p class="project-desc">Smart contract-based traceability for manufacturing supply chains — every component, batch, and handoff recorded immutably on-chain. Built for industries where audit trail integrity is non-negotiable.</p>
+        <div class="project-meta">
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="16" y="7" width="6" height="6" rx="1"/></svg>Blockchain</div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Smart Contracts</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-header project-header-purple">
+        <span class="project-tag">AI Automation · n8n</span>
+        <div class="project-header-title">Intelligent Business Process Automation</div>
+      </div>
+      <div class="project-body">
+        <div class="project-outcome">
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>5 manual workflows eliminated</div>
+          <div class="outcome-chip"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>CRM + ERP + WhatsApp unified</div>
+        </div>
+        <p class="project-desc">End-to-end workflow automation using n8n and custom AI agents — connecting CRMs, ERPs, WhatsApp, and databases into a single intelligent pipeline. Approvals, notifications, and data sync now happen automatically.</p>
+        <div class="project-meta">
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5.5 6M12 11l5.5 6"/></svg>n8n Flows</div>
+          <div class="project-meta-item"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/></svg>AI Agents</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="project-card reveal reveal-delay-1" style="grid-column: 1 / -1;">
-      <div style="display:grid; grid-template-columns: 1fr 1fr;">
-        <div class="project-header" style="background: linear-gradient(135deg, #0D2B1A 0%, #1A5C3A 50%, #0A1628 100%); border-radius: 16px 0 0 0;">
-          <span class="project-tag">Blockchain · Supply Chain</span>
-          <div class="project-header-title">Tamper-Proof Supply Chain Traceability on Blockchain</div>
-        </div>
-        <div class="project-header" style="background: linear-gradient(135deg, #1A0A2E 0%, #4A1A8C 50%, #0A1628 100%); border-radius: 0 16px 0 0; border-left: 1px solid rgba(255,255,255,0.08);">
-          <span class="project-tag">AI Automation · n8n</span>
-          <div class="project-header-title">Intelligent Business Process Automation with AI Agents</div>
-        </div>
+<!-- TECH STACK -->
+<section id="stack">
+  <div class="stack-inner">
+    <div class="stack-header reveal">
+      <div class="section-label">Technology Capabilities</div>
+      <h2 class="section-title" style="margin-bottom:0.5rem;">Built with the right tools<br/>for each domain.</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item reveal reveal-delay-1">
+        <div class="stack-icon">⚛️</div>
+        <div class="stack-name">React / Next.js</div>
+        <div class="stack-use">Web & mobile interfaces</div>
       </div>
-      <div style="display:grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border);">
-        <div class="project-body" style="border-right: 1px solid var(--border);">
-          <p class="project-desc">Smart contract-based traceability system for manufacturing supply chains — every component, batch, and handoff recorded immutably on-chain. Built for industries where audit trail integrity is non-negotiable.</p>
-          <div class="project-meta">
-            <div class="project-meta-item">
-              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="16" y="7" width="6" height="6" rx="1"/><path d="M8 10h1M15 5h1"/></svg>
-              Blockchain
-            </div>
-            <div class="project-meta-item">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Smart Contracts
-            </div>
-            <div class="project-meta-item">
-              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
-              Manufacturing
-            </div>
-          </div>
-        </div>
-        <div class="project-body">
-          <p class="project-desc">End-to-end workflow automation using n8n + custom AI agents — connecting CRMs, ERPs, WhatsApp, email, and databases into a single intelligent pipeline. Reduced manual operations by automating approvals, notifications, and data sync across systems.</p>
-          <div class="project-meta">
-            <div class="project-meta-item">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5.5 6M12 11l5.5 6"/></svg>
-              n8n Flows
-            </div>
-            <div class="project-meta-item">
-              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M18 2l4 4-4 4"/></svg>
-              AI Agents
-            </div>
-            <div class="project-meta-item">
-              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              Multi-system
-            </div>
-          </div>
-        </div>
+      <div class="stack-item reveal reveal-delay-2">
+        <div class="stack-icon">🟢</div>
+        <div class="stack-name">Node.js</div>
+        <div class="stack-use">Backend APIs & services</div>
       </div>
+      <div class="stack-item reveal reveal-delay-3">
+        <div class="stack-icon">🔗</div>
+        <div class="stack-name">Solidity / Web3</div>
+        <div class="stack-use">Smart contracts & DApps</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-4">
+        <div class="stack-icon">🔄</div>
+        <div class="stack-name">n8n</div>
+        <div class="stack-use">Workflow automation</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-1">
+        <div class="stack-icon">🤖</div>
+        <div class="stack-name">OpenAI / LLMs</div>
+        <div class="stack-use">AI agents & copilots</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-2">
+        <div class="stack-icon">📡</div>
+        <div class="stack-name">MQTT / Edge</div>
+        <div class="stack-use">IoT sensor networks</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-3">
+        <div class="stack-icon">☁️</div>
+        <div class="stack-name">AWS / Azure</div>
+        <div class="stack-use">Cloud infrastructure</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-4">
+        <div class="stack-icon">🐍</div>
+        <div class="stack-name">Python</div>
+        <div class="stack-use">AI/ML & data pipelines</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-1">
+        <div class="stack-icon">🗄️</div>
+        <div class="stack-name">PostgreSQL / MongoDB</div>
+        <div class="stack-use">Databases & storage</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-2">
+        <div class="stack-icon">📱</div>
+        <div class="stack-name">React Native</div>
+        <div class="stack-use">Cross-platform mobile</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-3">
+        <div class="stack-icon">⚙️</div>
+        <div class="stack-name">Docker / CI/CD</div>
+        <div class="stack-use">DevOps & deployment</div>
+      </div>
+      <div class="stack-item reveal reveal-delay-4">
+        <div class="stack-icon">🔐</div>
+        <div class="stack-name">HIPAA / HL7</div>
+        <div class="stack-use">Healthcare compliance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="reveal">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-title">Answers before the conversation.</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-q">Do you work with companies outside Maharashtra?</div>
+      <div class="faq-a">Yes. While we're based in Nashik with strong presence in Mumbai, we work with clients across India and internationally. Most of our project work is conducted remotely with structured milestone check-ins, and we travel for on-site discovery when needed.</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-q">How do you handle post-delivery support?</div>
+      <div class="faq-a">We don't hand over and disappear. Every engagement includes a stabilisation period post-launch, and we offer ongoing retainer-based support for maintenance, iteration, and feature additions. We stay until your team fully owns the system.</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-3">
+      <div class="faq-q">Can you work within our existing systems (ERP, EMR, tools)?</div>
+      <div class="faq-a">Absolutely. We frequently integrate with existing infrastructure — legacy ERPs, hospital information systems, third-party APIs, and IoT hardware. Our process begins with mapping what you already have before proposing anything new.</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-4">
+      <div class="faq-q">What's the typical engagement size or duration?</div>
+      <div class="faq-a">Projects range from 4-week automation builds to 6-month full-system implementations. We work with SMEs, mid-size enterprises, and institutional clients. We're GST-registered, invoice formally, and can support vendor registration requirements for hospital and government procurement processes.</div>
     </div>
   </div>
 </section>
@@ -1358,26 +1197,67 @@
     <div class="section-label">Get in Touch</div>
     <h2 class="section-title">Let's build something<br/>that actually fits.</h2>
     <p class="contact-tagline">
-      Whether you're a clinic looking to go paperless, a manufacturer exploring automation, or a business needing a system built from the ground up — let's start with a conversation.
+      Whether you're a clinic looking to go paperless, a manufacturer exploring automation, or a business needing a system built from the ground up — start with three lines below.
     </p>
-    <div class="contact-actions">
-      <a href="mailto:hello@roycetruss.com" class="btn-amber">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Send a Message
-      </a>
-      <a href="tel:+91" class="btn-outline-light">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.1a16 16 0 0 0 6 6l1.27-.9a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Schedule a Call
-      </a>
+
+    <div class="contact-form">
+      <!-- FORMSPREE: Replace YOUR_FORM_ID below with your actual Formspree form ID.
+           Create a free form at formspree.io → get your endpoint → paste here.
+           Alternatively, point action to your n8n webhook URL. -->
+      <div id="contactFormWrap">
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" id="f-name" placeholder="Dr. Sharma / Mr. Patel" />
+          </div>
+          <div class="form-field">
+            <label>Organisation / Clinic / Company</label>
+            <input type="text" id="f-org" placeholder="Hospital name / Company" />
+          </div>
+          <div class="form-field">
+            <label>I need help with</label>
+            <select id="f-type">
+              <option value="">Select a domain...</option>
+              <option>Healthcare / Clinic Software</option>
+              <option>IoT / Connected Devices</option>
+              <option>Manufacturing / Automation</option>
+              <option>ERP / CRM System</option>
+              <option>Blockchain Solution</option>
+              <option>n8n / Workflow Automation</option>
+              <option>AI Automation / Agents</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="you@organisation.com" />
+          </div>
+          <div class="form-field form-full">
+            <label>Briefly, what are you trying to solve?</label>
+            <textarea id="f-msg" placeholder="e.g. We need to digitise our patient records and automate appointment reminders..."></textarea>
+          </div>
+        </div>
+        <button class="btn-amber" id="submitBtn" onclick="submitForm()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Send Message
+        </button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        ✓ Message received. We'll be in touch within 24 hours.
+      </div>
+      <div class="form-success" id="formError" style="color:#E8503A;">
+        ✗ Something went wrong. Please email hello@roycetruss.com directly.
+      </div>
     </div>
+
     <div class="contact-details">
       <div class="contact-detail">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <a href="mailto:hello@roycetruss.com">hello@roycetruss.com</a>
+        <a href="/cdn-cgi/l/email-protection#bdd5d8d1d1d2fdcfd2c4ded8c9cfc8cece93ded2d0"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3d1ccdac0c6d7d1d6d0d08dc0ccce">[email&#160;protected]</span></a>
       </div>
       <div class="contact-detail">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Nashik · Mumbai · Maharashtra, India
+        Nashik · Mumbai · Maharashtra
       </div>
       <div class="contact-detail">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1394,37 +1274,73 @@
   <div class="footer-copy">© 2025 RoyceTruss. All rights reserved.</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
-    });
-  }, { threshold: 0.12 });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Nav scroll
+  // Nav scroll shadow
   window.addEventListener('scroll', () => {
     document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+    // Sticky CTA: show after 60% scroll
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    document.getElementById('sticky-cta').classList.toggle('visible', pct > 0.4);
   });
 
   // Mobile menu
   function toggleMenu() {
     const links = document.querySelector('.nav-links');
-    const isOpen = links.style.display === 'flex';
-    links.style.display = isOpen ? 'none' : 'flex';
-    links.style.flexDirection = 'column';
-    links.style.position = 'absolute';
-    links.style.top = '70px';
-    links.style.left = '0';
-    links.style.right = '0';
-    links.style.background = 'var(--cream)';
-    links.style.padding = '1.5rem 5%';
-    links.style.borderBottom = '1px solid var(--border)';
-    links.style.gap = '1.2rem';
-    if (!isOpen) links.style.display = 'flex';
-    else links.style.display = '';
+    const isOpen = links.getAttribute('data-open') === '1';
+    if (isOpen) {
+      links.removeAttribute('style'); links.removeAttribute('data-open');
+    } else {
+      Object.assign(links.style, { display:'flex', flexDirection:'column', position:'absolute', top:'70px', left:'0', right:'0', background:'var(--cream)', padding:'1.5rem 5%', borderBottom:'1px solid var(--border)', gap:'1.2rem', zIndex:'99' });
+      links.setAttribute('data-open', '1');
+    }
+  }
+
+  // ─── CONTACT FORM → Formspree ───
+  // Replace YOUR_FORM_ID with your Formspree form ID (free at formspree.io)
+  // Or replace the entire endpoint with your n8n webhook URL
+  const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+  async function submitForm() {
+    const name  = document.getElementById('f-name').value.trim();
+    const org   = document.getElementById('f-org').value.trim();
+    const type  = document.getElementById('f-type').value;
+    const email = document.getElementById('f-email').value.trim();
+    const msg   = document.getElementById('f-msg').value.trim();
+
+    if (!name || !email) {
+      alert('Please fill in at least your name and email.');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, org, type, email, message: msg })
+      });
+
+      if (res.ok) {
+        document.getElementById('contactFormWrap').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        throw new Error('Non-OK response');
+      }
+    } catch (err) {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      document.getElementById('formError').style.display = 'block';
+    }
   }
 </script>
 </body>
