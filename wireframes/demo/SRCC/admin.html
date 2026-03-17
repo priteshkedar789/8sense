@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — RehabCare Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1F3A;--navy-mid:#142F54;--teal:#0D9488;--amber:#C9841A;--rose:#DC2626;--green:#059669;--surface:#F4F6FB;--surface2:#EDF0F7;--border:#DDE3ED;--border-light:#EEF1F6;--text-primary:#0B1F3A;--text-secondary:#4A5568;--text-muted:#8896A9;--sidebar:240px}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text-primary);min-height:100vh;display:flex}
+.sidebar{width:var(--sidebar);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
+.sidebar-brand{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.brand-wrap{display:flex;align-items:center;gap:10px}
+.brand-mark{width:34px;height:34px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-weight:700}
+.brand-name{font-size:13px;font-weight:600;color:#fff}
+.brand-sub{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+.sidebar-role{margin:12px;padding:10px 12px;background:rgba(201,132,26,.15);border:1px solid rgba(201,132,26,.3);border-radius:8px}
+.role-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4)}
+.role-name-display{font-size:12px;font-weight:600;color:#FCD34D;margin-top:2px}
+.nav-section{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:16px 16px 6px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 12px;margin:0 6px 2px;border-radius:8px;color:rgba(255,255,255,.5);font-size:12.5px;cursor:pointer;text-decoration:none;transition:all .15s}
+.nav-item:hover{background:rgba(255,255,255,.07);color:rgba(255,255,255,.9)}
+.nav-item.active{background:rgba(201,132,26,.25);color:#fff;font-weight:500}
+.nav-item svg{width:15px;height:15px;opacity:.7;flex-shrink:0}
+.nav-badge{margin-left:auto;background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px}
+.sidebar-footer{margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,.07)}
+.user-mini{display:flex;align-items:center;gap:9px}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.user-info-name{font-size:11.5px;font-weight:500;color:#fff}
+.user-info-role{font-size:10px;color:rgba(255,255,255,.35)}
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50}
+.topbar-title{font-size:14.5px;font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.pill-green{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
+.pill-amber{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.pill-red{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA}
+.pill-blue{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+.content{flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+.tabs{display:flex;gap:2px;background:var(--surface2);border-radius:10px;padding:4px;flex-wrap:wrap}
+.tab{padding:8px 13px;border-radius:8px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all .15s;border:none;background:none;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px}
+.tab.active{background:#fff;color:var(--text-primary);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.tab-badge{background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px}
+.tab-content{display:none}
+.tab-content.active{display:flex;flex-direction:column;gap:14px}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card-header{padding:13px 18px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600;color:var(--text-primary)}
+.card-body{padding:18px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap}
+.btn-amber{background:var(--amber);color:#fff}.btn-green{background:var(--green);color:#fff}.btn-red{background:var(--rose);color:#fff}.btn-ghost{background:#fff;color:var(--text-secondary);border:1px solid var(--border)}.btn-blue{background:#2563EB;color:#fff}.btn-navy{background:var(--navy);color:#fff}
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.kpi-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.kpi-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:4px}
+.kpi-value{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;line-height:1}
+.kpi-sub{font-size:10.5px;color:var(--text-muted);margin-top:4px}
+.status-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:10px;border:1px solid;white-space:nowrap}
+.pill-ok{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
+.pill-warn{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
+.pill-danger{background:#FEF2F2;color:#991B1B;border-color:#FECACA}
+.pill-info{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sla-badge{font-size:10.5px;padding:3px 8px;border-radius:6px;font-weight:600;border:1px solid}
+.sla-urgent{background:#FEF2F2;color:#991B1B;border-color:#FECACA}
+.sla-normal{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
+.exc-item{padding:16px 18px;border-bottom:1px solid var(--border-light)}
+.exc-item:last-child{border-bottom:none}
+.exc-title{font-size:13.5px;font-weight:700;color:var(--text-primary)}
+.exc-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.exc-detail{font-size:12.5px;color:var(--text-secondary);line-height:1.6;padding:10px 12px;background:var(--surface);border-radius:8px;margin:8px 0}
+.exc-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.noshow-item{padding:14px 18px;border-bottom:1px solid var(--border-light)}
+.noshow-item:last-child{border-bottom:none}
+.action-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.action-chip{padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid;font-family:'DM Sans',sans-serif;transition:all .15s}
+.chip-call{background:#EFF6FF;border-color:#BFDBFE;color:#1D4ED8}
+.chip-charge{background:#FEF2F2;border-color:#FECACA;color:#991B1B}
+.chip-waive{background:#F0FDF4;border-color:#BBF7D0;color:#166534}
+.chip-reschedule{background:#FFFBEB;border-color:#FDE68A;color:#92400E}
+.pub-item{padding:16px 18px;border-bottom:1px solid var(--border-light)}
+.pub-item:last-child{border-bottom:none}
+.hr-table{width:100%;border-collapse:collapse}
+.hr-table th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);background:#F8FAFC}
+.hr-table td{padding:12px 14px;font-size:12.5px;border-bottom:1px solid var(--border-light);vertical-align:middle}
+.hr-table tr:last-child td{border-bottom:none}
+.hr-table tr:hover td{background:#FAFBFD}
+.progress-mini{display:flex;align-items:center;gap:8px}
+.prog-wrap{width:70px;height:6px;background:var(--surface2);border-radius:100px;overflow:hidden}
+.prog-fill{height:100%;border-radius:100px;background:var(--teal)}
+.week-table{width:100%;border-collapse:collapse;font-size:12px}
+.week-table th{padding:10px 12px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);border-bottom:1px solid var(--border);background:#F8FAFC}
+.week-table td{padding:10px 12px;border-bottom:1px solid var(--border-light);vertical-align:middle}
+.week-table tr:last-child td{border-bottom:none}
+.day-slot{font-size:11px;font-weight:600;padding:4px 8px;border-radius:4px;text-align:center;white-space:nowrap}
+.day-ok{background:#F0FDF4;color:#166534}.day-leave{background:#FFFBEB;color:#92400E}
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.summary-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.summary-num{font-family:'DM Mono',monospace;font-size:2rem;font-weight:500;line-height:1}
+.summary-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-top:5px}
+.cancel-bar-label{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px}
+.cancel-bar-wrap{height:10px;background:var(--surface2);border-radius:100px;overflow:hidden;margin-bottom:12px}
+.cancel-bar-fill{height:100%;border-radius:100px}
+.blocked-panel{background:var(--surface2);border:2px dashed var(--border);border-radius:10px;padding:32px;text-align:center}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="sidebar-brand"><div class="brand-wrap"><div class="brand-mark">RC</div><div><div class="brand-name">RehabCare Clinic</div><div class="brand-sub">Therapy Management</div></div></div></div>
+  <div class="sidebar-role"><div class="role-label">Active Role</div><div class="role-name-display">Clinic Administrator</div></div>
+  <div style="padding:8px 6px;flex:1">
+    <div class="nav-section">Operations</div>
+    <a class="nav-item active" href="#" onclick="switchTab('overview');return false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><rect x="11" y="11" width="6" height="6" rx="1"/></svg>Overview</a>
+    <a class="nav-item" href="#" onclick="switchTab('schedule');return false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="14" height="14" rx="2"/><path d="M16 2v4M8 2v4M3 10h14"/></svg>Master Schedule</a>
+    <a class="nav-item" href="#" onclick="switchTab('noshow');return false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="6"/><path d="M15 15l4 4M9 6v3l2 2"/></svg>No-Show Recovery <span class="nav-badge">3</span></a>
+    <a class="nav-item" href="#" onclick="switchTab('publication');return false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Program Publication <span class="nav-badge" style="background:var(--amber)">2</span></a>
+    <div class="nav-section">Finance</div>
+    <a class="nav-item" href="#" onclick="switchTab('exceptions');return false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Exceptions Queue <span class="nav-badge">3</span></a>
+    <a class="nav-item" href="#" onclick="switchTab('cancellations');return false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h14v4H3zM3 11h14v4H3z"/></svg>Cancellation Revenue</a>
+    <div class="nav-section">HR</div>
+    <a class="nav-item" href="#" onclick="switchTab('hr');return false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 20v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Therapist HR</a>
+    <div class="nav-section">System</div>
+    <a class="nav-item" href="index.html"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Main Menu</a>
+  </div>
+  <div class="sidebar-footer"><div class="user-mini"><div class="user-avatar">SR</div><div><div class="user-info-name">Sunita Rao</div><div class="user-info-role">Clinic Administrator</div></div></div></div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">Admin Overview</div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="pill pill-red">3 No-Shows Today</div>
+      <div class="pill pill-amber">3 Exceptions Pending</div>
+      <button class="btn btn-amber" onclick="alert('Daily summary exported')">Export Summary</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="tabs">
+      <button class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
+      <button class="tab" data-tab="schedule" onclick="switchTab('schedule')">Master Schedule</button>
+      <button class="tab" data-tab="noshow" onclick="switchTab('noshow')">No-Shows <span class="tab-badge">3</span></button>
+      <button class="tab" data-tab="publication" onclick="switchTab('publication')">Publication <span class="tab-badge">2</span></button>
+      <button class="tab" data-tab="exceptions" onclick="switchTab('exceptions')">Exceptions <span class="tab-badge">3</span></button>
+      <button class="tab" data-tab="cancellations" onclick="switchTab('cancellations')">Cancellations</button>
+      <button class="tab" data-tab="hr" onclick="switchTab('hr')">Therapist HR</button>
+    </div>
+
+```
+<!-- OVERVIEW -->
+<div class="tab-content active" id="tab-overview">
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid #2563EB"><div class="kpi-label">Sessions Today</div><div class="kpi-value" style="color:#2563EB">87</div><div class="kpi-sub">42 completed · 3 cancelled</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-label">Collected Today</div><div class="kpi-value" style="font-size:18px">₹50,400</div><div class="kpi-sub">of ₹1,04,400 expected</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-label">No-Shows</div><div class="kpi-value" style="color:var(--rose)">3</div><div class="kpi-sub">Recovery workflow open</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-label">Pending Actions</div><div class="kpi-value" style="color:var(--amber)">8</div><div class="kpi-sub">Exceptions + publications</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--teal)"><div class="kpi-label">Slot Utilisation</div><div class="kpi-value" style="color:var(--teal)">84%</div><div class="kpi-sub">2 slots recoverable</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Clinic Pulse — Live · 10:48 AM</div></div>
+      <div class="card-body">
+        <div class="summary-grid" style="margin-bottom:14px">
+          <div class="summary-card"><div class="summary-num" style="color:#166534">12</div><div class="summary-lbl">In Session</div></div>
+          <div class="summary-card"><div class="summary-num" style="color:#92400E">4</div><div class="summary-lbl">Between Sessions</div></div>
+          <div class="summary-card"><div class="summary-num" style="color:#1D4ED8">3</div><div class="summary-lbl">Ready Pickup</div></div>
+          <div class="summary-card"><div class="summary-num" style="color:#991B1B">3</div><div class="summary-lbl">No-Shows</div></div>
+        </div>
+        <div style="padding:12px;background:var(--surface);border-radius:8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px">
+          <div><div style="color:var(--text-muted);margin-bottom:2px">Note Compliance</div><div style="font-weight:700;color:var(--green)">91%</div></div>
+          <div><div style="color:var(--text-muted);margin-bottom:2px">Refill Rate</div><div style="font-weight:700;color:#2563EB">60%</div></div>
+          <div><div style="color:var(--text-muted);margin-bottom:2px">Check-in Accuracy</div><div style="font-weight:700;color:var(--green)">97%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Pending Actions — Priority Order</div></div>
+      <div>
+        <div style="padding:12px 16px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="switchTab('noshow')"><div><div style="font-size:12.5px;font-weight:600">3 No-Shows — Charge Decision Required</div><div style="font-size:11px;color:var(--text-muted)">₹3,600 revenue at stake</div></div><span class="sla-badge sla-urgent">Urgent</span></div>
+        <div style="padding:12px 16px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="switchTab('publication')"><div><div style="font-size:12.5px;font-weight:600">2 Programs — Ready to Publish</div><div style="font-size:11px;color:var(--text-muted)">HOD approved · pending billing link</div></div><span class="sla-badge" style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0">Ready</span></div>
+        <div style="padding:12px 16px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="switchTab('exceptions')"><div><div style="font-size:12.5px;font-weight:600">3 Exceptions — Approval Required</div><div style="font-size:11px;color:var(--text-muted)">Fee waivers · billing correction</div></div><span class="sla-badge sla-normal">4hr SLA</span></div>
+        <div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="switchTab('hr')"><div><div style="font-size:12.5px;font-weight:600">1 Leave Request — Approval Needed</div><div style="font-size:11px;color:var(--text-muted)">Ms. Fatima Khan · Sat 22 Mar</div></div><span class="sla-badge" style="background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE">Non-urgent</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#1E40AF;display:flex;gap:8px">
+    <span>🔒</span><span><strong>Admin Role Boundary:</strong> You manage scheduling, billing, HR, exceptions, and program publication. Clinical program content, plan change approvals, and therapist supervision require the HOD / Senior Therapist role.</span>
+  </div>
+</div>
+
+<!-- MASTER SCHEDULE -->
+<div class="tab-content" id="tab-schedule">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Master Schedule — Week of 17 Mar 2025</div>
+      <div style="display:flex;gap:8px"><button class="btn btn-ghost">← Prev Week</button><button class="btn btn-ghost">Next Week →</button><button class="btn btn-amber" onclick="alert('Template applied')">Apply Template</button><button class="btn btn-navy" onclick="alert('Add slot form opened')">+ Add Slot</button></div>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="week-table">
+        <thead><tr><th style="width:160px">Therapist</th><th>Mon 17</th><th>Tue 18</th><th>Wed 19</th><th>Thu 20</th><th>Fri 21</th><th style="text-align:center">Weekly Total</th><th style="text-align:center">Status</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Dr. Priya Nair<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">Physio · HOD</span></td><td><div class="day-slot day-ok">10</div></td><td><div class="day-slot day-ok">9</div></td><td><div class="day-slot day-ok">10</div></td><td><div class="day-slot day-ok">8</div></td><td><div class="day-slot day-ok">10</div></td><td style="text-align:center;font-family:'DM Mono',monospace;font-weight:600;color:#2563EB">47</td><td style="text-align:center"><span class="status-pill pill-ok">Full</span></td></tr>
+          <tr><td style="font-weight:600">Ms. Ananya Desai<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">OT</span></td><td><div class="day-slot day-ok">8</div></td><td><div class="day-slot day-ok">9</div></td><td><div class="day-slot day-leave">Leave — 0</div></td><td><div class="day-slot day-ok">8</div></td><td><div class="day-slot day-ok">8</div></td><td style="text-align:center;font-family:'DM Mono',monospace;font-weight:600;color:#2563EB">33</td><td style="text-align:center"><span class="status-pill pill-warn">Leave Wed</span></td></tr>
+          <tr><td style="font-weight:600">Mr. Rohan Mehta<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">Speech</span></td><td><div class="day-slot day-ok">9</div></td><td><div class="day-slot day-ok">10</div></td><td><div class="day-slot day-ok">9</div></td><td><div class="day-slot day-ok">10</div></td><td><div class="day-slot day-ok">9</div></td><td style="text-align:center;font-family:'DM Mono',monospace;font-weight:600;color:#2563EB">47</td><td style="text-align:center"><span class="status-pill pill-ok">Full</span></td></tr>
+          <tr><td style="font-weight:600">Ms. Kavya Shetty<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">ABA</span></td><td><div class="day-slot day-ok">10</div></td><td><div class="day-slot day-ok">9</div></td><td><div class="day-slot day-ok">10</div></td><td><div class="day-slot day-ok">9</div></td><td><div class="day-slot day-ok">10</div></td><td style="text-align:center;font-family:'DM Mono',monospace;font-weight:600;color:#2563EB">48</td><td style="text-align:center"><span class="status-pill pill-ok">Full</span></td></tr>
+          <tr><td style="font-weight:600">Dr. Arjun Pillai<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">Psychology</span></td><td><div class="day-slot day-ok">6</div></td><td><div class="day-slot day-ok">6</div></td><td><div class="day-slot day-ok">6</div></td><td><div class="day-slot day-leave">Leave — 0</div></td><td><div class="day-slot day-ok">6</div></td><td style="text-align:center;font-family:'DM Mono',monospace;font-weight:600;color:#2563EB">24</td><td style="text-align:center"><span class="status-pill pill-warn">Leave Thu</span></td></tr>
+          <tr><td style="font-weight:600">Ms. Sneha Kulkarni<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">SpEd</span></td><td><div class="day-slot day-ok">8</div></td><td><div class="day-slot day-ok">8</div></td><td><div class="day-slot day-ok">8</div></td><td><div class="day-slot day-ok">8</div></td><td><div class="day-slot day-ok">8</div></td><td style="text-align:center;font-family:'DM Mono',monospace;font-weight:600;color:#2563EB">40</td><td style="text-align:center"><span class="status-pill pill-ok">Full</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="padding:12px 16px;background:#F8FAFC;border-top:1px solid var(--border-light);font-size:11.5px;color:var(--text-muted);display:flex;gap:20px">
+      <span>Total this week: <strong style="color:var(--navy)">239 sessions</strong></span>
+      <span>Expected revenue: <strong style="color:var(--green)">₹2,86,800</strong></span>
+      <span>Leave impact: <strong style="color:var(--amber)">2 therapists · 16 missed slots</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- NO-SHOW RECOVERY -->
+<div class="tab-content" id="tab-noshow">
+  <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#991B1B;display:flex;gap:8px">
+    <span>⚠</span><span><strong>No-Show SOP:</strong> System auto-marks no-show at T+15 min. Admin must: (1) attempt parent contact, (2) select charge decision. Decision is permanently logged. <strong>₹3,600 revenue at risk today.</strong></span>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Today's No-Shows — Decision Required</div><span class="pill pill-red">3 Pending</span></div>
+    <div class="noshow-item">
+      <div style="display:flex;align-items:start;justify-content:space-between">
+        <div><div style="font-size:13.5px;font-weight:700">Aryan Thakur</div><div style="font-size:11.5px;color:var(--text-muted)">OT — 10:00 AM · Ms. Ananya Desai · Auto-flagged 10:15 AM</div><div style="margin-top:6px;font-size:12px">Package: <strong>6/24 sessions</strong> · Outstanding: <strong style="color:#DC2626">₹2,400</strong></div></div>
+        <span class="status-pill pill-danger">No-Show · ₹1,200 at risk</span>
+      </div>
+      <div class="action-chips">
+        <button class="action-chip chip-call" onclick="alert('📞 Calling Aryan Thakur parent\nCall log recorded: '+new Date().toLocaleTimeString())">📞 Call Parent</button>
+        <button class="action-chip chip-charge" onclick="noShowAction('Aryan Thakur','Full Charge','₹1,200 charged and invoiced')">💳 Charge Full ₹1,200</button>
+        <button class="action-chip chip-reschedule" onclick="noShowAction('Aryan Thakur','Reschedule — No Charge','Session credited to package · rescheduled Wed 19 Mar')">📅 Reschedule — No Charge</button>
+        <button class="action-chip chip-waive" onclick="noShowAction('Aryan Thakur','Waive','Sent to exception approval queue')">⚖ Waive (Needs Approval)</button>
+      </div>
+    </div>
+    <div class="noshow-item">
+      <div style="display:flex;align-items:start;justify-content:space-between">
+        <div><div style="font-size:13.5px;font-weight:700">Zara Sheikh</div><div style="font-size:11.5px;color:var(--text-muted)">Audio Therapy — 11:00 AM · Mr. Rohan Mehta · Auto-flagged 11:15 AM</div><div style="margin-top:6px;font-size:12px">Package: <strong>12/20 sessions</strong> · Outstanding: <strong style="color:var(--green)">₹0</strong></div><div style="margin-top:4px;font-size:11.5px;color:#1D4ED8">Parent SMS: "Running late — Bandra traffic — 30 min"</div></div>
+        <span class="status-pill pill-warn">Late — Decision Pending</span>
+      </div>
+      <div class="action-chips">
+        <button class="action-chip chip-call" onclick="alert('📞 Calling Zara Sheikh parent')">📞 Call Parent</button>
+        <button class="action-chip chip-charge" onclick="noShowAction('Zara Sheikh','Partial Charge','₹600 partial charge applied')">💳 Partial Charge ₹600</button>
+        <button class="action-chip chip-reschedule" onclick="noShowAction('Zara Sheikh','Late — Partial Session','30 min delivered · full charge applied')">✓ Mark Late — Partial Session</button>
+        <button class="action-chip chip-waive" onclick="noShowAction('Zara Sheikh','Waive — First Occurrence','First late — waived as goodwill · logged')">⚖ Waive (1st Occurrence)</button>
+      </div>
+    </div>
+    <div class="noshow-item">
+      <div style="display:flex;align-items:start;justify-content:space-between">
+        <div><div style="font-size:13.5px;font-weight:700">Sana Qureshi</div><div style="font-size:11.5px;color:var(--text-muted)">ABA Therapy — 9:00 AM · Ms. Kavya Shetty · Auto-flagged 9:15 AM</div><div style="margin-top:6px;font-size:12px">Package: <strong>18/60 sessions</strong> · Outstanding: <strong style="color:#DC2626">₹3,600</strong></div><div style="margin-top:4px;font-size:11.5px;color:#DC2626">⚠ 3rd no-show this month — automatic escalation flag</div></div>
+        <span class="status-pill pill-danger">3rd No-Show · Escalate</span>
+      </div>
+      <div class="action-chips">
+        <button class="action-chip chip-call" onclick="alert('📞 Escalation call — Sana Qureshi parent\nScript: 3rd no-show warning activated')">📞 Escalation Call</button>
+        <button class="action-chip chip-charge" onclick="noShowAction('Sana Qureshi','Full Charge + Warning','₹1,200 charged · warning letter generated')">💳 Full Charge + Warning Letter</button>
+        <button class="action-chip chip-reschedule" onclick="noShowAction('Sana Qureshi','Charge + Reschedule','₹600 charge + rescheduled · package maintained')">📅 Charge + Reschedule</button>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">No-Show History — This Month</div></div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+        <div style="text-align:center;padding:14px;background:var(--surface);border-radius:8px"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--rose)">18</div><div style="font-size:11px;color:var(--text-muted);margin-top:4px">Total No-Shows</div></div>
+        <div style="text-align:center;padding:14px;background:var(--surface);border-radius:8px"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--amber)">6.9%</div><div style="font-size:11px;color:var(--text-muted);margin-top:4px">No-Show Rate</div></div>
+        <div style="text-align:center;padding:14px;background:#F0FDF4;border-radius:8px"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--green)">₹14,400</div><div style="font-size:11px;color:var(--text-muted);margin-top:4px">Charges Recovered</div></div>
+        <div style="text-align:center;padding:14px;background:#EFF6FF;border-radius:8px"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:#2563EB">₹7,200</div><div style="font-size:11px;color:var(--text-muted);margin-top:4px">Waived (Lost)</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM PUBLICATION -->
+<div class="tab-content" id="tab-publication">
+  <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#166534;display:flex;gap:8px">
+    <span>✓</span><span><strong>Publication Gate:</strong> These programs are clinically approved by HOD. Your role: verify billing amount, link package, publish to activate scheduling. You cannot modify clinical content — only HOD can edit activities and milestones.</span>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Programs Awaiting Admin Publication</div><span class="pill pill-amber">2 Ready</span></div>
+    <div class="pub-item">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+        <div><div style="font-size:14px;font-weight:700">Riya Patel — Global Developmental Delay</div><div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">HOD Approval: Dr. Priya Nair · 15 Mar 2025 · PRG-2025-009</div></div>
+        <span class="status-pill pill-ok">HOD Approved</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;font-size:12.5px">
+        <div style="padding:10px;background:var(--surface);border-radius:8px"><div style="color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Domains</div><div style="font-weight:600">Physio + OT + EI</div></div>
+        <div style="padding:10px;background:var(--surface);border-radius:8px"><div style="color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Total Sessions</div><div style="font-weight:600">40 sessions</div></div>
+        <div style="padding:10px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px"><div style="color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Billing Amount</div><div style="font-weight:700;color:var(--green)">₹48,000</div></div>
+      </div>
+      <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:10px 12px;font-size:12px;color:#1E40AF;margin-bottom:10px">🔒 Clinical content is locked. Read-only for Admin. Raise modifications to HOD.</div>
+      <div style="display:flex;justify-content:flex-end;gap:8px"><button class="btn btn-ghost">View Clinical Content</button><button class="btn btn-green" onclick="publishProgram('Riya Patel','₹48,000')">📤 Publish & Activate — ₹48,000</button></div>
+    </div>
+    <div class="pub-item">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+        <div><div style="font-size:14px;font-weight:700">Neel Sharma — ADHD + Fine Motor Delay</div><div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">HOD Approval: Dr. Priya Nair · 16 Mar 2025 · PRG-2025-010</div></div>
+        <span class="status-pill pill-ok">HOD Approved</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;font-size:12.5px">
+        <div style="padding:10px;background:var(--surface);border-radius:8px"><div style="color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Domains</div><div style="font-weight:600">OT + Behavioral</div></div>
+        <div style="padding:10px;background:var(--surface);border-radius:8px"><div style="color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Total Sessions</div><div style="font-weight:600">24 sessions</div></div>
+        <div style="padding:10px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px"><div style="color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Billing Amount</div><div style="font-weight:700;color:var(--green)">₹28,800</div></div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px"><button class="btn btn-ghost">View Clinical Content</button><button class="btn btn-green" onclick="publishProgram('Neel Sharma','₹28,800')">📤 Publish & Activate — ₹28,800</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXCEPTIONS -->
+<div class="tab-content" id="tab-exceptions">
+  <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#92400E;display:flex;gap:8px">
+    <span>ℹ</span><span><strong>Exception SOP:</strong> All fee waivers, discounts, billing corrections, and schedule overrides require Admin approval. Each decision is permanently logged with approving staff name and timestamp. Front Desk cannot apply any exception without this approval.</span>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Exceptions Pending Approval</div><span class="pill pill-amber">3 Pending · SLA: 4 hours</span></div>
+    <div class="exc-item">
+      <div style="display:flex;align-items:start;justify-content:space-between"><div><div class="exc-title">Sibling Discount — New Registration</div><div class="exc-meta">Front Desk (Pooja Mane) · EX-2025-041 · 17 Mar 10:22 AM</div></div><span class="sla-badge sla-urgent">2h 38m left</span></div>
+      <div class="exc-detail">10% sibling discount on program package for Diya Choudhary (new patient) — elder sibling Rohan Choudhary is an existing patient (3 years). Policy allows up to 10% at Admin discretion. Impact: ₹28,800 × 10% = ₹2,880 discount.</div>
+      <div class="exc-actions"><button class="btn btn-ghost">View Policy</button><button class="btn btn-red" onclick="resolveException('EX-2025-041','Rejected')">✗ Reject</button><button class="btn btn-green" onclick="resolveException('EX-2025-041','Approved — 10% sibling discount applied')">✓ Approve ₹2,880 Discount</button></div>
+    </div>
+    <div class="exc-item">
+      <div style="display:flex;align-items:start;justify-content:space-between"><div><div class="exc-title">Billing Correction — Double Payment</div><div class="exc-meta">Front Desk (Pooja Mane) · EX-2025-042 · 17 Mar 09:44 AM</div></div><span class="sla-badge sla-urgent">2h 16m left</span></div>
+      <div class="exc-detail">Double payment recorded for Zara Sheikh on 15 Mar — two entries of ₹1,200 for a single session (INV-3812 and INV-3813). System flagged on reconciliation. Refund ₹1,200 or credit to package.</div>
+      <div class="exc-actions"><button class="btn btn-ghost">View Records</button><button class="btn btn-blue" onclick="resolveException('EX-2025-042','Credit Applied — 1 session added to package')">+ Credit 1 Session</button><button class="btn btn-green" onclick="resolveException('EX-2025-042','Refund Processed — ₹1,200 · 3-5 days')">₹ Process Refund</button></div>
+    </div>
+    <div class="exc-item">
+      <div style="display:flex;align-items:start;justify-content:space-between"><div><div class="exc-title">Recurring Slot Block — 8 Weeks</div><div class="exc-meta">Parent of Aarav Sharma · EX-2025-043 · 17 Mar 09:10 AM</div></div><span class="sla-badge sla-normal">6h left</span></div>
+      <div class="exc-detail">Parent requesting Monday 9:00 AM OT slot blocked for Aarav Sharma for 8 weeks without per-session payment confirmation. Current policy requires confirmation 24 hours prior. Exception to standard policy.</div>
+      <div class="exc-actions"><button class="btn btn-red" onclick="resolveException('EX-2025-043','Rejected — Policy violation')">✗ Reject</button><button class="btn btn-amber" onclick="resolveException('EX-2025-043','Conditional — 4 weeks + advance payment')">⚖ Conditional (4 Weeks)</button><button class="btn btn-green" onclick="resolveException('EX-2025-043','Approved — 8-week block authorised')">✓ Approve Full 8 Weeks</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- CANCELLATIONS -->
+<div class="tab-content" id="tab-cancellations">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Cancellation Revenue Logic — This Month</div></div>
+      <div class="card-body">
+        <div style="margin-bottom:16px"><div class="cancel-bar-label"><span style="font-weight:500">Clinic Retained (Refilled Slots)</span><span style="font-weight:700;color:var(--green)">₹18,000</span></div><div class="cancel-bar-wrap"><div class="cancel-bar-fill" style="width:65%;background:var(--green)"></div></div><div style="font-size:11px;color:var(--text-muted)">Cancelled slots filled from waitlist — clinic keeps full revenue</div></div>
+        <div style="margin-bottom:16px"><div class="cancel-bar-label"><span style="font-weight:500">Therapist Credited (Idle Slots)</span><span style="font-weight:700;color:#2563EB">₹9,600</span></div><div class="cancel-bar-wrap"><div class="cancel-bar-fill" style="width:35%;background:#2563EB"></div></div><div style="font-size:11px;color:var(--text-muted)">Cancelled slot not refilled — therapist receives ₹600 idle compensation</div></div>
+        <div style="padding:12px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;font-size:12px;color:#78350F"><strong>Shared incentive:</strong> Therapists notify front desk early to maximise refill window — idle slot compensation aligns their interest with clinic revenue recovery.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Cancellation Stats — This Month</div></div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="padding:12px;background:var(--surface);border-radius:8px;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--rose)">47</div><div style="font-size:11px;color:var(--text-muted);margin-top:3px">Total Cancellations</div></div>
+          <div style="padding:12px;background:#F0FDF4;border-radius:8px;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--green)">30</div><div style="font-size:11px;color:var(--text-muted);margin-top:3px">Slots Refilled</div></div>
+          <div style="padding:12px;background:#FFFBEB;border-radius:8px;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--amber)">17</div><div style="font-size:11px;color:var(--text-muted);margin-top:3px">Idle Slots</div></div>
+          <div style="padding:12px;background:#EFF6FF;border-radius:8px;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:#2563EB">64%</div><div style="font-size:11px;color:var(--text-muted);margin-top:3px">Refill Rate</div></div>
+        </div>
+        <div style="margin-top:12px;padding:10px 12px;background:var(--surface);border-radius:8px;font-size:12px;color:var(--text-secondary)"><strong>Top reasons:</strong> Traffic/travel (38%), Illness (24%), Family emergency (18%), No reason given (20%)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HR -->
+<div class="tab-content" id="tab-hr">
+  <div class="card">
+    <div class="card-header"><div class="card-title">Therapist HR — Attendance &amp; Payroll Preview</div><button class="btn btn-amber" onclick="alert('Payroll exported for March 2025')">Export Payroll</button></div>
+    <table class="hr-table">
+      <thead><tr><th>Therapist</th><th>Role</th><th>Utilisation</th><th>Note SLA</th><th>Sessions (MTD)</th><th>Leave</th><th>Payout (MTD)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600">Dr. Priya Nair</td><td style="color:var(--text-muted)">Physio · HOD</td><td><div class="progress-mini"><span style="font-weight:600;color:var(--green)">94%</span><div class="prog-wrap"><div class="prog-fill" style="width:94%"></div></div></div></td><td><span class="status-pill pill-ok">100%</span></td><td style="font-family:'DM Mono',monospace;font-weight:600">187</td><td>0</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹74,800</td><td><span class="status-pill pill-ok">Verified</span></td></tr>
+        <tr><td style="font-weight:600">Ms. Ananya Desai</td><td style="color:var(--text-muted)">OT</td><td><div class="progress-mini"><span style="font-weight:600;color:var(--green)">92%</span><div class="prog-wrap"><div class="prog-fill" style="width:92%"></div></div></div></td><td><span class="status-pill pill-ok">100%</span></td><td style="font-family:'DM Mono',monospace;font-weight:600">147</td><td>1 (approved)</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹58,800</td><td><span class="status-pill pill-ok">Verified</span></td></tr>
+        <tr><td style="font-weight:600">Mr. Rohan Mehta</td><td style="color:var(--text-muted)">Speech</td><td><div class="progress-mini"><span style="font-weight:600;color:#2563EB">88%</span><div class="prog-wrap"><div class="prog-fill" style="width:88%;background:#2563EB"></div></div></div></td><td><span class="status-pill pill-ok">96%</span></td><td style="font-family:'DM Mono',monospace;font-weight:600">162</td><td>0</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹64,800</td><td><span class="status-pill pill-warn">Pending — 3 notes</span></td></tr>
+        <tr><td style="font-weight:600">Ms. Kavya Shetty</td><td style="color:var(--text-muted)">ABA</td><td><div class="progress-mini"><span style="font-weight:600;color:var(--amber)">81%</span><div class="prog-wrap"><div class="prog-fill" style="width:81%;background:var(--amber)"></div></div></div></td><td><span class="status-pill pill-warn">84%</span></td><td style="font-family:'DM Mono',monospace;font-weight:600">158</td><td>0</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹63,200</td><td><span class="status-pill pill-warn">Pending — compliance</span></td></tr>
+        <tr><td style="font-weight:600">Mr. Vikram Iyer</td><td style="color:var(--text-muted)">Neuro Physio</td><td><div class="progress-mini"><span style="font-weight:600;color:var(--amber)">79%</span><div class="prog-wrap"><div class="prog-fill" style="width:79%;background:var(--amber)"></div></div></div></td><td><span class="status-pill pill-danger">78%</span></td><td style="font-family:'DM Mono',monospace;font-weight:600">134</td><td>0</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">₹53,600</td><td><span class="status-pill pill-danger">Hold — compliance</span></td></tr>
+        <tr><td style="font-weight:600">Ms. Sneha Kulkarni</td><td style="color:var(--text-muted)">SpEd</td><td><div class="progress-mini"><span style="font-weight:600;color:var(--green)">91%</span><div class="prog-wrap"><div class="prog-fill" style="width:91%"></div></div></div></td><td><span class="status-pill pill-ok">98%</span></td><td style="font-family:'DM Mono',monospace;font-weight:600">155</td><td>0</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹62,000</td><td><span class="status-pill pill-ok">Verified</span></td></tr>
+      </tbody>
+    </table>
+    <div style="padding:12px 16px;background:#FEF2F2;border-top:1px solid #FECACA;font-size:12px;color:#991B1B">⚠ Mr. Vikram Iyer payout on hold — note compliance below 85% threshold. Clinical deviation (38%) flagged separately to HOD.</div>
+  </div>
+  <div class="blocked-panel"><div style="font-size:36px;margin-bottom:10px;opacity:.3">🔒</div><div style="font-size:14px;font-weight:700;color:var(--text-muted)">Clinical Performance Metrics</div><div style="font-size:12px;color:var(--text-muted);margin-top:4px">Program deviation rates, patient outcomes, and milestone adherence are visible only to HOD / Senior Therapist role.</div></div>
+</div>
+```
+
+  </div>
+</main>
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  const t=document.querySelector('[data-tab="'+id+'"]');if(t)t.classList.add('active');
+  const c=document.getElementById('tab-'+id);if(c)c.classList.add('active');
+  const titles={overview:'Admin Overview',schedule:'Master Schedule',noshow:'No-Show Recovery',publication:'Program Publication',exceptions:'Exceptions Queue',cancellations:'Cancellation Revenue',hr:'Therapist HR & Payroll'};
+  document.getElementById('topbar-title').textContent=titles[id]||id;
+}
+function noShowAction(name,d,detail){alert('✅ Decision logged for '+name+':\n'+d+'\n'+(detail||'')+'\n\nTimestamp: '+new Date().toLocaleString()+'\nLogged by: Sunita Rao · Audit trail updated.');}
+function resolveException(id,d){alert('✅ Exception '+id+':\n'+d+'\n\nTimestamp: '+new Date().toLocaleString()+'\nAuthorised by: Sunita Rao · Front desk notified.');}
+function publishProgram(n,amt){alert('✅ Program for '+n+' published!\n\n• Scheduling activated\n• Package '+amt+' billing linked\n• Parent portal updated\n• Parent SMS sent\n\nAudit: Sunita Rao · '+new Date().toLocaleString());}
+</script>
+</body>
+</html>
