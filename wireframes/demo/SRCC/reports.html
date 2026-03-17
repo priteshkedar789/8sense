@@ -351,7 +351,7 @@ body{background:#fff}
           <div class="report-clinic-name">RehabCare Clinic</div>
           <div class="report-clinic-meta">
             42, Marine Drive Complex, Mumbai — 400002<br>
-            Phone: +91 22-1234-5678 · Email: reports@rehabcare.in · GSTIN: 27AABCR1234D1ZX
+            Phone: +91 22-1234-5678 · Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="255740554a5751566557404d4447464457400b4c4b">[email&#160;protected]</a> · GSTIN: 27AABCR1234D1ZX
           </div>
         </div>
         <div class="report-meta-block">
@@ -443,7 +443,7 @@ body{background:#fff}
             <tr><td>9</td><td>03 Mar</td><td>Ms. Kavya</td><td>ABA</td><td>4</td><td>4</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
             <tr><td>8</td><td>01 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
             <tr><td>7</td><td>27 Feb</td><td>Mr. Rohan</td><td>Speech</td><td>3</td><td>2</td><td style="color:var(--amber)">1 (behaviour)</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-            <tr><td>6</td><td>25 Feb</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></div></td></tr>
+            <tr><td>6</td><td>25 Feb</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
           </tbody>
           <tfoot>
             <tr><td colspan="4"><strong>Total (Sessions 6–15)</strong></td><td><strong>44</strong></td><td><strong>40</strong></td><td style="color:var(--amber)"><strong>4 deviations</strong></td><td><strong>100% complete</strong></td></tr>
@@ -1087,55 +1087,58 @@ body{background:#fff}
   </div><!-- /content -->
 </main>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 const reportLabels = {
-  'patient-progress': 'Patient Progress Report',
-  'therapist-performance': 'Therapist Performance Scorecard',
-  'clinic-ops': 'Clinic Operations Report',
-  'session-compliance': 'Session Compliance Report',
-  'noshow-report': 'No-Show & Cancellation Report',
-  'financial': 'Financial Summary Report',
-  'discharge': 'Discharge Summary'
+‘patient-progress’: ‘Patient Progress Report’,
+‘therapist-performance’: ‘Therapist Performance Scorecard’,
+‘clinic-ops’: ‘Clinic Operations Report’,
+‘session-compliance’: ‘Session Compliance Report’,
+‘noshow-report’: ‘No-Show & Cancellation Report’,
+‘financial’: ‘Financial Summary Report’,
+‘discharge’: ‘Discharge Summary’
 };
 
 function showReport(id) {
-  // Update report views
-  document.querySelectorAll('.report-view').forEach(v => v.classList.remove('active'));
-  const target = document.getElementById('report-' + id);
-  if (target) target.classList.add('active');
+// Update report views
+document.querySelectorAll(’.report-view’).forEach(v => v.classList.remove(‘active’));
+const target = document.getElementById(‘report-’ + id);
+if (target) target.classList.add(‘active’);
 
-  // Update nav
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const btn = document.querySelector('[data-report="' + id + '"]');
-  if (btn) btn.classList.add('active');
+// Update nav
+document.querySelectorAll(’.nav-item’).forEach(n => n.classList.remove(‘active’));
+const btn = document.querySelector(’[data-report=”’ + id + ‘”]’);
+if (btn) btn.classList.add(‘active’);
 
-  // Update breadcrumb
-  document.getElementById('breadcrumb-label').textContent = reportLabels[id] || id;
+// Update breadcrumb
+document.getElementById(‘breadcrumb-label’).textContent = reportLabels[id] || id;
 
-  // Show/hide patient filter based on report type
-  const patientFilterRow = document.querySelector('.report-toolbar-left');
-  window.scrollTo(0, 0);
+// Show/hide patient filter based on report type
+const patientFilterRow = document.querySelector(’.report-toolbar-left’);
+window.scrollTo(0, 0);
 }
 
 // Patient data for dynamic update
 const patientData = {
-  aarav:  { name: 'Aarav Sharma',    init: 'AS', pid: 'PAT-2025-0012', diag: 'ASD Level 2 + SPD',  sessions: '15', total: '30', pct: '50%',  fill: '50%' },
-  kabir:  { name: 'Kabir Malhotra',  init: 'KM', pid: 'PAT-2024-0089', diag: 'Cerebral Palsy (CP)', sessions: '32', total: '50', pct: '64%',  fill: '64%' },
-  meera:  { name: 'Meera Joshi',     init: 'MJ', pid: 'PAT-2024-0101', diag: 'ASD + SPD',           sessions: '18', total: '60', pct: '30%',  fill: '30%' },
-  zara:   { name: 'Zara Sheikh',     init: 'ZS', pid: 'PAT-2025-0028', diag: 'Expressive Language Delay', sessions: '12', total: '20', pct: '60%', fill: '60%' },
-  ishaan: { name: 'Ishaan Nair',     init: 'IN', pid: 'PAT-2025-0019', diag: 'ADHD + Fine Motor',   sessions: '22', total: '30', pct: '73%',  fill: '73%' },
+aarav:  { name: ‘Aarav Sharma’,    init: ‘AS’, pid: ‘PAT-2025-0012’, diag: ‘ASD Level 2 + SPD’,  sessions: ‘15’, total: ‘30’, pct: ‘50%’,  fill: ‘50%’ },
+kabir:  { name: ‘Kabir Malhotra’,  init: ‘KM’, pid: ‘PAT-2024-0089’, diag: ‘Cerebral Palsy (CP)’, sessions: ‘32’, total: ‘50’, pct: ‘64%’,  fill: ‘64%’ },
+meera:  { name: ‘Meera Joshi’,     init: ‘MJ’, pid: ‘PAT-2024-0101’, diag: ‘ASD + SPD’,           sessions: ‘18’, total: ‘60’, pct: ‘30%’,  fill: ‘30%’ },
+zara:   { name: ‘Zara Sheikh’,     init: ‘ZS’, pid: ‘PAT-2025-0028’, diag: ‘Expressive Language Delay’, sessions: ‘12’, total: ‘20’, pct: ‘60%’, fill: ‘60%’ },
+ishaan: { name: ‘Ishaan Nair’,     init: ‘IN’, pid: ‘PAT-2025-0019’, diag: ‘ADHD + Fine Motor’,   sessions: ‘22’, total: ‘30’, pct: ‘73%’,  fill: ‘73%’ },
 };
 
 function updatePatient(key) {
-  const d = patientData[key];
-  if (!d) return;
-  const el = (id) => document.getElementById(id);
-  if (el('rpt-avatar'))       el('rpt-avatar').textContent = d.init;
-  if (el('rpt-patient-name')) el('rpt-patient-name').textContent = d.name;
-  if (el('rpt-pid'))          el('rpt-pid').textContent = d.pid;
-  if (el('rpt-diagnosis'))    el('rpt-diagnosis').textContent = d.diag;
-  if (el('rpt-sessions'))     el('rpt-sessions').innerHTML = d.sessions + ' <span style="font-size:1rem;color:var(--text-muted)">/ ' + d.total + '</span>';
-  if (el('rpt-prog-fill'))    el('rpt-prog-fill').style.width = d.fill;
+const d = patientData[key];
+if (!d) return;
+const el = (id) => document.getElementById(id);
+if (el(‘rpt-avatar’))       el(‘rpt-avatar’).textContent = d.init;
+if (el(‘rpt-patient-name’)) el(‘rpt-patient-name’).textContent = d.name;
+if (el(‘rpt-pid’))          el(‘rpt-pid’).textContent = d.pid;
+if (el(‘rpt-diagnosis’))    el(‘rpt-diagnosis’).textContent = d.diag;
+if (el(‘rpt-sessions’))
+el(‘rpt-sessions’).innerHTML = d.sessions + ’ <span style="font-size:1rem;color:var(--text-muted)">/ ’ + d.total + ‘</span>’;
+if (el(‘rpt-prog-fill’))
+el(‘rpt-prog-fill’).style.width = d.fill;
 }
 </script>
 
