@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inquiry & CRM — RehabCare Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1F3A;--navy-mid:#142F54;--teal:#0D9488;
+  --amber:#C9841A;--rose:#DC2626;--green:#059669;--sky:#0EA5E9;
+  --surface:#F4F6FB;--surface2:#EDF0F7;--border:#DDE3ED;--border-light:#EEF1F6;
+  --text-primary:#0B1F3A;--text-secondary:#4A5568;--text-muted:#8896A9;--sidebar:240px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text-primary);min-height:100vh;display:flex}
+.sidebar{width:var(--sidebar);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
+.sb-brand{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.sb-bwrap{display:flex;align-items:center;gap:10px}
+.sb-mark{width:34px;height:34px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-weight:700}
+.sb-name{font-size:13px;font-weight:600;color:#fff}
+.sb-sub{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
+.sb-role{margin:12px;padding:10px 12px;background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3);border-radius:8px}
+.role-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.4)}
+.role-nm{font-size:12px;font-weight:600;color:#7DD3FC;margin-top:2px}
+.nav-sec{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:16px 16px 6px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 12px;margin:0 6px 2px;border-radius:8px;color:rgba(255,255,255,0.5);font-size:12.5px;cursor:pointer;text-decoration:none;transition:all 0.15s}
+.nav-item:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.9)}
+.nav-item.active{background:rgba(14,165,233,0.25);color:#fff;font-weight:500}
+.nav-item svg{width:15px;height:15px;opacity:0.7;flex-shrink:0}
+.nav-badge{margin-left:auto;background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px}
+.sb-footer{margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,0.07)}
+.u-mini{display:flex;align-items:center;gap:9px}
+.u-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.u-name{font-size:11.5px;font-weight:500;color:#fff}
+.u-role{font-size:10px;color:rgba(255,255,255,0.35)}
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50}
+.topbar-title{font-size:14.5px;font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.pill-sky{background:#F0F9FF;color:#0369A1;border:1px solid #BAE6FD}
+.pill-amber{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.pill-red{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA}
+.pill-green{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
+.content{flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+
+/* TABS */
+.tabs{display:flex;gap:2px;background:var(–surface2);border-radius:10px;padding:4px}
+.tab{padding:7px 16px;border-radius:8px;font-size:12.5px;font-weight:500;color:var(–text-muted);cursor:pointer;transition:all 0.15s;border:none;background:none;font-family:‘DM Sans’,sans-serif;display:flex;align-items:center;gap:5px}
+.tab.active{background:#fff;color:var(–text-primary);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+.tab-badge{background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px}
+.tab-content{display:none}
+.tab-content.active{display:flex;flex-direction:column;gap:14px}
+
+/* CARDS */
+.card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden}
+.card-hd{padding:13px 18px;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600;color:var(–text-primary)}
+.card-body{padding:18px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
+.btn-sky{background:var(–sky);color:#fff}.btn-sky:hover{background:#0284C7}
+.btn-green{background:var(–green);color:#fff}.btn-green:hover{background:#047857}
+.btn-red{background:var(–rose);color:#fff}.btn-red:hover{background:#B91C1C}
+.btn-ghost{background:#fff;color:var(–text-secondary);border:1px solid var(–border)}.btn-ghost:hover{background:var(–surface)}
+
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.kpi-card{background:#fff;border:1px solid var(–border);border-radius:10px;padding:14px 16px}
+.kpi-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);margin-bottom:4px}
+.kpi-val{font-family:‘DM Mono’,monospace;font-size:22px;font-weight:500;line-height:1}
+.kpi-sub{font-size:10.5px;color:var(–text-muted);margin-top:4px}
+
+/* FUNNEL */
+.funnel{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.funnel-step{display:flex;align-items:center;gap:12px}
+.funnel-bar-wrap{flex:1;height:28px;background:var(–surface2);border-radius:6px;overflow:hidden;position:relative}
+.funnel-bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:11.5px;font-weight:700;color:#fff;transition:width 0.5s}
+.funnel-lbl{width:100px;font-size:12px;font-weight:600;color:var(–text-primary);text-align:right}
+.funnel-count{width:40px;font-family:‘DM Mono’,monospace;font-size:13px;font-weight:600;text-align:right}
+.funnel-pct{width:50px;font-size:11px;color:var(–text-muted);text-align:right}
+
+/* INQUIRY ITEMS */
+.inq-item{padding:14px 18px;border-bottom:1px solid var(–border-light)}
+.inq-item:last-child{border-bottom:none}
+.inq-header{display:flex;align-items:start;justify-content:space-between;margin-bottom:8px}
+.inq-name{font-size:13.5px;font-weight:700;color:var(–text-primary)}
+.inq-meta{font-size:11.5px;color:var(–text-muted);margin-top:2px}
+.inq-detail{font-size:12.5px;color:var(–text-secondary);line-height:1.5;margin-bottom:8px}
+.inq-footer{display:flex;align-items:center;justify-content:space-between}
+.sla-timer{font-family:‘DM Mono’,monospace;font-size:12px;font-weight:600;padding:3px 9px;border-radius:6px}
+.sla-urgent{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA}
+.sla-warn{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.sla-ok{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
+.inq-actions{display:flex;gap:6px}
+
+/* FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-field{display:flex;flex-direction:column;gap:4px}
+.form-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted)}
+.form-input{padding:9px 12px;border:1px solid var(–border);border-radius:7px;font-size:13px;font-family:‘DM Sans’,sans-serif;color:var(–text-primary);background:#fff;outline:none;transition:border-color 0.15s}
+.form-input:focus{border-color:var(–sky)}
+.form-input::placeholder{color:var(–text-muted)}
+.form-select{padding:9px 12px;border:1px solid var(–border);border-radius:7px;font-size:13px;font-family:‘DM Sans’,sans-serif;color:var(–text-primary);background:#fff;outline:none;appearance:none;cursor:pointer}
+.form-select:focus{border-color:var(–sky)}
+.form-full{grid-column:1/-1}
+.source-chips{display:flex;gap:8px;flex-wrap:wrap}
+.source-chip{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid var(–border);cursor:pointer;transition:all 0.15s;color:var(–text-secondary);background:#fff}
+.source-chip.selected{background:var(–sky);color:#fff;border-color:var(–sky)}
+
+/* STATUS */
+.sp{font-size:11px;font-weight:500;padding:2px 9px;border-radius:10px;border:1px solid;white-space:nowrap}
+.sp-new{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+.sp-contacted{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
+.sp-eval{background:#F5F3FF;color:#5B21B6;border-color:#DDD6FE}
+.sp-conv{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
+.sp-lost{background:#FEF2F2;color:#991B1B;border-color:#FECACA}
+
+/* SOURCE PIE FAKE */
+.source-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.src-item{padding:10px 12px;background:var(–surface);border:1px solid var(–border-light);border-radius:8px;display:flex;align-items:center;gap:10px}
+.src-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.src-lbl{font-size:12px;font-weight:600;color:var(–text-primary);flex:1}
+.src-count{font-family:‘DM Mono’,monospace;font-size:13px;font-weight:600}
+.src-pct{font-size:11px;color:var(–text-muted)}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+</style>
+
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-bwrap">
+      <div class="sb-mark">RC</div>
+      <div><div class="sb-name">RehabCare Clinic</div><div class="sb-sub">Therapy Management</div></div>
+    </div>
+  </div>
+  <div class="sb-role">
+    <div class="role-lbl">Module</div>
+    <div class="role-nm">Inquiry &amp; CRM — New</div>
+  </div>
+  <div style="padding:8px 6px;flex:1">
+    <div class="nav-sec">Inquiry CRM</div>
+    <a class="nav-item active" href="#" onclick="switchTab('dashboard');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="6" height="6" rx="1.2"/><rect x="11" y="3" width="6" height="6" rx="1.2"/><rect x="3" y="11" width="6" height="6" rx="1.2"/><rect x="11" y="11" width="6" height="6" rx="1.2"/></svg>Dashboard
+    </a>
+    <a class="nav-item" href="#" onclick="switchTab('new');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 4v12M4 10h12"/></svg>Log New Inquiry
+    </a>
+    <a class="nav-item" href="#" onclick="switchTab('pipeline');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h14M6 3v4M14 3v4M3 13h14M6 13v4M14 13v4"/></svg>Inquiry Pipeline <span class="nav-badge">4</span>
+    </a>
+    <a class="nav-item" href="#" onclick="switchTab('funnel');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h14l-5.5 7v5.5l-3-1.5V11z"/></svg>Conversion Funnel
+    </a>
+    <div class="nav-sec">Navigation</div>
+    <a class="nav-item" href="front-desk.html">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="14" height="14" rx="2"/></svg>Front Desk
+    </a>
+    <a class="nav-item" href="index.html">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Main Menu
+    </a>
+  </div>
+  <div class="sb-footer">
+    <div class="u-mini">
+      <div class="u-av">PM</div>
+      <div><div class="u-name">Pooja Mane</div><div class="u-role">Front Desk · CRM Access</div></div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="topbar-title" id="topbar-title">Inquiry Dashboard</div>
+      <div class="pill pill-sky" style="font-size:10px;padding:2px 8px">New Module</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="pill pill-amber">4 Follow-Ups Overdue</div>
+      <button class="btn btn-sky" onclick="switchTab('new')">+ Log New Inquiry</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="tabs">
+      <button class="tab active" data-tab="dashboard" onclick="switchTab('dashboard')">Dashboard</button>
+      <button class="tab" data-tab="new" onclick="switchTab('new')">+ New Inquiry</button>
+      <button class="tab" data-tab="pipeline" onclick="switchTab('pipeline')">Pipeline <span class="tab-badge">4</span></button>
+      <button class="tab" data-tab="funnel" onclick="switchTab('funnel')">Conversion Funnel</button>
+    </div>
+
+```
+<!-- ═══ DASHBOARD ═══ -->
+<div class="tab-content active" id="tab-dashboard">
+  <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#0369A1;display:flex;gap:8px">
+    <span>ℹ</span>
+    <span><strong>SOP Gap Closed:</strong> Every inquiry — walk-in, phone, referral, or WhatsApp — is now captured here. Without this module, conversion rates are invisible and follow-ups are missed. This screen gives RehabCare a closed-loop inquiry-to-registration pipeline.</span>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid var(--sky)"><div class="kpi-lbl">New This Month</div><div class="kpi-val" style="color:var(--sky)">18</div><div class="kpi-sub">Total inquiries logged</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-lbl">Converted</div><div class="kpi-val" style="color:var(--green)">11</div><div class="kpi-sub">61% conversion rate</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-lbl">In Progress</div><div class="kpi-val" style="color:var(--amber)">4</div><div class="kpi-sub">Follow-up pending</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-lbl">Lost</div><div class="kpi-val" style="color:var(--rose)">3</div><div class="kpi-sub">Not converted</div></div>
+    <div class="kpi-card" style="border-top:3px solid #7C3AED"><div class="kpi-lbl">Avg Response Time</div><div class="kpi-val" style="font-size:18px;color:#7C3AED">2.4h</div><div class="kpi-sub">SLA target: 4 hours</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Overdue Follow-Ups — Action Required</div><span style="font-size:11px;font-weight:600;color:#991B1B;background:#FEF2F2;border:1px solid #FECACA;padding:3px 9px;border-radius:8px">4 Overdue</span></div>
+      <div class="inq-item">
+        <div class="inq-header">
+          <div><div class="inq-name">Neel Sharma (Parent: Mrs. Kavita Sharma)</div><div class="inq-meta">INQ-2025-041 · Walk-in · 14 Mar 2025</div></div>
+          <span class="sp sp-contacted">Contacted</span>
+        </div>
+        <div class="inq-detail">Inquiry: ADHD + fine motor delays. 6-year-old boy. Referred by Dr. Suresh Menon. Initial call made 14 Mar — parent asked for brochure. No follow-up since.</div>
+        <div class="inq-footer">
+          <span class="sla-timer sla-urgent">⏱ 3 days overdue</span>
+          <div class="inq-actions">
+            <button class="btn btn-sky" onclick="alert('Follow-up call logged for Neel Sharma — rescheduled 18 Mar 10 AM')">Log Follow-Up</button>
+            <button class="btn btn-green" onclick="alert('Neel Sharma moved to Evaluation stage — evaluation booked')">→ Convert</button>
+          </div>
+        </div>
+      </div>
+      <div class="inq-item">
+        <div class="inq-header">
+          <div><div class="inq-name">Diya Choudhary (Parent: Mr. Rajesh Choudhary)</div><div class="inq-meta">INQ-2025-043 · Phone Call · 15 Mar 2025</div></div>
+          <span class="sp sp-new">New</span>
+        </div>
+        <div class="inq-detail">Inquiry: GDD — 3.5-year-old girl, multiple domain delays. Referred by Dr. Anjali Bhat (neurologist). Parent called asking about early intervention program. No staff called back yet.</div>
+        <div class="inq-footer">
+          <span class="sla-timer sla-urgent">⏱ 2 days overdue</span>
+          <div class="inq-actions">
+            <button class="btn btn-sky" onclick="alert('First call logged for Diya Choudhary — calling now')">First Call</button>
+            <button class="btn btn-green" onclick="alert('Diya Choudhary moved to Evaluation — visit booked 19 Mar')">→ Book Eval</button>
+          </div>
+        </div>
+      </div>
+      <div class="inq-item">
+        <div class="inq-header">
+          <div><div class="inq-name">Aryan Verma (Parent: Ms. Sunita Verma)</div><div class="inq-meta">INQ-2025-038 · WhatsApp · 12 Mar 2025</div></div>
+          <span class="sp sp-contacted">Contacted</span>
+        </div>
+        <div class="inq-detail">Inquiry: Autism assessment + ABA therapy. 4-year-old. Parent messaged on clinic WhatsApp — asked about package pricing. Staff replied with fees. No response since.</div>
+        <div class="inq-footer">
+          <span class="sla-timer sla-warn">⏱ 5 days — need 2nd follow</span>
+          <div class="inq-actions">
+            <button class="btn btn-sky" onclick="alert('Second follow-up WhatsApp sent to Sunita Verma')">2nd Follow-Up</button>
+            <button class="btn btn-red" onclick="alert('Aryan Verma marked lost — reason: no response after 2 follow-ups')">Mark Lost</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Inquiry Sources — March 2025</div></div>
+      <div class="card-body">
+        <div class="source-grid">
+          <div class="src-item"><div class="src-dot" style="background:var(--teal)"></div><div class="src-lbl">Referral (Doctor)</div><div><div class="src-count">7</div><div class="src-pct">38.9%</div></div></div>
+          <div class="src-item"><div class="src-dot" style="background:var(--sky)"></div><div class="src-lbl">Walk-In</div><div><div class="src-count">4</div><div class="src-pct">22.2%</div></div></div>
+          <div class="src-item"><div class="src-dot" style="background:var(--amber)"></div><div class="src-lbl">WhatsApp</div><div><div class="src-count">4</div><div class="src-pct">22.2%</div></div></div>
+          <div class="src-item"><div class="src-dot" style="background:#7C3AED"></div><div class="src-lbl">Phone Call</div><div><div class="src-count">2</div><div class="src-pct">11.1%</div></div></div>
+          <div class="src-item"><div class="src-dot" style="background:var(--rose)"></div><div class="src-lbl">Parent Referral</div><div><div class="src-count">1</div><div class="src-pct">5.6%</div></div></div>
+          <div class="src-item" style="background:#F0FDF4;border-color:#BBF7D0"><div class="src-dot" style="background:var(--green)"></div><div class="src-lbl" style="color:#166534">Best Source</div><div><div class="src-count" style="color:var(--green)">73%</div><div class="src-pct">Referral conv</div></div></div>
+        </div>
+        <div style="padding:12px;background:var(--surface);border-radius:8px;margin-top:12px;font-size:12.5px;color:var(--text-secondary)">
+          <strong>Insight:</strong> Doctor referrals have a 73% conversion rate vs 45% for walk-ins. Prioritise follow-up on referral inquiries within 2 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NEW INQUIRY ═══ -->
+<div class="tab-content" id="tab-new">
+  <div class="card">
+    <div class="card-hd">
+      <div class="card-title">Log New Inquiry</div>
+      <div style="font-size:11.5px;color:var(--text-muted)">All fields auto-generate follow-up SLA on save</div>
+    </div>
+    <div class="card-body">
+      <div class="form-grid">
+        <div class="form-field">
+          <div class="form-label">Child's Name</div>
+          <input class="form-input" type="text" placeholder="e.g. Rohan Sharma" id="f-child-name">
+        </div>
+        <div class="form-field">
+          <div class="form-label">Child's Age</div>
+          <input class="form-input" type="text" placeholder="e.g. 4 years 6 months" id="f-child-age">
+        </div>
+        <div class="form-field">
+          <div class="form-label">Parent / Guardian Name</div>
+          <input class="form-input" type="text" placeholder="e.g. Mrs. Priya Sharma">
+        </div>
+        <div class="form-field">
+          <div class="form-label">Contact Number</div>
+          <input class="form-input" type="tel" placeholder="+91 9XXXXXXXX0">
+        </div>
+        <div class="form-field form-full">
+          <div class="form-label">Inquiry Source</div>
+          <div class="source-chips">
+            <div class="source-chip" onclick="selectSource(this)">Walk-In</div>
+            <div class="source-chip" onclick="selectSource(this)">Doctor Referral</div>
+            <div class="source-chip" onclick="selectSource(this)">Phone Call</div>
+            <div class="source-chip" onclick="selectSource(this)">WhatsApp</div>
+            <div class="source-chip" onclick="selectSource(this)">Parent Referral</div>
+            <div class="source-chip" onclick="selectSource(this)">Social Media</div>
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="form-label">Referring Doctor (if applicable)</div>
+          <input class="form-input" type="text" placeholder="e.g. Dr. Suresh Menon, Pediatrician">
+        </div>
+        <div class="form-field">
+          <div class="form-label">Concern / Presenting Issue</div>
+          <select class="form-select">
+            <option value="">Select primary concern...</option>
+            <option>Autism Spectrum Disorder</option>
+            <option>ADHD / Attention Difficulties</option>
+            <option>Cerebral Palsy</option>
+            <option>Global Developmental Delay</option>
+            <option>Speech / Language Delay</option>
+            <option>Sensory Processing Issues</option>
+            <option>Fine Motor Delays</option>
+            <option>Behavioural Difficulties</option>
+            <option>Learning Difficulties</option>
+            <option>Neurological Condition</option>
+            <option>Post-Surgical Rehab</option>
+            <option>Other / Unknown</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <div class="form-label">Therapies Interested In</div>
+          <select class="form-select">
+            <option value="">Select therapy type...</option>
+            <option>Physiotherapy</option>
+            <option>Occupational Therapy (OT)</option>
+            <option>Speech &amp; Language Therapy</option>
+            <option>ABA Therapy</option>
+            <option>Sensory Integration</option>
+            <option>Behavioural Therapy</option>
+            <option>Special Education</option>
+            <option>Multi-discipline (Unsure)</option>
+            <option>Comprehensive Assessment First</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <div class="form-label">Assign To</div>
+          <select class="form-select">
+            <option>Front Desk — Pooja Mane</option>
+            <option>Front Desk — Rahul Pawar</option>
+            <option>Admin — Sunita Rao</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <div class="form-label">Follow-Up SLA</div>
+          <select class="form-select">
+            <option>4 hours (Doctor referral — urgent)</option>
+            <option>Same day (Walk-in)</option>
+            <option>24 hours (Phone / WhatsApp)</option>
+            <option>48 hours (Social media)</option>
+          </select>
+        </div>
+        <div class="form-field form-full">
+          <div class="form-label">Notes</div>
+          <textarea class="form-input" rows="3" placeholder="Any additional context — what the parent said, their concerns, questions they asked, next steps discussed..."></textarea>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-light)">
+        <div style="font-size:12px;color:var(--text-muted)">SLA countdown begins automatically on save. Assigned staff receives notification.</div>
+        <button class="btn btn-sky" onclick="saveInquiry()">Save Inquiry &amp; Start SLA Timer →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PIPELINE ═══ -->
+<div class="tab-content" id="tab-pipeline">
+  <div class="card">
+    <div class="card-hd"><div class="card-title">Active Inquiry Pipeline</div><span class="pill pill-amber">4 Active</span></div>
+
+    <div class="inq-item">
+      <div class="inq-header">
+        <div><div class="inq-name">Neel Sharma · 6y · ADHD + Fine Motor</div><div class="inq-meta">INQ-2025-041 · Walk-in · Assigned: Pooja Mane · 14 Mar 2025</div></div>
+        <span class="sp sp-contacted">Contacted</span>
+      </div>
+      <div class="inq-detail"><strong>Source:</strong> Walk-in. <strong>Referral:</strong> Dr. Suresh Menon (Dev. Pediatrician). <strong>Concern:</strong> ADHD + fine motor delays. <strong>Interest:</strong> OT + Behavioral Therapy. <strong>Last contact:</strong> 14 Mar — brochure sent, called once, no response.</div>
+      <div class="inq-footer">
+        <span class="sla-timer sla-urgent">⏱ 3 days overdue</span>
+        <div class="inq-actions">
+          <button class="btn btn-ghost" onclick="alert('2nd follow-up call logged')">Log 2nd Call</button>
+          <button class="btn btn-sky" onclick="alert('Evaluation booked for 19 Mar 10:00 AM')">Book Evaluation</button>
+          <button class="btn btn-red" onclick="alert('Marked lost — no response after 2 follow-ups')">Lost</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="inq-item">
+      <div class="inq-header">
+        <div><div class="inq-name">Diya Choudhary · 3.5y · GDD</div><div class="inq-meta">INQ-2025-043 · Phone · Assigned: Pooja Mane · 15 Mar 2025</div></div>
+        <span class="sp sp-new">New — Not Contacted</span>
+      </div>
+      <div class="inq-detail"><strong>Source:</strong> Phone call. <strong>Referral:</strong> Dr. Anjali Bhat (Child Neurologist). <strong>Concern:</strong> GDD — multiple domain delays, 3.5y no consistent speech. <strong>Interest:</strong> Comprehensive multi-discipline. <strong>No contact made yet.</strong></div>
+      <div class="inq-footer">
+        <span class="sla-timer sla-urgent">⏱ 2 days overdue — First call missed</span>
+        <div class="inq-actions">
+          <button class="btn btn-sky" onclick="alert('First call to Diya Choudhary family logged — 10:52 AM')">First Call Now</button>
+          <button class="btn btn-green" onclick="alert('Evaluation booked — 19 Mar 10:00 AM · Assessment fee ₹2,500')">Book Eval Directly</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="inq-item">
+      <div class="inq-header">
+        <div><div class="inq-name">Aryan Verma · 4y · ASD + ABA Query</div><div class="inq-meta">INQ-2025-038 · WhatsApp · Assigned: Rahul Pawar · 12 Mar 2025</div></div>
+        <span class="sp sp-contacted">Contacted (1x)</span>
+      </div>
+      <div class="inq-detail"><strong>Source:</strong> WhatsApp. <strong>Referral:</strong> Existing patient parent (Aarav Sharma family). <strong>Concern:</strong> Autism features — ABA + OT assessment. Fees enquiry answered. No further response from parent.</div>
+      <div class="inq-footer">
+        <span class="sla-timer sla-warn">⏱ 5 days — 2nd follow-up due</span>
+        <div class="inq-actions">
+          <button class="btn btn-sky" onclick="alert('2nd WhatsApp sent to Aryan Verma family')">2nd WhatsApp</button>
+          <button class="btn btn-red" onclick="alert('Marked lost — reason: no response x2')">Mark Lost</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="inq-item">
+      <div class="inq-header">
+        <div><div class="inq-name">Riya Kulkarni · 5y · Sensory + Speech</div><div class="inq-meta">INQ-2025-044 · Walk-in · Assigned: Pooja Mane · 17 Mar 2025</div></div>
+        <span class="sp sp-new">New Today</span>
+      </div>
+      <div class="inq-detail"><strong>Source:</strong> Walk-in (today 9:30 AM). <strong>Referral:</strong> None — parent self-referred. <strong>Concern:</strong> Sensory sensitivities + speech delay. <strong>Interest:</strong> OT + Speech. Assessment enquired.</div>
+      <div class="inq-footer">
+        <span class="sla-timer sla-ok">⏱ 3.5 hrs remaining (Same-day SLA)</span>
+        <div class="inq-actions">
+          <button class="btn btn-sky" onclick="alert('Brochure + pricing sent to Riya Kulkarni family')">Send Info Pack</button>
+          <button class="btn btn-green" onclick="alert('Assessment booked 19 Mar — ₹2,500 assessment fee')">Book Assessment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FUNNEL ═══ -->
+<div class="tab-content" id="tab-funnel">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Conversion Funnel — March 2025</div></div>
+      <div class="card-body">
+        <div class="funnel">
+          <div class="funnel-step">
+            <div class="funnel-lbl">Inquiries</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:100%;background:var(--sky)">18 inquiries</div></div>
+            <div class="funnel-count" style="color:var(--sky)">18</div>
+            <div class="funnel-pct">100%</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-lbl">Contacted</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:83%;background:#38BDF8">15 contacted</div></div>
+            <div class="funnel-count" style="color:#38BDF8">15</div>
+            <div class="funnel-pct">83.3%</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-lbl">Eval Booked</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:72%;background:#7C3AED">13 booked</div></div>
+            <div class="funnel-count" style="color:#7C3AED">13</div>
+            <div class="funnel-pct">72.2%</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-lbl">Eval Done</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:61%;background:#8B5CF6">11 evaluated</div></div>
+            <div class="funnel-count" style="color:#8B5CF6">11</div>
+            <div class="funnel-pct">61.1%</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-lbl">Registered</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:61%;background:var(--green)">11 active</div></div>
+            <div class="funnel-count" style="color:var(--green)">11</div>
+            <div class="funnel-pct">61.1%</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-lbl">Lost</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:17%;background:var(--rose)">3 lost</div></div>
+            <div class="funnel-count" style="color:var(--rose)">3</div>
+            <div class="funnel-pct">16.7%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Lost Inquiry Analysis</div></div>
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+          <div style="padding:10px 12px;background:var(--surface);border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+            <div><div style="font-size:12.5px;font-weight:600">Distance / Travel Difficulty</div><div style="font-size:11px;color:var(--text-muted)">2 families cited location</div></div>
+            <span style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">2</span>
+          </div>
+          <div style="padding:10px 12px;background:var(--surface);border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+            <div><div style="font-size:12.5px;font-weight:600">Cost / Fee Concern</div><div style="font-size:11px;color:var(--text-muted)">1 family cited pricing</div></div>
+            <span style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">1</span>
+          </div>
+        </div>
+        <div style="padding:12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:12.5px;color:#166534">
+          <strong>61.1% conversion rate</strong> — 11 of 18 inquiries became active patients. Every unconverted inquiry represents ₹36,000–₹72,000 in program value. With structured follow-up this month, this module alone recovers an estimated ₹1–2L in previously invisible pipeline.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</main>
+
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  const tb=document.querySelector('[data-tab="'+id+'"]');
+  if(tb)tb.classList.add('active');
+  const tc=document.getElementById('tab-'+id);
+  if(tc)tc.classList.add('active');
+  const titles={dashboard:'Inquiry Dashboard',new:'Log New Inquiry',pipeline:'Inquiry Pipeline',funnel:'Conversion Funnel'};
+  document.getElementById('topbar-title').textContent=titles[id]||'Inquiry CRM';
+}
+function selectSource(el){
+  document.querySelectorAll('.source-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function saveInquiry(){
+  const name=document.getElementById('f-child-name').value||'Patient';
+  const age=document.getElementById('f-child-age').value||'Unknown age';
+  alert('✅ Inquiry saved for '+name+' ('+age+')\n\nINQ-2025-045 created\nSLA timer started: 4-hour follow-up\nAssigned staff notified\nFollow-up task added to pipeline');
+}
+</script>
+
+</body>
+</html>
