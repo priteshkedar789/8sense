@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOD / Senior Therapist — RehabCare Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1F3A;--navy-mid:#142F54;--teal:#0D9488;--teal-light:#14B8A6;
+  --amber:#C9841A;--rose:#DC2626;--green:#059669;
+  --surface:#F4F6FB;--surface2:#EDF0F7;--border:#DDE3ED;--border-light:#EEF1F6;
+  --text-primary:#0B1F3A;--text-secondary:#4A5568;--text-muted:#8896A9;--sidebar:240px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text-primary);min-height:100vh;display:flex}
+.sidebar{width:var(--sidebar);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
+.sidebar-brand{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.brand-wrap{display:flex;align-items:center;gap:10px}
+.brand-mark{width:34px;height:34px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-weight:700}
+.brand-name{font-size:13px;font-weight:600;color:#fff}
+.brand-sub{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
+.sidebar-role{margin:12px;padding:10px 12px;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.3);border-radius:8px}
+.role-label{font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.4)}
+.role-name-display{font-size:12px;font-weight:600;color:#6EE7B7;margin-top:2px}
+.nav-section{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:16px 16px 6px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 12px;margin:0 6px 2px;border-radius:8px;color:rgba(255,255,255,0.5);font-size:12.5px;cursor:pointer;text-decoration:none;transition:all 0.15s}
+.nav-item:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.9)}
+.nav-item.active{background:rgba(5,150,105,0.25);color:#fff;font-weight:500}
+.nav-item svg{width:15px;height:15px;opacity:0.7;flex-shrink:0}
+.nav-badge{margin-left:auto;background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px}
+.sidebar-footer{margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,0.07)}
+.user-mini{display:flex;align-items:center;gap:9px}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--green));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.user-info-name{font-size:11.5px;font-weight:500;color:#fff}
+.user-info-role{font-size:10px;color:rgba(255,255,255,0.35)}
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50}
+.topbar-title{font-size:14.5px;font-weight:600;color:var(--text-primary)}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.pill-green{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
+.pill-amber{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.pill-red{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA}
+.pill-blue{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+.pill-teal{background:#F0FDFA;color:#0F766E;border:1px solid #99F6E4}
+.content{flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+.tabs{display:flex;gap:2px;background:var(--surface2);border-radius:10px;padding:4px}
+.tab{padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.15s;border:none;background:none;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px}
+.tab:hover{color:var(--text-secondary)}
+.tab.active{background:#fff;color:var(--text-primary);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+.tab-badge{background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px}
+.tab-content{display:none}
+.tab-content.active{display:flex;flex-direction:column;gap:14px}
+/* cards */
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card-header{padding:13px 18px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600;color:var(--text-primary)}
+.card-body{padding:18px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:#047857}
+.btn-red{background:#DC2626;color:#fff}
+.btn-red:hover{background:#B91C1C}
+.btn-ghost{background:#fff;color:var(--text-secondary);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--surface)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:#0B7A71}
+/* kpi */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.kpi-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px}
+.kpi-value{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--text-primary);line-height:1}
+.kpi-sub{font-size:10.5px;color:var(--text-muted);margin-top:4px}
+/* patient items */
+.patient-item{padding:14px 18px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:14px}
+.patient-item:last-child{border-bottom:none}
+.p-avatar{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.p-name{font-size:13.5px;font-weight:600;color:var(--text-primary)}
+.p-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.progress-mini{margin-top:6px;display:flex;align-items:center;gap:8px}
+.progress-bar-wrap{height:6px;background:var(--surface2);border-radius:100px;overflow:hidden;flex:1;max-width:140px}
+.progress-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.progress-bar-fill.amber{background:linear-gradient(90deg,var(--amber),#FCD34D)}
+.progress-bar-fill.red{background:linear-gradient(90deg,var(--rose),#F87171)}
+.progress-pct{font-family:'DM Mono',monospace;font-size:11px;font-weight:500}
+/* eval */
+.eval-item{padding:16px 18px;border-bottom:1px solid var(--border-light)}
+.eval-item:last-child{border-bottom:none}
+.eval-header{display:flex;align-items:start;justify-content:space-between;margin-bottom:10px}
+.eval-patient{font-size:14px;font-weight:700;color:var(--text-primary)}
+.eval-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.eval-findings{background:var(--surface);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}
+.eval-recommend{font-size:12.5px;color:var(--teal);font-weight:500}
+/* program phases */
+.phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.phase-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px}
+.phase-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px}
+.phase-sessions{font-size:11px;color:var(--text-secondary);margin-bottom:6px}
+.activity-chip{font-size:11px;padding:3px 8px;background:#fff;border:1px solid var(--border);border-radius:4px;color:var(--text-secondary);margin-bottom:4px;display:block}
+.milestone-list{display:flex;flex-direction:column;gap:4px}
+.milestone-item{font-size:12px;color:var(--text-secondary);display:flex;align-items:center;gap:6px}
+.milestone-item::before{content:'◎';color:var(--teal);font-size:10px;flex-shrink:0}
+/* plan change */
+.plan-change-item{padding:16px 18px;border-bottom:1px solid var(--border-light)}
+.plan-change-item:last-child{border-bottom:none}
+.pc-header{display:flex;align-items:start;justify-content:space-between;margin-bottom:10px}
+.pc-title{font-size:13.5px;font-weight:700;color:var(--text-primary)}
+.pc-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.pc-rationale{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:10px 12px;font-size:12.5px;color:#78350F;line-height:1.6;margin-bottom:10px}
+.change-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.change-box{padding:10px 12px;border-radius:8px;font-size:12px}
+.change-from{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B}
+.change-to{background:#F0FDF4;border:1px solid #BBF7D0;color:#166534}
+.change-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.pc-comment-area{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12.5px;font-family:'DM Sans',sans-serif;resize:none;margin-bottom:10px;outline:none}
+.pc-comment-area:focus{border-color:var(--teal)}
+.pc-actions{display:flex;gap:8px;justify-content:flex-end}
+/* quality table */
+.quality-table{width:100%;border-collapse:collapse}
+.quality-table th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);background:#F8FAFC}
+.quality-table td{padding:12px 14px;font-size:12.5px;border-bottom:1px solid var(--border-light);vertical-align:middle}
+.quality-table tr:last-child td{border-bottom:none}
+.quality-table tr:hover td{background:#FAFBFD}
+.deviation-bar{display:flex;align-items:center;gap:8px}
+.dev-bar-wrap{width:80px;height:6px;background:var(--surface2);border-radius:100px;overflow:hidden}
+.dev-bar-fill{height:100%;border-radius:100px}
+.status-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:10px;border:1px solid}
+.pill-ok{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
+.pill-warn{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
+.pill-danger{background:#FEF2F2;color:#991B1B;border-color:#FECACA}
+.blocked-panel{background:var(--surface2);border:2px dashed var(--border);border-radius:10px;padding:32px;text-align:center}
+.blocked-icon{font-size:36px;margin-bottom:10px;opacity:0.3}
+.blocked-title{font-size:14px;font-weight:700;color:var(--text-muted)}
+.blocked-sub{font-size:12px;color:var(--text-muted);margin-top:4px}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-wrap">
+      <div class="brand-mark">RC</div>
+      <div>
+        <div class="brand-name">RehabCare Clinic</div>
+        <div class="brand-sub">Therapy Management</div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-role">
+    <div class="role-label">Active Role</div>
+    <div class="role-name-display">Senior Therapist / HOD</div>
+  </div>
+  <div style="padding:8px 6px;flex:1">
+    <div class="nav-section">Clinical Authority</div>
+    <a class="nav-item active" href="#" onclick="switchTab('overview');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><rect x="11" y="11" width="6" height="6" rx="1"/></svg>Clinical Overview
+    </a>
+    <a class="nav-item" href="#" onclick="switchTab('evaluations');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/></svg>Evaluations
+    </a>
+    <a class="nav-item" href="#" onclick="switchTab('programs');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2H6a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2V6l-4-4z"/></svg>Program Design
+    </a>
+    <a class="nav-item" href="#" onclick="switchTab('planchanges');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 4v12M4 10h12"/></svg>Plan Change Queue <span class="nav-badge">2</span>
+    </a>
+    <a class="nav-item" href="#" onclick="switchTab('quality');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Clinical Quality
+    </a>
+    <div class="nav-section">Protocols</div>
+    <a class="nav-item" href="#" id="protocols" onclick="switchTab('protocols');return false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Protocol Library
+    </a>
+    <div class="nav-section">System</div>
+    <a class="nav-item" href="index.html">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Main Menu
+    </a>
+  </div>
+  <div class="sidebar-footer">
+    <div class="user-mini">
+      <div class="user-avatar">PN</div>
+      <div>
+        <div class="user-info-name">Dr. Priya Nair</div>
+        <div class="user-info-role">Sr. Physiotherapist · HOD</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">Clinical Overview</div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="pill pill-green">Clinical Authority Active</div>
+      <div class="pill pill-amber">2 Plan Changes Pending</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+```
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
+  <button class="tab" data-tab="evaluations" onclick="switchTab('evaluations')">Evaluations</button>
+  <button class="tab" data-tab="programs" onclick="switchTab('programs')">Program Design</button>
+  <button class="tab" data-tab="planchanges" onclick="switchTab('planchanges')">Plan Changes <span class="tab-badge">2</span></button>
+  <button class="tab" data-tab="quality" onclick="switchTab('quality')">Clinical Quality</button>
+  <button class="tab" data-tab="protocols" onclick="switchTab('protocols')">Protocols</button>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div class="tab-content active" id="tab-overview">
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-label">Plan Changes Pending</div><div class="kpi-value" style="color:var(--rose)">2</div><div class="kpi-sub">Awaiting your clinical review</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-label">Evaluations Pending</div><div class="kpi-value" style="color:var(--amber)">2</div><div class="kpi-sub">Unassessed new patients</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-label">Active Patients</div><div class="kpi-value" style="color:var(--green)">8</div><div class="kpi-sub">2 need attention</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--teal)"><div class="kpi-label">Programs Active</div><div class="kpi-value" style="color:var(--teal)">6</div><div class="kpi-sub">2 awaiting your approval</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Patient Clinical Pipeline</div></div>
+      <div class="patient-item">
+        <div class="p-avatar">AS</div>
+        <div style="flex:1">
+          <div class="p-name">Aarav Sharma <span style="font-size:11px;color:var(--text-muted)">5y · ASD</span></div>
+          <div class="p-meta">OT + ABA + Speech · 15/30 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:50%"></div></div><span class="progress-pct" style="color:var(--teal)">50%</span></div>
+        </div>
+        <span class="status-pill pill-ok">On Track</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">RP</div>
+        <div style="flex:1">
+          <div class="p-name">Riya Patel <span style="font-size:11px;color:var(--text-muted)">4y · GDD</span></div>
+          <div class="p-meta">Physio + OT + EI · 8/40 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div><span class="progress-pct" style="color:var(--teal)">20%</span></div>
+        </div>
+        <span class="status-pill pill-warn">New — Review Due</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">KM</div>
+        <div style="flex:1">
+          <div class="p-name">Kabir Malhotra <span style="font-size:11px;color:var(--text-muted)">7y · CP</span></div>
+          <div class="p-meta">Neuro Physio + OT + Sensory · 32/50 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:64%"></div></div><span class="progress-pct" style="color:var(--teal)">64%</span></div>
+        </div>
+        <span class="status-pill pill-ok">On Track</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">MJ</div>
+        <div style="flex:1">
+          <div class="p-name">Meera Joshi <span style="font-size:11px;color:var(--text-muted)">8y · ASD+SPD</span></div>
+          <div class="p-meta">ABA + Sensory + Speech · 18/60 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill amber" style="width:30%"></div></div><span class="progress-pct" style="color:var(--amber)">30%</span></div>
+        </div>
+        <span class="status-pill pill-warn">Stalled — Review</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">ZS</div>
+        <div style="flex:1">
+          <div class="p-name">Zara Sheikh <span style="font-size:11px;color:var(--text-muted)">3y · Language</span></div>
+          <div class="p-meta">Speech + Audio · 12/20 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:60%"></div></div><span class="progress-pct" style="color:var(--teal)">60%</span></div>
+        </div>
+        <span class="status-pill pill-ok">On Track</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">IN</div>
+        <div style="flex:1">
+          <div class="p-name">Ishaan Nair <span style="font-size:11px;color:var(--text-muted)">6y · ADHD</span></div>
+          <div class="p-meta">OT + Behavioral + SpEd · 22/30 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:73%"></div></div><span class="progress-pct" style="color:var(--teal)">73%</span></div>
+        </div>
+        <span class="status-pill pill-ok">On Track</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Therapist Deviation Rates — This Week</div></div>
+        <div class="card-body" style="padding:14px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span class="dev-name">Ms. Ananya Desai (OT)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--green)">5%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:5%;background:var(--green)"></div></div></div>
+              <span class="status-pill pill-ok">Excellent</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Mr. Rohan Mehta (Speech)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:#2563EB">12%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:12%;background:#2563EB"></div></div></div>
+              <span class="status-pill pill-ok">Good</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Ms. Kavya Shetty (ABA)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--amber)">24%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:24%;background:var(--amber)"></div></div></div>
+              <span class="status-pill pill-warn">Monitor</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Mr. Vikram Iyer (Neuro Physio)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--rose)">38%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:38%;background:var(--rose)"></div></div></div>
+              <span class="status-pill pill-danger">High Risk</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Ms. Sneha Kulkarni (SpEd)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--green)">8%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:8%;background:var(--green)"></div></div></div>
+              <span class="status-pill pill-ok">Good</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;padding:10px 12px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;font-size:11.5px;color:#991B1B">
+            ⚠ Mr. Vikram Iyer: 38% deviation exceeds 30% clinical threshold. Clinical review and supervision visit required this week.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Role Boundary — Clinical Authority</div></div>
+        <div class="card-body">
+          <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:10px">As Senior Therapist, you exclusively control: evaluation records, program activity/milestone design, plan change approvals, therapist clinical supervision. Admin cannot modify clinical content.</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Evaluation entry and sign-off</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Program activities and milestones</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Plan change approve / reject</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Therapist deviation review</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#991B1B">✗ Financial data (Admin only)</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#991B1B">✗ Schedule overrides (Admin only)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EVALUATIONS TAB -->
+<div class="tab-content" id="tab-evaluations">
+  <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#92400E;display:flex;gap:8px">
+    <span>⚠</span>
+    <span><strong>2 patients require evaluation before therapy can begin.</strong> No sessions can be scheduled or billed until evaluation is complete and a program is approved.</span>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Patients Awaiting Evaluation</div>
+      <button class="btn btn-teal" onclick="alert('Evaluation form opened for Neel Sharma')">+ New Evaluation</button>
+    </div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Neel Sharma — 6y</div><div class="eval-meta">Referred by: Dr. Suresh Menon (Dev. Pediatrician) · Walk-in 14 Mar 2025</div></div>
+        <div style="display:flex;gap:8px"><span class="status-pill pill-warn">Eval Pending</span><button class="btn btn-teal" onclick="alert('Evaluation form for Neel Sharma opened')">Conduct Evaluation</button></div>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-secondary)">
+        <strong>Referral notes:</strong> Parent reports attention difficulties, hyperactivity, and significant fine motor delays. Ruled out ADHD pharmacologically. Pediatrician requesting OT + behavioral assessment. Parent also mentions possible sensory sensitivities.
+      </div>
+    </div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Diya Choudhary — 3.5y</div><div class="eval-meta">Referred by: Dr. Anjali Bhat (Child Neurologist) · Walk-in 15 Mar 2025</div></div>
+        <div style="display:flex;gap:8px"><span class="status-pill pill-warn">Eval Pending</span><button class="btn btn-teal" onclick="alert('Evaluation form for Diya Choudhary opened')">Conduct Evaluation</button></div>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-secondary)">
+        <strong>Referral notes:</strong> Delayed milestones across all domains. Walking independently at 24 months. No consistent 2-word phrases at 3.5y. Neurologist suspect global developmental delay, possible early autism features. Requesting comprehensive assessment.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Completed Evaluations — Recent</div></div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Aarav Sharma — 5y · Completed 06 Jan 2025</div><div class="eval-meta">Evaluator: Dr. Priya Nair (HOD) · Program created</div></div>
+        <span class="status-pill pill-ok">Program Active</span>
+      </div>
+      <div class="eval-findings">
+        <strong>Findings:</strong> ASD Level 2 with co-occurring sensory processing disorder. Significant tactile defensiveness on dorsal upper extremities. Poor bilateral coordination — midline crossing absent. Vestibular hypersensitivity. Expressive language at 24-month level. Adaptive behaviour significantly delayed.
+      </div>
+      <div class="eval-recommend">→ Recommendation: 30 sessions OT (Sensory Integration focus) + 20 sessions ABA + 20 sessions Speech. Multidisciplinary program, bi-weekly family coaching.</div>
+    </div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Kabir Malhotra — 7y · Completed 01 Sep 2024</div><div class="eval-meta">Evaluator: Dr. Priya Nair (HOD) · Program active</div></div>
+        <span class="status-pill pill-ok">Program Active</span>
+      </div>
+      <div class="eval-findings">
+        <strong>Findings:</strong> Spastic diplegic cerebral palsy (GMFCS Level II). Significant lower extremity spasticity. Functional upper limbs with fine motor difficulties. Gait pattern: scissoring with bilateral intoeing. Cognitive function within normal limits. Participation restrictions in school and social environments.
+      </div>
+      <div class="eval-recommend">→ Recommendation: 50 sessions — Neuro Physiotherapy + OT (fine motor) + Sensory Integration. Goal: GMFCS Level I functional transitions, school participation readiness.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMS TAB -->
+<div class="tab-content" id="tab-programs">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Active Program — Aarav Sharma · ASD Level 2</div>
+      <div style="display:flex;gap:8px">
+        <span class="pill pill-green">Clinically Approved</span>
+        <span class="pill pill-blue">Published</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:repeat(3,auto);gap:0;margin-bottom:16px">
+        <div style="padding-right:20px;border-right:1px solid var(--border-light);margin-right:20px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Total Sessions</div><div style="font-size:18px;font-family:'DM Mono',monospace;font-weight:600;color:var(--navy)">70</div></div>
+        <div style="padding-right:20px;border-right:1px solid var(--border-light);margin-right:20px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Domains</div><div style="font-size:13px;font-weight:600;color:var(--navy)">OT · ABA · Speech</div></div>
+        <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Approved By</div><div style="font-size:13px;font-weight:600;color:var(--navy)">Dr. Priya Nair</div></div>
+      </div>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="phase-title">Phase 1 — Foundation</div>
+          <div class="phase-sessions">Sessions 1–20 · Sensory Regulation</div>
+          <span class="activity-chip">Tactile Desensitisation (Wilbarger)</span>
+          <span class="activity-chip">Vestibular Input — Linear Swing</span>
+          <span class="activity-chip">ABA: DTT — Basic Compliance</span>
+          <span class="activity-chip">Speech: PECS Levels 1–2</span>
+        </div>
+        <div class="phase-card">
+          <div class="phase-title">Phase 2 — Skill Acquisition</div>
+          <div class="phase-sessions">Sessions 21–45 · Bilateral + Language</div>
+          <span class="activity-chip">Bilateral Coordination — Bead Threading</span>
+          <span class="activity-chip">Fine Motor — Clothespeg Transfer</span>
+          <span class="activity-chip">ABA: NET — Social Initiation</span>
+          <span class="activity-chip">Speech: Picture Exchange → Verbal</span>
+        </div>
+        <div class="phase-card">
+          <div class="phase-title">Phase 3 — Functional Integration</div>
+          <div class="phase-sessions">Sessions 46–70 · School Readiness</div>
+          <span class="activity-chip">ADL Activities — Self-dressing</span>
+          <span class="activity-chip">Social Play — Parallel → Interactive</span>
+          <span class="activity-chip">ABA: Group Skills</span>
+          <span class="activity-chip">Speech: Conversational Turn-Taking</span>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:8px">Program Milestones</div>
+        <div class="milestone-list">
+          <div class="milestone-item"><span>Tolerates tactile input (dorsal forearms) without withdrawal — <strong>Achieved ✓ (Session 12)</strong></span></div>
+          <div class="milestone-item"><span>Bilateral hand use for 30-second tasks — <strong>In Progress (Session 15)</strong></span></div>
+          <div class="milestone-item"><span>Initiates PECS exchange for 3 preferred items — <strong>Pending</strong></span></div>
+          <div class="milestone-item"><span>Sustained sitting at table for 10 min with task engagement — <strong>Pending</strong></span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;padding:12px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;font-size:12px;color:#1E40AF">
+        🔒 <strong>Read-only for Admin.</strong> Activity and milestone content can only be modified by the Senior Therapist. Admin can publish and link billing — cannot edit clinical content.
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border:1.5px solid #FDE68A">
+    <div class="card-header" style="background:#FFFBEB">
+      <div class="card-title" style="color:#92400E">Draft Program — Riya Patel · Global Developmental Delay</div>
+      <button class="btn btn-green" onclick="alert('✅ Program for Riya Patel clinically approved — sent to Admin for publication and billing link')">Approve Program</button>
+    </div>
+    <div class="card-body">
+      <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px">Based on evaluation (EVAL-2025-009). Recommendation: Physiotherapy + OT + Early Intervention — 40 sessions.</div>
+      <div class="phase-grid">
+        <div class="phase-card"><div class="phase-title">Phase 1 — Motor Foundation</div><div class="phase-sessions">Sessions 1–15</div><span class="activity-chip">Gross Motor — Ball Skills</span><span class="activity-chip">OT: Sensory Play Foundation</span><span class="activity-chip">EI: Object Permanence</span></div>
+        <div class="phase-card"><div class="phase-title">Phase 2 — Skill Building</div><div class="phase-sessions">Sessions 16–30</div><span class="activity-chip">Gait Training — Uneven Surfaces</span><span class="activity-chip">Fine Motor — Peg Activities</span><span class="activity-chip">EI: Cause-Effect Exploration</span></div>
+        <div class="phase-card"><div class="phase-title">Phase 3 — Independence</div><div class="phase-sessions">Sessions 31–40</div><span class="activity-chip">ADL Prep — Feeding Independence</span><span class="activity-chip">Community Mobility</span><span class="activity-chip">EI: Imitation and Play</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAN CHANGES TAB -->
+<div class="tab-content" id="tab-planchanges">
+  <div class="card">
+    <div class="card-header"><div class="card-title">Plan Change Requests — Awaiting Clinical Review</div><span class="pill pill-amber">2 Pending</span></div>
+
+    <div class="plan-change-item">
+      <div class="pc-header">
+        <div>
+          <div class="pc-title">Aarav Sharma — Frequency Increase Request</div>
+          <div class="pc-meta">Requested by: Ms. Ananya Desai (OT) · 14 Mar 2025 · PC-2025-003</div>
+        </div>
+        <span class="status-pill pill-warn">Pending Your Review</span>
+      </div>
+      <div class="pc-rationale">
+        <strong>Clinical rationale from therapist:</strong> "Aarav is demonstrating faster-than-expected progress with vestibular tolerance — achieved 12-minute swing tolerance at session 15 when milestone was set for session 20. Increasing OT from 2×/week to 3×/week would capitalise on this responsive period and accelerate bilateral coordination work. Parent is available and motivated."
+      </div>
+      <div class="change-compare">
+        <div class="change-box change-from"><div class="change-label">Current Plan</div>OT: 2 sessions / week<br>Total: 30 sessions</div>
+        <div class="change-box change-to"><div class="change-label">Proposed Change</div>OT: 3 sessions / week<br>Total: 36 sessions (+6)</div>
+      </div>
+      <textarea class="pc-comment-area" id="pc1-comment" placeholder="Add your clinical approval note or rejection reason... (required)" rows="2"></textarea>
+      <div class="pc-actions">
+        <button class="btn btn-red" onclick="rejectChange('PC-2025-003','pc1-comment')">✗ Reject</button>
+        <button class="btn btn-green" onclick="approveChange('PC-2025-003','pc1-comment')">✓ Approve — Send to Admin</button>
+      </div>
+    </div>
+
+    <div class="plan-change-item">
+      <div class="pc-header">
+        <div>
+          <div class="pc-title">Meera Joshi — Activity Modification</div>
+          <div class="pc-meta">Requested by: Ms. Kavya Shetty (ABA) · 15 Mar 2025 · PC-2025-004</div>
+        </div>
+        <span class="status-pill pill-warn">Pending Your Review</span>
+      </div>
+      <div class="pc-rationale">
+        <strong>Clinical rationale from therapist:</strong> "Current Phase 2 Social Stories protocol is producing minimal engagement with Meera — she is not attending to visual prompts and is showing increased stereotypy during story time. Video modelling with preferred characters has shown better joint attention in informal observations. Requesting substitution for sessions 25–40."
+      </div>
+      <div class="change-compare">
+        <div class="change-box change-from"><div class="change-label">Current (Phase 2)</div>Social Stories — printed visual format</div>
+        <div class="change-box change-to"><div class="change-label">Proposed Change</div>Video Modelling — tablet-based, preferred character theme</div>
+      </div>
+      <textarea class="pc-comment-area" id="pc2-comment" placeholder="Add your clinical approval note or rejection reason... (required)" rows="2"></textarea>
+      <div class="pc-actions">
+        <button class="btn btn-red" onclick="rejectChange('PC-2025-004','pc2-comment')">✗ Reject</button>
+        <button class="btn btn-green" onclick="approveChange('PC-2025-004','pc2-comment')">✓ Approve — Send to Admin</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUALITY TAB -->
+<div class="tab-content" id="tab-quality">
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-label">Clinic Avg Adherence</div><div class="kpi-value" style="color:var(--green)">87%</div><div class="kpi-sub">Against prescribed activities</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-label">Note Compliance</div><div class="kpi-value" style="color:var(--amber)">91%</div><div class="kpi-sub">Within 4-hour SLA</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-label">High-Deviation Staff</div><div class="kpi-value" style="color:var(--rose)">1</div><div class="kpi-sub">Mr. Vikram Iyer — 38%</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--teal)"><div class="kpi-label">Milestones Achieved</div><div class="kpi-value" style="color:var(--teal)">12</div><div class="kpi-sub">This month</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Therapist Clinical Performance — This Month</div></div>
+    <div style="padding:0">
+      <table class="quality-table">
+        <thead>
+          <tr><th>Therapist</th><th>Role</th><th>Program Deviation</th><th>Note SLA</th><th>Milestone Rate</th><th>Patient Outcomes</th><th>Assessment</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600">Ms. Ananya Desai</td>
+            <td style="color:var(--text-muted)">OT</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--green)">5%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:5%;background:var(--green)"></div></div></div></td>
+            <td><span class="status-pill pill-ok">100%</span></td>
+            <td>94%</td>
+            <td>Excellent</td>
+            <td><span class="status-pill pill-ok">On Track</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Mr. Rohan Mehta</td>
+            <td style="color:var(--text-muted)">Speech</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:#2563EB">12%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:12%;background:#2563EB"></div></div></div></td>
+            <td><span class="status-pill pill-ok">96%</span></td>
+            <td>88%</td>
+            <td>Good</td>
+            <td><span class="status-pill pill-ok">On Track</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Ms. Kavya Shetty</td>
+            <td style="color:var(--text-muted)">ABA</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--amber)">24%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:24%;background:var(--amber)"></div></div></div></td>
+            <td><span class="status-pill pill-warn">84%</span></td>
+            <td>76%</td>
+            <td>Below Average</td>
+            <td><span class="status-pill pill-warn">Monitor</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Mr. Vikram Iyer</td>
+            <td style="color:var(--text-muted)">Neuro Physio</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--rose)">38%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:38%;background:var(--rose)"></div></div></div></td>
+            <td><span class="status-pill pill-warn">78%</span></td>
+            <td>62%</td>
+            <td>Poor</td>
+            <td><span class="status-pill pill-danger">Review Needed</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Ms. Sneha Kulkarni</td>
+            <td style="color:var(--text-muted)">SpEd</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--green)">8%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:8%;background:var(--green)"></div></div></div></td>
+            <td><span class="status-pill pill-ok">98%</span></td>
+            <td>91%</td>
+            <td>Excellent</td>
+            <td><span class="status-pill pill-ok">On Track</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="blocked-panel">
+    <div class="blocked-icon">🔒</div>
+    <div class="blocked-title">Payroll &amp; Financial Metrics</div>
+    <div class="blocked-sub">This section requires Admin role. Financial data is not accessible to the Senior Therapist role.</div>
+  </div>
+</div>
+
+<!-- PROTOCOLS TAB -->
+<div class="tab-content" id="tab-protocols">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+    <div class="card" style="cursor:pointer" onclick="alert('Wilbarger Brushing Protocol v4.1 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Wilbarger Brushing Protocol</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">OT · Sensory Integration · v4.1</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Feb 2025 · Used in 14 programs</div>
+      </div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="alert('ABA DTT Protocol v2.3 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">ABA Discrete Trial Training</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">ABA · Behavioral · v2.3</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Jan 2025 · Used in 9 programs</div>
+      </div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="alert('Neuro Physio Gait Training Protocol v1.8 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Neuro Physio Gait Training</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">Physiotherapy · Neuro Rehab · v1.8</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Mar 2025 · Used in 6 programs</div>
+      </div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="alert('PECS Communication Protocol v3.0 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-blue">Unlinked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">PECS Communication System</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">Speech & Language · v3.0</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Dec 2024 · Used in 4 programs</div>
+      </div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="alert('Early Intervention Protocol v2.1 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Early Intervention Framework</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">Developmental Therapy · v2.1</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Feb 2025 · Used in 7 programs</div>
+      </div>
+    </div>
+    <div class="card" style="border:1.5px dashed var(--border);cursor:pointer;background:var(--surface)" onclick="alert('Protocol upload form opened')">
+      <div class="card-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;gap:8px">
+        <span style="font-size:28px;opacity:0.3">+</span>
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-muted)">Upload New Protocol</div>
+        <div style="font-size:11px;color:var(--text-muted)">Senior Therapist only</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</main>
+
+<script>
+function switchTab(tabId){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.querySelector('[data-tab="'+tabId+'"]').classList.add('active');
+  document.getElementById('tab-'+tabId).classList.add('active');
+  const titles={overview:'Clinical Overview',evaluations:'Evaluations',programs:'Program Design',planchanges:'Plan Change Queue',quality:'Clinical Quality',protocols:'Protocol Library'};
+  document.getElementById('topbar-title').textContent=titles[tabId]||tabId;
+}
+function approveChange(id,commentId){
+  const txt=document.getElementById(commentId).value.trim();
+  if(!txt){alert('Please add a clinical approval note before approving.');return;}
+  alert('✅ '+id+' approved — clinical note: "'+txt+'"\nSent to Admin for schedule and billing execution.');
+}
+function rejectChange(id,commentId){
+  const txt=document.getElementById(commentId).value.trim();
+  if(!txt){alert('Please add a rejection reason before rejecting.');return;}
+  alert('✗ '+id+' rejected — therapist notified. Reason: "'+txt+'"');
+}
+// Handle anchor hash
+if(window.location.hash==='#protocols'){switchTab('protocols');}
+</script>
+
+</body>
+</html>
