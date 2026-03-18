@@ -1,573 +1,622 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parent Portal — RehabCare Clinic</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<title>Trustee / Director -- RehabCare Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --teal:#0D9488;--teal-light:#14B8A6;--teal-dark:#0B7A71;
-  --amber:#C9841A;--rose:#DC2626;--green:#059669;--navy:#0B1F3A;
-  --surface:#F8FAFB;--border:#E2E8F0;--border-light:#EEF1F6;
-  --text-primary:#0F1F35;--text-secondary:#4A5568;--text-muted:#94A3B8;
+  --navy:#0B1F3A;--navy-mid:#142F54;--teal:#0D9488;
+  --amber:#C9841A;--rose:#DC2626;--green:#059669;--purple:#7C3AED;
+  --surface:#F4F6FB;--surface2:#EDF0F7;--border:#DDE3ED;--border-light:#EEF1F6;
+  --text-primary:#0B1F3A;--text-secondary:#4A5568;--text-muted:#8896A9;--sidebar:240px;
 }
-body{font-family:'DM Sans',sans-serif;background:#F0FAFA;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.phone-frame{width:390px;max-height:844px;background:#fff;border-radius:44px;box-shadow:0 40px 80px rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.08);overflow:hidden;position:relative;display:flex;flex-direction:column}
-.status-bar{height:44px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0}
-.status-time{font-size:15px;font-weight:700;color:var(--text-primary)}
-.status-icons{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-primary)}
-.screen{flex:1;overflow-y:auto;overflow-x:hidden;position:relative;-webkit-overflow-scrolling:touch}
-.screen::-webkit-scrollbar{display:none}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text-primary);min-height:100vh;display:flex}
+.sidebar{width:var(--sidebar);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
+.sb-brand{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.sb-bwrap{display:flex;align-items:center;gap:10px}
+.sb-mark{width:34px;height:34px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-weight:700}
+.sb-name{font-size:13px;font-weight:600;color:#fff}
+.sb-sub{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
+.sb-role{margin:12px;padding:10px 12px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:8px}
+.role-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.4)}
+.role-nm{font-size:12px;font-weight:600;color:#C4B5FD;margin-top:2px}
+.nav-sec{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:16px 16px 6px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 12px;margin:0 6px 2px;border-radius:8px;color:rgba(255,255,255,0.5);font-size:12.5px;cursor:pointer;text-decoration:none;transition:all 0.15s}
+.nav-item:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.9)}
+.nav-item.active{background:rgba(124,58,237,0.25);color:#fff;font-weight:500}
+.nav-item svg{width:15px;height:15px;opacity:0.7;flex-shrink:0}
+.sb-footer{margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,0.07)}
+.u-mini{display:flex;align-items:center;gap:9px}
+.u-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.u-name{font-size:11.5px;font-weight:500;color:#fff}
+.u-role{font-size:10px;color:rgba(255,255,255,0.35)}
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50}
+.topbar-title{font-size:14.5px;font-weight:600}
+.topbar-sub{font-size:11.5px;color:var(--text-muted);margin-top:1px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.pill-g{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
+.pill-r{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA}
+.pill-p{background:#F5F3FF;color:#5B21B6;border:1px solid #DDD6FE}
+.pill-a{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.content{padding:24px 32px;display:flex;flex-direction:column;gap:20px}
+.sec-lbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border-light)}
 
-/* LOGIN SCREEN */
-.login-screen{min-height:100%;display:flex;flex-direction:column;background:linear-gradient(160deg,#0B1F3A 0%,#0D9488 100%);padding:40px 28px}
-.login-logo{width:72px;height:72px;background:rgba(255,255,255,0.15);border-radius:22px;display:flex;align-items:center;justify-content:center;font-family:‘Playfair Display’,serif;font-size:26px;color:#fff;font-weight:700;margin:0 auto 20px}
-.login-title{font-family:‘Playfair Display’,serif;font-size:1.7rem;font-weight:700;color:#fff;text-align:center;margin-bottom:6px}
-.login-sub{font-size:14px;color:rgba(255,255,255,0.6);text-align:center;margin-bottom:40px}
-.login-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:24px;padding:24px}
-.field-lbl{font-size:11.5px;font-weight:600;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
-.field-wrap{display:flex;gap:8px;margin-bottom:16px}
-.country-code{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:13px 14px;font-size:14px;font-weight:600;color:#fff}
-.field-input{flex:1;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:13px 14px;font-size:14px;color:#fff;font-family:‘DM Sans’,sans-serif;outline:none}
-.field-input::placeholder{color:rgba(255,255,255,0.4)}
-.otp-input{width:100%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:14px;font-size:22px;color:#fff;text-align:center;letter-spacing:12px;font-family:‘DM Mono’,monospace;font-weight:500;outline:none;margin-bottom:16px}
-.login-btn{width:100%;padding:15px;background:var(–teal);border:none;border-radius:14px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;font-family:‘DM Sans’,sans-serif;transition:background 0.2s}
-.login-btn:hover{background:var(–teal-dark)}
-.login-note{font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-top:16px}
-.back-link{font-size:13px;color:rgba(255,255,255,0.5);text-align:center;margin-top:12px;cursor:pointer;text-decoration:underline}
+/* STAT ROW */
+.stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px}
+.stat-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px}
+.stat-val{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;line-height:1}
+.stat-sub{font-size:10.5px;color:var(--text-muted);margin-top:5px}
 
-/* APP SCREENS */
-.app-screen{display:none;flex-direction:column;min-height:100%;background:var(–surface)}
-.app-screen.visible{display:flex}
+/* CARD */
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card-hd{padding:14px 20px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:8px}
+.card-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:10px;background:var(--surface);color:var(--text-secondary);border:1px solid var(--border)}
+.card-body{padding:18px}
 
-/* HEADER */
-.app-header{background:#fff;padding:16px 20px 12px;border-bottom:1px solid var(–border);position:sticky;top:0;z-index:10;flex-shrink:0}
-.header-row{display:flex;align-items:center;justify-content:space-between}
-.header-greeting{font-size:13px;color:var(–text-muted)}
-.header-name{font-size:16.5px;font-weight:700;color:var(–text-primary);margin-top:1px}
-.header-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(–teal),var(–navy));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff}
-.notification-dot{position:relative}
-.notification-dot::after{content:’’;position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#DC2626;border-radius:50%;border:2px solid #fff}
+/* REVENUE */
+.rev-compare{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin-bottom:14px}
+.rev-block{padding:16px;border-radius:10px;text-align:center}
+.rev-exp{background:#EFF6FF;border:1px solid #BFDBFE}
+.rev-col{background:#F0FDF4;border:1px solid #BBF7D0}
+.rev-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:5px}
+.rev-v{font-family:'DM Mono',monospace;font-size:26px;font-weight:600;line-height:1}
+.rev-s{font-size:11px;color:var(--text-muted);margin-top:3px}
+.out-bar{display:flex;align-items:center;justify-content:space-between;padding:14px;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;margin-bottom:12px}
+.out-lbl{font-size:12.5px;font-weight:600;color:#991B1B}
+.out-sub{font-size:11px;color:#B91C1C;margin-top:2px}
+.out-v{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:#991B1B}
 
-/* CHILD CARD */
-.child-card{background:linear-gradient(135deg,var(–navy) 0%,#1A3D6E 100%);border-radius:20px;padding:18px;margin:14px 16px;color:#fff;position:relative;overflow:hidden}
-.child-card::after{content:‘RC’;position:absolute;right:-10px;bottom:-20px;font-family:‘Playfair Display’,serif;font-size:80px;color:rgba(255,255,255,0.04);font-weight:900;pointer-events:none}
-.child-id-tag{font-size:10px;font-family:‘DM Mono’,monospace;color:rgba(255,255,255,0.4);letter-spacing:0.08em;margin-bottom:8px}
-.child-name{font-family:‘Playfair Display’,serif;font-size:1.25rem;font-weight:700;margin-bottom:4px}
-.child-meta{font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:12px}
-.child-tags{display:flex;gap:6px;flex-wrap:wrap}
-.child-tag{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:3px 8px;font-size:10.5px;color:rgba(255,255,255,0.8);font-weight:500}
-.progress-row{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.6);margin-top:12px;margin-bottom:5px}
-.prog-bar{height:6px;background:rgba(255,255,255,0.15);border-radius:100px;overflow:hidden}
-.prog-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(–teal-light),#6EE7B7)}
+/* WEEK BAR CHART */
+.week-chart{display:flex;align-items:flex-end;gap:12px;height:100px;padding:0 4px}
+.week-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.week-bar-bg{width:100%;background:var(--surface2);border-radius:6px;overflow:hidden;position:relative}
+.week-bar-fill{border-radius:6px;background:linear-gradient(180deg,var(--teal),#0B7A71);transition:height 0.3s}
+.week-bar-coll{position:absolute;bottom:0;left:0;right:0;background:var(--green);opacity:0.6;border-radius:0 0 6px 6px}
+.week-day{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);font-weight:500}
+.week-val{font-size:10px;font-weight:600;color:var(--text-primary)}
 
-/* ALERTS */
-.alert-card{margin:0 16px 10px;border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
-.alert-red{background:#FEF2F2;border:1px solid #FECACA}
-.alert-teal{background:#F0FDFA;border:1px solid #99F6E4}
-.alert-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.alert-title{font-size:13px;font-weight:700}
-.alert-sub{font-size:12px;color:var(–text-muted);margin-top:2px}
+/* THERAPIST TABLE */
+.t-table{width:100%;border-collapse:collapse}
+.t-table th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);background:#F8FAFC}
+.t-table td{padding:12px 16px;font-size:12.5px;border-bottom:1px solid var(--border-light);vertical-align:middle}
+.t-table tr:last-child td{border-bottom:none}
+.t-table tr:hover td{background:#FAFBFD}
+.bar-inline{display:flex;align-items:center;gap:8px}
+.b-wrap{width:80px;height:6px;background:var(--surface2);border-radius:100px;overflow:hidden}
+.b-fill{height:100%;border-radius:100px}
 
-/* SECTION */
-.section-header{padding:14px 16px 8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(–text-muted)}
+/* INTEGRITY */
+.int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.int-item{padding:16px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:10px;text-align:center}
+.int-icon{font-size:28px;margin-bottom:8px}
+.int-title{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px}
+.int-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:8px;margin-top:4px}
+.ib-g{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
+.ib-a{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.int-sub{font-size:10.5px;color:var(--text-muted);margin-top:5px;line-height:1.4}
 
-/* MILESTONE CARD */
-.milestone-card{margin:0 16px 12px;background:#fff;border-radius:16px;border:1px solid var(–border);padding:16px}
-.milestone-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.milestone-title{font-size:13.5px;font-weight:700;color:var(–text-primary)}
-.milestone-track{display:flex;gap:4px;margin-bottom:10px}
-.milestone-step{flex:1;height:6px;border-radius:100px}
-.milestone-done{background:var(–teal)}
-.milestone-active{background:var(–teal-light);opacity:0.5}
-.milestone-pending{background:var(–border)}
-.milestone-list{display:flex;flex-direction:column;gap:8px}
-.milestone-item{display:flex;align-items:center;gap:10px;font-size:12.5px}
-.mi-dot{width:20px;height:20px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
-.mi-done{background:var(–teal);border-color:var(–teal);color:#fff}
-.mi-active{background:#fff;border-color:var(–teal);color:var(–teal)}
-.mi-pending{background:#fff;border-color:var(–border);color:var(–text-muted)}
+/* AUDIT */
+.audit-item{padding:12px 20px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.audit-item:last-child{border-bottom:none}
+.audit-icon{font-size:14px;margin-right:10px}
+.audit-desc{font-size:12.5px;font-weight:500;color:var(--text-primary)}
+.audit-meta{font-size:11px;color:var(--text-muted);margin-top:2px}
+.audit-tag{font-size:11px;font-weight:500;padding:2px 9px;border-radius:8px;border:1px solid;white-space:nowrap}
+.at-g{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
+.at-b{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE}
+.at-a{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
+.at-r{background:#FEF2F2;color:#991B1B;border-color:#FECACA}
 
-/* APPOINTMENT */
-.apt-card{margin:0 16px 10px;background:#fff;border-radius:16px;border-left:4px solid var(–teal);padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-.apt-time{font-size:17px;font-weight:700;color:var(–text-primary)}
-.apt-date{font-size:12px;color:var(–teal);font-weight:600;margin-top:1px}
-.apt-therapist-row{display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(–border-light)}
-.apt-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(–teal),var(–navy));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
-.apt-therapist{font-size:12.5px;font-weight:600;color:var(–text-primary)}
-.apt-therapy{font-size:11.5px;color:var(–text-muted)}
-.apt-confirmed{font-size:11px;font-weight:600;color:var(–green);background:#F0FDF4;border:1px solid #BBF7D0;padding:2px 8px;border-radius:8px;margin-left:auto}
-.reschedule-btn{width:calc(100% - 32px);margin:4px 16px 14px;padding:11px;border:1.5px solid var(–border);background:#fff;border-radius:10px;font-size:13px;font-weight:600;color:var(–text-secondary);cursor:pointer;font-family:‘DM Sans’,sans-serif}
-.cancel-note{font-size:11.5px;text-align:center;color:var(–text-muted);padding:0 16px 10px}
+/* STATUS PILLS */
+.sp{font-size:11px;font-weight:500;padding:2px 9px;border-radius:10px;border:1px solid}
+.sp-g{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
+.sp-a{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
+.sp-r{background:#FEF2F2;color:#991B1B;border-color:#FECACA}
 
-/* BILLING */
-.balance-card{margin:0 16px 12px;background:linear-gradient(135deg,var(–navy) 0%,#142F54 100%);border-radius:20px;padding:20px;color:#fff}
-.balance-lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-bottom:6px}
-.balance-amount{font-family:‘DM Mono’,monospace;font-size:2rem;font-weight:600;line-height:1;margin-bottom:14px}
-.balance-btns{display:flex;gap:10px}
-.pay-btn{flex:1;padding:12px;background:var(–teal);border:none;border-radius:12px;font-size:13.5px;font-weight:700;color:#fff;cursor:pointer;font-family:‘DM Sans’,sans-serif}
-.history-btn{padding:12px 16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:12px;font-size:13px;font-weight:600;color:#fff;cursor:pointer;font-family:‘DM Sans’,sans-serif}
-.session-balance-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 12px}
-.sb-card{border-radius:12px;padding:12px;text-align:center;border:1px solid}
-.sb-done{background:#F0FDF4;border-color:#BBF7D0}
-.sb-rem{background:#F0F9FF;border-color:#BAE6FD}
-.sb-num{font-family:‘DM Mono’,monospace;font-size:22px;font-weight:700;line-height:1;margin-bottom:3px}
-.sb-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;font-weight:700}
-.txn-item{margin:0 16px 8px;background:#fff;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;border:1px solid var(–border)}
-.txn-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.txn-desc{flex:1}
-.txn-title{font-size:13px;font-weight:600;color:var(–text-primary)}
-.txn-date{font-size:11.5px;color:var(–text-muted);margin-top:1px}
-.txn-amount{font-family:‘DM Mono’,monospace;font-size:14px;font-weight:700}
-.receipt-btn{display:flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:var(–teal);margin-top:3px;cursor:pointer}
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 
-/* HOMEWORK */
-.hw-note{margin:0 16px 12px;background:#F0FDFA;border:1px solid #99F6E4;border-radius:14px;padding:12px 14px;font-size:13px;color:#0F766E;line-height:1.6}
-.hw-card{margin:0 16px 10px;background:#fff;border-radius:16px;border:1px solid var(–border);padding:16px;transition:all 0.2s}
-.hw-card.done{background:#F0FDF4;border-color:#BBF7D0}
-.hw-title{font-size:15px;font-weight:700;color:var(–text-primary)}
-.hw-desc{font-size:12.5px;color:var(–text-secondary);margin-top:4px;line-height:1.5}
-.hw-check{width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;font-size:20px;flex-shrink:0;transition:all 0.2s}
-.hw-check-undone{background:var(–border);color:var(–text-muted)}
-.hw-check-done{background:var(–green);color:#fff}
-.hw-done-label{font-size:11.5px;color:var(–green);font-weight:600;margin-top:10px;padding-top:10px;border-top:1px solid #BBF7D0}
+/* NO-SHOW */
+.ns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ns-card{padding:16px;border-radius:10px;border:1px solid;text-align:center}
+.ns-num{font-family:'DM Mono',monospace;font-size:32px;font-weight:500;line-height:1;margin-bottom:4px}
+.ns-lbl{font-size:12px;font-weight:600;margin-bottom:3px}
+.ns-sub{font-size:11px}
 
-/* BOTTOM NAV */
-.bottom-nav{background:#fff;border-top:1px solid var(–border);height:68px;display:flex;align-items:center;justify-around;padding:0 8px;flex-shrink:0;position:sticky;bottom:0}
-.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px;border:none;background:none;transition:all 0.15s;border-radius:12px}
-.nav-btn.active{color:var(–teal)}
-.nav-btn:not(.active){color:var(–text-muted)}
-.nav-btn svg{width:22px;height:22px}
-.nav-lbl{font-size:10px;font-weight:600}
-.nav-center-btn{width:52px;height:52px;background:var(–teal);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(13,148,136,0.4);border:none;flex-shrink:0;transition:transform 0.15s}
-.nav-center-btn:hover{transform:scale(1.05)}
-.nav-center-btn.active-center{background:var(–teal-dark);box-shadow:0 2px 8px rgba(13,148,136,0.5)}
-.nav-center-btn svg{width:24px;height:24px}
-
-/* PROGRESS SCREEN */
-.video-compare{margin:0 16px 12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.vid-card{background:var(–border);border-radius:14px;aspect-ratio:16/11;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;position:relative;overflow:hidden;border:1px solid var(–border-light)}
-.vid-play{width:36px;height:36px;background:rgba(255,255,255,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.vid-label{font-size:10.5px;font-weight:700;color:var(–text-primary);background:rgba(255,255,255,0.85);padding:3px 8px;border-radius:6px;position:absolute;bottom:8px;left:8px}
-.vid-date{font-size:10px;color:var(–text-secondary);text-align:center}
-.mt-track{margin:0 16px 12px;position:relative;padding-left:24px}
-.mt-track::before{content:’’;position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:var(–border)}
-.mt-item{position:relative;margin-bottom:18px}
-.mt-dot{position:absolute;left:-20px;top:2px;width:16px;height:16px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;background:#fff}
-.mt-achieved{background:var(–green)!important;border-color:var(–green)!important;color:#fff!important}
-.mt-active{border-color:var(–teal);color:var(–teal)}
-.mt-pending{border-color:var(–border);color:var(–text-muted)}
-.mt-title{font-size:13px;font-weight:600;color:var(–text-primary)}
-.mt-status{font-size:11px;font-weight:600;margin-top:2px}
-.mt-date{font-size:11px;color:var(–text-muted)}
+/* MTD SUMMARY */
+.mtd-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mtd-card{background:var(--surface);border:1px solid var(--border-light);border-radius:8px;padding:14px;text-align:center}
+.mtd-val{font-family:'DM Mono',monospace;font-size:20px;font-weight:600;line-height:1;margin-bottom:3px}
+.mtd-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted)}
 </style>
-
 </head>
 <body>
 
-<div class="phone-frame">
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-bwrap">
+      <div class="sb-mark">RC</div>
+      <div><div class="sb-name">RehabCare Clinic</div><div class="sb-sub">Therapy Management</div></div>
+    </div>
+  </div>
+  <div class="sb-role">
+    <div class="role-lbl">Active Role</div>
+    <div class="role-nm">Trustee / Medical Director</div>
+  </div>
+  <div style="padding:8px 6px;flex:1">
+    <div class="nav-sec">Governance</div>
+    <a class="nav-item active" href="#"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="6" height="6" rx="1.2"/><rect x="11" y="3" width="6" height="6" rx="1.2"/><rect x="3" y="11" width="6" height="6" rx="1.2"/><rect x="11" y="11" width="6" height="6" rx="1.2"/></svg>Facility Overview</a>
+    <a class="nav-item" href="#"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 14l-4-4 4-4M5 10h14"/></svg>Revenue &amp; Billing</a>
+    <a class="nav-item" href="#"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 20v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Therapist Accountability</a>
+    <div class="nav-sec">Integrity</div>
+    <a class="nav-item" href="#"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><path d="M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138"/></svg>System Integrity</a>
+    <a class="nav-item" href="#"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 10h6M7 7h3"/></svg>Audit Trail</a>
+    <div class="nav-sec">Navigation</div>
+    <a class="nav-item" href="reports.html"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 14l4-4 4 4 4-8"/></svg>Reports &amp; Analytics</a>
+    <a class="nav-item" href="index.html"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Main Menu</a>
+  </div>
+  <div class="sb-footer">
+    <div class="u-mini">
+      <div class="u-av">DK</div>
+      <div><div class="u-name">Dr. Deepa Krishnan</div><div class="u-role">Medical Director</div></div>
+    </div>
+  </div>
+</aside>
 
-  <!-- STATUS BAR -->
+<main class="main">
+  <div class="topbar">
+    <div>
+      <div class="topbar-title">Facility Control Dashboard</div>
+      <div class="topbar-sub">RehabCare Clinic -- Governance &amp; Oversight View</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="pill pill-g"><div class="dot"></div>Live · Mon 17 Mar 2025</div>
+      <div class="pill pill-p">Week 11 · Mar 2025</div>
+      <span style="font-size:11.5px;color:var(--text-muted);font-family:'DM Mono',monospace">10:48 AM</span>
+    </div>
+  </div>
 
-  <div class="status-bar">
-    <div class="status-time">9:41</div>
-    <div class="status-icons">
-      <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="4" width="3" height="8" rx="1"/><rect x="4.5" y="2.5" width="3" height="9.5" rx="1"/><rect x="9" y="1" width="3" height="11" rx="1"/><rect x="13.5" y="0" width="2.5" height="12" rx="1"/></svg>
-      <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5C10.2 2.5 12.2 3.4 13.7 4.9M2.3 4.9C3.8 3.4 5.8 2.5 8 2.5"/><path d="M8 6.5C9.3 6.5 10.4 7 11.2 7.8M4.8 7.8C5.6 7 6.7 6.5 8 6.5"/><circle cx="8" cy="10" r="1" fill="currentColor"/></svg>
-      <div style="display:flex;align-items:center;gap:1px">
-        <div style="width:20px;height:11px;border:1.5px solid currentColor;border-radius:3px;display:flex;align-items:center;padding:1px 1px;position:relative">
-          <div style="width:75%;height:100%;background:var(--green);border-radius:1.5px"></div>
-          <div style="position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:3px;height:6px;background:currentColor;border-radius:0 1px 1px 0"></div>
+  <div class="content">
+
+    <!-- DAILY SNAPSHOT -->
+    <div class="sec-lbl">Daily Facility Snapshot</div>
+    <div class="stat-row">
+      <div class="stat-card" style="border-top:3px solid #2563EB">
+        <div class="stat-lbl">Scheduled Today</div>
+        <div class="stat-val" style="color:#2563EB">87</div>
+        <div class="stat-sub">Across 8 therapists</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--green)">
+        <div class="stat-lbl">Completed</div>
+        <div class="stat-val" style="color:var(--green)">42</div>
+        <div class="stat-sub">As of 10:48 AM</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--rose)">
+        <div class="stat-lbl">No-Shows</div>
+        <div class="stat-val" style="color:var(--rose)">3</div>
+        <div class="stat-sub">3.4% rate · recovering</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--amber)">
+        <div class="stat-lbl">Revenue Expected</div>
+        <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px">₹1,04,400</div>
+        <div class="stat-sub">87 × ₹1,200</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--green)">
+        <div class="stat-lbl">Collected</div>
+        <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px;color:var(--green)">₹50,400</div>
+        <div class="stat-sub">48.3% -- day ongoing</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--rose)">
+        <div class="stat-lbl">Outstanding</div>
+        <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px;color:var(--rose)">₹54,000</div>
+        <div class="stat-sub">Collection in progress</div>
+      </div>
+    </div>
+
+    <!-- REVENUE + WEEK TREND -->
+    <div class="grid-2">
+
+      <div class="card">
+        <div class="card-hd">
+          <div class="card-title">Revenue Detail -- Today</div>
+          <div class="card-badge">17 Mar 2025</div>
+        </div>
+        <div class="card-body">
+          <div class="rev-compare">
+            <div class="rev-block rev-exp">
+              <div class="rev-lbl">Expected</div>
+              <div class="rev-v" style="color:#1D4ED8">₹1,04,400</div>
+              <div class="rev-s">87 sessions billed</div>
+            </div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-muted)">vs</div>
+            <div class="rev-block rev-col">
+              <div class="rev-lbl">Collected</div>
+              <div class="rev-v" style="color:#15803D">₹50,400</div>
+              <div class="rev-s">42 payments confirmed</div>
+            </div>
+          </div>
+          <div class="out-bar">
+            <div>
+              <div class="out-lbl">Outstanding Balance -- Today</div>
+              <div class="out-sub">45 sessions pending · 3 no-shows under review</div>
+            </div>
+            <div class="out-v">₹54,000</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+            <div style="padding:12px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px">Billing Gate</div>
+              <div style="font-size:12.5px;font-weight:600;color:var(--text-primary)">No sessions billed without approved program on file</div>
+            </div>
+            <div style="padding:12px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px">Collection Rate</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">48.3%</div>
+              <div style="font-size:11px;color:var(--text-muted)">as of 10:48 AM · day ongoing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hd">
+          <div class="card-title">Revenue Trend -- This Week</div>
+          <div class="card-badge">Mar 17--21, 2025</div>
+        </div>
+        <div class="card-body">
+          <div class="week-chart">
+            <div class="week-bar-wrap">
+              <div class="week-val">₹97K</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:78%"></div></div>
+              <div class="week-day">Mon 10</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹1.02L</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:91%"></div></div>
+              <div class="week-day">Tue 11</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹89K</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:87%"></div><div class="week-bar-coll" style="height:70%"></div></div>
+              <div class="week-day">Wed 12</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹1.04L</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:85%"></div></div>
+              <div class="week-day">Thu 13</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹96K</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:93%"></div><div class="week-bar-coll" style="height:80%"></div></div>
+              <div class="week-day">Fri 14</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:14px;font-size:11.5px">
+            <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:6px;background:var(--teal);border-radius:2px"></div>Expected</div>
+            <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:6px;background:var(--green);border-radius:2px;opacity:0.7"></div>Collected</div>
+          </div>
+          <div class="mtd-row" style="margin-top:14px">
+            <div class="mtd-card"><div class="mtd-val" style="color:var(--teal)">₹4.88L</div><div class="mtd-lbl">MTD Expected</div></div>
+            <div class="mtd-card"><div class="mtd-val" style="color:var(--green)">₹4.04L</div><div class="mtd-lbl">MTD Collected</div></div>
+            <div class="mtd-card"><div class="mtd-val" style="color:var(--rose)">₹84K</div><div class="mtd-lbl">MTD Outstanding</div></div>
+            <div class="mtd-card"><div class="mtd-val">82.8%</div><div class="mtd-lbl">Collection Rate</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- THERAPIST ACCOUNTABILITY -->
+    <div class="sec-lbl">Therapist Accountability -- Week of 17 Mar 2025</div>
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-title">Therapist Productivity Overview</div>
+        <div class="card-badge">8 Active Therapists</div>
+      </div>
+      <table class="t-table">
+        <thead>
+          <tr>
+            <th>Therapist</th>
+            <th>Sessions This Week</th>
+            <th>Note Compliance</th>
+            <th>Program Adherence</th>
+            <th>No-Show Flags</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div style="font-weight:600">Dr. Priya Nair</div><div style="font-size:11px;color:var(--text-muted)">Sr. Physio · HOD</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">53</span> <span style="font-size:11px;color:var(--text-muted)">/ 53 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">100%</span><div class="b-wrap"><div class="b-fill" style="width:100%;background:var(--green)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">95%</span><div class="b-wrap"><div class="b-fill" style="width:95%;background:var(--green)"></div></div></div></td>
+            <td style="color:var(--green)">0</td>
+            <td><span class="sp sp-g">Excellent</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Ms. Ananya Desai</div><div style="font-size:11px;color:var(--text-muted)">Occupational Therapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">38</span> <span style="font-size:11px;color:var(--text-muted)">/ 46 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">97%</span><div class="b-wrap"><div class="b-fill" style="width:97%;background:#2563EB"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">90%</span><div class="b-wrap"><div class="b-fill" style="width:90%;background:#2563EB"></div></div></div></td>
+            <td style="color:var(--amber)">1</td>
+            <td><span class="sp" style="background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE">Good · 1 Leave</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Mr. Rohan Mehta</div><div style="font-size:11px;color:var(--text-muted)">Speech Therapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">53</span> <span style="font-size:11px;color:var(--text-muted)">/ 53 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">96%</span><div class="b-wrap"><div class="b-fill" style="width:96%;background:#2563EB"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">88%</span><div class="b-wrap"><div class="b-fill" style="width:88%;background:#2563EB"></div></div></div></td>
+            <td style="color:var(--green)">0</td>
+            <td><span class="sp" style="background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE">Good</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Ms. Kavya Shetty</div><div style="font-size:11px;color:var(--text-muted)">ABA Therapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">52</span> <span style="font-size:11px;color:var(--text-muted)">/ 52 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--amber)">84%</span><div class="b-wrap"><div class="b-fill" style="width:84%;background:var(--amber)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--amber)">76%</span><div class="b-wrap"><div class="b-fill" style="width:76%;background:var(--amber)"></div></div></div></td>
+            <td style="color:var(--amber)">1</td>
+            <td><span class="sp sp-a">Review</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Mr. Vikram Iyer</div><div style="font-size:11px;color:var(--text-muted)">Neuro Physiotherapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">44</span> <span style="font-size:11px;color:var(--text-muted)">/ 50 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--rose)">78%</span><div class="b-wrap"><div class="b-fill" style="width:78%;background:var(--rose)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--rose)">62%</span><div class="b-wrap"><div class="b-fill" style="width:62%;background:var(--rose)"></div></div></div></td>
+            <td style="color:var(--rose);font-weight:600">3</td>
+            <td><span class="sp sp-r">Action Required</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Ms. Sneha Kulkarni</div><div style="font-size:11px;color:var(--text-muted)">Special Educator</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">48</span> <span style="font-size:11px;color:var(--text-muted)">/ 48 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">98%</span><div class="b-wrap"><div class="b-fill" style="width:98%;background:var(--green)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">92%</span><div class="b-wrap"><div class="b-fill" style="width:92%;background:var(--green)"></div></div></div></td>
+            <td style="color:var(--green)">0</td>
+            <td><span class="sp sp-g">Excellent</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:12px 20px;background:#FEF2F2;border-top:1px solid #FECACA;font-size:11.5px;color:#991B1B;display:flex;align-items:center;gap:8px">
+        ⚠ <strong>Mr. Vikram Iyer:</strong> Note compliance 78% (threshold 80%) + program adherence 62% (threshold 75%) + 3 no-show flags. System auto-flagged for Director review. Clinical review by HOD + HR follow-up by Admin required this week.
+      </div>
+    </div>
+
+    <!-- NO-SHOW + SLOT -->
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-hd"><div class="card-title">No-Show &amp; Slot Utilisation -- Today</div><div class="card-badge">Financial Leakage Tracking</div></div>
+        <div class="card-body">
+          <div class="ns-grid" style="margin-bottom:14px">
+            <div class="ns-card" style="background:#FEF2F2;border-color:#FECACA">
+              <div class="ns-num" style="color:#991B1B">5</div>
+              <div class="ns-lbl" style="color:#991B1B">Cancellations</div>
+              <div class="ns-sub" style="color:#B91C1C">Notified today</div>
+            </div>
+            <div class="ns-card" style="background:#F0FDF4;border-color:#BBF7D0">
+              <div class="ns-num" style="color:#166534">3</div>
+              <div class="ns-lbl" style="color:#166534">Slots Refilled</div>
+              <div class="ns-sub" style="color:#166534">From waitlist</div>
+            </div>
+            <div class="ns-card" style="background:#FFFBEB;border-color:#FDE68A">
+              <div class="ns-num" style="color:#92400E">2</div>
+              <div class="ns-lbl" style="color:#92400E">Slots Lost</div>
+              <div class="ns-sub" style="color:#92400E">₹2,400 unrecovered</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="padding:12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">No-Show Rate</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--amber)">3.4%</div>
+              <div style="font-size:11px;color:var(--text-muted)">3 of 87 sessions</div>
+            </div>
+            <div style="padding:12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Slot Recovery</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">60%</div>
+              <div style="font-size:11px;color:var(--text-muted)">3 of 5 slots refilled</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hd"><div class="card-title">Cancellation Credit Logic</div></div>
+        <div class="card-body">
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span>Clinic Retained (Refilled)</span><strong style="color:var(--green)">₹18,000 / month</strong></div>
+            <div style="height:8px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:73%;height:100%;border-radius:100px;background:var(--green)"></div></div>
+          </div>
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span>Therapist Credited (Idle)</span><strong style="color:#2563EB">₹6,000 / month</strong></div>
+            <div style="height:8px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:24%;height:100%;border-radius:100px;background:#2563EB"></div></div>
+          </div>
+          <div style="padding:10px 12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:12px;color:#166534">
+            ✓ <strong>Refill rate 75%</strong> -- 15 of 20 cancelled slots recovered via waitlist. Revenue protection is working.
+          </div>
+          <div style="padding:10px 12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px;font-size:12px;color:var(--text-secondary);margin-top:8px">
+            <strong>Therapist credit rule:</strong> Where a slot is idle because the cancellation was not escalated to front desk within the 2-hour refill window, a credit flag is logged against the responsible therapist and reviewed weekly by the Director.
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- LOGIN SCREEN -->
-
-  <div id="loginScreen" style="flex:1;display:flex;flex-direction:column">
-    <div class="login-screen" style="flex:1">
-      <div class="login-logo">RC</div>
-      <div class="login-title">RehabCare Clinic</div>
-      <div class="login-sub">Parent Portal — Secure Access</div>
-      <div class="login-card" id="loginStep1">
-        <div class="field-lbl">Mobile Number</div>
-        <div class="field-wrap">
-          <div class="country-code">+91</div>
-          <input class="field-input" type="tel" placeholder="98765 43210">
+    <!-- SYSTEM INTEGRITY -->
+    <div class="sec-lbl">System Integrity &amp; Governance Controls</div>
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-title">✦ Governance Controls Status</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:#166534;font-weight:500;background:#F0FDF4;border:1px solid #BBF7D0;padding:4px 10px;border-radius:10px">
+          <div class="dot" style="background:#166534"></div> All Systems Operational
         </div>
-        <button class="login-btn" onclick="showOTP()">Get OTP →</button>
-        <div class="login-note">A 4-digit OTP will be sent via SMS</div>
       </div>
-      <div class="login-card" id="loginStep2" style="display:none">
-        <div class="field-lbl">Enter OTP sent to +91 98765 43210</div>
-        <input class="otp-input" type="text" placeholder="• • • •" maxlength="4">
-        <button class="login-btn" onclick="loginSuccess()">Verify &amp; Login →</button>
-        <div class="back-link" onclick="document.getElementById('loginStep1').style.display='block';document.getElementById('loginStep2').style.display='none'">← Change Number</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- APP (hidden until login) -->
-
-  <div id="appWrapper" style="display:none;flex:1;flex-direction:column;overflow:hidden" class="app-screen">
-
-```
-<!-- HOME SCREEN -->
-<div class="app-screen visible" id="screen-home" style="flex:1;overflow-y:auto">
-  <div class="app-header">
-    <div class="header-row">
-      <div>
-        <div class="header-greeting">Good Morning,</div>
-        <div class="header-name">Mrs. Priya Sharma</div>
-      </div>
-      <div class="header-avatar notification-dot">PS</div>
-    </div>
-  </div>
-
-  <div class="child-card">
-    <div class="child-id-tag">PAT-2025-0012</div>
-    <div class="child-name">Aarav Sharma</div>
-    <div class="child-meta">5 years 4 months · ASD Level 2</div>
-    <div class="child-tags">
-      <span class="child-tag">OT</span>
-      <span class="child-tag">ABA</span>
-      <span class="child-tag">Speech</span>
-      <span class="child-tag">Active</span>
-    </div>
-    <div class="progress-row"><span>Program Progress</span><span style="font-weight:700;color:rgba(255,255,255,0.9)">15 / 30 sessions</span></div>
-    <div class="prog-bar"><div class="prog-bar-fill" style="width:50%"></div></div>
-  </div>
-
-  <div class="alert-card alert-red">
-    <div class="alert-icon">⚠</div>
-    <div>
-      <div class="alert-title" style="color:#991B1B">Payment Required</div>
-      <div class="alert-sub" style="color:#B91C1C">₹1,200 outstanding — due before next session (Tue 18 Mar)</div>
-    </div>
-  </div>
-
-  <div class="alert-card alert-teal">
-    <div class="alert-icon">🎉</div>
-    <div>
-      <div class="alert-title" style="color:#0F766E">Milestone Achieved!</div>
-      <div class="alert-sub" style="color:#0D9488">Bilateral hand use for 30-second tasks — marked by Ms. Ananya</div>
-    </div>
-  </div>
-
-  <div class="section-header">Next Session</div>
-  <div class="apt-card">
-    <div class="apt-time">4:00 PM</div>
-    <div class="apt-date">Tomorrow · Tue 18 Mar 2025</div>
-    <div class="apt-therapist-row">
-      <div class="apt-avatar">AD</div>
-      <div><div class="apt-therapist">Ms. Ananya Desai</div><div class="apt-therapy">Occupational Therapy · Session 16</div></div>
-      <div class="apt-confirmed">Confirmed</div>
-    </div>
-  </div>
-
-  <div class="section-header">This Week's Sessions</div>
-  <div class="apt-card">
-    <div class="apt-time">11:00 AM</div>
-    <div class="apt-date">Wed 19 Mar · Speech Therapy</div>
-    <div class="apt-therapist-row">
-      <div class="apt-avatar" style="background:linear-gradient(135deg,#7C3AED,#1A3D6E)">RM</div>
-      <div><div class="apt-therapist">Mr. Rohan Mehta</div><div class="apt-therapy">Speech Therapy · Session 6</div></div>
-      <div class="apt-confirmed">Confirmed</div>
-    </div>
-  </div>
-  <div style="height:20px"></div>
-</div>
-
-<!-- PROGRESS SCREEN -->
-<div class="app-screen" id="screen-progress" style="flex:1;overflow-y:auto">
-  <div class="app-header">
-    <div class="header-row">
-      <div class="header-name">Therapy Progress</div>
-      <div style="font-size:12px;color:var(--teal);font-weight:600">Aarav Sharma</div>
-    </div>
-  </div>
-
-  <div class="section-header">Video Comparison</div>
-  <div class="video-compare">
-    <div>
-      <div class="vid-card" onclick="alert('▶ Baseline video playing — Session 1, 08 Jan 2025')">
-        <div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--teal)"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="vid-label">Baseline</div>
-      </div>
-      <div class="vid-date" style="margin-top:5px">08 Jan 2025</div>
-    </div>
-    <div>
-      <div class="vid-card" style="border-color:#99F6E4" onclick="alert('▶ Current video playing — Session 15, 17 Mar 2025')">
-        <div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--teal)"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="vid-label" style="background:rgba(13,148,136,0.9);color:#fff">Current</div>
-      </div>
-      <div class="vid-date" style="margin-top:5px">17 Mar 2025</div>
-    </div>
-  </div>
-  <div style="margin:0 16px 14px;padding:10px 12px;background:#F0FDFA;border:1px solid #99F6E4;border-radius:12px;font-size:12px;color:#0F766E">Tap to play. Compare how Aarav's motor control has improved since the first session.</div>
-
-  <div class="section-header">Milestone Tracker</div>
-  <div class="milestone-card">
-    <div class="milestone-header">
-      <div class="milestone-title">OT Programme Milestones</div>
-      <div style="font-size:11.5px;font-weight:600;color:var(--teal)">1/4 achieved</div>
-    </div>
-    <div class="milestone-track">
-      <div class="milestone-step milestone-done"></div>
-      <div class="milestone-step milestone-active"></div>
-      <div class="milestone-step milestone-pending"></div>
-      <div class="milestone-step milestone-pending"></div>
-    </div>
-    <div class="mt-track" style="padding-left:28px;margin:0 0 0 4px">
-      <div class="mt-item">
-        <div class="mt-dot mt-achieved">✓</div>
-        <div class="mt-title">Tolerates tactile input without withdrawal</div>
-        <div class="mt-status" style="color:var(--green)">✓ Achieved</div>
-        <div class="mt-date">Session 12 · 17 Feb 2025</div>
-      </div>
-      <div class="mt-item">
-        <div class="mt-dot mt-active">●</div>
-        <div class="mt-title">Bilateral hand use for 30-second tasks</div>
-        <div class="mt-status" style="color:var(--teal)">In Progress — 80%</div>
-        <div class="mt-date">Current · Session 15</div>
-      </div>
-      <div class="mt-item" style="margin-bottom:0">
-        <div class="mt-dot mt-pending">○</div>
-        <div class="mt-title">Independent button fastening</div>
-        <div class="mt-status" style="color:var(--text-muted)">Upcoming</div>
+      <div class="int-grid" style="padding:16px">
+        <div class="int-item">
+          <div class="int-icon">🔒</div>
+          <div class="int-title">Audit Log</div>
+          <div class="int-badge ib-g">Enabled</div>
+          <div class="int-sub">All user actions timestamped &amp; stored with user ID</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">🛡</div>
+          <div class="int-title">Role-Based Access</div>
+          <div class="int-badge ib-g">Enforced</div>
+          <div class="int-sub">5 roles active -- Trustee, Admin, HOD, Therapist, Front Desk</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">📋</div>
+          <div class="int-title">Clinical Modification</div>
+          <div class="int-badge ib-g">HOD / ST Only</div>
+          <div class="int-sub">No program or milestone change without HOD approval</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">💳</div>
+          <div class="int-title">Billing Gate</div>
+          <div class="int-badge ib-g">Program-Locked</div>
+          <div class="int-sub">No billing generated without approved program on file</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">📝</div>
+          <div class="int-title">Session Note Gate</div>
+          <div class="int-badge ib-g">Enforced</div>
+          <div class="int-sub">Session cannot close without clinical note on file</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">⚙️</div>
+          <div class="int-title">Exception Approvals</div>
+          <div class="int-badge ib-g">Admin-Gated</div>
+          <div class="int-sub">No discount or waiver without Admin queue approval</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">🔄</div>
+          <div class="int-title">Plan Change Gate</div>
+          <div class="int-badge ib-g">Dual-Gate</div>
+          <div class="int-sub">HOD approves clinically, Admin executes operationally</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">⚠</div>
+          <div class="int-title">Deviation Tracking</div>
+          <div class="int-badge ib-a">1 Flagged</div>
+          <div class="int-sub">Mr. Vikram Iyer at 38% -- above 30% threshold</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <button style="display:block;width:calc(100% - 32px);margin:0 16px 20px;padding:13px;border:1.5px solid var(--teal);background:#fff;border-radius:14px;font-size:13.5px;font-weight:700;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif" onclick="alert('📄 Progress report PDF downloaded')">⬇ Download Progress Report</button>
-</div>
-
-<!-- BILLING SCREEN -->
-<div class="app-screen" id="screen-billing" style="flex:1;overflow-y:auto">
-  <div class="app-header">
-    <div class="header-row">
-      <div class="header-name">Billing &amp; Payments</div>
-    </div>
-  </div>
-
-  <div class="balance-card">
-    <div class="balance-lbl">Outstanding Balance</div>
-    <div class="balance-amount">₹1,200</div>
-    <div class="balance-btns">
-      <button class="pay-btn" onclick="alert('💳 Payment gateway opened — UPI / Card / Net Banking')">Pay Now</button>
-      <button class="history-btn" onclick="alert('Payment history shown below')">History</button>
-    </div>
-  </div>
-
-  <div class="section-header">Session Balance</div>
-  <div class="session-balance-row">
-    <div class="sb-card sb-done">
-      <div class="sb-num" style="color:var(--green)">15</div>
-      <div class="sb-lbl" style="color:var(--green)">Completed</div>
-    </div>
-    <div class="sb-card sb-rem">
-      <div class="sb-num" style="color:#0369A1">15</div>
-      <div class="sb-lbl" style="color:#0369A1">Remaining</div>
-    </div>
-  </div>
-  <div style="margin:0 16px 14px;font-size:12px;color:var(--text-muted);text-align:center">OT package — renewal due in 15 sessions · Sep 2025</div>
-
-  <div class="section-header">Recent Transactions</div>
-  <div class="txn-item">
-    <div class="txn-icon" style="background:#F0FDF4">💳</div>
-    <div class="txn-desc">
-      <div class="txn-title">OT 30-Session Package</div>
-      <div class="txn-date">06 Jan 2025</div>
-      <div class="receipt-btn" onclick="alert('📄 INV-2025-0089.pdf downloaded')">RECEIPT ⬇</div>
-    </div>
-    <div><div class="txn-amount" style="color:var(--green)">₹36,000</div><div style="font-size:11px;color:var(--green)">Paid</div></div>
-  </div>
-  <div class="txn-item">
-    <div class="txn-icon" style="background:#F0FDF4">✓</div>
-    <div class="txn-desc">
-      <div class="txn-title">Session 14 — OT</div>
-      <div class="txn-date">15 Mar 2025</div>
-      <div class="receipt-btn" onclick="alert('📄 Session receipt downloaded')">RECEIPT ⬇</div>
-    </div>
-    <div><div class="txn-amount" style="color:var(--text-primary)">₹1,200</div><div style="font-size:11px;color:var(--text-muted)">Paid</div></div>
-  </div>
-  <div class="txn-item">
-    <div class="txn-icon" style="background:#FEF2F2">⚠</div>
-    <div class="txn-desc">
-      <div class="txn-title">Session 15 — OT (outstanding)</div>
-      <div class="txn-date">17 Mar 2025</div>
-    </div>
-    <div><div class="txn-amount" style="color:var(--rose)">₹1,200</div><div style="font-size:11px;color:var(--rose)">Due</div></div>
-  </div>
-  <div style="height:20px"></div>
-</div>
-
-<!-- HOMEWORK SCREEN -->
-<div class="app-screen" id="screen-homework" style="flex:1;overflow-y:auto">
-  <div class="app-header">
-    <div class="header-row">
-      <div class="header-name">Home Practice</div>
-      <div style="font-size:12px;color:var(--text-muted)">Week of 17 Mar</div>
-    </div>
-  </div>
-
-  <div class="hw-note">
-    <strong>Note from Ms. Ananya:</strong> "Aarav did great with the brushing protocol this week. Focus on the clothespeg activity — try 5 minutes daily before school. Consistency makes the biggest difference."
-  </div>
-
-  <div class="hw-card" id="hw1">
-    <div style="display:flex;align-items:flex-start;gap:12px">
-      <div style="flex:1">
-        <div class="hw-title">Clothespeg Transfer</div>
-        <div class="hw-desc">Transfer 10 clothespegs from one container to another using pincer grasp. Both hands alternating. 5 minutes daily.</div>
+    <!-- AUDIT TRAIL -->
+    <div class="sec-lbl">Recent Audit Events</div>
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-title">Audit Trail -- Last 10 Actions</div>
+        <div class="card-badge">Tamper-Proof Log</div>
       </div>
-      <button class="hw-check hw-check-undone" onclick="toggleHW('hw1',this)">○</button>
-    </div>
-  </div>
-
-  <div class="hw-card done" id="hw2">
-    <div style="display:flex;align-items:flex-start;gap:12px">
-      <div style="flex:1">
-        <div class="hw-title" style="color:var(--green)">Bear Walk</div>
-        <div class="hw-desc">Walk on hands and feet (like a bear) for 2 minutes. Great for core strength and proprioception.</div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🗒</span>
+          <div>
+            <div class="audit-desc">Session note submitted -- Yuvan Singh · Session 15</div>
+            <div class="audit-meta">Ms. Ananya Desai · 17 Mar 2025 · 09:58 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Compliant</span>
       </div>
-      <button class="hw-check hw-check-done" onclick="toggleHW('hw2',this)">✓</button>
-    </div>
-    <div class="hw-done-label">✓ Completed · Great job, Aarav!</div>
-  </div>
-
-  <div class="hw-card" id="hw3">
-    <div style="display:flex;align-items:flex-start;gap:12px">
-      <div style="flex:1">
-        <div class="hw-title">Sound Matching</div>
-        <div class="hw-desc">Listen to 3 household sounds (tap, door knock, clap) and have Aarav identify or imitate each. 10 minutes.</div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">✅</span>
+          <div>
+            <div class="audit-desc">Program published -- Amaira Patil · OT+Physio+SI · ₹48,000</div>
+            <div class="audit-meta">Admin: Sunita Rao · 16 Mar 2025 · 4:15 PM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-b">Published</span>
       </div>
-      <button class="hw-check hw-check-undone" onclick="toggleHW('hw3',this)">○</button>
-    </div>
-  </div>
-
-  <div style="height:20px"></div>
-</div>
-
-<!-- APPOINTMENTS SCREEN -->
-<div class="app-screen" id="screen-calendar" style="flex:1;overflow-y:auto">
-  <div class="app-header">
-    <div class="header-row">
-      <div class="header-name">Appointments</div>
-    </div>
-  </div>
-
-  <div class="section-header">Upcoming</div>
-
-  <div class="apt-card">
-    <div style="display:flex;justify-content:space-between;align-items:start">
-      <div>
-        <div class="apt-time">4:00 PM</div>
-        <div class="apt-date">Tomorrow · Tue 18 Mar 2025</div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🔁</span>
+          <div>
+            <div class="audit-desc">Plan change approved -- Yuvan Singh · OT 2x→3x/week</div>
+            <div class="audit-meta">Dr. Priya Nair (HOD) · 16 Mar 2025 · 11:30 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Approved</span>
       </div>
-      <div class="apt-confirmed">Confirmed</div>
-    </div>
-    <div class="apt-therapist-row">
-      <div class="apt-avatar">AD</div>
-      <div><div class="apt-therapist">Ms. Ananya Desai</div><div class="apt-therapy">Occupational Therapy · Session 16 / 30</div></div>
-    </div>
-  </div>
-  <button class="reschedule-btn" onclick="alert('Reschedule request sent — clinic will confirm within 4 hours')">Request Reschedule</button>
-  <div class="cancel-note">Need to cancel? Please notify at least 24 hours in advance to avoid cancellation charges.</div>
-
-  <div class="apt-card" style="margin-top:4px">
-    <div style="display:flex;justify-content:space-between;align-items:start">
-      <div>
-        <div class="apt-time">11:00 AM</div>
-        <div class="apt-date">Wed 19 Mar 2025</div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">⚑</span>
+          <div>
+            <div class="audit-desc">Note compliance flag raised -- Mr. Vikram Iyer · 3 overdue notes</div>
+            <div class="audit-meta">System auto-flag · 17 Mar 2025 · 04:00 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-a">Action Pending</span>
       </div>
-      <div class="apt-confirmed">Confirmed</div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">💳</span>
+          <div>
+            <div class="audit-desc">Payment recorded -- Vansh Kataria · ₹1,200 · Session 32</div>
+            <div class="audit-meta">Front Desk: Pooja Mane · 17 Mar 2025 · 09:12 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Recorded</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🔁</span>
+          <div>
+            <div class="audit-desc">Milestone 50% achieved -- Yuvan Singh · Bilateral coordination</div>
+            <div class="audit-meta">Dr. Priya Nair (HOD) · 15 Mar 2025 · 3:45 PM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-b">Milestone Logged</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">✖</span>
+          <div>
+            <div class="audit-desc">No-show recorded -- Zain Sayyed · OT 10:00 AM · auto-marked T+15</div>
+            <div class="audit-meta">System · 17 Mar 2025 · 10:15 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-a">Recovery Pending</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">⚙️</span>
+          <div>
+            <div class="audit-desc">Exception approved -- 10% sibling discount · Diya Choudhary</div>
+            <div class="audit-meta">Admin: Sunita Rao · 16 Mar 2025 · 2:00 PM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Approved</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">📋</span>
+          <div>
+            <div class="audit-desc">Evaluation recorded -- Vansh Kataria · GMFCS Level II · Dr. Priya Nair</div>
+            <div class="audit-meta">Dr. Priya Nair (HOD) · 01 Sep 2024 · 10:00 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Compliant</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🔒</span>
+          <div>
+            <div class="audit-desc">Admin access attempt to clinical content -- BLOCKED by system</div>
+            <div class="audit-meta">Admin: Sunita Rao attempted edit on Yuvan Singh program · 14 Mar 2025 · 11:22 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-r">Blocked -- Logged</span>
+      </div>
     </div>
-    <div class="apt-therapist-row">
-      <div class="apt-avatar" style="background:linear-gradient(135deg,#7C3AED,#1A3D6E)">RM</div>
-      <div><div class="apt-therapist">Mr. Rohan Mehta</div><div class="apt-therapy">Speech Therapy · Session 6 / 20</div></div>
-    </div>
-  </div>
-  <button class="reschedule-btn" onclick="alert('Reschedule request for Wed Speech sent')">Request Reschedule</button>
-
-  <div style="height:20px"></div>
-</div>
-
-<!-- BOTTOM NAVIGATION -->
-<div class="bottom-nav">
-  <button class="nav-btn active" id="nav-home" onclick="showScreen('home')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span class="nav-lbl">Home</span>
-  </button>
-  <button class="nav-btn" id="nav-progress" onclick="showScreen('progress')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    <span class="nav-lbl">Progress</span>
-  </button>
-  <button class="nav-center-btn" id="nav-center" onclick="showScreen('homework')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-  </button>
-  <button class="nav-btn" id="nav-calendar" onclick="showScreen('calendar')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    <span class="nav-lbl">Schedule</span>
-  </button>
-  <button class="nav-btn" id="nav-billing" onclick="showScreen('billing')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-    <span class="nav-lbl">Billing</span>
-  </button>
-</div>
-```
 
   </div>
-
-</div><!-- /phone-frame -->
-
-<script>
-function showOTP(){
-  document.getElementById('loginStep1').style.display='none';
-  document.getElementById('loginStep2').style.display='block';
-}
-function loginSuccess(){
-  document.getElementById('loginScreen').style.display='none';
-  const app=document.getElementById('appWrapper');
-  app.style.display='flex';
-  app.classList.add('visible');
-}
-function showScreen(name){
-  document.querySelectorAll('.app-screen').forEach(s=>s.classList.remove('visible'));
-  document.getElementById('screen-'+name).classList.add('visible');
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  const nb=document.getElementById('nav-'+name);
-  if(nb)nb.classList.add('active');
-  const center=document.getElementById('nav-center');
-  if(name==='homework'){center.classList.add('active-center')}
-  else{center.classList.remove('active-center')}
-}
-function toggleHW(id,btn){
-  const card=document.getElementById(id);
-  const isDone=card.classList.contains('done');
-  if(isDone){
-    card.classList.remove('done');
-    btn.className='hw-check hw-check-undone';
-    btn.textContent='○';
-    const lbl=card.querySelector('.hw-done-label');
-    if(lbl)lbl.remove();
-  } else {
-    card.classList.add('done');
-    btn.className='hw-check hw-check-done';
-    btn.textContent='✓';
-    if(!card.querySelector('.hw-done-label')){
-      const lbl=document.createElement('div');
-      lbl.className='hw-done-label';
-      lbl.textContent='✓ Completed · Great job!';
-      card.appendChild(lbl);
-    }
-  }
-}
-</script>
-
+</main>
 </body>
 </html>
