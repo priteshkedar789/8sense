@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -201,463 +202,465 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
   <div class="content">
 
-    <!-- TABS -->
-    <div class="tabs">
-      <button class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
-      <button class="tab" data-tab="evaluations" onclick="switchTab('evaluations')">Evaluations</button>
-      <button class="tab" data-tab="programs" onclick="switchTab('programs')">Program Design</button>
-      <button class="tab" data-tab="planchanges" onclick="switchTab('planchanges')">Plan Changes <span class="tab-badge">2</span></button>
-      <button class="tab" data-tab="quality" onclick="switchTab('quality')">Clinical Quality</button>
-      <button class="tab" data-tab="protocols" onclick="switchTab('protocols')">Protocols</button>
-    </div>
+```
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
+  <button class="tab" data-tab="evaluations" onclick="switchTab('evaluations')">Evaluations</button>
+  <button class="tab" data-tab="programs" onclick="switchTab('programs')">Program Design</button>
+  <button class="tab" data-tab="planchanges" onclick="switchTab('planchanges')">Plan Changes <span class="tab-badge">2</span></button>
+  <button class="tab" data-tab="quality" onclick="switchTab('quality')">Clinical Quality</button>
+  <button class="tab" data-tab="protocols" onclick="switchTab('protocols')">Protocols</button>
+</div>
 
-    <!-- OVERVIEW TAB -->
-    <div class="tab-content active" id="tab-overview">
-      <div class="kpi-row">
-        <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-label">Plan Changes Pending</div><div class="kpi-value" style="color:var(--rose)">2</div><div class="kpi-sub">Awaiting your clinical review</div></div>
-        <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-label">Evaluations Pending</div><div class="kpi-value" style="color:var(--amber)">2</div><div class="kpi-sub">Unassessed new patients</div></div>
-        <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-label">Active Patients</div><div class="kpi-value" style="color:var(--green)">8</div><div class="kpi-sub">2 need attention</div></div>
-        <div class="kpi-card" style="border-top:3px solid var(--teal)"><div class="kpi-label">Programs Active</div><div class="kpi-value" style="color:var(--teal)">6</div><div class="kpi-sub">2 awaiting your approval</div></div>
+<!-- OVERVIEW TAB -->
+<div class="tab-content active" id="tab-overview">
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-label">Plan Changes Pending</div><div class="kpi-value" style="color:var(--rose)">2</div><div class="kpi-sub">Awaiting your clinical review</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-label">Evaluations Pending</div><div class="kpi-value" style="color:var(--amber)">2</div><div class="kpi-sub">Unassessed new patients</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-label">Active Patients</div><div class="kpi-value" style="color:var(--green)">8</div><div class="kpi-sub">2 need attention</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--teal)"><div class="kpi-label">Programs Active</div><div class="kpi-value" style="color:var(--teal)">6</div><div class="kpi-sub">2 awaiting your approval</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Patient Clinical Pipeline</div></div>
+      <div class="patient-item">
+        <div class="p-avatar">AS</div>
+        <div style="flex:1">
+          <div class="p-name">Nihal Shaikh <span style="font-size:11px;color:var(--text-muted)">5y · ASD</span></div>
+          <div class="p-meta">OT + ABA + Speech · 15/30 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:50%"></div></div><span class="progress-pct" style="color:var(--teal)">50%</span></div>
+        </div>
+        <span class="status-pill pill-ok">On Track</span>
       </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Patient Clinical Pipeline</div></div>
-          <div class="patient-item">
-            <div class="p-avatar">AS</div>
-            <div style="flex:1">
-              <div class="p-name">Yuvan Singh <span style="font-size:11px;color:var(--text-muted)">5y · ASD</span></div>
-              <div class="p-meta">OT + ABA + Speech · 15/30 sessions</div>
-              <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:50%"></div></div><span class="progress-pct" style="color:var(--teal)">50%</span></div>
-            </div>
-            <span class="status-pill pill-ok">On Track</span>
-          </div>
-          <div class="patient-item">
-            <div class="p-avatar">RP</div>
-            <div style="flex:1">
-              <div class="p-name">Amaira Patil <span style="font-size:11px;color:var(--text-muted)">4y · ASD</span></div>
-              <div class="p-meta">Physio + OT + EI · 8/40 sessions</div>
-              <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div><span class="progress-pct" style="color:var(--teal)">20%</span></div>
-            </div>
-            <span class="status-pill pill-warn">New -- Review Due</span>
-          </div>
-          <div class="patient-item">
-            <div class="p-avatar">KM</div>
-            <div style="flex:1">
-              <div class="p-name">Vansh Kataria <span style="font-size:11px;color:var(--text-muted)">7y · CP</span></div>
-              <div class="p-meta">Neuro Physio + OT + Sensory · 32/50 sessions</div>
-              <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:64%"></div></div><span class="progress-pct" style="color:var(--teal)">64%</span></div>
-            </div>
-            <span class="status-pill pill-ok">On Track</span>
-          </div>
-          <div class="patient-item">
-            <div class="p-avatar">MJ</div>
-            <div style="flex:1">
-              <div class="p-name">Saisha Shinde <span style="font-size:11px;color:var(--text-muted)">8y · ASD+SPD</span></div>
-              <div class="p-meta">ABA + Sensory + Speech · 18/60 sessions</div>
-              <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill amber" style="width:30%"></div></div><span class="progress-pct" style="color:var(--amber)">30%</span></div>
-            </div>
-            <span class="status-pill pill-warn">Stalled -- Review</span>
-          </div>
-          <div class="patient-item">
-            <div class="p-avatar">ZS</div>
-            <div style="flex:1">
-              <div class="p-name">Theia Pithawala <span style="font-size:11px;color:var(--text-muted)">3y · Language</span></div>
-              <div class="p-meta">Speech + Audio · 12/20 sessions</div>
-              <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:60%"></div></div><span class="progress-pct" style="color:var(--teal)">60%</span></div>
-            </div>
-            <span class="status-pill pill-ok">On Track</span>
-          </div>
-          <div class="patient-item">
-            <div class="p-avatar">IN</div>
-            <div style="flex:1">
-              <div class="p-name">Saifuddin Contractorwala <span style="font-size:11px;color:var(--text-muted)">6y · ADHD</span></div>
-              <div class="p-meta">OT + Behavioral + SpEd · 22/30 sessions</div>
-              <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:73%"></div></div><span class="progress-pct" style="color:var(--teal)">73%</span></div>
-            </div>
-            <span class="status-pill pill-ok">On Track</span>
-          </div>
+      <div class="patient-item">
+        <div class="p-avatar">RP</div>
+        <div style="flex:1">
+          <div class="p-name">Riya Kapoor <span style="font-size:11px;color:var(--text-muted)">4y · ASD</span></div>
+          <div class="p-meta">Physio + OT + EI · 8/40 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div><span class="progress-pct" style="color:var(--teal)">20%</span></div>
         </div>
-
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <div class="card">
-            <div class="card-header"><div class="card-title">Therapist Deviation Rates -- This Week</div></div>
-            <div class="card-body" style="padding:14px">
-              <div style="display:flex;flex-direction:column;gap:10px">
-                <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
-                  <span class="dev-name">Ms. Ananya Desai (OT)</span>
-                  <div class="deviation-bar"><span style="font-weight:600;color:var(--green)">5%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:5%;background:var(--green)"></div></div></div>
-                  <span class="status-pill pill-ok">Excellent</span>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
-                  <span>Mr. Rohan Mehta (Speech)</span>
-                  <div class="deviation-bar"><span style="font-weight:600;color:#2563EB">12%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:12%;background:#2563EB"></div></div></div>
-                  <span class="status-pill pill-ok">Good</span>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
-                  <span>Ms. Kavya Shetty (ABA)</span>
-                  <div class="deviation-bar"><span style="font-weight:600;color:var(--amber)">24%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:24%;background:var(--amber)"></div></div></div>
-                  <span class="status-pill pill-warn">Monitor</span>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
-                  <span>Mr. Vikram Iyer (Neuro Physio)</span>
-                  <div class="deviation-bar"><span style="font-weight:600;color:var(--rose)">38%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:38%;background:var(--rose)"></div></div></div>
-                  <span class="status-pill pill-danger">High Risk</span>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
-                  <span>Ms. Sneha Kulkarni (SpEd)</span>
-                  <div class="deviation-bar"><span style="font-weight:600;color:var(--green)">8%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:8%;background:var(--green)"></div></div></div>
-                  <span class="status-pill pill-ok">Good</span>
-                </div>
-              </div>
-              <div style="margin-top:12px;padding:10px 12px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;font-size:11.5px;color:#991B1B">
-                ⚠ Mr. Vikram Iyer: 38% deviation exceeds 30% clinical threshold. Clinical review and supervision visit required this week.
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header"><div class="card-title">Role Boundary -- Clinical Authority</div></div>
-            <div class="card-body">
-              <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:10px">As Senior Therapist, you exclusively control: evaluation records, program activity/milestone design, plan change approvals, therapist clinical supervision. Admin cannot modify clinical content.</div>
-              <div style="display:flex;flex-direction:column;gap:6px">
-                <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Evaluation entry and sign-off</div>
-                <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Program activities and milestones</div>
-                <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Plan change approve / reject</div>
-                <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Therapist deviation review</div>
-                <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#991B1B">✗ Financial data (Admin only)</div>
-                <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#991B1B">✗ Schedule overrides (Admin only)</div>
-              </div>
-            </div>
-          </div>
+        <span class="status-pill pill-warn">New -- Review Due</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">KM</div>
+        <div style="flex:1">
+          <div class="p-name">Kabir Ansari <span style="font-size:11px;color:var(--text-muted)">7y · CP</span></div>
+          <div class="p-meta">Neuro Physio + OT + Sensory · 32/50 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:64%"></div></div><span class="progress-pct" style="color:var(--teal)">64%</span></div>
         </div>
+        <span class="status-pill pill-ok">On Track</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">MJ</div>
+        <div style="flex:1">
+          <div class="p-name">Zara Menon <span style="font-size:11px;color:var(--text-muted)">8y · ASD+SPD</span></div>
+          <div class="p-meta">ABA + Sensory + Speech · 18/60 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill amber" style="width:30%"></div></div><span class="progress-pct" style="color:var(--amber)">30%</span></div>
+        </div>
+        <span class="status-pill pill-warn">Stalled -- Review</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">ZS</div>
+        <div style="flex:1">
+          <div class="p-name">Aarav Patil <span style="font-size:11px;color:var(--text-muted)">3y · Language</span></div>
+          <div class="p-meta">Speech + Audio · 12/20 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:60%"></div></div><span class="progress-pct" style="color:var(--teal)">60%</span></div>
+        </div>
+        <span class="status-pill pill-ok">On Track</span>
+      </div>
+      <div class="patient-item">
+        <div class="p-avatar">IN</div>
+        <div style="flex:1">
+          <div class="p-name">Rehan Khan <span style="font-size:11px;color:var(--text-muted)">6y · ADHD</span></div>
+          <div class="p-meta">OT + Behavioral + SpEd · 22/30 sessions</div>
+          <div class="progress-mini"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:73%"></div></div><span class="progress-pct" style="color:var(--teal)">73%</span></div>
+        </div>
+        <span class="status-pill pill-ok">On Track</span>
       </div>
     </div>
 
-    <!-- EVALUATIONS TAB -->
-    <div class="tab-content" id="tab-evaluations">
-      <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#92400E;display:flex;gap:8px">
-        <span>⚠</span>
-        <span><strong>2 patients require evaluation before therapy can begin.</strong> No sessions can be scheduled or billed until evaluation is complete and a program is approved.</span>
-      </div>
-
+    <div style="display:flex;flex-direction:column;gap:14px">
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Patients Awaiting Evaluation</div>
-          <button class="btn btn-teal" onclick="alert('Evaluation form opened for Neel Sharma')">+ New Evaluation</button>
-        </div>
-        <div class="eval-item">
-          <div class="eval-header">
-            <div><div class="eval-patient">Neel Sharma -- 6y</div><div class="eval-meta">Referred by: Dr. Suresh Menon (Dev. Pediatrician) · Walk-in 14 Mar 2025</div></div>
-            <div style="display:flex;gap:8px"><span class="status-pill pill-warn">Eval Pending</span><button class="btn btn-teal" onclick="alert('Evaluation form for Neel Sharma opened')">Conduct Evaluation</button></div>
+        <div class="card-header"><div class="card-title">Therapist Deviation Rates -- This Week</div></div>
+        <div class="card-body" style="padding:14px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span class="dev-name">Ms. Ananya Desai (OT)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--green)">5%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:5%;background:var(--green)"></div></div></div>
+              <span class="status-pill pill-ok">Excellent</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Mr. Rohan Mehta (Speech)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:#2563EB">12%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:12%;background:#2563EB"></div></div></div>
+              <span class="status-pill pill-ok">Good</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Ms. Kavya Shetty (ABA)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--amber)">24%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:24%;background:var(--amber)"></div></div></div>
+              <span class="status-pill pill-warn">Monitor</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Mr. Vikram Iyer (Neuro Physio)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--rose)">38%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:38%;background:var(--rose)"></div></div></div>
+              <span class="status-pill pill-danger">High Risk</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+              <span>Ms. Sneha Kulkarni (SpEd)</span>
+              <div class="deviation-bar"><span style="font-weight:600;color:var(--green)">8%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:8%;background:var(--green)"></div></div></div>
+              <span class="status-pill pill-ok">Good</span>
+            </div>
           </div>
-          <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-secondary)">
-            <strong>Referral notes:</strong> Parent reports attention difficulties, hyperactivity, and significant fine motor delays. Ruled out ADHD pharmacologically. Pediatrician requesting OT + behavioral assessment. Parent also mentions possible sensory sensitivities.
-          </div>
-        </div>
-        <div class="eval-item">
-          <div class="eval-header">
-            <div><div class="eval-patient">Diya Choudhary -- 3.5y</div><div class="eval-meta">Referred by: Dr. Anjali Bhat (Child Neurologist) · Walk-in 15 Mar 2025</div></div>
-            <div style="display:flex;gap:8px"><span class="status-pill pill-warn">Eval Pending</span><button class="btn btn-teal" onclick="alert('Evaluation form for Diya Choudhary opened')">Conduct Evaluation</button></div>
-          </div>
-          <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-secondary)">
-            <strong>Referral notes:</strong> Delayed milestones across all domains. Walking independently at 24 months. No consistent 2-word phrases at 3.5y. Neurologist suspect global developmental delay, possible early autism features. Requesting comprehensive assessment.
+          <div style="margin-top:12px;padding:10px 12px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;font-size:11.5px;color:#991B1B">
+            ⚠ Mr. Vikram Iyer: 38% deviation exceeds 30% clinical threshold. Clinical review and supervision visit required this week.
           </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-header"><div class="card-title">Completed Evaluations -- Recent</div></div>
-        <div class="eval-item">
-          <div class="eval-header">
-            <div><div class="eval-patient">Yuvan Singh -- 5y · Completed 06 Jan 2025</div><div class="eval-meta">Evaluator: Dr. Priya Nair (HOD) · Program created</div></div>
-            <span class="status-pill pill-ok">Program Active</span>
-          </div>
-          <div class="eval-findings">
-            <strong>Findings:</strong> ASD with co-occurring sensory processing disorder. Significant tactile defensiveness on dorsal upper extremities. Poor bilateral coordination -- midline crossing absent. Vestibular hypersensitivity. Expressive language at 24-month level. Adaptive behaviour significantly delayed.
-          </div>
-          <div class="eval-recommend">→ Recommendation: 30 sessions OT (Sensory Integration focus) + 20 sessions ABA + 20 sessions Speech. Multidisciplinary program, bi-weekly family coaching.</div>
-        </div>
-        <div class="eval-item">
-          <div class="eval-header">
-            <div><div class="eval-patient">Vansh Kataria -- 7y · Completed 01 Sep 2024</div><div class="eval-meta">Evaluator: Dr. Priya Nair (HOD) · Program active</div></div>
-            <span class="status-pill pill-ok">Program Active</span>
-          </div>
-          <div class="eval-findings">
-            <strong>Findings:</strong> Spastic diplegic cerebral palsy (GMFCS Level II). Significant lower extremity spasticity. Functional upper limbs with fine motor difficulties. Gait pattern: scissoring with bilateral intoeing. Cognitive function within normal limits. Participation restrictions in school and social environments.
-          </div>
-          <div class="eval-recommend">→ Recommendation: 50 sessions -- Neuro Physiotherapy + OT (fine motor) + Sensory Integration. Goal: GMFCS Level I functional transitions, school participation readiness.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROGRAMS TAB -->
-    <div class="tab-content" id="tab-programs">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Active Program -- Yuvan Singh · ASD</div>
-          <div style="display:flex;gap:8px">
-            <span class="pill pill-green">Clinically Approved</span>
-            <span class="pill pill-blue">Published</span>
-          </div>
-        </div>
+        <div class="card-header"><div class="card-title">Role Boundary -- Clinical Authority</div></div>
         <div class="card-body">
-          <div style="display:grid;grid-template-columns:repeat(3,auto);gap:0;margin-bottom:16px">
-            <div style="padding-right:20px;border-right:1px solid var(--border-light);margin-right:20px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Total Sessions</div><div style="font-size:18px;font-family:'DM Mono',monospace;font-weight:600;color:var(--navy)">70</div></div>
-            <div style="padding-right:20px;border-right:1px solid var(--border-light);margin-right:20px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Domains</div><div style="font-size:13px;font-weight:600;color:var(--navy)">OT · ABA · Speech</div></div>
-            <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Approved By</div><div style="font-size:13px;font-weight:600;color:var(--navy)">Dr. Priya Nair</div></div>
-          </div>
-
-          <div class="phase-grid">
-            <div class="phase-card">
-              <div class="phase-title">Phase 1 -- Foundation</div>
-              <div class="phase-sessions">Sessions 1--20 · Sensory Regulation</div>
-              <span class="activity-chip">Tactile Desensitisation (Wilbarger)</span>
-              <span class="activity-chip">Vestibular Input -- Linear Swing</span>
-              <span class="activity-chip">ABA: DTT -- Basic Compliance</span>
-              <span class="activity-chip">Speech: PECS Levels 1--2</span>
-            </div>
-            <div class="phase-card">
-              <div class="phase-title">Phase 2 -- Skill Acquisition</div>
-              <div class="phase-sessions">Sessions 21--45 · Bilateral + Language</div>
-              <span class="activity-chip">Bilateral Coordination -- Bead Threading</span>
-              <span class="activity-chip">Fine Motor -- Clothespeg Transfer</span>
-              <span class="activity-chip">ABA: NET -- Social Initiation</span>
-              <span class="activity-chip">Speech: Picture Exchange → Verbal</span>
-            </div>
-            <div class="phase-card">
-              <div class="phase-title">Phase 3 -- Functional Integration</div>
-              <div class="phase-sessions">Sessions 46--70 · School Readiness</div>
-              <span class="activity-chip">ADL Activities -- Self-dressing</span>
-              <span class="activity-chip">Social Play -- Parallel → Interactive</span>
-              <span class="activity-chip">ABA: Group Skills</span>
-              <span class="activity-chip">Speech: Conversational Turn-Taking</span>
-            </div>
-          </div>
-
-          <div style="margin-top:14px">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:8px">Program Milestones</div>
-            <div class="milestone-list">
-              <div class="milestone-item"><span>Tolerates tactile input (dorsal forearms) without withdrawal -- <strong>Achieved ✓ (Session 12)</strong></span></div>
-              <div class="milestone-item"><span>Bilateral hand use for 30-second tasks -- <strong>In Progress (Session 15)</strong></span></div>
-              <div class="milestone-item"><span>Initiates PECS exchange for 3 preferred items -- <strong>Pending</strong></span></div>
-              <div class="milestone-item"><span>Sustained sitting at table for 10 min with task engagement -- <strong>Pending</strong></span></div>
-            </div>
-          </div>
-
-          <div style="margin-top:14px;padding:12px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;font-size:12px;color:#1E40AF">
-            🔒 <strong>Read-only for Admin.</strong> Activity and milestone content can only be modified by the Senior Therapist. Admin can publish and link billing -- cannot edit clinical content.
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="border:1.5px solid #FDE68A">
-        <div class="card-header" style="background:#FFFBEB">
-          <div class="card-title" style="color:#92400E">Draft Program -- Amaira Patil · Global Developmental Delay</div>
-          <button class="btn btn-green" onclick="alert('✅ Program for Amaira Patil clinically approved -- sent to Admin for publication and billing link')">Approve Program</button>
-        </div>
-        <div class="card-body">
-          <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px">Based on evaluation (EVAL-2025-009). Recommendation: Physiotherapy + OT + Early Intervention -- 40 sessions.</div>
-          <div class="phase-grid">
-            <div class="phase-card"><div class="phase-title">Phase 1 -- Motor Foundation</div><div class="phase-sessions">Sessions 1--15</div><span class="activity-chip">Gross Motor -- Ball Skills</span><span class="activity-chip">OT: Sensory Play Foundation</span><span class="activity-chip">EI: Object Permanence</span></div>
-            <div class="phase-card"><div class="phase-title">Phase 2 -- Skill Building</div><div class="phase-sessions">Sessions 16--30</div><span class="activity-chip">Gait Training -- Uneven Surfaces</span><span class="activity-chip">Fine Motor -- Peg Activities</span><span class="activity-chip">EI: Cause-Effect Exploration</span></div>
-            <div class="phase-card"><div class="phase-title">Phase 3 -- Independence</div><div class="phase-sessions">Sessions 31--40</div><span class="activity-chip">ADL Prep -- Feeding Independence</span><span class="activity-chip">Community Mobility</span><span class="activity-chip">EI: Imitation and Play</span></div>
+          <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:10px">As Senior Therapist, you exclusively control: evaluation records, program activity/milestone design, plan change approvals, therapist clinical supervision. Admin cannot modify clinical content.</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Evaluation entry and sign-off</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Program activities and milestones</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Plan change approve / reject</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#166534">✓ Therapist deviation review</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#991B1B">✗ Financial data (Admin only)</div>
+            <div style="font-size:12px;display:flex;align-items:center;gap:6px;color:#991B1B">✗ Schedule overrides (Admin only)</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- PLAN CHANGES TAB -->
-    <div class="tab-content" id="tab-planchanges">
-      <div class="card">
-        <div class="card-header"><div class="card-title">Plan Change Requests -- Awaiting Clinical Review</div><span class="pill pill-amber">2 Pending</span></div>
+<!-- EVALUATIONS TAB -->
+<div class="tab-content" id="tab-evaluations">
+  <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#92400E;display:flex;gap:8px">
+    <span>⚠</span>
+    <span><strong>2 patients require evaluation before therapy can begin.</strong> No sessions can be scheduled or billed until evaluation is complete and a program is approved.</span>
+  </div>
 
-        <div class="plan-change-item">
-          <div class="pc-header">
-            <div>
-              <div class="pc-title">Yuvan Singh -- Frequency Increase Request</div>
-              <div class="pc-meta">Requested by: Ms. Ananya Desai (OT) · 14 Mar 2025 · PC-2025-003</div>
-            </div>
-            <span class="status-pill pill-warn">Pending Your Review</span>
-          </div>
-          <div class="pc-rationale">
-            <strong>Clinical rationale from therapist:</strong> "Aarav is demonstrating faster-than-expected progress with vestibular tolerance -- achieved 12-minute swing tolerance at session 15 when milestone was set for session 20. Increasing OT from 2×/week to 3×/week would capitalise on this responsive period and accelerate bilateral coordination work. Parent is available and motivated."
-          </div>
-          <div class="change-compare">
-            <div class="change-box change-from"><div class="change-label">Current Plan</div>OT: 2 sessions / week<br>Total: 30 sessions</div>
-            <div class="change-box change-to"><div class="change-label">Proposed Change</div>OT: 3 sessions / week<br>Total: 36 sessions (+6)</div>
-          </div>
-          <textarea class="pc-comment-area" id="pc1-comment" placeholder="Add your clinical approval note or rejection reason... (required)" rows="2"></textarea>
-          <div class="pc-actions">
-            <button class="btn btn-red" onclick="rejectChange('PC-2025-003','pc1-comment')">✗ Reject</button>
-            <button class="btn btn-green" onclick="approveChange('PC-2025-003','pc1-comment')">✓ Approve -- Send to Admin</button>
-          </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Patients Awaiting Evaluation</div>
+      <button class="btn btn-teal" onclick="alert('Evaluation form opened for Dhruv Sinha')">+ New Evaluation</button>
+    </div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Dhruv Sinha -- 6y</div><div class="eval-meta">Referred by: Dr. Suresh Pillai (Dev. Pediatrician) · Walk-in 14 Mar 2025</div></div>
+        <div style="display:flex;gap:8px"><span class="status-pill pill-warn">Eval Pending</span><button class="btn btn-teal" onclick="alert('Evaluation form for Dhruv Sinha opened')">Conduct Evaluation</button></div>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-secondary)">
+        <strong>Referral notes:</strong> Parent reports attention difficulties, hyperactivity, and significant fine motor delays. Ruled out ADHD pharmacologically. Pediatrician requesting OT + behavioral assessment. Parent also mentions possible sensory sensitivities.
+      </div>
+    </div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Aarav Patil -- 3.5y</div><div class="eval-meta">Referred by: Dr. Anjali Bhat (Child Neurologist) · Walk-in 15 Mar 2025</div></div>
+        <div style="display:flex;gap:8px"><span class="status-pill pill-warn">Eval Pending</span><button class="btn btn-teal" onclick="alert('Evaluation form for Aarav Patil opened')">Conduct Evaluation</button></div>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-secondary)">
+        <strong>Referral notes:</strong> Delayed milestones across all domains. Walking independently at 24 months. No consistent 2-word phrases at 3.5y. Neurologist suspect global developmental delay, possible early autism features. Requesting comprehensive assessment.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Completed Evaluations -- Recent</div></div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Nihal Shaikh -- 5y · Completed 06 Jan 2025</div><div class="eval-meta">Evaluator: Dr. Priya Nair (HOD) · Program created</div></div>
+        <span class="status-pill pill-ok">Program Active</span>
+      </div>
+      <div class="eval-findings">
+        <strong>Findings:</strong> ASD with co-occurring sensory processing disorder. Significant tactile defensiveness on dorsal upper extremities. Poor bilateral coordination -- midline crossing absent. Vestibular hypersensitivity. Expressive language at 24-month level. Adaptive behaviour significantly delayed.
+      </div>
+      <div class="eval-recommend">→ Recommendation: 30 sessions OT (Sensory Integration focus) + 20 sessions ABA + 20 sessions Speech. Multidisciplinary program, bi-weekly family coaching.</div>
+    </div>
+    <div class="eval-item">
+      <div class="eval-header">
+        <div><div class="eval-patient">Kabir Ansari -- 7y · Completed 01 Sep 2024</div><div class="eval-meta">Evaluator: Dr. Priya Nair (HOD) · Program active</div></div>
+        <span class="status-pill pill-ok">Program Active</span>
+      </div>
+      <div class="eval-findings">
+        <strong>Findings:</strong> Spastic diplegic cerebral palsy (GMFCS Level II). Significant lower extremity spasticity. Functional upper limbs with fine motor difficulties. Gait pattern: scissoring with bilateral intoeing. Cognitive function within normal limits. Participation restrictions in school and social environments.
+      </div>
+      <div class="eval-recommend">→ Recommendation: 50 sessions -- Neuro Physiotherapy + OT (fine motor) + Sensory Integration. Goal: GMFCS Level I functional transitions, school participation readiness.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMS TAB -->
+<div class="tab-content" id="tab-programs">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Active Program -- Nihal Shaikh · ASD</div>
+      <div style="display:flex;gap:8px">
+        <span class="pill pill-green">Clinically Approved</span>
+        <span class="pill pill-blue">Published</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:repeat(3,auto);gap:0;margin-bottom:16px">
+        <div style="padding-right:20px;border-right:1px solid var(--border-light);margin-right:20px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Total Sessions</div><div style="font-size:18px;font-family:'DM Mono',monospace;font-weight:600;color:var(--navy)">70</div></div>
+        <div style="padding-right:20px;border-right:1px solid var(--border-light);margin-right:20px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Domains</div><div style="font-size:13px;font-weight:600;color:var(--navy)">OT · ABA · Speech</div></div>
+        <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px">Approved By</div><div style="font-size:13px;font-weight:600;color:var(--navy)">Dr. Priya Nair</div></div>
+      </div>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="phase-title">Phase 1 -- Foundation</div>
+          <div class="phase-sessions">Sessions 1--20 · Sensory Regulation</div>
+          <span class="activity-chip">Tactile Desensitisation (Wilbarger)</span>
+          <span class="activity-chip">Vestibular Input -- Linear Swing</span>
+          <span class="activity-chip">ABA: DTT -- Basic Compliance</span>
+          <span class="activity-chip">Speech: PECS Levels 1--2</span>
         </div>
-
-        <div class="plan-change-item">
-          <div class="pc-header">
-            <div>
-              <div class="pc-title">Saisha Shinde -- Activity Modification</div>
-              <div class="pc-meta">Requested by: Ms. Kavya Shetty (ABA) · 15 Mar 2025 · PC-2025-004</div>
-            </div>
-            <span class="status-pill pill-warn">Pending Your Review</span>
-          </div>
-          <div class="pc-rationale">
-            <strong>Clinical rationale from therapist:</strong> "Current Phase 2 Social Stories protocol is producing minimal engagement with Meera -- she is not attending to visual prompts and is showing increased stereotypy during story time. Video modelling with preferred characters has shown better joint attention in informal observations. Requesting substitution for sessions 25--40."
-          </div>
-          <div class="change-compare">
-            <div class="change-box change-from"><div class="change-label">Current (Phase 2)</div>Social Stories -- printed visual format</div>
-            <div class="change-box change-to"><div class="change-label">Proposed Change</div>Video Modelling -- tablet-based, preferred character theme</div>
-          </div>
-          <textarea class="pc-comment-area" id="pc2-comment" placeholder="Add your clinical approval note or rejection reason... (required)" rows="2"></textarea>
-          <div class="pc-actions">
-            <button class="btn btn-red" onclick="rejectChange('PC-2025-004','pc2-comment')">✗ Reject</button>
-            <button class="btn btn-green" onclick="approveChange('PC-2025-004','pc2-comment')">✓ Approve -- Send to Admin</button>
-          </div>
+        <div class="phase-card">
+          <div class="phase-title">Phase 2 -- Skill Acquisition</div>
+          <div class="phase-sessions">Sessions 21--45 · Bilateral + Language</div>
+          <span class="activity-chip">Bilateral Coordination -- Bead Threading</span>
+          <span class="activity-chip">Fine Motor -- Clothespeg Transfer</span>
+          <span class="activity-chip">ABA: NET -- Social Initiation</span>
+          <span class="activity-chip">Speech: Picture Exchange → Verbal</span>
         </div>
+        <div class="phase-card">
+          <div class="phase-title">Phase 3 -- Functional Integration</div>
+          <div class="phase-sessions">Sessions 46--70 · School Readiness</div>
+          <span class="activity-chip">ADL Activities -- Self-dressing</span>
+          <span class="activity-chip">Social Play -- Parallel → Interactive</span>
+          <span class="activity-chip">ABA: Group Skills</span>
+          <span class="activity-chip">Speech: Conversational Turn-Taking</span>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:8px">Program Milestones</div>
+        <div class="milestone-list">
+          <div class="milestone-item"><span>Tolerates tactile input (dorsal forearms) without withdrawal -- <strong>Achieved ✓ (Session 12)</strong></span></div>
+          <div class="milestone-item"><span>Bilateral hand use for 30-second tasks -- <strong>In Progress (Session 15)</strong></span></div>
+          <div class="milestone-item"><span>Initiates PECS exchange for 3 preferred items -- <strong>Pending</strong></span></div>
+          <div class="milestone-item"><span>Sustained sitting at table for 10 min with task engagement -- <strong>Pending</strong></span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;padding:12px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;font-size:12px;color:#1E40AF">
+        🔒 <strong>Read-only for Admin.</strong> Activity and milestone content can only be modified by the Senior Therapist. Admin can publish and link billing -- cannot edit clinical content.
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border:1.5px solid #FDE68A">
+    <div class="card-header" style="background:#FFFBEB">
+      <div class="card-title" style="color:#92400E">Draft Program -- Riya Kapoor · Global Developmental Delay</div>
+      <button class="btn btn-green" onclick="alert('✅ Program for Riya Kapoor clinically approved -- sent to Admin for publication and billing link')">Approve Program</button>
+    </div>
+    <div class="card-body">
+      <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px">Based on evaluation (EVAL-2025-009). Recommendation: Physiotherapy + OT + Early Intervention -- 40 sessions.</div>
+      <div class="phase-grid">
+        <div class="phase-card"><div class="phase-title">Phase 1 -- Motor Foundation</div><div class="phase-sessions">Sessions 1--15</div><span class="activity-chip">Gross Motor -- Ball Skills</span><span class="activity-chip">OT: Sensory Play Foundation</span><span class="activity-chip">EI: Object Permanence</span></div>
+        <div class="phase-card"><div class="phase-title">Phase 2 -- Skill Building</div><div class="phase-sessions">Sessions 16--30</div><span class="activity-chip">Gait Training -- Uneven Surfaces</span><span class="activity-chip">Fine Motor -- Peg Activities</span><span class="activity-chip">EI: Cause-Effect Exploration</span></div>
+        <div class="phase-card"><div class="phase-title">Phase 3 -- Independence</div><div class="phase-sessions">Sessions 31--40</div><span class="activity-chip">ADL Prep -- Feeding Independence</span><span class="activity-chip">Community Mobility</span><span class="activity-chip">EI: Imitation and Play</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAN CHANGES TAB -->
+<div class="tab-content" id="tab-planchanges">
+  <div class="card">
+    <div class="card-header"><div class="card-title">Plan Change Requests -- Awaiting Clinical Review</div><span class="pill pill-amber">2 Pending</span></div>
+
+    <div class="plan-change-item">
+      <div class="pc-header">
+        <div>
+          <div class="pc-title">Nihal Shaikh -- Frequency Increase Request</div>
+          <div class="pc-meta">Requested by: Ms. Ananya Desai (OT) · 14 Mar 2025 · PC-2025-003</div>
+        </div>
+        <span class="status-pill pill-warn">Pending Your Review</span>
+      </div>
+      <div class="pc-rationale">
+        <strong>Clinical rationale from therapist:</strong> "Aarav is demonstrating faster-than-expected progress with vestibular tolerance -- achieved 12-minute swing tolerance at session 15 when milestone was set for session 20. Increasing OT from 2×/week to 3×/week would capitalise on this responsive period and accelerate bilateral coordination work. Parent is available and motivated."
+      </div>
+      <div class="change-compare">
+        <div class="change-box change-from"><div class="change-label">Current Plan</div>OT: 2 sessions / week<br>Total: 30 sessions</div>
+        <div class="change-box change-to"><div class="change-label">Proposed Change</div>OT: 3 sessions / week<br>Total: 36 sessions (+6)</div>
+      </div>
+      <textarea class="pc-comment-area" id="pc1-comment" placeholder="Add your clinical approval note or rejection reason... (required)" rows="2"></textarea>
+      <div class="pc-actions">
+        <button class="btn btn-red" onclick="rejectChange('PC-2025-003','pc1-comment')">✗ Reject</button>
+        <button class="btn btn-green" onclick="approveChange('PC-2025-003','pc1-comment')">✓ Approve -- Send to Admin</button>
       </div>
     </div>
 
-    <!-- QUALITY TAB -->
-    <div class="tab-content" id="tab-quality">
-      <div class="kpi-row">
-        <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-label">Clinic Avg Adherence</div><div class="kpi-value" style="color:var(--green)">87%</div><div class="kpi-sub">Against prescribed activities</div></div>
-        <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-label">Note Compliance</div><div class="kpi-value" style="color:var(--amber)">91%</div><div class="kpi-sub">Within 4-hour SLA</div></div>
-        <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-label">High-Deviation Staff</div><div class="kpi-value" style="color:var(--rose)">1</div><div class="kpi-sub">Mr. Vikram Iyer -- 38%</div></div>
-        <div class="kpi-card" style="border-top:3px solid var(--teal)"><div class="kpi-label">Milestones Achieved</div><div class="kpi-value" style="color:var(--teal)">12</div><div class="kpi-sub">This month</div></div>
-      </div>
-
-      <div class="card">
-        <div class="card-header"><div class="card-title">Therapist Clinical Performance -- This Month</div></div>
-        <div style="padding:0">
-          <table class="quality-table">
-            <thead>
-              <tr><th>Therapist</th><th>Role</th><th>Program Deviation</th><th>Note SLA</th><th>Milestone Rate</th><th>Patient Outcomes</th><th>Assessment</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="font-weight:600">Ms. Ananya Desai</td>
-                <td style="color:var(--text-muted)">OT</td>
-                <td><div class="deviation-bar"><span style="font-weight:600;color:var(--green)">5%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:5%;background:var(--green)"></div></div></div></td>
-                <td><span class="status-pill pill-ok">100%</span></td>
-                <td>94%</td>
-                <td>Excellent</td>
-                <td><span class="status-pill pill-ok">On Track</span></td>
-              </tr>
-              <tr>
-                <td style="font-weight:600">Mr. Rohan Mehta</td>
-                <td style="color:var(--text-muted)">Speech</td>
-                <td><div class="deviation-bar"><span style="font-weight:600;color:#2563EB">12%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:12%;background:#2563EB"></div></div></div></td>
-                <td><span class="status-pill pill-ok">96%</span></td>
-                <td>88%</td>
-                <td>Good</td>
-                <td><span class="status-pill pill-ok">On Track</span></td>
-              </tr>
-              <tr>
-                <td style="font-weight:600">Ms. Kavya Shetty</td>
-                <td style="color:var(--text-muted)">ABA</td>
-                <td><div class="deviation-bar"><span style="font-weight:600;color:var(--amber)">24%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:24%;background:var(--amber)"></div></div></div></td>
-                <td><span class="status-pill pill-warn">84%</span></td>
-                <td>76%</td>
-                <td>Below Average</td>
-                <td><span class="status-pill pill-warn">Monitor</span></td>
-              </tr>
-              <tr>
-                <td style="font-weight:600">Mr. Vikram Iyer</td>
-                <td style="color:var(--text-muted)">Neuro Physio</td>
-                <td><div class="deviation-bar"><span style="font-weight:600;color:var(--rose)">38%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:38%;background:var(--rose)"></div></div></div></td>
-                <td><span class="status-pill pill-warn">78%</span></td>
-                <td>62%</td>
-                <td>Poor</td>
-                <td><span class="status-pill pill-danger">Review Needed</span></td>
-              </tr>
-              <tr>
-                <td style="font-weight:600">Ms. Sneha Kulkarni</td>
-                <td style="color:var(--text-muted)">SpEd</td>
-                <td><div class="deviation-bar"><span style="font-weight:600;color:var(--green)">8%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:8%;background:var(--green)"></div></div></div></td>
-                <td><span class="status-pill pill-ok">98%</span></td>
-                <td>91%</td>
-                <td>Excellent</td>
-                <td><span class="status-pill pill-ok">On Track</span></td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="plan-change-item">
+      <div class="pc-header">
+        <div>
+          <div class="pc-title">Zara Menon -- Activity Modification</div>
+          <div class="pc-meta">Requested by: Ms. Kavya Shetty (ABA) · 15 Mar 2025 · PC-2025-004</div>
         </div>
+        <span class="status-pill pill-warn">Pending Your Review</span>
       </div>
-      <div class="blocked-panel">
-        <div class="blocked-icon">🔒</div>
-        <div class="blocked-title">Payroll &amp; Financial Metrics</div>
-        <div class="blocked-sub">This section requires Admin role. Financial data is not accessible to the Senior Therapist role.</div>
+      <div class="pc-rationale">
+        <strong>Clinical rationale from therapist:</strong> "Current Phase 2 Social Stories protocol is producing minimal engagement with Meera -- she is not attending to visual prompts and is showing increased stereotypy during story time. Video modelling with preferred characters has shown better joint attention in informal observations. Requesting substitution for sessions 25--40."
+      </div>
+      <div class="change-compare">
+        <div class="change-box change-from"><div class="change-label">Current (Phase 2)</div>Social Stories -- printed visual format</div>
+        <div class="change-box change-to"><div class="change-label">Proposed Change</div>Video Modelling -- tablet-based, preferred character theme</div>
+      </div>
+      <textarea class="pc-comment-area" id="pc2-comment" placeholder="Add your clinical approval note or rejection reason... (required)" rows="2"></textarea>
+      <div class="pc-actions">
+        <button class="btn btn-red" onclick="rejectChange('PC-2025-004','pc2-comment')">✗ Reject</button>
+        <button class="btn btn-green" onclick="approveChange('PC-2025-004','pc2-comment')">✓ Approve -- Send to Admin</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- PROTOCOLS TAB -->
-    <div class="tab-content" id="tab-protocols">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-        <div class="card" style="cursor:pointer" onclick="alert('Wilbarger Brushing Protocol v4.1 opened')">
-          <div class="card-body">
-            <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
-              <span style="font-size:24px">📋</span>
-              <span class="status-pill pill-ok">Linked</span>
-            </div>
-            <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Wilbarger Brushing Protocol</div>
-            <div style="font-size:11.5px;color:var(--text-muted)">OT · Sensory Integration · v4.1</div>
-            <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Feb 2025 · Used in 14 programs</div>
-          </div>
+<!-- QUALITY TAB -->
+<div class="tab-content" id="tab-quality">
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-label">Clinic Avg Adherence</div><div class="kpi-value" style="color:var(--green)">87%</div><div class="kpi-sub">Against prescribed activities</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-label">Note Compliance</div><div class="kpi-value" style="color:var(--amber)">91%</div><div class="kpi-sub">Within 4-hour SLA</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-label">High-Deviation Staff</div><div class="kpi-value" style="color:var(--rose)">1</div><div class="kpi-sub">Mr. Vikram Iyer -- 38%</div></div>
+    <div class="kpi-card" style="border-top:3px solid var(--teal)"><div class="kpi-label">Milestones Achieved</div><div class="kpi-value" style="color:var(--teal)">12</div><div class="kpi-sub">This month</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Therapist Clinical Performance -- This Month</div></div>
+    <div style="padding:0">
+      <table class="quality-table">
+        <thead>
+          <tr><th>Therapist</th><th>Role</th><th>Program Deviation</th><th>Note SLA</th><th>Milestone Rate</th><th>Patient Outcomes</th><th>Assessment</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600">Ms. Ananya Desai</td>
+            <td style="color:var(--text-muted)">OT</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--green)">5%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:5%;background:var(--green)"></div></div></div></td>
+            <td><span class="status-pill pill-ok">100%</span></td>
+            <td>94%</td>
+            <td>Excellent</td>
+            <td><span class="status-pill pill-ok">On Track</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Mr. Rohan Mehta</td>
+            <td style="color:var(--text-muted)">Speech</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:#2563EB">12%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:12%;background:#2563EB"></div></div></div></td>
+            <td><span class="status-pill pill-ok">96%</span></td>
+            <td>88%</td>
+            <td>Good</td>
+            <td><span class="status-pill pill-ok">On Track</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Ms. Kavya Shetty</td>
+            <td style="color:var(--text-muted)">ABA</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--amber)">24%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:24%;background:var(--amber)"></div></div></div></td>
+            <td><span class="status-pill pill-warn">84%</span></td>
+            <td>76%</td>
+            <td>Below Average</td>
+            <td><span class="status-pill pill-warn">Monitor</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Mr. Vikram Iyer</td>
+            <td style="color:var(--text-muted)">Neuro Physio</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--rose)">38%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:38%;background:var(--rose)"></div></div></div></td>
+            <td><span class="status-pill pill-warn">78%</span></td>
+            <td>62%</td>
+            <td>Poor</td>
+            <td><span class="status-pill pill-danger">Review Needed</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Ms. Sneha Kulkarni</td>
+            <td style="color:var(--text-muted)">SpEd</td>
+            <td><div class="deviation-bar"><span style="font-weight:600;color:var(--green)">8%</span><div class="dev-bar-wrap"><div class="dev-bar-fill" style="width:8%;background:var(--green)"></div></div></div></td>
+            <td><span class="status-pill pill-ok">98%</span></td>
+            <td>91%</td>
+            <td>Excellent</td>
+            <td><span class="status-pill pill-ok">On Track</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="blocked-panel">
+    <div class="blocked-icon">🔒</div>
+    <div class="blocked-title">Payroll &amp; Financial Metrics</div>
+    <div class="blocked-sub">This section requires Admin role. Financial data is not accessible to the Senior Therapist role.</div>
+  </div>
+</div>
+
+<!-- PROTOCOLS TAB -->
+<div class="tab-content" id="tab-protocols">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+    <div class="card" style="cursor:pointer" onclick="alert('Wilbarger Brushing Protocol v4.1 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
         </div>
-        <div class="card" style="cursor:pointer" onclick="alert('ABA DTT Protocol v2.3 opened')">
-          <div class="card-body">
-            <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
-              <span style="font-size:24px">📋</span>
-              <span class="status-pill pill-ok">Linked</span>
-            </div>
-            <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">ABA Discrete Trial Training</div>
-            <div style="font-size:11.5px;color:var(--text-muted)">ABA · Behavioral · v2.3</div>
-            <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Jan 2025 · Used in 9 programs</div>
-          </div>
-        </div>
-        <div class="card" style="cursor:pointer" onclick="alert('Neuro Physio Gait Training Protocol v1.8 opened')">
-          <div class="card-body">
-            <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
-              <span style="font-size:24px">📋</span>
-              <span class="status-pill pill-ok">Linked</span>
-            </div>
-            <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Neuro Physio Gait Training</div>
-            <div style="font-size:11.5px;color:var(--text-muted)">Physiotherapy · Neuro Rehab · v1.8</div>
-            <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Mar 2025 · Used in 6 programs</div>
-          </div>
-        </div>
-        <div class="card" style="cursor:pointer" onclick="alert('PECS Communication Protocol v3.0 opened')">
-          <div class="card-body">
-            <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
-              <span style="font-size:24px">📋</span>
-              <span class="status-pill pill-blue">Unlinked</span>
-            </div>
-            <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">PECS Communication System</div>
-            <div style="font-size:11.5px;color:var(--text-muted)">Speech & Language · v3.0</div>
-            <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Dec 2024 · Used in 4 programs</div>
-          </div>
-        </div>
-        <div class="card" style="cursor:pointer" onclick="alert('Early Intervention Protocol v2.1 opened')">
-          <div class="card-body">
-            <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
-              <span style="font-size:24px">📋</span>
-              <span class="status-pill pill-ok">Linked</span>
-            </div>
-            <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Early Intervention Framework</div>
-            <div style="font-size:11.5px;color:var(--text-muted)">Developmental Therapy · v2.1</div>
-            <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Feb 2025 · Used in 7 programs</div>
-          </div>
-        </div>
-        <div class="card" style="border:1.5px dashed var(--border);cursor:pointer;background:var(--surface)" onclick="alert('Protocol upload form opened')">
-          <div class="card-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;gap:8px">
-            <span style="font-size:28px;opacity:0.3">+</span>
-            <div style="font-size:12.5px;font-weight:600;color:var(--text-muted)">Upload New Protocol</div>
-            <div style="font-size:11px;color:var(--text-muted)">Senior Therapist only</div>
-          </div>
-        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Wilbarger Brushing Protocol</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">OT · Sensory Integration · v4.1</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Feb 2025 · Used in 14 programs</div>
       </div>
     </div>
+    <div class="card" style="cursor:pointer" onclick="alert('ABA DTT Protocol v2.3 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">ABA Discrete Trial Training</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">ABA · Behavioral · v2.3</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Jan 2025 · Used in 9 programs</div>
+      </div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="alert('Neuro Physio Gait Training Protocol v1.8 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Neuro Physio Gait Training</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">Physiotherapy · Neuro Rehab · v1.8</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Mar 2025 · Used in 6 programs</div>
+      </div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="alert('PECS Communication Protocol v3.0 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-blue">Unlinked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">PECS Communication System</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">Speech & Language · v3.0</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Dec 2024 · Used in 4 programs</div>
+      </div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="alert('Early Intervention Protocol v2.1 opened')">
+      <div class="card-body">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:24px">📋</span>
+          <span class="status-pill pill-ok">Linked</span>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:var(--text-primary);margin-bottom:4px">Early Intervention Framework</div>
+        <div style="font-size:11.5px;color:var(--text-muted)">Developmental Therapy · v2.1</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Updated Feb 2025 · Used in 7 programs</div>
+      </div>
+    </div>
+    <div class="card" style="border:1.5px dashed var(--border);cursor:pointer;background:var(--surface)" onclick="alert('Protocol upload form opened')">
+      <div class="card-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;gap:8px">
+        <span style="font-size:28px;opacity:0.3">+</span>
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-muted)">Upload New Protocol</div>
+        <div style="font-size:11px;color:var(--text-muted)">Senior Therapist only</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
   </div>
 </main>
@@ -684,5 +687,6 @@ function rejectChange(id,commentId){
 // Handle anchor hash
 if(window.location.hash==='#protocols'){switchTab('protocols');}
 </script>
+
 </body>
 </html>
