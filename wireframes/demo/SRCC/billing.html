@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Billing & Invoicing — RehabCare Clinic</title>
+<title>Billing & Invoicing -- RehabCare Clinic</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -71,65 +70,64 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 /* DATA TABLE */
 .dt{width:100%;border-collapse:collapse}
-.dt th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(–border);background:#F8FAFC}
-.dt td{padding:11px 14px;font-size:12.5px;border-bottom:1px solid var(–border-light);vertical-align:middle}
+.dt th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);background:#F8FAFC}
+.dt td{padding:11px 14px;font-size:12.5px;border-bottom:1px solid var(--border-light);vertical-align:middle}
 .dt tr:last-child td{border-bottom:none}
 .dt tr:hover td{background:#FAFBFD}
 
 /* INVOICE PREVIEW */
-.invoice-preview{background:#fff;border:1px solid var(–border);border-radius:12px;padding:32px;max-width:680px;font-size:13px}
-.inv-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:24px;padding-bottom:20px;border-bottom:2px solid var(–navy)}
-.inv-clinic-name{font-family:‘Playfair Display’,serif;font-size:1.4rem;font-weight:700;color:var(–navy);margin-bottom:4px}
-.inv-clinic-meta{font-size:11.5px;color:var(–text-muted);line-height:1.6}
-.inv-badge{background:var(–navy);color:#fff;font-family:‘DM Mono’,monospace;font-size:13px;font-weight:600;padding:6px 14px;border-radius:6px}
+.invoice-preview{background:#fff;border:1px solid var(--border);border-radius:12px;padding:32px;max-width:680px;font-size:13px}
+.inv-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:24px;padding-bottom:20px;border-bottom:2px solid var(--navy)}
+.inv-clinic-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.inv-clinic-meta{font-size:11.5px;color:var(--text-muted);line-height:1.6}
+.inv-badge{background:var(--navy);color:#fff;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;padding:6px 14px;border-radius:6px}
 .inv-parties{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
-.inv-party-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(–text-muted);margin-bottom:6px}
-.inv-party-name{font-size:14px;font-weight:700;color:var(–text-primary);margin-bottom:2px}
-.inv-party-meta{font-size:11.5px;color:var(–text-secondary);line-height:1.6}
+.inv-party-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px}
+.inv-party-name{font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:2px}
+.inv-party-meta{font-size:11.5px;color:var(--text-secondary);line-height:1.6}
 .inv-table{width:100%;border-collapse:collapse;margin-bottom:16px}
-.inv-table th{background:#F8FAFC;padding:9px 12px;text-align:left;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);border-bottom:1px solid var(–border)}
-.inv-table td{padding:10px 12px;border-bottom:1px solid var(–border-light);font-size:13px}
+.inv-table th{background:#F8FAFC;padding:9px 12px;text-align:left;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.inv-table td{padding:10px 12px;border-bottom:1px solid var(--border-light);font-size:13px}
 .inv-table tr:last-child td{border-bottom:none}
-.inv-totals{border-top:1px solid var(–border);padding-top:12px;display:flex;flex-direction:column;gap:5px;align-items:flex-end;margin-bottom:16px}
+.inv-totals{border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:5px;align-items:flex-end;margin-bottom:16px}
 .inv-total-row{display:flex;gap:24px;font-size:12.5px}
-.inv-total-row.total{font-size:14px;font-weight:700;color:var(–navy);padding-top:6px;border-top:2px solid var(–navy);margin-top:4px}
-.inv-total-lbl{width:120px;text-align:right;color:var(–text-muted)}
-.inv-total-val{width:90px;text-align:right;font-family:‘DM Mono’,monospace;font-weight:600}
-.inv-footer{background:#F8FAFC;border-radius:8px;padding:12px 14px;font-size:11.5px;color:var(–text-muted);line-height:1.6}
+.inv-total-row.total{font-size:14px;font-weight:700;color:var(--navy);padding-top:6px;border-top:2px solid var(--navy);margin-top:4px}
+.inv-total-lbl{width:120px;text-align:right;color:var(--text-muted)}
+.inv-total-val{width:90px;text-align:right;font-family:'DM Mono',monospace;font-weight:600}
+.inv-footer{background:#F8FAFC;border-radius:8px;padding:12px 14px;font-size:11.5px;color:var(--text-muted);line-height:1.6}
 
 /* LEDGER */
-.ledger-row{display:flex;align-items:center;padding:10px 18px;border-bottom:1px solid var(–border-light)}
+.ledger-row{display:flex;align-items:center;padding:10px 18px;border-bottom:1px solid var(--border-light)}
 .ledger-row:last-child{border-bottom:none}
-.ledger-date{font-family:‘DM Mono’,monospace;font-size:11px;color:var(–text-muted);min-width:80px}
-.ledger-desc{flex:1;font-size:12.5px;color:var(–text-primary)}
-.ledger-amount{font-family:‘DM Mono’,monospace;font-size:13px;font-weight:600;min-width:90px;text-align:right}
-.ledger-balance{font-family:‘DM Mono’,monospace;font-size:12px;color:var(–text-muted);min-width:80px;text-align:right}
+.ledger-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);min-width:80px}
+.ledger-desc{flex:1;font-size:12.5px;color:var(--text-primary)}
+.ledger-amount{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;min-width:90px;text-align:right}
+.ledger-balance{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted);min-width:80px;text-align:right}
 .ledger-type{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;min-width:65px;text-align:center;margin-left:10px}
 .lt-debit{background:#FEF2F2;color:#991B1B}
 .lt-credit{background:#F0FDF4;color:#166534}
 
 /* AGEING */
 .age-table{width:100%;border-collapse:collapse}
-.age-table th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(–border);background:#F8FAFC}
-.age-table td{padding:11px 14px;font-size:12.5px;border-bottom:1px solid var(–border-light)}
+.age-table th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);background:#F8FAFC}
+.age-table td{padding:11px 14px;font-size:12.5px;border-bottom:1px solid var(--border-light)}
 .age-table tr:last-child td{border-bottom:none}
 .age-table tr:hover td{background:#FAFBFD}
-.age-bar-wrap{width:100px;height:6px;background:var(–surface2);border-radius:100px;overflow:hidden;display:inline-block;margin-left:8px;vertical-align:middle}
+.age-bar-wrap{width:100px;height:6px;background:var(--surface2);border-radius:100px;overflow:hidden;display:inline-block;margin-left:8px;vertical-align:middle}
 .age-bar-fill{height:100%;border-radius:100px}
 
 /* FORM */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-field{display:flex;flex-direction:column;gap:4px}
-.form-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted)}
-.form-input{padding:9px 12px;border:1px solid var(–border);border-radius:7px;font-size:13px;font-family:‘DM Sans’,sans-serif;color:var(–text-primary);outline:none;transition:border-color 0.15s}
-.form-input:focus{border-color:var(–orange)}
-.form-select{padding:9px 12px;border:1px solid var(–border);border-radius:7px;font-size:13px;font-family:‘DM Sans’,sans-serif;color:var(–text-primary);background:#fff;outline:none;appearance:none}
-.form-select:focus{border-color:var(–orange)}
+.form-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted)}
+.form-input{padding:9px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text-primary);outline:none;transition:border-color 0.15s}
+.form-input:focus{border-color:var(--orange)}
+.form-select{padding:9px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text-primary);background:#fff;outline:none;appearance:none}
+.form-select:focus{border-color:var(--orange)}
 .form-full{grid-column:1/-1}
 
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 </style>
-
 </head>
 <body>
 
@@ -142,7 +140,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
   </div>
   <div class="sb-role">
     <div class="role-lbl">Module</div>
-    <div class="role-nm">Billing &amp; Invoicing — New</div>
+    <div class="role-nm">Billing &amp; Invoicing -- New</div>
   </div>
   <div style="padding:8px 6px;flex:1">
     <div class="nav-sec">Billing</div>
@@ -198,380 +196,378 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
       <button class="tab" data-tab="ageing" onclick="switchTab('ageing')">Outstanding Ageing</button>
     </div>
 
-```
-<!-- ═══ OVERVIEW ═══ -->
-<div class="tab-content active" id="tab-overview">
-  <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#9A3412;display:flex;gap:8px">
-    <span>ℹ</span>
-    <span><strong>SOP Gap Closed:</strong> This module adds the missing package purchase workflow, GST-compliant invoice generation, and a structured session ledger. Previously these were managed via Excel or manual receipt books — with no link to session delivery data.</span>
-  </div>
-
-  <div class="kpi-row">
-    <div class="kpi-card" style="border-top:3px solid var(--orange)"><div class="kpi-lbl">Collections Today</div><div class="kpi-val" style="font-size:18px">₹50,400</div><div class="kpi-sub">of ₹1,04,400 expected</div></div>
-    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-lbl">Outstanding Today</div><div class="kpi-val" style="font-size:18px;color:var(--rose)">₹54,000</div><div class="kpi-sub">45 sessions unpaid</div></div>
-    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-lbl">Outstanding MTD</div><div class="kpi-val" style="font-size:18px;color:var(--amber)">₹84,000</div><div class="kpi-sub">12 patients overdue</div></div>
-    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-lbl">Packages Sold MTD</div><div class="kpi-val" style="color:var(--green)">6</div><div class="kpi-sub">₹2,94,000 total value</div></div>
-    <div class="kpi-card" style="border-top:3px solid #7C3AED"><div class="kpi-lbl">GST Collected MTD</div><div class="kpi-val" style="font-size:18px;color:#7C3AED">₹52,920</div><div class="kpi-sub">18% GST on services</div></div>
-  </div>
-
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-hd"><div class="card-title">Recent Transactions</div><button class="btn btn-ghost" style="font-size:11px;padding:5px 10px" onclick="switchTab('ledger')">Full Ledger →</button></div>
-      <table class="dt">
-        <thead><tr><th>Date</th><th>Patient</th><th>Description</th><th>Amount</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td style="font-family:'DM Mono',monospace;font-size:11px">17 Mar</td><td style="font-weight:600">Kabir Malhotra</td><td>Session 32 — Neuro Physio</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹1,200</td><td><span class="sp sp-g">Paid</span></td></tr>
-          <tr><td style="font-family:'DM Mono',monospace;font-size:11px">17 Mar</td><td style="font-weight:600">Meera Joshi</td><td>Session 18 — ABA</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹1,200</td><td><span class="sp sp-a">Pending</span></td></tr>
-          <tr><td style="font-family:'DM Mono',monospace;font-size:11px">16 Mar</td><td style="font-weight:600">Aarav Sharma</td><td>Package purchase — OT 30 sessions</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹36,000</td><td><span class="sp sp-g">Invoiced</span></td></tr>
-          <tr><td style="font-family:'DM Mono',monospace;font-size:11px">16 Mar</td><td style="font-weight:600">Riya Patel</td><td>Assessment fee — initial evaluation</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹2,500</td><td><span class="sp sp-g">Paid</span></td></tr>
-          <tr><td style="font-family:'DM Mono',monospace;font-size:11px">15 Mar</td><td style="font-weight:600">Aarav Sharma</td><td>Session 14 — OT (double charge)</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">₹1,200</td><td><span class="sp sp-r">Dispute</span></td></tr>
-          <tr><td style="font-family:'DM Mono',monospace;font-size:11px">14 Mar</td><td style="font-weight:600">Zara Sheikh</td><td>Package renewal — Speech 10 sessions</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹12,000</td><td><span class="sp sp-g">Invoiced</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <div class="card-hd"><div class="card-title">Package Status — Active Patients</div></div>
-      <table class="dt">
-        <thead><tr><th>Patient</th><th>Package</th><th>Sessions</th><th>Expires</th><th>Alert</th></tr></thead>
-        <tbody>
-          <tr>
-            <td style="font-weight:600">Aarav Sharma</td>
-            <td style="font-size:11.5px;color:var(--text-muted)">OT 30 · ABA 20 · Speech 20</td>
-            <td>
-              <div style="font-size:12px"><strong>15/30</strong> OT</div>
-              <div style="font-size:12px;color:var(--text-muted)">8/20 ABA · 5/20 Speech</div>
-            </td>
-            <td style="font-size:11.5px">Sep 2025</td>
-            <td><span class="sp sp-g">Active</span></td>
-          </tr>
-          <tr>
-            <td style="font-weight:600">Kabir Malhotra</td>
-            <td style="font-size:11.5px;color:var(--text-muted)">Neuro Physio 50</td>
-            <td><strong>32/50</strong></td>
-            <td style="font-size:11.5px">May 2025</td>
-            <td><span class="sp sp-a">Renew in 8 sessions</span></td>
-          </tr>
-          <tr>
-            <td style="font-weight:600">Zara Sheikh</td>
-            <td style="font-size:11.5px;color:var(--text-muted)">Speech 20</td>
-            <td><strong>12/20</strong></td>
-            <td style="font-size:11.5px">May 2025</td>
-            <td><span class="sp sp-g">Active</span></td>
-          </tr>
-          <tr>
-            <td style="font-weight:600">Meera Joshi</td>
-            <td style="font-size:11.5px;color:var(--text-muted)">ABA 60 · Sensory 20 · Speech 20</td>
-            <td><strong>18/60</strong> ABA</td>
-            <td style="font-size:11.5px">Dec 2025</td>
-            <td><span class="sp sp-g">Active</span></td>
-          </tr>
-          <tr>
-            <td style="font-weight:600">Ishaan Nair</td>
-            <td style="font-size:11.5px;color:var(--text-muted)">OT + Behavioral 30</td>
-            <td><strong>22/30</strong></td>
-            <td style="font-size:11.5px">Apr 2025</td>
-            <td><span class="sp sp-r">Renew NOW — 8 left</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ PACKAGE SALE ═══ -->
-<div class="tab-content" id="tab-package">
-  <div class="card">
-    <div class="card-hd"><div class="card-title">New Package Sale / Renewal</div><div style="font-size:11.5px;color:var(--text-muted)">Creates invoice automatically on confirmation</div></div>
-    <div class="card-body">
-      <div class="form-grid">
-        <div class="form-field">
-          <div class="form-lbl">Patient</div>
-          <select class="form-select" id="pkg-patient" onchange="updatePackagePreview()">
-            <option value="">Select patient...</option>
-            <option value="aarav">Aarav Sharma — PAT-2025-0012</option>
-            <option value="kabir">Kabir Malhotra — PAT-2024-0089</option>
-            <option value="riya">Riya Patel — PAT-2025-0034</option>
-            <option value="meera">Meera Joshi — PAT-2024-0101</option>
-            <option value="zara">Zara Sheikh — PAT-2025-0028</option>
-            <option value="ishaan">Ishaan Nair — PAT-2025-0019</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <div class="form-lbl">Package Type</div>
-          <select class="form-select" id="pkg-type" onchange="updatePackagePreview()">
-            <option value="">Select package...</option>
-            <option value="10">10-Session Package — ₹12,000</option>
-            <option value="20">20-Session Package — ₹24,000</option>
-            <option value="30">30-Session Package — ₹36,000</option>
-            <option value="40">40-Session Package — ₹48,000</option>
-            <option value="50">50-Session Package — ₹60,000</option>
-            <option value="60">60-Session Package — ₹72,000</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <div class="form-lbl">Therapy Domain</div>
-          <select class="form-select">
-            <option>Occupational Therapy (OT)</option>
-            <option>Physiotherapy</option>
-            <option>Speech &amp; Language Therapy</option>
-            <option>ABA Therapy</option>
-            <option>Sensory Integration</option>
-            <option>Behavioural Therapy</option>
-            <option>Special Education</option>
-            <option>Multi-Domain (Mixed)</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <div class="form-lbl">Payment Method</div>
-          <select class="form-select">
-            <option>Cash</option>
-            <option>UPI / NEFT / IMPS</option>
-            <option>Cheque</option>
-            <option>Credit / Debit Card</option>
-            <option>TPA / Insurance</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <div class="form-lbl">TPA Authorization No. (if TPA)</div>
-          <input class="form-input" type="text" placeholder="e.g. TPA-2025-XXXX (leave blank if direct pay)">
-        </div>
-        <div class="form-field">
-          <div class="form-lbl">Discount Applied</div>
-          <select class="form-select" onchange="updatePackagePreview()">
-            <option value="0">No Discount</option>
-            <option value="5">5% — Sibling Discount</option>
-            <option value="10">10% — Sibling Discount (Admin approved)</option>
-            <option value="custom">Custom (Admin approval required)</option>
-          </select>
-        </div>
+    <!-- ═══ OVERVIEW ═══ -->
+    <div class="tab-content active" id="tab-overview">
+      <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#9A3412;display:flex;gap:8px">
+        <span>ℹ</span>
+        <span><strong>SOP Gap Closed:</strong> This module adds the missing package purchase workflow, GST-compliant invoice generation, and a structured session ledger. Previously these were managed via Excel or manual receipt books -- with no link to session delivery data.</span>
       </div>
 
-      <!-- PACKAGE PREVIEW -->
-      <div id="pkg-preview" style="margin-top:16px;display:none;padding:16px;background:var(--surface);border:1px solid var(--border-light);border-radius:10px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px">Package Preview</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px">
-          <div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Sessions</div><div id="prev-sessions" style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600">—</div></div>
-          <div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Base Amount</div><div id="prev-base" style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600">—</div></div>
-          <div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Total incl. 18% GST</div><div id="prev-total" style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--orange)">—</div></div>
+      <div class="kpi-row">
+        <div class="kpi-card" style="border-top:3px solid var(--orange)"><div class="kpi-lbl">Collections Today</div><div class="kpi-val" style="font-size:18px">₹50,400</div><div class="kpi-sub">of ₹1,04,400 expected</div></div>
+        <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-lbl">Outstanding Today</div><div class="kpi-val" style="font-size:18px;color:var(--rose)">₹54,000</div><div class="kpi-sub">45 sessions unpaid</div></div>
+        <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-lbl">Outstanding MTD</div><div class="kpi-val" style="font-size:18px;color:var(--amber)">₹84,000</div><div class="kpi-sub">12 patients overdue</div></div>
+        <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-lbl">Packages Sold MTD</div><div class="kpi-val" style="color:var(--green)">6</div><div class="kpi-sub">₹2,94,000 total value</div></div>
+        <div class="kpi-card" style="border-top:3px solid #7C3AED"><div class="kpi-lbl">GST Collected MTD</div><div class="kpi-val" style="font-size:18px;color:#7C3AED">₹52,920</div><div class="kpi-sub">18% GST on services</div></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">Recent Transactions</div><button class="btn btn-ghost" style="font-size:11px;padding:5px 10px" onclick="switchTab('ledger')">Full Ledger →</button></div>
+          <table class="dt">
+            <thead><tr><th>Date</th><th>Patient</th><th>Description</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td style="font-family:'DM Mono',monospace;font-size:11px">17 Mar</td><td style="font-weight:600">Vansh Kataria</td><td>Session 32 -- Neuro Physio</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹1,200</td><td><span class="sp sp-g">Paid</span></td></tr>
+              <tr><td style="font-family:'DM Mono',monospace;font-size:11px">17 Mar</td><td style="font-weight:600">Saisha Shinde</td><td>Session 18 -- ABA</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹1,200</td><td><span class="sp sp-a">Pending</span></td></tr>
+              <tr><td style="font-family:'DM Mono',monospace;font-size:11px">16 Mar</td><td style="font-weight:600">Yuvan Singh</td><td>Package purchase -- OT 30 sessions</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹36,000</td><td><span class="sp sp-g">Invoiced</span></td></tr>
+              <tr><td style="font-family:'DM Mono',monospace;font-size:11px">16 Mar</td><td style="font-weight:600">Amaira Patil</td><td>Assessment fee -- initial evaluation</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹2,500</td><td><span class="sp sp-g">Paid</span></td></tr>
+              <tr><td style="font-family:'DM Mono',monospace;font-size:11px">15 Mar</td><td style="font-weight:600">Yuvan Singh</td><td>Session 14 -- OT (double charge)</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">₹1,200</td><td><span class="sp sp-r">Dispute</span></td></tr>
+              <tr><td style="font-family:'DM Mono',monospace;font-size:11px">14 Mar</td><td style="font-weight:600">Theia Pithawala</td><td>Package renewal -- Speech 10 sessions</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹12,000</td><td><span class="sp sp-g">Invoiced</span></td></tr>
+            </tbody>
+          </table>
         </div>
-      </div>
 
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-light)">
-        <div style="font-size:12px;color:var(--text-muted)">Confirming will create the session package, generate a GST invoice, and activate billing for this patient.</div>
-        <button class="btn btn-orange" onclick="confirmPackage()">Confirm &amp; Generate Invoice →</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ GST INVOICE ═══ -->
-<div class="tab-content" id="tab-invoice">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
-    <div style="font-size:12.5px;color:var(--text-muted)">Sample GST-compliant invoice as generated by the system</div>
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-ghost" onclick="alert('Invoice printed')">🖨 Print</button>
-      <button class="btn btn-orange" onclick="alert('Invoice PDF downloaded: INV-2025-0089.pdf')">⬇ Download PDF</button>
-      <button class="btn btn-green" onclick="alert('Invoice WhatsApp/Email sent to parent')">Send to Parent</button>
-    </div>
-  </div>
-
-  <div class="invoice-preview">
-    <div class="inv-header">
-      <div>
-        <div class="inv-clinic-name">RehabCare Clinic</div>
-        <div class="inv-clinic-meta">
-          Registered Address: 42, Marine Drive Complex, Mumbai — 400002<br>
-          GSTIN: 27AABCR1234D1ZX · SAC Code: 999313 (Physiotherapy Services)<br>
-          Phone: +91 22-1234-5678 · Email: billing@rehabcare.in
-        </div>
-      </div>
-      <div style="text-align:right">
-        <div class="inv-badge">TAX INVOICE</div>
-        <div style="margin-top:10px;font-size:12px;color:var(--text-muted)">
-          <div><strong>Invoice No:</strong> INV-2025-0089</div>
-          <div><strong>Date:</strong> 16 Mar 2025</div>
-          <div><strong>Due Date:</strong> 16 Mar 2025</div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">Package Status -- Active Patients</div></div>
+          <table class="dt">
+            <thead><tr><th>Patient</th><th>Package</th><th>Sessions</th><th>Expires</th><th>Alert</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:600">Yuvan Singh</td>
+                <td style="font-size:11.5px;color:var(--text-muted)">OT 30 · ABA 20 · Speech 20</td>
+                <td>
+                  <div style="font-size:12px"><strong>15/30</strong> OT</div>
+                  <div style="font-size:12px;color:var(--text-muted)">8/20 ABA · 5/20 Speech</div>
+                </td>
+                <td style="font-size:11.5px">Sep 2025</td>
+                <td><span class="sp sp-g">Active</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600">Vansh Kataria</td>
+                <td style="font-size:11.5px;color:var(--text-muted)">Neuro Physio 50</td>
+                <td><strong>32/50</strong></td>
+                <td style="font-size:11.5px">May 2025</td>
+                <td><span class="sp sp-a">Renew in 8 sessions</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600">Theia Pithawala</td>
+                <td style="font-size:11.5px;color:var(--text-muted)">Speech 20</td>
+                <td><strong>12/20</strong></td>
+                <td style="font-size:11.5px">May 2025</td>
+                <td><span class="sp sp-g">Active</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600">Saisha Shinde</td>
+                <td style="font-size:11.5px;color:var(--text-muted)">ABA 60 · Sensory 20 · Speech 20</td>
+                <td><strong>18/60</strong> ABA</td>
+                <td style="font-size:11.5px">Dec 2025</td>
+                <td><span class="sp sp-g">Active</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600">Saifuddin Contractorwala</td>
+                <td style="font-size:11.5px;color:var(--text-muted)">OT + Behavioral 30</td>
+                <td><strong>22/30</strong></td>
+                <td style="font-size:11.5px">Apr 2025</td>
+                <td><span class="sp sp-r">Renew NOW -- 8 left</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <div class="inv-parties">
-      <div>
-        <div class="inv-party-lbl">Bill To</div>
-        <div class="inv-party-name">Mr. Suresh Sharma</div>
-        <div class="inv-party-meta">
-          Parent / Guardian of: Aarav Sharma (PAT-2025-0012)<br>
-          12B, Linking Road, Bandra West, Mumbai — 400050<br>
-          Mobile: +91 9XXXXXXXX0<br>
-          Patient GSTIN: N/A (Individual)
+    <!-- ═══ PACKAGE SALE ═══ -->
+    <div class="tab-content" id="tab-package">
+      <div class="card">
+        <div class="card-hd"><div class="card-title">New Package Sale / Renewal</div><div style="font-size:11.5px;color:var(--text-muted)">Creates invoice automatically on confirmation</div></div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-field">
+              <div class="form-lbl">Patient</div>
+              <select class="form-select" id="pkg-patient" onchange="updatePackagePreview()">
+                <option value="">Select patient...</option>
+                <option value="aarav">Yuvan Singh -- PAT-2025-0693</option>
+                <option value="kabir">Vansh Kataria -- PAT-2024-0748</option>
+                <option value="riya">Amaira Patil -- PAT-2023-0346</option>
+                <option value="meera">Saisha Shinde -- PAT-2024-0575</option>
+                <option value="zara">Theia Pithawala -- PAT-2023-0057</option>
+                <option value="ishaan">Saifuddin Contractorwala -- PAT-2025-0019</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <div class="form-lbl">Package Type</div>
+              <select class="form-select" id="pkg-type" onchange="updatePackagePreview()">
+                <option value="">Select package...</option>
+                <option value="10">10-Session Package -- ₹12,000</option>
+                <option value="20">20-Session Package -- ₹24,000</option>
+                <option value="30">30-Session Package -- ₹36,000</option>
+                <option value="40">40-Session Package -- ₹48,000</option>
+                <option value="50">50-Session Package -- ₹60,000</option>
+                <option value="60">60-Session Package -- ₹72,000</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <div class="form-lbl">Therapy Domain</div>
+              <select class="form-select">
+                <option>Occupational Therapy (OT)</option>
+                <option>Physiotherapy</option>
+                <option>Speech &amp; Language Therapy</option>
+                <option>ABA Therapy</option>
+                <option>Sensory Integration</option>
+                <option>Behavioural Therapy</option>
+                <option>Special Education</option>
+                <option>Multi-Domain (Mixed)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <div class="form-lbl">Payment Method</div>
+              <select class="form-select">
+                <option>Cash</option>
+                <option>UPI / NEFT / IMPS</option>
+                <option>Cheque</option>
+                <option>Credit / Debit Card</option>
+                <option>TPA / Insurance</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <div class="form-lbl">TPA Authorization No. (if TPA)</div>
+              <input class="form-input" type="text" placeholder="e.g. TPA-2025-XXXX (leave blank if direct pay)">
+            </div>
+            <div class="form-field">
+              <div class="form-lbl">Discount Applied</div>
+              <select class="form-select" onchange="updatePackagePreview()">
+                <option value="0">No Discount</option>
+                <option value="5">5% -- Sibling Discount</option>
+                <option value="10">10% -- Sibling Discount (Admin approved)</option>
+                <option value="custom">Custom (Admin approval required)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- PACKAGE PREVIEW -->
+          <div id="pkg-preview" style="margin-top:16px;display:none;padding:16px;background:var(--surface);border:1px solid var(--border-light);border-radius:10px">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px">Package Preview</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px">
+              <div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Sessions</div><div id="prev-sessions" style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600">--</div></div>
+              <div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Base Amount</div><div id="prev-base" style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600">--</div></div>
+              <div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Total incl. 18% GST</div><div id="prev-total" style="font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--orange)">--</div></div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-light)">
+            <div style="font-size:12px;color:var(--text-muted)">Confirming will create the session package, generate a GST invoice, and activate billing for this patient.</div>
+            <button class="btn btn-orange" onclick="confirmPackage()">Confirm &amp; Generate Invoice →</button>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="inv-party-lbl">Service Details</div>
-        <div class="inv-party-meta">
-          <strong>Program:</strong> OT 30-Session Package<br>
-          <strong>Program ID:</strong> PRG-2025-0042<br>
-          <strong>HOD Approved:</strong> Dr. Priya Nair, 06 Jan 2025<br>
-          <strong>Payment Method:</strong> UPI — TXN#8923XXXX<br>
-          <strong>Place of Supply:</strong> Maharashtra (27)
+    </div>
+
+    <!-- ═══ GST INVOICE ═══ -->
+    <div class="tab-content" id="tab-invoice">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+        <div style="font-size:12.5px;color:var(--text-muted)">Sample GST-compliant invoice as generated by the system</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" onclick="alert('Invoice printed')">🖨 Print</button>
+          <button class="btn btn-orange" onclick="alert('Invoice PDF downloaded: INV-2025-0089.pdf')">⬇ Download PDF</button>
+          <button class="btn btn-green" onclick="alert('Invoice WhatsApp/Email sent to parent')">Send to Parent</button>
+        </div>
+      </div>
+
+      <div class="invoice-preview">
+        <div class="inv-header">
+          <div>
+            <div class="inv-clinic-name">RehabCare Clinic</div>
+            <div class="inv-clinic-meta">
+              Registered Address: 42, Marine Drive Complex, Mumbai -- 400002<br>
+              GSTIN: 27AABCR1234D1ZX · SAC Code: 999313 (Physiotherapy Services)<br>
+              Phone: +91 22-1234-5678 · Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0d2d9dcdcd9ded7f0c2d5d8d1d2d3d1c2d59ed9de">[email&#160;protected]</a>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div class="inv-badge">TAX INVOICE</div>
+            <div style="margin-top:10px;font-size:12px;color:var(--text-muted)">
+              <div><strong>Invoice No:</strong> INV-2025-0089</div>
+              <div><strong>Date:</strong> 16 Mar 2025</div>
+              <div><strong>Due Date:</strong> 16 Mar 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="inv-parties">
+          <div>
+            <div class="inv-party-lbl">Bill To</div>
+            <div class="inv-party-name">Mr. Suresh Sharma</div>
+            <div class="inv-party-meta">
+              Parent / Guardian of: Yuvan Singh (PAT-2025-0693)<br>
+              12B, Linking Road, Bandra West, Mumbai -- 400050<br>
+              Mobile: +91 9XXXXXXXX0<br>
+              Patient GSTIN: N/A (Individual)
+            </div>
+          </div>
+          <div>
+            <div class="inv-party-lbl">Service Details</div>
+            <div class="inv-party-meta">
+              <strong>Program:</strong> OT 30-Session Package<br>
+              <strong>Program ID:</strong> PRG-2025-0042<br>
+              <strong>HOD Approved:</strong> Dr. Priya Nair, 06 Jan 2025<br>
+              <strong>Payment Method:</strong> UPI -- TXN#8923XXXX<br>
+              <strong>Place of Supply:</strong> Maharashtra (27)
+            </div>
+          </div>
+        </div>
+
+        <table class="inv-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Description of Service</th>
+              <th>SAC</th>
+              <th>Qty</th>
+              <th>Rate</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Occupational Therapy Sessions -- Sensory Integration Programme<br><span style="font-size:11.5px;color:var(--text-muted)">30-session package, valid 6 months from date of purchase</span></td>
+              <td style="font-family:'DM Mono',monospace;font-size:11.5px">999313</td>
+              <td>30</td>
+              <td style="font-family:'DM Mono',monospace">₹1,200</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600">₹36,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="inv-totals">
+          <div class="inv-total-row"><div class="inv-total-lbl">Subtotal</div><div class="inv-total-val">₹36,000</div></div>
+          <div class="inv-total-row"><div class="inv-total-lbl">CGST @ 9%</div><div class="inv-total-val">₹3,240</div></div>
+          <div class="inv-total-row"><div class="inv-total-lbl">SGST @ 9%</div><div class="inv-total-val">₹3,240</div></div>
+          <div class="inv-total-row total"><div class="inv-total-lbl" style="color:var(--navy)">Total</div><div class="inv-total-val" style="color:var(--navy)">₹42,480</div></div>
+        </div>
+
+        <div class="inv-footer">
+          <div style="margin-bottom:6px"><strong>Amount in Words:</strong> Rupees Forty-Two Thousand Four Hundred and Eighty Only</div>
+          <div><strong>Terms:</strong> Payment received in full. This invoice is auto-generated by the RehabCare Clinic Management System. Session credits are activated upon payment confirmation. Package validity: 6 months from invoice date.</div>
+          <div style="margin-top:6px;font-size:11px;color:#999">This is a system-generated invoice and does not require a physical signature. For disputes, contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b7972777772757c5b697e737a79787a697e357275">[email&#160;protected]</a> within 7 days of issue.</div>
         </div>
       </div>
     </div>
 
-    <table class="inv-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Description of Service</th>
-          <th>SAC</th>
-          <th>Qty</th>
-          <th>Rate</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Occupational Therapy Sessions — Sensory Integration Programme<br><span style="font-size:11.5px;color:var(--text-muted)">30-session package, valid 6 months from date of purchase</span></td>
-          <td style="font-family:'DM Mono',monospace;font-size:11.5px">999313</td>
-          <td>30</td>
-          <td style="font-family:'DM Mono',monospace">₹1,200</td>
-          <td style="font-family:'DM Mono',monospace;font-weight:600">₹36,000</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- ═══ SESSION LEDGER ═══ -->
+    <div class="tab-content" id="tab-ledger">
+      <div class="card">
+        <div class="card-hd">
+          <div class="card-title">Session Ledger -- Yuvan Singh (PAT-2025-0693)</div>
+          <div style="display:flex;gap:8px">
+            <select class="form-select" style="font-size:12px;padding:5px 10px">
+              <option>Yuvan Singh</option><option>Vansh Kataria</option><option>Saisha Shinde</option>
+            </select>
+            <button class="btn btn-ghost" style="font-size:11px;padding:5px 10px" onclick="alert('Ledger exported to Excel')">Export</button>
+          </div>
+        </div>
 
-    <div class="inv-totals">
-      <div class="inv-total-row"><div class="inv-total-lbl">Subtotal</div><div class="inv-total-val">₹36,000</div></div>
-      <div class="inv-total-row"><div class="inv-total-lbl">CGST @ 9%</div><div class="inv-total-val">₹3,240</div></div>
-      <div class="inv-total-row"><div class="inv-total-lbl">SGST @ 9%</div><div class="inv-total-val">₹3,240</div></div>
-      <div class="inv-total-row total"><div class="inv-total-lbl" style="color:var(--navy)">Total</div><div class="inv-total-val" style="color:var(--navy)">₹42,480</div></div>
-    </div>
+        <div style="padding:12px 18px;background:var(--surface);border-bottom:1px solid var(--border-light);display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Package Value</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--navy)">₹36,000</div></div>
+          <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Sessions Purchased</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--navy)">30</div></div>
+          <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Sessions Consumed</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--orange)">15</div></div>
+          <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Balance Remaining</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--green)">15</div></div>
+        </div>
 
-    <div class="inv-footer">
-      <div style="margin-bottom:6px"><strong>Amount in Words:</strong> Rupees Forty-Two Thousand Four Hundred and Eighty Only</div>
-      <div><strong>Terms:</strong> Payment received in full. This invoice is auto-generated by the RehabCare Clinic Management System. Session credits are activated upon payment confirmation. Package validity: 6 months from invoice date.</div>
-      <div style="margin-top:6px;font-size:11px;color:#999">This is a system-generated invoice and does not require a physical signature. For disputes, contact billing@rehabcare.in within 7 days of issue.</div>
-    </div>
-  </div>
-</div>
+        <div class="ledger-row" style="background:#F8FAFC;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);padding:8px 18px">
+          <div style="min-width:80px">Date</div><div style="flex:1">Description</div><div style="min-width:90px;text-align:right">Amount</div><div style="min-width:80px;text-align:right">Balance</div><div style="min-width:75px;text-align:right;margin-left:10px">Type</div>
+        </div>
 
-<!-- ═══ SESSION LEDGER ═══ -->
-<div class="tab-content" id="tab-ledger">
-  <div class="card">
-    <div class="card-hd">
-      <div class="card-title">Session Ledger — Aarav Sharma (PAT-2025-0012)</div>
-      <div style="display:flex;gap:8px">
-        <select class="form-select" style="font-size:12px;padding:5px 10px">
-          <option>Aarav Sharma</option><option>Kabir Malhotra</option><option>Meera Joshi</option>
-        </select>
-        <button class="btn btn-ghost" style="font-size:11px;padding:5px 10px" onclick="alert('Ledger exported to Excel')">Export</button>
+        <div class="ledger-row"><div class="ledger-date">06 Jan</div><div class="ledger-desc">Package Purchase -- OT 30 Sessions (INV-2025-0089)</div><div class="ledger-amount" style="color:var(--green)">₹36,000</div><div class="ledger-balance">30 sessions</div><span class="ledger-type lt-credit">Credit</span></div>
+        <div class="ledger-row"><div class="ledger-date">08 Jan</div><div class="ledger-desc">Session 1 -- OT: Tactile Desensitisation -- Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">29 left</div><span class="ledger-type lt-debit">Debit</span></div>
+        <div class="ledger-row"><div class="ledger-date">10 Jan</div><div class="ledger-desc">Session 2 -- OT: Vestibular Input -- Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">28 left</div><span class="ledger-type lt-debit">Debit</span></div>
+        <div class="ledger-row"><div class="ledger-date">13 Jan</div><div class="ledger-desc">Session 3 -- OT: Proprioceptive Input -- Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">27 left</div><span class="ledger-type lt-debit">Debit</span></div>
+        <div class="ledger-row"><div class="ledger-date">15 Jan</div><div class="ledger-desc" style="color:var(--amber)">No-Show -- 15 Jan OT 10:00 AM (waived -- 1st occurrence)</div><div class="ledger-amount" style="color:var(--text-muted)">₹0</div><div class="ledger-balance">27 left</div><span class="ledger-type" style="background:#FFFBEB;color:#92400E">Waived</span></div>
+        <div class="ledger-row"><div class="ledger-date">17 Jan</div><div class="ledger-desc">Session 4 -- OT: Fine Motor -- Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">26 left</div><span class="ledger-type lt-debit">Debit</span></div>
+        <div class="ledger-row" style="background:#FEF2F2"><div class="ledger-date">15 Mar</div><div class="ledger-desc" style="color:#991B1B">⚠ Session 14 -- OT -- DUPLICATE PAYMENT (dispute open -- EXC-2025-019)</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">16 left</div><span class="ledger-type lt-debit">Dispute</span></div>
+        <div class="ledger-row"><div class="ledger-date">17 Mar</div><div class="ledger-desc">Session 15 -- OT: Bilateral Coordination -- Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">15 left</div><span class="ledger-type lt-debit">Debit</span></div>
+        <div style="padding:10px 18px;background:#FFFBEB;border-top:1px solid #FDE68A;font-size:12px;color:#78350F;display:flex;justify-content:space-between;align-items:center">
+          <span>⚠ 1 disputed entry -- duplicate payment ₹1,200 on 15 Mar. Resolution pending Admin (EXC-2025-019).</span>
+          <button class="btn btn-ghost" style="font-size:11px;padding:5px 10px" onclick="alert('EXC-2025-019 opened -- billing correction queue')">Resolve</button>
+        </div>
       </div>
     </div>
 
-    <div style="padding:12px 18px;background:var(--surface);border-bottom:1px solid var(--border-light);display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-      <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Package Value</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--navy)">₹36,000</div></div>
-      <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Sessions Purchased</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--navy)">30</div></div>
-      <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Sessions Consumed</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--orange)">15</div></div>
-      <div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px">Balance Remaining</div><div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:600;color:var(--green)">15</div></div>
-    </div>
+    <!-- ═══ AGEING ═══ -->
+    <div class="tab-content" id="tab-ageing">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px">
+        <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-lbl">Current (0--7 days)</div><div class="kpi-val" style="font-size:18px;color:var(--green)">₹27,600</div><div class="kpi-sub">23 patients</div></div>
+        <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-lbl">Overdue (8--15 days)</div><div class="kpi-val" style="font-size:18px;color:var(--amber)">₹16,800</div><div class="kpi-sub">14 patients</div></div>
+        <div class="kpi-card" style="border-top:3px solid var(--orange)"><div class="kpi-lbl">Late (16--30 days)</div><div class="kpi-val" style="font-size:18px;color:var(--orange)">₹7,200</div><div class="kpi-sub">6 patients</div></div>
+        <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-lbl">Critical (30+ days)</div><div class="kpi-val" style="font-size:18px;color:var(--rose)">₹4,800</div><div class="kpi-sub">4 patients -- escalate</div></div>
+      </div>
 
-    <div class="ledger-row" style="background:#F8FAFC;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);padding:8px 18px">
-      <div style="min-width:80px">Date</div><div style="flex:1">Description</div><div style="min-width:90px;text-align:right">Amount</div><div style="min-width:80px;text-align:right">Balance</div><div style="min-width:75px;text-align:right;margin-left:10px">Type</div>
+      <div class="card">
+        <div class="card-hd">
+          <div class="card-title">Outstanding Ageing Report -- March 2025</div>
+          <button class="btn btn-orange" style="font-size:11px;padding:5px 12px" onclick="alert('Ageing report sent to Admin and Director via email')">Send Report</button>
+        </div>
+        <table class="age-table">
+          <thead>
+            <tr>
+              <th>Patient</th>
+              <th>Outstanding</th>
+              <th>Sessions Unpaid</th>
+              <th>Oldest Unpaid</th>
+              <th>Ageing</th>
+              <th>Last Contact</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600">Saisha Shinde</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">₹3,600</td>
+              <td>3 sessions</td>
+              <td style="font-size:11.5px;color:var(--rose);font-weight:600">35 days ago</td>
+              <td><span class="sp sp-r">Critical</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:100%;background:var(--rose)"></div></div></td>
+              <td style="font-size:11.5px;color:var(--text-muted)">10 Mar 2025</td>
+              <td><button class="btn btn-red" style="font-size:11px;padding:4px 10px" onclick="alert('Escalation notice sent to Saisha Shinde family -- payment due 7 days or booking suspended')">Escalate</button></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Zain Sayyed</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--orange)">₹2,400</td>
+              <td>2 sessions + no-show charge</td>
+              <td style="font-size:11.5px;color:var(--orange);font-weight:600">22 days ago</td>
+              <td><span class="sp sp-a">Late</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:70%;background:var(--orange)"></div></div></td>
+              <td style="font-size:11.5px;color:var(--text-muted)">14 Mar 2025</td>
+              <td><button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="alert('Reminder SMS sent to Zain Sayyed family')">Send Reminder</button></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Yuvan Singh</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹1,200</td>
+              <td>1 session (dispute)</td>
+              <td style="font-size:11.5px;color:var(--amber);font-weight:600">2 days ago</td>
+              <td><span class="sp sp-a">Dispute</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:10%;background:var(--amber)"></div></div></td>
+              <td style="font-size:11.5px;color:var(--text-muted)">17 Mar 2025</td>
+              <td><button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="alert('EXC-2025-019 opened -- billing correction')">Resolve Dispute</button></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Umar Pathanwala</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹2,400</td>
+              <td>2 sessions</td>
+              <td style="font-size:11.5px;color:var(--amber);font-weight:600">11 days ago</td>
+              <td><span class="sp sp-a">Overdue</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:40%;background:var(--amber)"></div></div></td>
+              <td style="font-size:11.5px;color:var(--text-muted)">15 Mar 2025</td>
+              <td><button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="alert('2nd reminder sent to Umar Pathanwala family')">2nd Reminder</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="padding:12px 18px;background:var(--surface);border-top:1px solid var(--border-light);font-size:12px;color:var(--text-muted)">
+          <strong>Policy:</strong> Outstanding &gt;30 days triggers automatic booking suspension for new sessions. Admin must approve exception to continue booking. Existing sessions continue.
+        </div>
+      </div>
     </div>
-
-    <div class="ledger-row"><div class="ledger-date">06 Jan</div><div class="ledger-desc">Package Purchase — OT 30 Sessions (INV-2025-0089)</div><div class="ledger-amount" style="color:var(--green)">₹36,000</div><div class="ledger-balance">30 sessions</div><span class="ledger-type lt-credit">Credit</span></div>
-    <div class="ledger-row"><div class="ledger-date">08 Jan</div><div class="ledger-desc">Session 1 — OT: Tactile Desensitisation — Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">29 left</div><span class="ledger-type lt-debit">Debit</span></div>
-    <div class="ledger-row"><div class="ledger-date">10 Jan</div><div class="ledger-desc">Session 2 — OT: Vestibular Input — Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">28 left</div><span class="ledger-type lt-debit">Debit</span></div>
-    <div class="ledger-row"><div class="ledger-date">13 Jan</div><div class="ledger-desc">Session 3 — OT: Proprioceptive Input — Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">27 left</div><span class="ledger-type lt-debit">Debit</span></div>
-    <div class="ledger-row"><div class="ledger-date">15 Jan</div><div class="ledger-desc" style="color:var(--amber)">No-Show — 15 Jan OT 10:00 AM (waived — 1st occurrence)</div><div class="ledger-amount" style="color:var(--text-muted)">₹0</div><div class="ledger-balance">27 left</div><span class="ledger-type" style="background:#FFFBEB;color:#92400E">Waived</span></div>
-    <div class="ledger-row"><div class="ledger-date">17 Jan</div><div class="ledger-desc">Session 4 — OT: Fine Motor — Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">26 left</div><span class="ledger-type lt-debit">Debit</span></div>
-    <div class="ledger-row" style="background:#FEF2F2"><div class="ledger-date">15 Mar</div><div class="ledger-desc" style="color:#991B1B">⚠ Session 14 — OT — DUPLICATE PAYMENT (dispute open — EXC-2025-019)</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">16 left</div><span class="ledger-type lt-debit">Dispute</span></div>
-    <div class="ledger-row"><div class="ledger-date">17 Mar</div><div class="ledger-desc">Session 15 — OT: Bilateral Coordination — Ms. Ananya Desai</div><div class="ledger-amount" style="color:var(--rose)">₹1,200</div><div class="ledger-balance">15 left</div><span class="ledger-type lt-debit">Debit</span></div>
-    <div style="padding:10px 18px;background:#FFFBEB;border-top:1px solid #FDE68A;font-size:12px;color:#78350F;display:flex;justify-content:space-between;align-items:center">
-      <span>⚠ 1 disputed entry — duplicate payment ₹1,200 on 15 Mar. Resolution pending Admin (EXC-2025-019).</span>
-      <button class="btn btn-ghost" style="font-size:11px;padding:5px 10px" onclick="alert('EXC-2025-019 opened — billing correction queue')">Resolve</button>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ AGEING ═══ -->
-<div class="tab-content" id="tab-ageing">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px">
-    <div class="kpi-card" style="border-top:3px solid var(--green)"><div class="kpi-lbl">Current (0–7 days)</div><div class="kpi-val" style="font-size:18px;color:var(--green)">₹27,600</div><div class="kpi-sub">23 patients</div></div>
-    <div class="kpi-card" style="border-top:3px solid var(--amber)"><div class="kpi-lbl">Overdue (8–15 days)</div><div class="kpi-val" style="font-size:18px;color:var(--amber)">₹16,800</div><div class="kpi-sub">14 patients</div></div>
-    <div class="kpi-card" style="border-top:3px solid var(--orange)"><div class="kpi-lbl">Late (16–30 days)</div><div class="kpi-val" style="font-size:18px;color:var(--orange)">₹7,200</div><div class="kpi-sub">6 patients</div></div>
-    <div class="kpi-card" style="border-top:3px solid var(--rose)"><div class="kpi-lbl">Critical (30+ days)</div><div class="kpi-val" style="font-size:18px;color:var(--rose)">₹4,800</div><div class="kpi-sub">4 patients — escalate</div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-hd">
-      <div class="card-title">Outstanding Ageing Report — March 2025</div>
-      <button class="btn btn-orange" style="font-size:11px;padding:5px 12px" onclick="alert('Ageing report sent to Admin and Director via email')">Send Report</button>
-    </div>
-    <table class="age-table">
-      <thead>
-        <tr>
-          <th>Patient</th>
-          <th>Outstanding</th>
-          <th>Sessions Unpaid</th>
-          <th>Oldest Unpaid</th>
-          <th>Ageing</th>
-          <th>Last Contact</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="font-weight:600">Meera Joshi</td>
-          <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">₹3,600</td>
-          <td>3 sessions</td>
-          <td style="font-size:11.5px;color:var(--rose);font-weight:600">35 days ago</td>
-          <td><span class="sp sp-r">Critical</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:100%;background:var(--rose)"></div></div></td>
-          <td style="font-size:11.5px;color:var(--text-muted)">10 Mar 2025</td>
-          <td><button class="btn btn-red" style="font-size:11px;padding:4px 10px" onclick="alert('Escalation notice sent to Meera Joshi family — payment due 7 days or booking suspended')">Escalate</button></td>
-        </tr>
-        <tr>
-          <td style="font-weight:600">Aryan Thakur</td>
-          <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--orange)">₹2,400</td>
-          <td>2 sessions + no-show charge</td>
-          <td style="font-size:11.5px;color:var(--orange);font-weight:600">22 days ago</td>
-          <td><span class="sp sp-a">Late</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:70%;background:var(--orange)"></div></div></td>
-          <td style="font-size:11.5px;color:var(--text-muted)">14 Mar 2025</td>
-          <td><button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="alert('Reminder SMS sent to Aryan Thakur family')">Send Reminder</button></td>
-        </tr>
-        <tr>
-          <td style="font-weight:600">Aarav Sharma</td>
-          <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹1,200</td>
-          <td>1 session (dispute)</td>
-          <td style="font-size:11.5px;color:var(--amber);font-weight:600">2 days ago</td>
-          <td><span class="sp sp-a">Dispute</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:10%;background:var(--amber)"></div></div></td>
-          <td style="font-size:11.5px;color:var(--text-muted)">17 Mar 2025</td>
-          <td><button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="alert('EXC-2025-019 opened — billing correction')">Resolve Dispute</button></td>
-        </tr>
-        <tr>
-          <td style="font-weight:600">Sana Qureshi</td>
-          <td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹2,400</td>
-          <td>2 sessions</td>
-          <td style="font-size:11.5px;color:var(--amber);font-weight:600">11 days ago</td>
-          <td><span class="sp sp-a">Overdue</span><div class="age-bar-wrap"><div class="age-bar-fill" style="width:40%;background:var(--amber)"></div></div></td>
-          <td style="font-size:11.5px;color:var(--text-muted)">15 Mar 2025</td>
-          <td><button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="alert('2nd reminder sent to Sana Qureshi family')">2nd Reminder</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <div style="padding:12px 18px;background:var(--surface);border-top:1px solid var(--border-light);font-size:12px;color:var(--text-muted)">
-      <strong>Policy:</strong> Outstanding &gt;30 days triggers automatic booking suspension for new sessions. Admin must approve exception to continue booking. Existing sessions continue.
-    </div>
-  </div>
-</div>
-```
 
   </div>
 </main>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function switchTab(id){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
@@ -606,11 +602,4 @@ function confirmPackage(){
   const patient=document.getElementById('pkg-patient').value;
   if(!pkg||!patient){alert('Please select a patient and package type.');return;}
   const sessions=parseInt(pkg);
-  const base=sessions*1200;
-  const total=Math.round(base*1.18);
-  alert('✅ Package confirmed!\n\nInvoice INV-2025-00'+Math.floor(Math.random()*900+100)+' generated\nSessions activated: '+sessions+'\nTotal charged: ₹'+total.toLocaleString('en-IN')+' (incl. 18% GST)\nParent notified via SMS\nBilling gate updated — sessions now billable');
-}
-</script>
-
-</body>
-</html>
+  const base=session
