@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Therapist — RehabCare Clinic</title>
+<title>Therapist -- RehabCare Clinic</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -47,25 +46,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 /* SCHEDULE LIST */
 .schedule-list{display:flex;flex-direction:column;gap:10px}
-.session-item{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.2s}
-.session-item:hover{border-color:var(–teal);box-shadow:0 4px 20px rgba(13,148,136,0.1)}
+.session-item{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.2s}
+.session-item:hover{border-color:var(--teal);box-shadow:0 4px 20px rgba(13,148,136,0.1)}
 .session-item.active-now{border:2px solid #2563EB;box-shadow:0 4px 20px rgba(37,99,235,0.12)}
 .session-item-inner{display:flex;align-items:center;padding:16px 20px;gap:20px}
-.session-time{font-family:‘DM Mono’,monospace;font-size:13px;font-weight:500;color:var(–text-muted);min-width:55px}
+.session-time{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--text-muted);min-width:55px}
 .session-patient-wrap{flex:1}
-.session-patient-name{font-size:14.5px;font-weight:700;color:var(–text-primary)}
-.session-meta{font-size:12px;color:var(–text-muted);margin-top:2px}
-.session-plan-pill{font-size:11px;padding:2px 8px;border-radius:6px;background:var(–surface2);color:var(–text-secondary);font-weight:500}
+.session-patient-name{font-size:14.5px;font-weight:700;color:var(--text-primary)}
+.session-meta{font-size:12px;color:var(--text-muted);margin-top:2px}
+.session-plan-pill{font-size:11px;padding:2px 8px;border-radius:6px;background:var(--surface2);color:var(--text-secondary);font-weight:500}
 .session-routing{font-size:12px;color:#2563EB;font-weight:500;display:flex;align-items:center;gap:5px;margin-top:4px}
 .now-badge{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;animation:pulse-soft 2s infinite}
 @keyframes pulse-soft{0%,100%{opacity:1}50%{opacity:0.6}}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;border:none;font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
-.btn-primary{background:var(–navy);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.btn-primary{background:var(--navy);color:#fff}
 .btn-blue{background:#2563EB;color:#fff}
 .btn-blue:hover{background:#1D4ED8}
 .btn-blue:disabled{background:#94A3B8;cursor:not-allowed}
-.btn-ghost{background:#fff;color:var(–text-secondary);border:1px solid var(–border)}
-.btn-ghost:hover{background:var(–surface)}
+.btn-ghost{background:#fff;color:var(--text-secondary);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--surface)}
 
 /* SESSION EXECUTION VIEW */
 .exec-view{display:none}
@@ -73,24 +72,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .schedule-view{display:flex;flex-direction:column;gap:16px}
 
 /* PATIENT BANNER */
-.patient-banner{background:#fff;border:1px solid var(–border);border-radius:12px;padding:20px 24px;display:grid;grid-template-columns:1fr auto;align-items:start;gap:20px}
-.patient-id{font-size:10px;font-family:‘DM Mono’,monospace;color:var(–text-muted);letter-spacing:0.06em;margin-bottom:6px}
-.patient-name-large{font-family:‘Playfair Display’,serif;font-size:1.6rem;font-weight:700;color:var(–text-primary);margin-bottom:6px}
+.patient-banner{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:grid;grid-template-columns:1fr auto;align-items:start;gap:20px}
+.patient-id{font-size:10px;font-family:'DM Mono',monospace;color:var(--text-muted);letter-spacing:0.06em;margin-bottom:6px}
+.patient-name-large{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--text-primary);margin-bottom:6px}
 .patient-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .tag{font-size:11px;padding:3px 9px;border-radius:10px;font-weight:500;border:1px solid}
 .tag-diagnosis{background:#F0F4FF;color:#1D4ED8;border-color:#BFDBFE}
 .tag-therapy{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
 .tag-active{background:#EFF6FF;color:#0369A1;border-color:#BAE6FD}
 .detail-grid{display:grid;grid-template-columns:repeat(4,auto);gap:0}
-.detail-pair{padding-right:24px;border-right:1px solid var(–border-light);margin-right:24px}
+.detail-pair{padding-right:24px;border-right:1px solid var(--border-light);margin-right:24px}
 .detail-pair:last-child{border-right:none;margin-right:0}
-.detail-label{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);margin-bottom:2px}
-.detail-val{font-size:13px;font-weight:500;color:var(–text-primary)}
+.detail-label{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px}
+.detail-val{font-size:13px;font-weight:500;color:var(--text-primary)}
 .session-counter-block{text-align:right}
-.session-num{font-family:‘DM Mono’,monospace;font-size:2.2rem;font-weight:500;color:#2563EB;line-height:1}
-.session-num span{font-size:1rem;color:var(–text-muted)}
-.session-num-label{font-size:11px;color:var(–text-muted);margin-top:4px}
-.prog-bar-wrap{height:8px;background:var(–surface2);border-radius:100px;overflow:hidden;margin-top:8px;width:180px}
+.session-num{font-family:'DM Mono',monospace;font-size:2.2rem;font-weight:500;color:#2563EB;line-height:1}
+.session-num span{font-size:1rem;color:var(--text-muted)}
+.session-num-label{font-size:11px;color:var(--text-muted);margin-top:4px}
+.prog-bar-wrap{height:8px;background:var(--surface2);border-radius:100px;overflow:hidden;margin-top:8px;width:180px}
 .prog-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#2563EB,#60A5FA)}
 
 /* GOALS */
@@ -101,18 +100,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 /* ACTIVITY CARDS */
 .activities-section{display:flex;flex-direction:column;gap:10px}
-.activity-card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden;transition:all 0.2s}
+.activity-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s}
 .activity-card.status-completed{border-color:#86EFAC}
 .activity-card.status-partial{border-color:#FDE68A}
 .activity-card.status-skipped{border-color:#FECACA}
-.activity-header{padding:14px 18px;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between}
-.activity-name{font-size:13.5px;font-weight:600;color:var(–text-primary)}
-.activity-domain{font-size:10.5px;color:var(–text-muted);margin-top:2px}
-.activity-duration{font-family:‘DM Mono’,monospace;font-size:11px;color:var(–text-muted);background:var(–surface2);padding:2px 8px;border-radius:4px}
+.activity-header{padding:14px 18px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.activity-name{font-size:13.5px;font-weight:600;color:var(--text-primary)}
+.activity-domain{font-size:10.5px;color:var(--text-muted);margin-top:2px}
+.activity-duration{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--surface2);padding:2px 8px;border-radius:4px}
 .activity-body{padding:12px 18px}
-.activity-instruction{font-size:13px;color:var(–text-secondary);line-height:1.6;margin-bottom:12px}
+.activity-instruction{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px}
 .status-btns{display:flex;gap:8px}
-.status-btn{flex:1;padding:9px;border-radius:8px;border:1.5px solid;cursor:pointer;font-family:‘DM Sans’,sans-serif;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.15s}
+.status-btn{flex:1;padding:9px;border-radius:8px;border:1.5px solid;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.15s}
 .status-btn:hover{transform:translateY(-1px)}
 .btn-completed{background:#F0FDF4;border-color:#86EFAC;color:#166534}
 .btn-completed.selected{background:#166534;color:#fff;border-color:#166534}
@@ -123,46 +122,45 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .deviation-box{display:none;margin-top:10px;padding:10px 12px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px}
 .deviation-box.visible{display:block}
 .deviation-label{font-size:11px;font-weight:700;color:#991B1B;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em}
-.deviation-input{width:100%;padding:8px;border:1px solid #FECACA;border-radius:6px;font-size:12.5px;font-family:‘DM Sans’,sans-serif;color:var(–text-primary);background:#fff;outline:none;resize:none}
+.deviation-input{width:100%;padding:8px;border:1px solid #FECACA;border-radius:6px;font-size:12.5px;font-family:'DM Sans',sans-serif;color:var(--text-primary);background:#fff;outline:none;resize:none}
 .deviation-input:focus{border-color:#DC2626}
 
 /* NOTE */
-.note-card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden}
-.note-header{padding:12px 18px;background:#F8FAFC;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between}
-.note-title{font-size:13px;font-weight:600;color:var(–text-primary);display:flex;align-items:center;gap:8px}
+.note-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.note-header{padding:12px 18px;background:#F8FAFC;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.note-title{font-size:13px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:8px}
 .note-required{font-size:10.5px;font-weight:600;color:#DC2626;padding:2px 8px;border-radius:4px;background:#FEF2F2;border:1px solid #FECACA}
 .note-body{padding:16px 18px}
-.note-textarea{width:100%;min-height:120px;padding:12px;border:1px solid var(–border);border-radius:8px;font-size:13px;font-family:‘DM Sans’,sans-serif;color:var(–text-primary);resize:vertical;outline:none;line-height:1.6}
+.note-textarea{width:100%;min-height:120px;padding:12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text-primary);resize:vertical;outline:none;line-height:1.6}
 .note-textarea:focus{border-color:#2563EB}
-.note-textarea::placeholder{color:var(–text-muted)}
+.note-textarea::placeholder{color:var(--text-muted)}
 
 /* SUBMIT BAR */
-.submit-bar{background:#fff;border:1px solid var(–border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
-.submit-status{font-size:12.5px;color:var(–text-muted)}
-.submit-status.ready{color:var(–green);font-weight:600}
+.submit-bar{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.submit-status{font-size:12.5px;color:var(--text-muted)}
+.submit-status.ready{color:var(--green);font-weight:600}
 .submit-status.blocked{color:#DC2626;font-weight:600}
 
 /* HANDOFF SCREEN */
-.handoff-screen{display:none;background:#fff;border:1px solid var(–border);border-radius:16px;padding:40px;text-align:center}
+.handoff-screen{display:none;background:#fff;border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center}
 .handoff-screen.visible{display:block}
 .handoff-icon{width:72px;height:72px;background:#F0FDF4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px}
-.handoff-title{font-family:‘Playfair Display’,serif;font-size:1.6rem;font-weight:700;color:var(–text-primary);margin-bottom:8px}
-.handoff-sub{font-size:14px;color:var(–text-muted);margin-bottom:28px}
-.handoff-action-box{background:#F8FAFC;border:1px solid var(–border);border-radius:12px;padding:20px;margin:0 auto 24px;max-width:400px;text-align:left}
-.handoff-action-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(–text-muted);margin-bottom:8px}
+.handoff-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--text-primary);margin-bottom:8px}
+.handoff-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px}
+.handoff-action-box{background:#F8FAFC;border:1px solid var(--border);border-radius:12px;padding:20px;margin:0 auto 24px;max-width:400px;text-align:left}
+.handoff-action-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px}
 .handoff-action-text{font-size:16px;font-weight:700;color:#2563EB;display:flex;align-items:center;gap:8px}
-.handoff-confirm-btn{padding:14px 40px;background:var(–teal);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:‘DM Sans’,sans-serif;transition:all 0.2s}
+.handoff-confirm-btn{padding:14px 40px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
 .handoff-confirm-btn:hover{background:#0B7A71;transform:translateY(-2px)}
 
 /* HISTORY */
-.history-card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden}
-.history-item{padding:12px 16px;border-bottom:1px solid var(–border-light);display:flex;gap:12px}
+.history-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.history-item{padding:12px 16px;border-bottom:1px solid var(--border-light);display:flex;gap:12px}
 .history-item:last-child{border-bottom:none}
-.history-date{font-family:‘DM Mono’,monospace;font-size:11px;color:var(–text-muted);min-width:60px;margin-top:1px}
-.history-therapist{font-size:11.5px;font-weight:600;color:var(–text-primary)}
-.history-note{font-size:12px;color:var(–text-secondary);margin-top:2px;font-style:italic}
+.history-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);min-width:60px;margin-top:1px}
+.history-therapist{font-size:11.5px;font-weight:600;color:var(--text-primary)}
+.history-note{font-size:12px;color:var(--text-secondary);margin-top:2px;font-style:italic}
 </style>
-
 </head>
 <body>
 
@@ -178,7 +176,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
   </div>
   <div class="sidebar-role">
     <div class="role-label">Active Role</div>
-    <div class="role-name-display">Therapist — OT</div>
+    <div class="role-name-display">Therapist -- OT</div>
   </div>
   <div style="padding:8px 6px;flex:1">
     <div class="nav-section">My Clinic</div>
@@ -217,11 +215,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 <main class="main">
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:12px">
-      <div class="topbar-title" id="topbar-title">My Schedule — Mon 17 Mar 2025</div>
+      <div class="topbar-title" id="topbar-title">My Schedule -- Mon 17 Mar 2025</div>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
       <div class="pill pill-blue">3 Sessions Today</div>
-      <div class="pill pill-amber">Note Due: Aarav Sharma</div>
+      <div class="pill pill-amber">Note Due: Yuvan Singh</div>
       <button class="btn btn-blue" id="complete-btn" style="display:none" onclick="showHandoff()">Complete &amp; Submit Note</button>
       <button class="btn btn-ghost" id="back-btn" style="display:none" onclick="showSchedule()">← Back to Schedule</button>
     </div>
@@ -229,268 +227,266 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
   <div class="content">
 
-```
-<!-- SCHEDULE VIEW -->
-<div class="schedule-view" id="scheduleView">
-  <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#1E40AF;display:flex;align-items:center;gap:8px">
-    <span>ℹ</span>
-    <span><strong>Session Enforcement SOP:</strong> You cannot mark any session complete without: (1) actioning every prescribed activity, (2) providing a reason for any deviation, and (3) submitting a clinical note. The system enforces this gate.</span>
-  </div>
-  <div class="schedule-list">
-    <!-- Session 1 -->
-    <div class="session-item" onclick="openSession('Aarav','completed')">
-      <div class="session-item-inner">
-        <div class="session-time">9:00 AM</div>
-        <div class="session-patient-wrap">
-          <div class="session-patient-name">Aarav Sharma <span class="session-plan-pill">Session 15 / 30</span></div>
-          <div class="session-meta">Occupational Therapy · Ms. Ananya Desai · Room C</div>
-          <div class="session-routing">→ Next: ABA with Ms. Kavya — Room D (10:00 AM)</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="pill pill-amber">Note Overdue</span>
-          <button class="btn btn-blue" onclick="event.stopPropagation();openSession('Aarav','note_due')">Complete Note</button>
-        </div>
+    <!-- SCHEDULE VIEW -->
+    <div class="schedule-view" id="scheduleView">
+      <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#1E40AF;display:flex;align-items:center;gap:8px">
+        <span>ℹ</span>
+        <span><strong>Session Enforcement SOP:</strong> You cannot mark any session complete without: (1) actioning every prescribed activity, (2) providing a reason for any deviation, and (3) submitting a clinical note. The system enforces this gate.</span>
       </div>
-    </div>
-    <!-- Session 2 -->
-    <div class="session-item active-now" onclick="openSession('Vihaan','active')">
-      <div class="session-item-inner">
-        <div class="session-time">10:00 AM</div>
-        <div class="session-patient-wrap">
-          <div class="session-patient-name">Vihaan Kapoor <span class="session-plan-pill">Session 8 / 20</span> <span class="now-badge">NOW</span></div>
-          <div class="session-meta">Sensory Integration Therapy · Ms. Ananya Desai · Sensory Room</div>
-          <div class="session-routing">→ Next: Parent Pickup — Reception</div>
+      <div class="schedule-list">
+        <!-- Session 1 -->
+        <div class="session-item" onclick="openSession('Aarav','completed')">
+          <div class="session-item-inner">
+            <div class="session-time">9:00 AM</div>
+            <div class="session-patient-wrap">
+              <div class="session-patient-name">Yuvan Singh <span class="session-plan-pill">Session 15 / 30</span></div>
+              <div class="session-meta">Occupational Therapy · Ms. Ananya Desai · Room C</div>
+              <div class="session-routing">→ Next: ABA with Ms. Kavya -- Room D (10:00 AM)</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="pill pill-amber">Note Overdue</span>
+              <button class="btn btn-blue" onclick="event.stopPropagation();openSession('Aarav','note_due')">Complete Note</button>
+            </div>
+          </div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="pill pill-blue">In Session</span>
-          <button class="btn btn-blue" onclick="event.stopPropagation();openSession('Vihaan','active')">Open Session</button>
+        <!-- Session 2 -->
+        <div class="session-item active-now" onclick="openSession('Vihaan','active')">
+          <div class="session-item-inner">
+            <div class="session-time">10:00 AM</div>
+            <div class="session-patient-wrap">
+              <div class="session-patient-name">Vihaan Kapoor <span class="session-plan-pill">Session 8 / 20</span> <span class="now-badge">NOW</span></div>
+              <div class="session-meta">Sensory Integration Therapy · Ms. Ananya Desai · Sensory Room</div>
+              <div class="session-routing">→ Next: Parent Pickup -- Reception</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="pill pill-blue">In Session</span>
+              <button class="btn btn-blue" onclick="event.stopPropagation();openSession('Vihaan','active')">Open Session</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <!-- Session 3 -->
-    <div class="session-item" onclick="openSession('Riya','upcoming')">
-      <div class="session-item-inner">
-        <div class="session-time">11:00 AM</div>
-        <div class="session-patient-wrap">
-          <div class="session-patient-name">Riya Patel <span class="session-plan-pill">Session 9 / 40</span></div>
-          <div class="session-meta">OT + Early Intervention · Ms. Ananya Desai · Room C</div>
-          <div class="session-routing">→ Next: Physiotherapy with Dr. Priya — Room A (12:00 PM)</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="pill pill-green">Scheduled</span>
-          <button class="btn btn-ghost" onclick="event.stopPropagation();openSession('Riya','upcoming')">Start Session</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- EXECUTION VIEW -->
-<div class="exec-view" id="execView">
-
-  <!-- PATIENT BANNER -->
-  <div class="patient-banner">
-    <div>
-      <div class="patient-id">PAT-2025-0047</div>
-      <div class="patient-name-large" id="exec-patient-name">Vihaan Kapoor</div>
-      <div class="patient-tags">
-        <span class="tag tag-diagnosis" id="exec-diagnosis">Sensory Processing Disorder</span>
-        <span class="tag tag-therapy">Sensory Integration Therapy</span>
-        <span class="tag tag-active">Session 8 / 20</span>
-      </div>
-      <div class="detail-grid">
-        <div class="detail-pair"><div class="detail-label">Therapist</div><div class="detail-val">Ms. Ananya Desai</div></div>
-        <div class="detail-pair"><div class="detail-label">Age</div><div class="detail-val">5y 4m</div></div>
-        <div class="detail-pair"><div class="detail-label">Program Start</div><div class="detail-val">06 Jan 2025</div></div>
-        <div class="detail-pair"><div class="detail-label">Program Duration</div><div class="detail-val">20 Sessions</div></div>
-      </div>
-    </div>
-    <div class="session-counter-block">
-      <div class="session-num" id="exec-session-num">8 <span>/ 20</span></div>
-      <div class="session-num-label">Sessions Completed</div>
-      <div class="prog-bar-wrap"><div class="prog-bar-fill" id="exec-prog-bar" style="width:40%"></div></div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:4px;text-align:right">40% complete</div>
-    </div>
-  </div>
-
-  <!-- PREVIOUS NOTE / HOMEWORK CHECK -->
-  <div style="background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden">
-    <div style="padding:12px 18px;background:#FFFBEB;border-bottom:1px solid #FDE68A;display:flex;align-items:center;justify-content:space-between">
-      <div style="font-size:12.5px;font-weight:700;color:#92400E">Previous Session Note — Session 7 (12 Mar 2025)</div>
-      <span style="font-size:11px;color:var(--text-muted)">Ms. Ananya Desai</span>
-    </div>
-    <div style="padding:14px 18px;font-size:13px;color:var(--text-secondary);line-height:1.6;border-bottom:1px solid var(--border-light)">
-      <em>"Good engagement today. Vestibular input via linear swing tolerated well — increased from 5 min to 8 min without distress. Tactile defensiveness with brushing protocol still present on dorsal forearms. Proprioceptive activities via joint compression showed improved body awareness response. Parent reports Vihaan attempted dinner table seating independently twice at home this week."</em>
-    </div>
-    <div style="padding:10px 18px;background:var(--surface);display:flex;align-items:center;justify-content:space-between">
-      <div style="font-size:12px;color:var(--text-secondary)"><strong>Homework Check:</strong> Bear Walk 5 min daily — <span style="color:#D97706;font-weight:600">Partial (3/7 days)</span></div>
-      <span style="font-size:11px;color:var(--text-muted)">Parent marked via portal</span>
-    </div>
-  </div>
-
-  <!-- GOALS -->
-  <div class="goals-card">
-    <div class="goals-title">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      Session Goals
-    </div>
-    <div class="goals-list">
-      <div class="goal-chip">Increase vestibular tolerance to 12 min</div>
-      <div class="goal-chip">Reduce tactile defensiveness — dorsal forearm</div>
-      <div class="goal-chip">Proprioceptive input — joint compression protocol</div>
-      <div class="goal-chip">Fine motor — clothespeg transfer activity</div>
-    </div>
-  </div>
-
-  <!-- ACTIVITIES -->
-  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);display:flex;align-items:center;gap:8px">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><line x1="12" y1="11" x2="16" y2="11"/><line x1="12" y1="15" x2="16" y2="15"/></svg>
-    Prescribed Activities — Mark Each Before Closing Session
-    <span id="activity-counter" style="font-size:11px;color:#DC2626;letter-spacing:0;text-transform:none;font-weight:500">0 / 5 actioned</span>
-  </div>
-
-  <div class="activities-section" id="activitiesSection">
-
-    <div class="activity-card" id="act-1" data-id="1">
-      <div class="activity-header">
-        <div><div class="activity-name">Vestibular Input — Linear Swing</div><div class="activity-domain">Sensory Integration · Vestibular</div></div>
-        <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">12 min</span><span id="act-1-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
-      </div>
-      <div class="activity-body">
-        <div class="activity-instruction">Increase swing duration to 12 minutes (up from 8 min last session). Monitor vestibular tolerance — stop if child shows nausea or distress cues. Use linear (forward-back) pattern only today. Record max tolerated duration.</div>
-        <div class="status-btns">
-          <button class="status-btn btn-completed" onclick="markActivity(1,'completed')">✓ Completed</button>
-          <button class="status-btn btn-partial" onclick="markActivity(1,'partial')">⟳ Partial</button>
-          <button class="status-btn btn-skipped" onclick="markActivity(1,'skipped')">✗ Skipped</button>
-        </div>
-        <div class="deviation-box" id="dev-1">
-          <div class="deviation-label">⚠ Deviation Reason — Required</div>
-          <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped (required to close session)..." rows="2" oninput="checkReady()"></textarea>
+        <!-- Session 3 -->
+        <div class="session-item" onclick="openSession('Riya','upcoming')">
+          <div class="session-item-inner">
+            <div class="session-time">11:00 AM</div>
+            <div class="session-patient-wrap">
+              <div class="session-patient-name">Amaira Patil <span class="session-plan-pill">Session 9 / 40</span></div>
+              <div class="session-meta">OT + Early Intervention · Ms. Ananya Desai · Room C</div>
+              <div class="session-routing">→ Next: Physiotherapy with Dr. Priya -- Room A (12:00 PM)</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="pill pill-green">Scheduled</span>
+              <button class="btn btn-ghost" onclick="event.stopPropagation();openSession('Riya','upcoming')">Start Session</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="activity-card" id="act-2" data-id="2">
-      <div class="activity-header">
-        <div><div class="activity-name">Tactile Desensitization — Brushing Protocol</div><div class="activity-domain">Sensory Integration · Tactile</div></div>
-        <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">10 min</span><span id="act-2-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
-      </div>
-      <div class="activity-body">
-        <div class="activity-instruction">Wilbarger brushing protocol — apply to upper limbs (dorsal surface) and back. Start with softer pressure, increase to medium if tolerated. Note response on dorsal forearms specifically. Follow with joint compression immediately after brushing (proprioceptive coupling).</div>
-        <div class="status-btns">
-          <button class="status-btn btn-completed" onclick="markActivity(2,'completed')">✓ Completed</button>
-          <button class="status-btn btn-partial" onclick="markActivity(2,'partial')">⟳ Partial</button>
-          <button class="status-btn btn-skipped" onclick="markActivity(2,'skipped')">✗ Skipped</button>
+    <!-- EXECUTION VIEW -->
+    <div class="exec-view" id="execView">
+
+      <!-- PATIENT BANNER -->
+      <div class="patient-banner">
+        <div>
+          <div class="patient-id">PAT-2025-0047</div>
+          <div class="patient-name-large" id="exec-patient-name">Vihaan Kapoor</div>
+          <div class="patient-tags">
+            <span class="tag tag-diagnosis" id="exec-diagnosis">Sensory Processing Disorder</span>
+            <span class="tag tag-therapy">Sensory Integration Therapy</span>
+            <span class="tag tag-active">Session 8 / 20</span>
+          </div>
+          <div class="detail-grid">
+            <div class="detail-pair"><div class="detail-label">Therapist</div><div class="detail-val">Ms. Ananya Desai</div></div>
+            <div class="detail-pair"><div class="detail-label">Age</div><div class="detail-val">5y 9m</div></div>
+            <div class="detail-pair"><div class="detail-label">Program Start</div><div class="detail-val">06 Jan 2025</div></div>
+            <div class="detail-pair"><div class="detail-label">Program Duration</div><div class="detail-val">20 Sessions</div></div>
+          </div>
         </div>
-        <div class="deviation-box" id="dev-2">
-          <div class="deviation-label">⚠ Deviation Reason — Required</div>
-          <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
+        <div class="session-counter-block">
+          <div class="session-num" id="exec-session-num">8 <span>/ 20</span></div>
+          <div class="session-num-label">Sessions Completed</div>
+          <div class="prog-bar-wrap"><div class="prog-bar-fill" id="exec-prog-bar" style="width:40%"></div></div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;text-align:right">40% complete</div>
         </div>
       </div>
+
+      <!-- PREVIOUS NOTE / HOMEWORK CHECK -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="padding:12px 18px;background:#FFFBEB;border-bottom:1px solid #FDE68A;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12.5px;font-weight:700;color:#92400E">Previous Session Note -- Session 7 (12 Mar 2025)</div>
+          <span style="font-size:11px;color:var(--text-muted)">Ms. Ananya Desai</span>
+        </div>
+        <div style="padding:14px 18px;font-size:13px;color:var(--text-secondary);line-height:1.6;border-bottom:1px solid var(--border-light)">
+          <em>"Good engagement today. Vestibular input via linear swing tolerated well -- increased from 5 min to 8 min without distress. Tactile defensiveness with brushing protocol still present on dorsal forearms. Proprioceptive activities via joint compression showed improved body awareness response. Parent reports Vihaan attempted dinner table seating independently twice at home this week."</em>
+        </div>
+        <div style="padding:10px 18px;background:var(--surface);display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;color:var(--text-secondary)"><strong>Homework Check:</strong> Bear Walk 5 min daily -- <span style="color:#D97706;font-weight:600">Partial (3/7 days)</span></div>
+          <span style="font-size:11px;color:var(--text-muted)">Parent marked via portal</span>
+        </div>
+      </div>
+
+      <!-- GOALS -->
+      <div class="goals-card">
+        <div class="goals-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Session Goals
+        </div>
+        <div class="goals-list">
+          <div class="goal-chip">Increase vestibular tolerance to 12 min</div>
+          <div class="goal-chip">Reduce tactile defensiveness -- dorsal forearm</div>
+          <div class="goal-chip">Proprioceptive input -- joint compression protocol</div>
+          <div class="goal-chip">Fine motor -- clothespeg transfer activity</div>
+        </div>
+      </div>
+
+      <!-- ACTIVITIES -->
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);display:flex;align-items:center;gap:8px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><line x1="12" y1="11" x2="16" y2="11"/><line x1="12" y1="15" x2="16" y2="15"/></svg>
+        Prescribed Activities -- Mark Each Before Closing Session
+        <span id="activity-counter" style="font-size:11px;color:#DC2626;letter-spacing:0;text-transform:none;font-weight:500">0 / 5 actioned</span>
+      </div>
+
+      <div class="activities-section" id="activitiesSection">
+
+        <div class="activity-card" id="act-1" data-id="1">
+          <div class="activity-header">
+            <div><div class="activity-name">Vestibular Input -- Linear Swing</div><div class="activity-domain">Sensory Integration · Vestibular</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">12 min</span><span id="act-1-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
+          </div>
+          <div class="activity-body">
+            <div class="activity-instruction">Increase swing duration to 12 minutes (up from 8 min last session). Monitor vestibular tolerance -- stop if child shows nausea or distress cues. Use linear (forward-back) pattern only today. Record max tolerated duration.</div>
+            <div class="status-btns">
+              <button class="status-btn btn-completed" onclick="markActivity(1,'completed')">✓ Completed</button>
+              <button class="status-btn btn-partial" onclick="markActivity(1,'partial')">⟳ Partial</button>
+              <button class="status-btn btn-skipped" onclick="markActivity(1,'skipped')">✗ Skipped</button>
+            </div>
+            <div class="deviation-box" id="dev-1">
+              <div class="deviation-label">⚠ Deviation Reason -- Required</div>
+              <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped (required to close session)..." rows="2" oninput="checkReady()"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card" id="act-2" data-id="2">
+          <div class="activity-header">
+            <div><div class="activity-name">Tactile Desensitization -- Brushing Protocol</div><div class="activity-domain">Sensory Integration · Tactile</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">10 min</span><span id="act-2-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
+          </div>
+          <div class="activity-body">
+            <div class="activity-instruction">Wilbarger brushing protocol -- apply to upper limbs (dorsal surface) and back. Start with softer pressure, increase to medium if tolerated. Note response on dorsal forearms specifically. Follow with joint compression immediately after brushing (proprioceptive coupling).</div>
+            <div class="status-btns">
+              <button class="status-btn btn-completed" onclick="markActivity(2,'completed')">✓ Completed</button>
+              <button class="status-btn btn-partial" onclick="markActivity(2,'partial')">⟳ Partial</button>
+              <button class="status-btn btn-skipped" onclick="markActivity(2,'skipped')">✗ Skipped</button>
+            </div>
+            <div class="deviation-box" id="dev-2">
+              <div class="deviation-label">⚠ Deviation Reason -- Required</div>
+              <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card" id="act-3" data-id="3">
+          <div class="activity-header">
+            <div><div class="activity-name">Proprioceptive Joint Compression</div><div class="activity-domain">Sensory Integration · Proprioceptive</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">8 min</span><span id="act-3-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
+          </div>
+          <div class="activity-body">
+            <div class="activity-instruction">Upper and lower extremity joint compression -- 10 repetitions per joint in sequence. Follow Wilbarger post-brushing protocol. Observe body awareness response -- note if child can identify compressed joints without visual cue (eyes closed test this session).</div>
+            <div class="status-btns">
+              <button class="status-btn btn-completed" onclick="markActivity(3,'completed')">✓ Completed</button>
+              <button class="status-btn btn-partial" onclick="markActivity(3,'partial')">⟳ Partial</button>
+              <button class="status-btn btn-skipped" onclick="markActivity(3,'skipped')">✗ Skipped</button>
+            </div>
+            <div class="deviation-box" id="dev-3">
+              <div class="deviation-label">⚠ Deviation Reason -- Required</div>
+              <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card" id="act-4" data-id="4">
+          <div class="activity-header">
+            <div><div class="activity-name">Fine Motor -- Clothespeg Transfer</div><div class="activity-domain">Fine Motor · In-Hand Manipulation</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">10 min</span><span id="act-4-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
+          </div>
+          <div class="activity-body">
+            <div class="activity-instruction">Transfer 20 clothespegs from container to line using pincer grasp. Both hands alternating. Count successful transfers per hand. Introduce resistance-graduated pegs this session (medium resistance set). Document accuracy and fatigue pattern.</div>
+            <div class="status-btns">
+              <button class="status-btn btn-completed" onclick="markActivity(4,'completed')">✓ Completed</button>
+              <button class="status-btn btn-partial" onclick="markActivity(4,'partial')">⟳ Partial</button>
+              <button class="status-btn btn-skipped" onclick="markActivity(4,'skipped')">✗ Skipped</button>
+            </div>
+            <div class="deviation-box" id="dev-4">
+              <div class="deviation-label">⚠ Deviation Reason -- Required</div>
+              <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card" id="act-5" data-id="5">
+          <div class="activity-header">
+            <div><div class="activity-name">Bilateral Coordination -- Bead Threading</div><div class="activity-domain">Bilateral Integration · Visual-Motor</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">10 min</span><span id="act-5-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
+          </div>
+          <div class="activity-body">
+            <div class="activity-instruction">Thread 10 beads (large → medium → small sequence) using both hands simultaneously. Document midline crossing. Note hand preference and spontaneous crossing behaviour. Compare to Session 6 baseline data (0/3 midline crossings).</div>
+            <div class="status-btns">
+              <button class="status-btn btn-completed" onclick="markActivity(5,'completed')">✓ Completed</button>
+              <button class="status-btn btn-partial" onclick="markActivity(5,'partial')">⟳ Partial</button>
+              <button class="status-btn btn-skipped" onclick="markActivity(5,'skipped')">✗ Skipped</button>
+            </div>
+            <div class="deviation-box" id="dev-5">
+              <div class="deviation-label">⚠ Deviation Reason -- Required</div>
+              <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLINICAL NOTE -->
+      <div class="note-card" id="noteCard">
+        <div class="note-header">
+          <div class="note-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
+            Clinical Session Note
+          </div>
+          <span class="note-required" id="note-required-badge">Required -- Session cannot close without this</span>
+        </div>
+        <div class="note-body">
+          <textarea class="note-textarea" id="noteTextarea" placeholder="Write your clinical observation for this session. Include: patient response to each activity, any notable behavioural or physical changes, caregiver report, and clinical decisions made. This note will be visible to the Senior Therapist and will be part of the audit trail." oninput="checkReady()"></textarea>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+            <div style="font-size:11px;color:var(--text-muted)">This note will be time-stamped and locked. It cannot be edited after 4 hours.</div>
+            <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--text-muted)" id="note-char-count">0 / 50 min chars</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT BAR -->
+      <div class="submit-bar">
+        <div class="submit-status blocked" id="submit-status">⚠ Session cannot close -- 5 activities and clinical note required</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" onclick="showSchedule()">← Back</button>
+          <button class="btn btn-blue" id="complete-btn-inner" disabled onclick="showHandoff()">Complete &amp; Submit Note →</button>
+        </div>
+      </div>
+
+    </div><!-- /exec-view -->
+
+    <!-- HANDOFF SCREEN -->
+    <div class="handoff-screen" id="handoffScreen">
+      <div class="handoff-icon">✅</div>
+      <div class="handoff-title">Session Complete!</div>
+      <div class="handoff-sub">Clinical note saved &amp; timestamped · Audit log updated · Session closed</div>
+      <div class="handoff-action-box">
+        <div class="handoff-action-label">Immediate Next Action for Vihaan Kapoor</div>
+        <div class="handoff-action-text">🚪 Release to Parent -- Waiting Area</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:6px">Parent notified via SMS automatically</div>
+      </div>
+      <button class="handoff-confirm-btn" onclick="completedHandoff()">Confirm Handoff &amp; Close</button>
+      <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">Session 9 (Amaira Patil, 11:00 AM) -- OT + Early Intervention -- starts in 12 minutes</div>
     </div>
-
-    <div class="activity-card" id="act-3" data-id="3">
-      <div class="activity-header">
-        <div><div class="activity-name">Proprioceptive Joint Compression</div><div class="activity-domain">Sensory Integration · Proprioceptive</div></div>
-        <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">8 min</span><span id="act-3-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
-      </div>
-      <div class="activity-body">
-        <div class="activity-instruction">Upper and lower extremity joint compression — 10 repetitions per joint in sequence. Follow Wilbarger post-brushing protocol. Observe body awareness response — note if child can identify compressed joints without visual cue (eyes closed test this session).</div>
-        <div class="status-btns">
-          <button class="status-btn btn-completed" onclick="markActivity(3,'completed')">✓ Completed</button>
-          <button class="status-btn btn-partial" onclick="markActivity(3,'partial')">⟳ Partial</button>
-          <button class="status-btn btn-skipped" onclick="markActivity(3,'skipped')">✗ Skipped</button>
-        </div>
-        <div class="deviation-box" id="dev-3">
-          <div class="deviation-label">⚠ Deviation Reason — Required</div>
-          <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-card" id="act-4" data-id="4">
-      <div class="activity-header">
-        <div><div class="activity-name">Fine Motor — Clothespeg Transfer</div><div class="activity-domain">Fine Motor · In-Hand Manipulation</div></div>
-        <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">10 min</span><span id="act-4-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
-      </div>
-      <div class="activity-body">
-        <div class="activity-instruction">Transfer 20 clothespegs from container to line using pincer grasp. Both hands alternating. Count successful transfers per hand. Introduce resistance-graduated pegs this session (medium resistance set). Document accuracy and fatigue pattern.</div>
-        <div class="status-btns">
-          <button class="status-btn btn-completed" onclick="markActivity(4,'completed')">✓ Completed</button>
-          <button class="status-btn btn-partial" onclick="markActivity(4,'partial')">⟳ Partial</button>
-          <button class="status-btn btn-skipped" onclick="markActivity(4,'skipped')">✗ Skipped</button>
-        </div>
-        <div class="deviation-box" id="dev-4">
-          <div class="deviation-label">⚠ Deviation Reason — Required</div>
-          <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-card" id="act-5" data-id="5">
-      <div class="activity-header">
-        <div><div class="activity-name">Bilateral Coordination — Bead Threading</div><div class="activity-domain">Bilateral Integration · Visual-Motor</div></div>
-        <div style="display:flex;align-items:center;gap:8px"><span class="activity-duration">10 min</span><span id="act-5-status" style="font-size:11px;font-weight:600;color:var(--text-muted)">Pending</span></div>
-      </div>
-      <div class="activity-body">
-        <div class="activity-instruction">Thread 10 beads (large → medium → small sequence) using both hands simultaneously. Document midline crossing. Note hand preference and spontaneous crossing behaviour. Compare to Session 6 baseline data (0/3 midline crossings).</div>
-        <div class="status-btns">
-          <button class="status-btn btn-completed" onclick="markActivity(5,'completed')">✓ Completed</button>
-          <button class="status-btn btn-partial" onclick="markActivity(5,'partial')">⟳ Partial</button>
-          <button class="status-btn btn-skipped" onclick="markActivity(5,'skipped')">✗ Skipped</button>
-        </div>
-        <div class="deviation-box" id="dev-5">
-          <div class="deviation-label">⚠ Deviation Reason — Required</div>
-          <textarea class="deviation-input" placeholder="Explain why this activity was partial or skipped..." rows="2" oninput="checkReady()"></textarea>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- CLINICAL NOTE -->
-  <div class="note-card" id="noteCard">
-    <div class="note-header">
-      <div class="note-title">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
-        Clinical Session Note
-      </div>
-      <span class="note-required" id="note-required-badge">Required — Session cannot close without this</span>
-    </div>
-    <div class="note-body">
-      <textarea class="note-textarea" id="noteTextarea" placeholder="Write your clinical observation for this session. Include: patient response to each activity, any notable behavioural or physical changes, caregiver report, and clinical decisions made. This note will be visible to the Senior Therapist and will be part of the audit trail." oninput="checkReady()"></textarea>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
-        <div style="font-size:11px;color:var(--text-muted)">This note will be time-stamped and locked. It cannot be edited after 4 hours.</div>
-        <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--text-muted)" id="note-char-count">0 / 50 min chars</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUBMIT BAR -->
-  <div class="submit-bar">
-    <div class="submit-status blocked" id="submit-status">⚠ Session cannot close — 5 activities and clinical note required</div>
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-ghost" onclick="showSchedule()">← Back</button>
-      <button class="btn btn-blue" id="complete-btn-inner" disabled onclick="showHandoff()">Complete &amp; Submit Note →</button>
-    </div>
-  </div>
-
-</div><!-- /exec-view -->
-
-<!-- HANDOFF SCREEN -->
-<div class="handoff-screen" id="handoffScreen">
-  <div class="handoff-icon">✅</div>
-  <div class="handoff-title">Session Complete!</div>
-  <div class="handoff-sub">Clinical note saved &amp; timestamped · Audit log updated · Session closed</div>
-  <div class="handoff-action-box">
-    <div class="handoff-action-label">Immediate Next Action for Vihaan Kapoor</div>
-    <div class="handoff-action-text">🚪 Release to Parent — Waiting Area</div>
-    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">Parent notified via SMS automatically</div>
-  </div>
-  <button class="handoff-confirm-btn" onclick="completedHandoff()">Confirm Handoff &amp; Close</button>
-  <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">Session 9 (Riya Patel, 11:00 AM) — OT + Early Intervention — starts in 12 minutes</div>
-</div>
-```
 
   </div><!-- /content -->
 </main>
@@ -537,7 +533,7 @@ function checkReady(){
   document.getElementById('complete-btn-inner').disabled=!ready;
   document.getElementById('complete-btn').style.display=ready?'inline-flex':'none';
   if(ready){
-    document.getElementById('submit-status').textContent='✓ Ready to submit — all activities completed and note written';
+    document.getElementById('submit-status').textContent='✓ Ready to submit -- all activities completed and note written';
     document.getElementById('submit-status').className='submit-status ready';
     document.getElementById('note-required-badge').textContent='Note Added ✓';
     document.getElementById('note-required-badge').style.background='#F0FDF4';
@@ -558,14 +554,14 @@ function openSession(patient,state){
   document.getElementById('execView').classList.add('visible');
   document.getElementById('handoffScreen').style.display='none';
   document.getElementById('back-btn').style.display='inline-flex';
-  document.getElementById('topbar-title').textContent='Session Execution — '+patient;
+  document.getElementById('topbar-title').textContent='Session Execution -- '+patient;
   if(patient==='Aarav'){
-    document.getElementById('exec-patient-name').textContent='Aarav Sharma';
-    document.getElementById('exec-diagnosis').textContent='ASD Level 2 + Sensory Processing Disorder';
+    document.getElementById('exec-patient-name').textContent='Yuvan Singh';
+    document.getElementById('exec-diagnosis').textContent='ASD + Sensory Processing Disorder';
     document.getElementById('exec-session-num').innerHTML='15 <span>/ 30</span>';
     document.getElementById('exec-prog-bar').style.width='50%';
   } else if(patient==='Riya'){
-    document.getElementById('exec-patient-name').textContent='Riya Patel';
+    document.getElementById('exec-patient-name').textContent='Amaira Patil';
     document.getElementById('exec-diagnosis').textContent='Global Developmental Delay';
     document.getElementById('exec-session-num').innerHTML='9 <span>/ 40</span>';
     document.getElementById('exec-prog-bar').style.width='22%';
@@ -578,7 +574,7 @@ function showSchedule(){
   document.getElementById('handoffScreen').style.display='none';
   document.getElementById('back-btn').style.display='none';
   document.getElementById('complete-btn').style.display='none';
-  document.getElementById('topbar-title').textContent='My Schedule — Mon 17 Mar 2025';
+  document.getElementById('topbar-title').textContent='My Schedule -- Mon 17 Mar 2025';
 }
 function showHandoff(){
   document.getElementById('execView').classList.remove('visible');
@@ -587,9 +583,8 @@ function showHandoff(){
 }
 function completedHandoff(){
   showSchedule();
-  alert('✅ Session closed — note submitted, handoff confirmed, parent SMS sent, audit log updated.');
+  alert('✅ Session closed -- note submitted, handoff confirmed, parent SMS sent, audit log updated.');
 }
 </script>
-
 </body>
 </html>
