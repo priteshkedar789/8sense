@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,11 +19,11 @@
 }
 body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text-primary);min-height:100vh;display:flex}
 
-/* SIDEBAR &#x2014; identical pattern to all working files */
-.sidebar{width:var(--sidebar);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
+/* SIDEBAR — identical pattern to all working files */
+.sidebar{width:var(–sidebar);background:var(–navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
 .sidebar-brand{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .brand-wrap{display:flex;align-items:center;gap:10px}
-.brand-mark{width:34px;height:34px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-weight:700}
+.brand-mark{width:34px;height:34px;background:var(–teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:‘Playfair Display’,serif;font-size:14px;color:#fff;font-weight:700}
 .brand-name{font-size:13px;font-weight:600;color:#fff}
 .brand-sub{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
 .sidebar-role{margin:12px;padding:10px 12px;background:rgba(13,148,136,0.15);border:1px solid rgba(13,148,136,0.25);border-radius:8px}
@@ -36,29 +37,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .nav-item.active svg{opacity:1}
 .sidebar-footer{margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,0.07)}
 .user-mini{display:flex;align-items:center;gap:9px}
-.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(–teal),var(–navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
 .user-info-name{font-size:11.5px;font-weight:500;color:#fff}
 .user-info-role{font-size:10px;color:rgba(255,255,255,0.35)}
 
 /* MAIN */
-.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
-.topbar{background:#fff;border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50;flex-shrink:0}
+.main{margin-left:var(–sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(–border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50;flex-shrink:0}
 .topbar-left{display:flex;align-items:center;gap:14px}
-.topbar-title{font-size:14.5px;font-weight:600;color:var(--text-primary)}
+.topbar-title{font-size:14.5px;font-weight:600;color:var(–text-primary)}
 .topbar-right{display:flex;align-items:center;gap:8px}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.15s}
-.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:#0B7A71}
-.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-mid)}
-.btn-ghost{background:#fff;color:var(--text-secondary);border:1px solid var(--border)}.btn-ghost:hover{background:var(--surface)}
-.btn-amber{background:var(--amber);color:#fff}.btn-amber:hover{background:#a86c15}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
+.btn-teal{background:var(–teal);color:#fff}.btn-teal:hover{background:#0B7A71}
+.btn-navy{background:var(–navy);color:#fff}.btn-navy:hover{background:var(–navy-mid)}
+.btn-ghost{background:#fff;color:var(–text-secondary);border:1px solid var(–border)}.btn-ghost:hover{background:var(–surface)}
+.btn-amber{background:var(–amber);color:#fff}.btn-amber:hover{background:#a86c15}
 .pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500}
 .pill-teal{background:#F0FDFA;color:#0F766E;border:1px solid #99F6E4}
 .pill-amber{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
 
 /* REPORT TYPE TOGGLE */
-.type-toggle{display:flex;gap:0;background:var(--surface2);border-radius:10px;padding:4px;border:1px solid var(--border)}
-.type-btn{padding:7px 18px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;transition:all 0.15s}
-.type-btn.active{background:#fff;color:var(--navy);box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+.type-toggle{display:flex;gap:0;background:var(–surface2);border-radius:10px;padding:4px;border:1px solid var(–border)}
+.type-btn{padding:7px 18px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(–text-muted);font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
+.type-btn.active{background:#fff;color:var(–navy);box-shadow:0 1px 4px rgba(0,0,0,0.1)}
 
 /* CONTENT LAYOUT */
 .content{flex:1;padding:20px 24px;display:flex;gap:16px}
@@ -66,9 +67,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .preview-panel{width:380px;flex-shrink:0;display:flex;flex-direction:column;gap:0;position:sticky;top:74px;max-height:calc(100vh - 90px);overflow-y:auto}
 
 /* CARDS */
-.card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.card-header{padding:12px 16px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;background:#F8FAFC}
-.card-title{font-size:12px;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.06em;display:flex;align-items:center;gap:8px}
+.card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden}
+.card-header{padding:12px 16px;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between;background:#F8FAFC}
+.card-title{font-size:12px;font-weight:700;color:var(–text-primary);text-transform:uppercase;letter-spacing:0.06em;display:flex;align-items:center;gap:8px}
 .card-title .dot{width:8px;height:8px;border-radius:50%}
 .card-body{padding:16px}
 .card-body.tight{padding:12px 16px}
@@ -79,45 +80,45 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .field-row-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:12px}
 .field{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
 .field:last-child{margin-bottom:0}
-label{font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em}
-input[type=text],input[type=date],select,textarea{background:#fff;border:1.5px solid var(--border);border-radius:7px;padding:8px 10px;font-size:13px;color:var(--text-primary);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.15s;width:100%}
-input[type=text]:focus,input[type=date]:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.08)}
+label{font-size:11px;font-weight:600;color:var(–text-secondary);text-transform:uppercase;letter-spacing:0.05em}
+input[type=text],input[type=date],select,textarea{background:#fff;border:1.5px solid var(–border);border-radius:7px;padding:8px 10px;font-size:13px;color:var(–text-primary);font-family:‘DM Sans’,sans-serif;outline:none;transition:border-color 0.15s;width:100%}
+input[type=text]:focus,input[type=date]:focus,select:focus,textarea:focus{border-color:var(–teal);box-shadow:0 0 0 3px rgba(13,148,136,0.08)}
 textarea{resize:vertical;min-height:80px;line-height:1.5}
-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238896A9' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
+select{cursor:pointer;appearance:none;background-image:url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘8’ viewBox=‘0 0 12 8’%3E%3Cpath fill=’%238896A9’ d=‘M6 8L0 0h12z’/%3E%3C/svg%3E”);background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
 
 /* CHECKBOX GRID */
 .check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .check-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.check-item{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;transition:all 0.15s;background:#fff}
-.check-item:hover{border-color:var(--teal);background:#F0FDFA}
-.check-item.checked{border-color:var(--teal);background:#F0FDFA}
-.check-item input{margin:1px 0 0 0;accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;cursor:pointer}
-.check-item span{font-size:12px;color:var(--text-secondary);line-height:1.4}
-.check-item.checked span{color:var(--navy);font-weight:500}
+.check-item{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border:1.5px solid var(–border);border-radius:7px;cursor:pointer;transition:all 0.15s;background:#fff}
+.check-item:hover{border-color:var(–teal);background:#F0FDFA}
+.check-item.checked{border-color:var(–teal);background:#F0FDFA}
+.check-item input{margin:1px 0 0 0;accent-color:var(–teal);width:14px;height:14px;flex-shrink:0;cursor:pointer}
+.check-item span{font-size:12px;color:var(–text-secondary);line-height:1.4}
+.check-item.checked span{color:var(–navy);font-weight:500}
 
 /* SENSORY TABLE */
-.sensory-grid{display:grid;grid-template-columns:140px 1fr 1fr 1fr;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.sg-head{background:var(--navy);color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:8px 10px;text-align:center}
-.sg-label{background:#F8FAFC;font-size:12px;font-weight:600;color:var(--text-primary);padding:8px 10px;border-top:1px solid var(--border-light);display:flex;align-items:center;gap:6px}
-.sg-cell{border-top:1px solid var(--border-light);padding:6px 10px;display:flex;align-items:center;justify-content:center;gap:6px}
-.sg-cell label{font-size:11px;color:var(--text-muted);text-transform:none;letter-spacing:0;font-weight:400;cursor:pointer;display:flex;align-items:center;gap:5px}
-.sg-cell input[type=radio]{accent-color:var(--teal);width:13px;height:13px}
+.sensory-grid{display:grid;grid-template-columns:140px 1fr 1fr 1fr;gap:0;border:1px solid var(–border);border-radius:8px;overflow:hidden}
+.sg-head{background:var(–navy);color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:8px 10px;text-align:center}
+.sg-label{background:#F8FAFC;font-size:12px;font-weight:600;color:var(–text-primary);padding:8px 10px;border-top:1px solid var(–border-light);display:flex;align-items:center;gap:6px}
+.sg-cell{border-top:1px solid var(–border-light);padding:6px 10px;display:flex;align-items:center;justify-content:center;gap:6px}
+.sg-cell label{font-size:11px;color:var(–text-muted);text-transform:none;letter-spacing:0;font-weight:400;cursor:pointer;display:flex;align-items:center;gap:5px}
+.sg-cell input[type=radio]{accent-color:var(–teal);width:13px;height:13px}
 
 /* GOAL BUILDER */
-.goal-item{border:1.5px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px;background:#fff;position:relative}
+.goal-item{border:1.5px solid var(–border);border-radius:10px;padding:12px;margin-bottom:10px;background:#fff;position:relative}
 .goal-item:last-child{margin-bottom:0}
-.goal-num{position:absolute;top:-10px;left:12px;background:var(--navy);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
-.goal-sentence{font-size:12px;color:var(--text-secondary);font-style:italic;background:var(--surface);border-radius:6px;padding:8px 10px;margin-top:8px;line-height:1.5}
-.goal-sentence strong{color:var(--navy);font-style:normal}
-.remove-btn{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--border);border:none;cursor:pointer;font-size:14px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;line-height:1}
-.remove-btn:hover{background:#FECACA;color:var(--rose)}
-.add-goal-btn{width:100%;padding:10px;border:1.5px dashed var(--border);border-radius:8px;background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:6px}
-.add-goal-btn:hover{border-color:var(--teal);color:var(--teal);background:#F0FDFA}
+.goal-num{position:absolute;top:-10px;left:12px;background:var(–navy);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+.goal-sentence{font-size:12px;color:var(–text-secondary);font-style:italic;background:var(–surface);border-radius:6px;padding:8px 10px;margin-top:8px;line-height:1.5}
+.goal-sentence strong{color:var(–navy);font-style:normal}
+.remove-btn{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(–border);border:none;cursor:pointer;font-size:14px;color:var(–text-muted);display:flex;align-items:center;justify-content:center;line-height:1}
+.remove-btn:hover{background:#FECACA;color:var(–rose)}
+.add-goal-btn{width:100%;padding:10px;border:1.5px dashed var(–border);border-radius:8px;background:transparent;color:var(–text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:‘DM Sans’,sans-serif;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:6px}
+.add-goal-btn:hover{border-color:var(–teal);color:var(–teal);background:#F0FDFA}
 
 /* PROGRESS TABLE */
 .prog-table{width:100%;border-collapse:collapse;font-size:12.5px}
-.prog-table th{padding:8px 10px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);border-bottom:2px solid var(--border);background:#F8FAFC}
-.prog-table td{padding:8px 6px;border-bottom:1px solid var(--border-light);vertical-align:top}
+.prog-table th{padding:8px 10px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(–text-muted);border-bottom:2px solid var(–border);background:#F8FAFC}
+.prog-table td{padding:8px 6px;border-bottom:1px solid var(–border-light);vertical-align:top}
 .prog-table tr:last-child td{border-bottom:none}
 .prog-table select{font-size:12px;padding:4px 8px}
 .achievement-tag{display:inline-flex;padding:3px 8px;border-radius:10px;font-size:11px;font-weight:700}
@@ -130,40 +131,41 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 .level-row{display:flex;gap:6px;flex-wrap:wrap}
 .level-opt{cursor:pointer}
 .level-opt input{display:none}
-.level-opt span{display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;border:1.5px solid var(--border);color:var(--text-muted);transition:all 0.15s}
-.level-opt input:checked + span{border-color:var(--teal);background:var(--teal);color:#fff}
-.level-opt:hover span{border-color:var(--teal);color:var(--teal)}
+.level-opt span{display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;border:1.5px solid var(–border);color:var(–text-muted);transition:all 0.15s}
+.level-opt input:checked + span{border-color:var(–teal);background:var(–teal);color:#fff}
+.level-opt:hover span{border-color:var(–teal);color:var(–teal)}
 
 /* PREVIEW PANEL */
-.preview-header{background:var(--navy);color:#fff;padding:12px 16px;border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:space-between}
+.preview-header{background:var(–navy);color:#fff;padding:12px 16px;border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:space-between}
 .preview-header-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#5EEAD4}
-.preview-body{background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:16px;font-size:12px;line-height:1.7;color:var(--text-secondary);max-height:calc(100vh - 200px);overflow-y:auto;white-space:pre-wrap;font-family:'DM Mono',monospace}
-.preview-empty{text-align:center;padding:40px 20px;color:var(--text-muted);font-style:italic;font-family:'DM Sans',sans-serif}
-.preview-copy{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.preview-body{background:#fff;border:1px solid var(–border);border-top:none;border-radius:0 0 12px 12px;padding:16px;font-size:12px;line-height:1.7;color:var(–text-secondary);max-height:calc(100vh - 200px);overflow-y:auto;white-space:pre-wrap;font-family:‘DM Mono’,monospace}
+.preview-empty{text-align:center;padding:40px 20px;color:var(–text-muted);font-style:italic;font-family:‘DM Sans’,sans-serif}
+.preview-copy{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
 .preview-copy:hover{background:rgba(255,255,255,0.2)}
 
 /* STATUS BADGE */
-.status-bar-form{display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F8FAFC;border-bottom:1px solid var(--border-light);font-size:11.5px;color:var(--text-muted)}
-.required-note{font-size:11px;color:var(--rose);display:flex;align-items:center;gap:4px}
-.req{color:var(--rose);font-weight:700}
+.status-bar-form{display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F8FAFC;border-bottom:1px solid var(–border-light);font-size:11.5px;color:var(–text-muted)}
+.required-note{font-size:11px;color:var(–rose);display:flex;align-items:center;gap:4px}
+.req{color:var(–rose);font-weight:700}
 
 /* SECTION DIVIDER */
 .sec-divider{display:flex;align-items:center;gap:10px;margin:4px 0 0}
-.sec-divider span{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted)}
-.sec-divider::after{content:'';flex:1;height:1px;background:var(--border-light)}
+.sec-divider span{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(–text-muted)}
+.sec-divider::after{content:’’;flex:1;height:1px;background:var(–border-light)}
 
 /* PROGRESS SECTION TOGGLE */
 .section-hidden{display:none}
 
 /* PRINT */
 @media print{
-  .sidebar,.topbar,.preview-panel,.topbar-right,.type-toggle,.add-goal-btn,.remove-btn,.btn{display:none!important}
-  .main{margin-left:0}
-  .content{flex-direction:column}
-  .form-panel{width:100%}
-  body{background:#fff}
+.sidebar,.topbar,.preview-panel,.topbar-right,.type-toggle,.add-goal-btn,.remove-btn,.btn{display:none!important}
+.main{margin-left:0}
+.content{flex-direction:column}
+.form-panel{width:100%}
+body{background:#fff}
 }
 </style>
+
 </head>
 <body>
 
@@ -235,93 +237,1068 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
   <div class="content">
     <div class="form-panel" id="form-panel">
 
-      <!-- ───────────────────────── PATIENT INFO ───────────────────────── -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title"><div class="dot" style="background:var(--teal)"></div>Patient Information</div>
-          <span style="font-size:11px;color:var(--text-muted)">All fields required</span>
+```
+  <!-- ───────────────────────── PATIENT INFO ───────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--teal)"></div>Patient Information</div>
+      <span style="font-size:11px;color:var(--text-muted)">All fields required</span>
+    </div>
+    <div class="card-body">
+      <div class="field-row-4">
+        <div class="field">
+          <label>Patient Name <span class="req">*</span></label>
+          <input type="text" id="pt-name" placeholder="Full name">
         </div>
-        <div class="card-body">
-          <div class="field-row-4">
-            <div class="field">
-              <label>Patient Name <span class="req">*</span></label>
-              <input type="text" id="pt-name" placeholder="Full name">
-            </div>
-            <div class="field">
-              <label>Reg. No. <span class="req">*</span></label>
-              <input type="text" id="pt-reg" placeholder="e.g. 693/25">
-            </div>
-            <div class="field">
-              <label>Gender</label>
-              <select id="pt-gender">
-                <option value="">Select</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
-            </div>
-            <div class="field">
-              <label>Date of Birth</label>
-              <input type="date" id="pt-dob">
-            </div>
-          </div>
-          <div class="field-row-4">
-            <div class="field">
-              <label>Age</label>
-              <input type="text" id="pt-age" placeholder="e.g. 5 years 9 months">
-            </div>
-            <div class="field assessment-field">
-              <label>Date of Assessment</label>
-              <input type="date" id="pt-doa">
-            </div>
-            <div class="field progress-field section-hidden">
-              <label>Initial Assessment Date</label>
-              <input type="date" id="pt-initial-date">
-            </div>
-            <div class="field progress-field section-hidden">
-              <label>Date of Follow-Up</label>
-              <input type="date" id="pt-followup-date">
-            </div>
-            <div class="field">
-              <label>School</label>
-              <input type="text" id="pt-school" placeholder="School name or N/A">
-            </div>
-            <div class="field">
-              <label>Standard / Grade</label>
-              <input type="text" id="pt-std" placeholder="e.g. Nursery / Class 2">
-            </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label>Referred By</label>
-              <input type="text" id="pt-referral" placeholder="Doctor / School / Self">
-            </div>
-            <div class="field">
-              <label>Diagnosis</label>
-              <select id="pt-diagnosis">
-                <option value="">Select primary diagnosis</option>
-                <optgroup label="Neurodevelopmental">
-                  <option>ASD &#x2014; Autism Spectrum Disorder</option>
-                  <option>ADHD</option>
-                  <option>Developmental Delay</option>
-                  <option>Global Developmental Delay</option>
-                  <option>Intellectual Disability</option>
-                  <option>Specific Learning Disability</option>
-                </optgroup>
-                <optgroup label="Motor">
-                  <option>Developmental Delay</option>
-                  <option>Gross Motor Delay</option>
-                  <option>Fine Motor Delay</option>
-                  <option>Developmental Coordination Disorder</option>
-                  <option>Hypotonia</option>
-                </optgroup>
-                <optgroup label="Sensory">
-                  <option>Sensory Processing Disorder</option>
-                  <option>Sensory Processing Difficulties</option>
-                </optgroup>
-                <optgroup label="Speech & Language">
-                  <option>Sensory Processing Difficulties</option>
-                  <option>Speech Delay</option>
-                </optgroup>
-                <optgroup label="Other">
-                  <option>Academic &amp; Attention Concerns</option>
-         
+        <div class="field">
+          <label>Reg. No. <span class="req">*</span></label>
+          <input type="text" id="pt-reg" placeholder="e.g. 693/25">
+        </div>
+        <div class="field">
+          <label>Gender</label>
+          <select id="pt-gender">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" id="pt-dob">
+        </div>
+      </div>
+      <div class="field-row-4">
+        <div class="field">
+          <label>Age</label>
+          <input type="text" id="pt-age" placeholder="e.g. 5 years 9 months">
+        </div>
+        <div class="field assessment-field">
+          <label>Date of Assessment</label>
+          <input type="date" id="pt-doa">
+        </div>
+        <div class="field progress-field section-hidden">
+          <label>Initial Assessment Date</label>
+          <input type="date" id="pt-initial-date">
+        </div>
+        <div class="field progress-field section-hidden">
+          <label>Date of Follow-Up</label>
+          <input type="date" id="pt-followup-date">
+        </div>
+        <div class="field">
+          <label>School</label>
+          <input type="text" id="pt-school" placeholder="School name or N/A">
+        </div>
+        <div class="field">
+          <label>Standard / Grade</label>
+          <input type="text" id="pt-std" placeholder="e.g. Nursery / Class 2">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Referred By</label>
+          <input type="text" id="pt-referral" placeholder="Doctor / School / Self">
+        </div>
+        <div class="field">
+          <label>Diagnosis</label>
+          <select id="pt-diagnosis">
+            <option value="">Select primary diagnosis</option>
+            <optgroup label="Neurodevelopmental">
+              <option>ASD &#x2014; Autism Spectrum Disorder</option>
+              <option>ADHD</option>
+              <option>Developmental Delay</option>
+              <option>Global Developmental Delay</option>
+              <option>Intellectual Disability</option>
+              <option>Specific Learning Disability</option>
+            </optgroup>
+            <optgroup label="Motor">
+              <option>Developmental Delay</option>
+              <option>Gross Motor Delay</option>
+              <option>Fine Motor Delay</option>
+              <option>Developmental Coordination Disorder</option>
+              <option>Hypotonia</option>
+            </optgroup>
+            <optgroup label="Sensory">
+              <option>Sensory Processing Disorder</option>
+              <option>Sensory Processing Difficulties</option>
+            </optgroup>
+            <optgroup label="Speech & Language">
+              <option>Sensory Processing Difficulties</option>
+              <option>Speech Delay</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Academic &amp; Attention Concerns</option>
+              <option>Academic Concerns</option>
+              <option>Behavioural Concerns</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="field-row assessment-field">
+        <div class="field">
+          <label>Language Known to Child</label>
+          <input type="text" id="pt-lang" placeholder="e.g. Hindi, English, Marathi">
+        </div>
+        <div class="field">
+          <label>Birth History</label>
+          <select id="pt-birth">
+            <option value="">Select</option>
+            <option>Full Term, CIAB (Cried Immediately After Birth)</option>
+            <option>Full Term, LCSC (Lower Segment Caesarean Section)</option>
+            <option>Full Term, LSCS with CIAB</option>
+            <option>Preterm &#x2014; specify weeks</option>
+            <option>NICU Admission</option>
+          </select>
+        </div>
+      </div>
+      <div class="field progress-field section-hidden">
+        <label>Sessions Attended</label>
+        <div class="field-row">
+          <input type="text" id="pt-sessions" placeholder="Total sessions attended so far">
+          <input type="text" id="pt-freq" placeholder="Frequency e.g. 2x per week">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── CONCERNS ───────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--rose)"></div>Presenting Concerns</div>
+    </div>
+    <div class="card-body">
+      <div class="sec-divider"><span>Select all that apply</span></div>
+      <div style="height:10px"></div>
+      <div class="check-grid-3" id="concerns-grid">
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="No speech / limited verbal communication">
+          <span>No speech / limited verbal communication</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="No eye contact / poor eye contact">
+          <span>No eye contact / poor eye contact</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Poor sitting tolerance">
+          <span>Poor sitting tolerance</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Poor attention and concentration">
+          <span>Poor attention and concentration</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Difficulty with self-regulation / behaviour issues">
+          <span>Difficulty with self-regulation / behaviour</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Does not imitate actions">
+          <span>Does not imitate actions</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Gross motor delays">
+          <span>Gross motor delays</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Fine motor difficulties">
+          <span>Fine motor difficulties</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Sensory seeking behaviours">
+          <span>Sensory seeking behaviours</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Sensory avoiding behaviours">
+          <span>Sensory avoiding behaviours</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Poor social skills / difficulty interacting with peers">
+          <span>Poor social skills / peer interaction</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Difficulty with play skills">
+          <span>Difficulty with play skills</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Handwriting concerns">
+          <span>Handwriting concerns</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Academic difficulties">
+          <span>Academic difficulties</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="ADL difficulties (dressing, feeding, grooming)">
+          <span>ADL difficulties (dressing, feeding)</span>
+        </label>
+      </div>
+      <div style="height:10px"></div>
+      <div class="field">
+        <label>Additional concerns (free text)</label>
+        <textarea id="concerns-extra" placeholder="Any additional or specific concerns not listed above..." rows="2"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────────── BEHAVIOUR DURING SESSION ────────────────────── -->
+  <div class="card assessment-field">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--amber)"></div>Behaviour During Session</div>
+      <span style="font-size:11px;color:var(--text-muted)">Observation checklist</span>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Accompanied By</label>
+          <select id="beh-accompanied">
+            <option value="">Select</option>
+            <option>Mother</option>
+            <option>Father</option>
+            <option>Both parents</option>
+            <option>Guardian / Caretaker</option>
+            <option>Independently</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Greeted Therapist</label>
+          <select id="beh-greet">
+            <option value="">Select</option>
+            <option>Spontaneously</option>
+            <option>With verbal prompts</option>
+            <option>Did not greet therapist</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Eye Contact</label>
+          <select id="beh-eyecontact">
+            <option value="">Select</option>
+            <option>Maintained throughout</option>
+            <option>Intermittent eye contact</option>
+            <option>Minimal eye contact</option>
+            <option>Avoided eye contact</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Engagement with Toys / Activities</label>
+          <select id="beh-engagement">
+            <option value="">Select</option>
+            <option>Engaged freely and spontaneously</option>
+            <option>Engaged with encouragement from therapist</option>
+            <option>Engaged only with parent encouragement</option>
+            <option>Reluctant to engage with novel activities</option>
+            <option>Did not engage with toys</option>
+          </select>
+        </div>
+      </div>
+      <div class="check-grid" style="margin-bottom:10px">
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="W-sitting observed">
+          <span>W-sitting observed</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Scattered / dumped toys">
+          <span>Scattered / dumped toys</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Difficulty transitioning between activities">
+          <span>Difficulty transitioning between activities</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Followed verbal instructions independently">
+          <span>Followed verbal instructions independently</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Required physical prompts to follow instructions">
+          <span>Required physical prompts</span>
+        </label>
+        <label class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Required frequent sensory breaks (jumping/climbing)">
+          <span>Required frequent sensory breaks</span>
+        </label>
+      </div>
+      <div class="field">
+        <label>Additional session observations</label>
+        <textarea id="beh-notes" placeholder="Describe specific behaviours, interactions, or notable observations during the session..." rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── COMMUNICATION ───────────────────────── -->
+  <div class="card assessment-field">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--purple)"></div>Communication</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Expressive Language Level</label>
+          <select id="comm-exp-level">
+            <option value="">Select level</option>
+            <option>Non-verbal &#x2014; communicates through gestures / pulling hands</option>
+            <option>Single words only</option>
+            <option>2--3 word phrases / emerging words</option>
+            <option>Simple sentences (3--5 words)</option>
+            <option>Full sentences &#x2014; age appropriate</option>
+            <option>Verbal with articulation difficulties</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Receptive Language Level</label>
+          <select id="comm-rec-level">
+            <option value="">Select level</option>
+            <option>Inconsistent response to name call</option>
+            <option>Follows single-step commands (with visual cues)</option>
+            <option>Follows single-step commands independently</option>
+            <option>Follows 2-step commands (with prompts)</option>
+            <option>Follows 2-step commands independently</option>
+            <option>Follows multi-step / complex commands</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Communication notes</label>
+        <textarea id="comm-notes" placeholder="Additional observations about communication skills, vocabulary, pragmatics, AAC use, etc." rows="2"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────── MOTOR SKILLS ───────────────────────── -->
+  <div class="card assessment-field">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--green)"></div>Motor Skills</div>
+    </div>
+    <div class="card-body">
+      <div class="sec-divider"><span>Gross Motor &#x2014; check all observed abilities</span></div>
+      <div style="height:8px"></div>
+      <div class="check-grid-3" style="margin-bottom:12px">
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="walks independently"><span>Walks independently</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="runs"><span>Runs</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="jumps (two feet)"><span>Jumps (two feet)</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="ascends/descends stairs independently"><span>Stairs independently</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="ascends/descends stairs with railing"><span>Stairs with railing</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="climbs vertical ladder"><span>Climbs ladder</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="balances on one leg"><span>Balances on one leg</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="throws ball overhead"><span>Throws ball overhead</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="catches ball"><span>Catches ball</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="rides tricycle"><span>Rides tricycle</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="rides bicycle"><span>Rides bicycle</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="navigates obstacle course"><span>Navigates obstacle course</span></label>
+      </div>
+      <div class="field" style="margin-bottom:14px">
+        <label>Gross Motor &#x2014; additional notes</label>
+        <textarea id="gm-notes" placeholder="Describe quality of movement, gait pattern, bilateral coordination, postural control, any notable findings..." rows="2"></textarea>
+      </div>
+
+      <div class="sec-divider"><span>Fine Motor &#x2014; observed abilities</span></div>
+      <div style="height:8px"></div>
+      <div class="field-row" style="margin-bottom:8px">
+        <div class="field">
+          <label>Hand Dominance</label>
+          <select id="fm-hand">
+            <option value="">Select</option>
+            <option>Right hand dominant</option>
+            <option>Left hand dominant</option>
+            <option>No clear hand dominance observed</option>
+            <option>Mixed / alternating hands</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Primary Pencil / Crayon Grip</label>
+          <select id="fm-grip">
+            <option value="">Select</option>
+            <option>Dynamic tripod grasp</option>
+            <option>Static tripod grasp</option>
+            <option>Lateral tripod grasp</option>
+            <option>Four-finger grip</option>
+            <option>Fisted grip</option>
+            <option>Pincer grip (for small objects)</option>
+            <option>Not yet observed</option>
+          </select>
+        </div>
+      </div>
+      <div class="check-grid-3" style="margin-bottom:12px">
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="stacks blocks"><span>Stacks blocks</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="uses pincer grip for small objects"><span>Pincer grip (coins, pegs)</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="completes peg puzzles"><span>Peg puzzles</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="strings beads"><span>Strings beads</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="uses scissors (cutting straight)"><span>Scissors &#x2014; straight</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="uses scissors (cutting on line)"><span>Scissors &#x2014; on line</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="scribbles"><span>Scribbles</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="makes pre-writing lines (circle, cross, diagonal)"><span>Pre-writing lines</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="colours inside shapes with assistance"><span>Colours in shapes</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="writes name"><span>Writes name</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="buttons / unbuttons"><span>Buttons / unbuttons</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="adequate bimanual coordination"><span>Adequate bimanual coordination</span></label>
+      </div>
+      <div class="field">
+        <label>Fine Motor &#x2014; additional notes</label>
+        <textarea id="fm-notes" placeholder="Describe grip quality, wrist position, endurance, handwriting observations, in-hand manipulation skills..." rows="2"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────── SENSORY PROFILE ──────────────────────── -->
+  <div class="card assessment-field">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--amber)"></div>Sensory Profile</div>
+      <span style="font-size:11px;color:var(--text-muted)">Based on parent report and observation</span>
+    </div>
+    <div class="card-body tight">
+      <div class="sensory-grid">
+        <div class="sg-head" style="background:var(--navy)">Sensory System</div>
+        <div class="sg-head" style="background:#166534">Seeking / Hyposensitive</div>
+        <div class="sg-head" style="background:#6B21A8">Avoiding / Hypersensitive</div>
+        <div class="sg-head" style="background:#1D4ED8">Typical</div>
+
+        <div class="sg-label">👋 Tactile</div>
+        <div class="sg-cell"><label><input type="radio" name="sen-tactile" value="Seeking"> Seeking</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-tactile" value="Avoiding"> Avoiding</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-tactile" value="Typical"> Typical</label></div>
+
+        <div class="sg-label">🔄 Vestibular</div>
+        <div class="sg-cell"><label><input type="radio" name="sen-vestibular" value="Seeking"> Seeking</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-vestibular" value="Avoiding"> Avoiding</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-vestibular" value="Typical"> Typical</label></div>
+
+        <div class="sg-label">💪 Proprioception</div>
+        <div class="sg-cell"><label><input type="radio" name="sen-proprioception" value="Seeking"> Seeking</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-proprioception" value="Avoiding"> Avoiding</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-proprioception" value="Typical"> Typical</label></div>
+
+        <div class="sg-label">👂 Auditory</div>
+        <div class="sg-cell"><label><input type="radio" name="sen-auditory" value="Hyposensitive"> Hyposensitive</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-auditory" value="Hypersensitive"> Hypersensitive</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-auditory" value="Typical"> Typical</label></div>
+
+        <div class="sg-label">👁 Visual</div>
+        <div class="sg-cell"><label><input type="radio" name="sen-visual" value="Seeking"> Seeking</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-visual" value="Distractible"> Distractible</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-visual" value="Typical"> Typical</label></div>
+
+        <div class="sg-label">👄 Oral</div>
+        <div class="sg-cell"><label><input type="radio" name="sen-oral" value="Oral seeking"> Oral seeking</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-oral" value="Oral avoiding"> Oral avoiding</label></div>
+        <div class="sg-cell"><label><input type="radio" name="sen-oral" value="Typical"> Typical</label></div>
+      </div>
+      <div style="height:10px"></div>
+      <div class="field">
+        <label>Sensory observations / parent report details</label>
+        <textarea id="sensory-notes" placeholder="Specific textures sought or avoided, responses to sounds, vestibular input preferences, proprioceptive seeking behaviours, feeding concerns, etc." rows="2"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────── COGNITIVE / ADL ──────────────────────── -->
+  <div class="card assessment-field">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--teal)"></div>Cognitive Integration & ADL</div>
+    </div>
+    <div class="card-body">
+      <div class="check-grid" style="margin-bottom:12px">
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Attention span adequate for age"><span>Attention span adequate for age</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Sorting and categorization skills present"><span>Sorting and categorisation present</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Sequencing skills developing"><span>Sequencing skills developing</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Problem solving skills emerging"><span>Problem solving skills emerging</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Motor planning / praxis difficulties observed"><span>Motor planning difficulties</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Initiation of activities appropriate"><span>Activity initiation appropriate</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Difficulty terminating activities"><span>Difficulty terminating activities</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Independent in age-appropriate ADL (feeding, dressing)"><span>Independent in age-appropriate ADL</span></label>
+      </div>
+      <div class="field">
+        <label>Cognitive / ADL additional observations</label>
+        <textarea id="cog-notes" placeholder="Memory, planning, executive function, self-care skills, play skills, social interaction observations..." rows="2"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────── CURRENT STATUS (progress report only) ──────────── -->
+  <div class="card progress-field section-hidden">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--green)"></div>Current Status / Progress Narrative</div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <label>Progress narrative</label>
+        <textarea id="prog-status" placeholder="Describe the child's current functional status and progress towards goals. Include: self-regulation, motor skills, play skills, social skills, ADL, and school participation." rows="5"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────── GOALS ──────────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title assessment-field"><div class="dot" style="background:var(--navy)"></div>Therapy Goals</div>
+      <div class="card-title progress-field section-hidden"><div class="dot" style="background:var(--navy)"></div>Goals Review &amp; New Goals</div>
+    </div>
+    <div class="card-body">
+
+      <!-- Assessment goals -->
+      <div class="assessment-field">
+        <div id="goals-list"></div>
+        <button class="add-goal-btn" onclick="addGoal()">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4v12M4 10h12"/></svg>
+          Add Therapy Goal
+        </button>
+      </div>
+
+      <!-- Progress report goals table -->
+      <div class="progress-field section-hidden">
+        <div style="overflow-x:auto">
+          <table class="prog-table" id="progress-goals-table">
+            <thead>
+              <tr>
+                <th style="width:35%">Goal from Previous Review</th>
+                <th style="width:20%">Level of Achievement</th>
+                <th style="width:45%">New / Continued Goal</th>
+              </tr>
+            </thead>
+            <tbody id="prog-goals-body">
+              <tr>
+                <td><textarea placeholder="Previous goal description..." rows="2" style="width:100%;font-size:12px;padding:4px;border:1px solid var(--border);border-radius:4px;resize:vertical"></textarea></td>
+                <td>
+                  <select onchange="updateAchievementStyle(this)" style="font-size:12px;padding:5px 8px;width:100%">
+                    <option value="">Select</option>
+                    <option value="Achieved">Achieved</option>
+                    <option value="Partially Achieved">Partially Achieved</option>
+                    <option value="Not Achieved">Not Achieved</option>
+                    <option value="Ongoing">Ongoing</option>
+                  </select>
+                </td>
+                <td><textarea placeholder="New goal for next review period..." rows="2" style="width:100%;font-size:12px;padding:4px;border:1px solid var(--border);border-radius:4px;resize:vertical"></textarea></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="height:8px"></div>
+        <button class="add-goal-btn" onclick="addProgressGoalRow()">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4v12M4 10h12"/></svg>
+          Add Goal Row
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────── RECOMMENDATIONS ─────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><div class="dot" style="background:var(--teal)"></div>Recommendations</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Recommended Therapy Frequency</label>
+          <select id="rec-freq">
+            <option value="">Select</option>
+            <option>1x per week individually</option>
+            <option>2x per week individually</option>
+            <option>1x individual + 1x group per week</option>
+            <option>2x individual + 1x group per week</option>
+            <option>Intensive (3--5x per week)</option>
+            <option>Home programme only</option>
+            <option>Review in 3 months</option>
+            <option>Discharge recommended</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Frame of Reference</label>
+          <select id="rec-frame">
+            <option value="">Select (multiple if needed)</option>
+            <option>Sensory Integration</option>
+            <option>Sensory Integration + Developmental</option>
+            <option>Sensory Integration + Developmental + Behavioural</option>
+            <option>Neurodevelopmental</option>
+            <option>Developmental</option>
+            <option>Behavioural</option>
+            <option>Biomechanical</option>
+            <option>Cognitive</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Additional recommendations / referrals</label>
+        <textarea id="rec-notes" placeholder="Home programme, co-therapy referrals (Speech, Physio, Psychology), school accommodations, parent counselling, follow-up timeline..." rows="2"></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Therapist Name</label>
+          <input type="text" id="therapist-name" placeholder="Full name">
+        </div>
+        <div class="field">
+          <label>Therapist Designation</label>
+          <input type="text" id="therapist-desig" placeholder="e.g. OTR/L, Senior Occupational Therapist">
+        </div>
+      </div>
+      <div class="field">
+        <label>Supervisor / HOD</label>
+        <input type="text" id="supervisor-name" placeholder="Reviewing supervisor name and designation">
+      </div>
+    </div>
+  </div>
+
+</div><!-- /form-panel -->
+
+<!-- ─────────────── PREVIEW PANEL ──────────────── -->
+<div class="preview-panel">
+  <div class="preview-header">
+    <div class="preview-header-title">📄 Report Preview</div>
+    <button class="preview-copy" onclick="copyReport()">Copy</button>
+  </div>
+  <div class="preview-body" id="preview-body">
+    <div class="preview-empty">Fill in the form and click<br><strong>Generate Report</strong><br>to preview the formatted clinical report.</div>
+  </div>
+</div>
+```
+
+  </div><!-- /content -->
+</main>
+
+<script>
+// ─────────────────────── STATE ────────────────────────────────────────────
+let reportType = 'assessment';
+let goalCount = 0;
+
+// ─────────────────────── INIT ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  addGoal(); // start with one empty goal
+  updateAgeFromDOB();
+});
+
+function updateAgeFromDOB(){
+  const dobEl = document.getElementById('pt-dob');
+  if(dobEl) dobEl.addEventListener('change', () => {
+    const dob = new Date(dobEl.value);
+    if(isNaN(dob.getTime())) return;
+    const now = new Date();
+    let years = now.getFullYear() - dob.getFullYear();
+    let months = now.getMonth() - dob.getMonth();
+    if(months < 0){years--;months+=12;}
+    document.getElementById('pt-age').value = `${years} year${years!==1?'s':''} ${months} month${months!==1?'s':''}`;
+  });
+}
+
+// ─────────────────────── TOGGLE REPORT TYPE ───────────────────────────────
+function switchType(type){
+  reportType = type;
+  document.getElementById('tab-assessment').classList.toggle('active', type==='assessment');
+  document.getElementById('tab-progress').classList.toggle('active', type==='progress');
+  document.querySelector('.nav-item:nth-child(1)').classList.toggle('active', type==='assessment');
+  document.querySelector('.nav-item:nth-child(2)').classList.toggle('active', type==='progress');
+  document.getElementById('topbar-title').textContent = type==='assessment' ? 'New Assessment Report' : 'Progress / Follow-Up Report';
+  document.getElementById('mode-pill').textContent = type==='assessment' ? 'Assessment' : 'Follow-Up';
+  document.getElementById('mode-pill').className = 'pill ' + (type==='assessment' ? 'pill-teal' : 'pill-amber');
+
+  document.querySelectorAll('.assessment-field').forEach(el => el.classList.toggle('section-hidden', type!=='assessment'));
+  document.querySelectorAll('.progress-field').forEach(el => el.classList.toggle('section-hidden', type!=='progress'));
+  document.getElementById('preview-body').innerHTML = '<div class="preview-empty">Fill in the form and click<br><strong>Generate Report</strong><br>to preview the formatted clinical report.</div>';
+}
+
+// ─────────────────────── CHECKBOX TOGGLE ──────────────────────────────────
+function toggleCheck(label){
+  const cb = label.querySelector('input[type=checkbox]');
+  if(!cb) return;
+  // Prevent double-toggle since onclick fires before checkbox state updates
+  // Use a small timeout to let the native state update first
+  setTimeout(() => label.classList.toggle('checked', cb.checked), 0);
+}
+
+// ─────────────────────── GOAL BUILDER ─────────────────────────────────────
+function addGoal(){
+  goalCount++;
+  const list = document.getElementById('goals-list');
+  const div = document.createElement('div');
+  div.className = 'goal-item';
+  div.id = `goal-${goalCount}`;
+  div.innerHTML = `
+    <div class="goal-num">Goal ${goalCount}</div>
+    <button class="remove-btn" onclick="removeGoal(${goalCount})" title="Remove goal">×</button>
+    <div style="height:6px"></div>
+    <div class="field-row" style="margin-bottom:8px">
+      <div class="field">
+        <label>Domain</label>
+        <select id="g${goalCount}-domain" onchange="buildGoalSentence(${goalCount})">
+          <option value="">Select domain</option>
+          <option>Self-regulation / Organisation of behaviour</option>
+          <option>Attention and visual attention</option>
+          <option>Gross motor skills</option>
+          <option>Fine motor skills</option>
+          <option>Motor planning / Praxis</option>
+          <option>Bilateral coordination</option>
+          <option>Handwriting / Pre-writing</option>
+          <option>Sensory processing</option>
+          <option>Play skills and ideation</option>
+          <option>Social participation</option>
+          <option>ADL &#x2014; dressing</option>
+          <option>ADL &#x2014; feeding</option>
+          <option>ADL &#x2014; grooming</option>
+          <option>Cognitive &#x2014; sequencing</option>
+          <option>Classroom participation</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Assistance Level</label>
+        <select id="g${goalCount}-assist" onchange="buildGoalSentence(${goalCount})">
+          <option value="">Select</option>
+          <option>maximum assistance</option>
+          <option>moderate assistance</option>
+          <option>moderate assistance and demonstration</option>
+          <option>minimal assistance</option>
+          <option>minimal / no assistance</option>
+          <option>independently</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row" style="margin-bottom:8px">
+      <div class="field">
+        <label>Specific Activity / Task</label>
+        <input type="text" id="g${goalCount}-task" placeholder="e.g. copy a 3-4 piece sequenced pattern, engage in seated task for 10 min..." oninput="buildGoalSentence(${goalCount})">
+      </div>
+      <div class="field">
+        <label>Success Criteria</label>
+        <select id="g${goalCount}-criteria" onchange="buildGoalSentence(${goalCount})">
+          <option value="">Select</option>
+          <option>4/5 opportunities</option>
+          <option>3/5 opportunities</option>
+          <option>3/3 consecutive sessions</option>
+          <option>4/5 consecutive sessions</option>
+          <option>on 80% of trials</option>
+          <option>consistently across settings</option>
+        </select>
+      </div>
+    </div>
+    <div class="goal-sentence" id="g${goalCount}-sentence"><em style="color:var(--text-muted)">Goal sentence will appear here as you fill in the fields above.</em></div>
+  `;
+  list.appendChild(div);
+}
+
+function removeGoal(n){
+  const el = document.getElementById(`goal-${n}`);
+  if(el) el.remove();
+}
+
+function buildGoalSentence(n){
+  const name = document.getElementById('pt-name')?.value?.split(' ')[0] || '[Patient]';
+  const domain = document.getElementById(`g${n}-domain`)?.value;
+  const assist = document.getElementById(`g${n}-assist`)?.value;
+  const task = document.getElementById(`g${n}-task`)?.value;
+  const criteria = document.getElementById(`g${n}-criteria`)?.value;
+  const el = document.getElementById(`g${n}-sentence`);
+  if(!el) return;
+  if(!domain && !task){el.innerHTML='<em style="color:var(--text-muted)">Goal sentence will appear here as you fill in the fields above.</em>';return;}
+  let sentence = `<strong>${name}</strong> will demonstrate improved <strong>${domain||'[domain]'}</strong>`;
+  if(task) sentence += ` to <strong>${task}</strong>`;
+  if(assist) sentence += `, with <strong>${assist}</strong>`;
+  if(criteria) sentence += `, in <strong>${criteria}</strong>`;
+  sentence += '.';
+  el.innerHTML = sentence;
+}
+
+function addProgressGoalRow(){
+  const tbody = document.getElementById('prog-goals-body');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td><textarea placeholder="Previous goal description..." rows="2" style="width:100%;font-size:12px;padding:4px;border:1px solid var(--border);border-radius:4px;resize:vertical"></textarea></td>
+
+```
+<td><select onchange="updateAchievementStyle(this)" style="font-size:12px;padding:5px 8px;width:100%">
+  <option value="">Select</option>
+  <option value="Achieved">Achieved</option>
+  <option value="Partially Achieved">Partially Achieved</option>
+  <option value="Not Achieved">Not Achieved</option>
+  <option value="Ongoing">Ongoing</option>
+</select></td>
+<td><textarea placeholder="New goal for next review period..." rows="2" style="width:100%;font-size:12px;padding:4px;border:1px solid var(--border);border-radius:4px;resize:vertical"></textarea></td>
+```
+
+`;
+tbody.appendChild(row);
+}
+
+function updateAchievementStyle(sel){
+const map = {Achieved:‘ach-achieved’,‘Partially Achieved’:‘ach-partial’,‘Not Achieved’:‘ach-not’,‘Ongoing’:‘ach-ongoing’};
+sel.className = ‘’;
+if(map[sel.value]) sel.classList.add(map[sel.value]);
+}
+
+// ─────────────────────── CLEAR FORM ──────────────────────────────────────
+function clearForm(){
+if(!confirm(‘Clear all form data and start a new report?’)) return;
+document.querySelectorAll(‘input[type=text],input[type=date],select,textarea’).forEach(el=>el.value=’’);
+document.querySelectorAll(’.check-item’).forEach(el=>{el.classList.remove(‘checked’);const cb=el.querySelector(‘input’);if(cb)cb.checked=false;});
+document.querySelectorAll(‘input[type=radio]’).forEach(el=>el.checked=false);
+document.getElementById(‘goals-list’).innerHTML=’’;
+goalCount=0; addGoal();
+document.getElementById(‘prog-goals-body’).innerHTML=` <tr> <td><textarea placeholder="Previous goal description..." rows="2" style="width:100%;font-size:12px;padding:4px;border:1px solid var(--border);border-radius:4px;resize:vertical"></textarea></td> <td><select onchange="updateAchievementStyle(this)" style="font-size:12px;padding:5px 8px;width:100%"> <option value="">Select</option> <option value="Achieved">Achieved</option> <option value="Partially Achieved">Partially Achieved</option> <option value="Not Achieved">Not Achieved</option> <option value="Ongoing">Ongoing</option> </select></td> <td><textarea placeholder="New goal..." rows="2" style="width:100%;font-size:12px;padding:4px;border:1px solid var(--border);border-radius:4px;resize:vertical"></textarea></td> </tr>`;
+document.getElementById(‘preview-body’).innerHTML=’<div class="preview-empty">Form cleared. Fill in the form and click <strong>Generate Report</strong>.</div>’;
+}
+
+// ─────────────────────── GENERATE REPORT ──────────────────────────────────
+function v(id){return (document.getElementById(id)?.value||’’).trim();}
+function checkedValues(gridId){
+return Array.from(document.querySelectorAll(`#${gridId} .check-item input:checked`)).map(cb=>cb.value);
+}
+function checkedAll(){
+return Array.from(document.querySelectorAll(’.check-item input:checked’)).map(cb=>cb.value);
+}
+function radioVal(name){
+const el = document.querySelector(`input[name="${name}"]:checked`);
+return el ? el.value : ‘’;
+}
+
+function generateReport(){
+const name = v(‘pt-name’) || ‘[Patient Name]’;
+const firstName = name.split(’ ’)[0];
+const reg = v(‘pt-reg’);
+const gender = v(‘pt-gender’);
+const dob = v(‘pt-dob’) ? formatDate(v(‘pt-dob’)) : ‘’;
+const age = v(‘pt-age’);
+const school = v(‘pt-school’);
+const std = v(‘pt-std’);
+const referral = v(‘pt-referral’);
+const diagnosis = v(‘pt-diagnosis’);
+const lang = v(‘pt-lang’);
+const freq = v(‘rec-freq’);
+const frame = v(‘rec-frame’);
+const recNotes = v(‘rec-notes’);
+const therapistName = v(‘therapist-name’);
+const therapistDesig = v(‘therapist-desig’);
+const supervisor = v(‘supervisor-name’);
+const pronoun = gender === ‘Male’ ? {sub:‘He’,obj:‘him’,pos:‘his’} : gender === ‘Female’ ? {sub:‘She’,obj:‘her’,pos:‘her’} : {sub:‘They’,obj:‘them’,pos:‘their’};
+
+let report = ‘’;
+
+if(reportType === ‘assessment’){
+const doa = v(‘pt-doa’) ? formatDate(v(‘pt-doa’)) : ‘’;
+const birth = v(‘pt-birth’);
+
+```
+report += `OCCUPATIONAL THERAPY ASSESSMENT REPORT\n`;
+report += `${'─'.repeat(56)}\n\n`;
+report += `Name: ${name}${gender?' | Gender: '+gender:''}${reg?' | Reg. No: '+reg:''}\n`;
+if(dob) report += `Date of Birth: ${dob}`;
+if(doa) report += ` | Date of Assessment: ${doa}`;
+if(age) report += ` | Age: ${age}`;
+report += '\n';
+if(school || std) report += `School: ${school||'&#x2014;'}${std?' | Std: '+std:''}\n`;
+if(referral) report += `Referred by: ${referral}\n`;
+if(diagnosis) report += `Diagnosis: ${diagnosis}\n`;
+if(lang) report += `Language known to child: ${lang}\n`;
+report += '\n';
+
+// Background
+if(birth) report += `BACKGROUND INFORMATION\n${firstName} is a ${age||'[age]'} old ${gender?.toLowerCase()||'child'}`;
+if(birth && birth.includes('Full Term')) report += `, who was born full term, ${birth.includes('CIAB')?'CIAB':birth.includes('LCSC')?'LCSC, CIAB':''}`;
+else if(birth) report += `, ${birth.toLowerCase()}`;
+if(birth) report += `. [Add relevant perinatal, neonatal and developmental milestone history here.]\n\n`;
+
+// Concerns
+const concerns = checkedAll().filter(c => !['W-sitting observed','Scattered / dumped toys','Difficulty transitioning between activities','Followed verbal instructions independently','Required physical prompts to follow instructions','Required frequent sensory breaks (jumping/climbing)','Adequate bimanual coordination','attention span adequate for age','sorting and categorization skills present','sequencing skills developing','problem solving skills emerging','motor planning / praxis difficulties observed','initiation of activities appropriate','difficulty terminating activities','independent in age-appropriate ADL (feeding, dressing)'].some(s=>c.toLowerCase()===s.toLowerCase()));
+const motorObs = checkedAll().filter(c => ['walks independently','runs','jumps (two feet)','ascends/descends stairs independently','ascends/descends stairs with railing','climbs vertical ladder','balances on one leg','throws ball overhead','catches ball','rides tricycle','rides bicycle','navigates obstacle course'].includes(c));
+const fmObs = checkedAll().filter(c => ['stacks blocks','uses pincer grip for small objects','completes peg puzzles','strings beads','uses scissors (cutting straight)','uses scissors (cutting on line)','scribbles','makes pre-writing lines (circle, cross, diagonal)','colours inside shapes with assistance','writes name','buttons / unbuttons','adequate bimanual coordination'].includes(c));
+const cogObs = checkedAll().filter(c => ['attention span adequate for age','sorting and categorization skills present','sequencing skills developing','problem solving skills emerging','motor planning / praxis difficulties observed','initiation of activities appropriate','difficulty terminating activities','independent in age-appropriate ADL (feeding, dressing)'].includes(c));
+const behObs = checkedAll().filter(c => ['W-sitting observed','scattered / dumped toys','difficulty transitioning between activities','followed verbal instructions independently','required physical prompts to follow instructions','required frequent sensory breaks (jumping/climbing)'].map(s=>s.toLowerCase()).includes(c.toLowerCase()));
+const extraConcerns = v('concerns-extra');
+
+if(concerns.length || extraConcerns){
+  report += `CONCERNS\n${firstName}'s ${referral?'parents/carers':gender?.toLowerCase()||'parent'} report concerns with:\n`;
+  concerns.forEach(c => report += `• ${c}\n`);
+  if(extraConcerns) report += `• ${extraConcerns}\n`;
+  report += '\n';
+}
+
+// Behaviour during session
+const accompanied = v('beh-accompanied');
+const greet = v('beh-greet');
+const eye = v('beh-eyecontact');
+const engage = v('beh-engagement');
+const behNotes = v('beh-notes');
+report += `BEHAVIOUR DURING THE SESSION\n`;
+let behLine = `${firstName} came in to the session`;
+if(accompanied) behLine += ` with ${accompanied.toLowerCase()}`;
+if(greet) behLine += ` and ${greet==='Spontaneously'?'greeted the therapist spontaneously':greet==='With verbal prompts'?'greeted the therapist with verbal prompts':'did not greet the therapist'}`;
+behLine += '. ';
+if(eye) behLine += `${eye}. `;
+if(engage) behLine += `${engage}. `;
+if(behObs.length) behLine += behObs.join('. ') + '. ';
+if(behNotes) behLine += behNotes;
+report += behLine + '\n\n';
+report += `Note: The following report is based on history obtained from ${accompanied||'parents/carers'} and a one-time observation and may not reflect ${firstName}'s true potential.\n\n`;
+
+// Communication
+const expLevel = v('comm-exp-level');
+const recLevel = v('comm-rec-level');
+const commNotes = v('comm-notes');
+report += `COMMUNICATION\n`;
+if(expLevel || commNotes) report += `Expressive Language: ${expLevel||'[observe and complete]'}${commNotes?'. '+commNotes:''}.\n`;
+if(recLevel) report += `Receptive Language: ${firstName} ${recLevel.toLowerCase()}.\n`;
+report += '\n';
+
+// Motor
+const hand = v('fm-hand');
+const grip = v('fm-grip');
+const gmNotes = v('gm-notes');
+const fmNotes = v('fm-notes');
+report += `MOTOR SKILLS\n`;
+if(motorObs.length || gmNotes){
+  report += `Gross Motor: ${firstName} is able to ${motorObs.join(', ')}${motorObs.length&&gmNotes?'. '+gmNotes:gmNotes||''}.\n`;
+}
+if(fmObs.length || grip || hand || fmNotes){
+  report += `Fine Motor: ${hand?hand+'. ':''}${grip?'Uses '+grip+'. ':''}${fmObs.length?firstName+' is able to '+fmObs.join(', ')+'. ':''}${fmNotes||''}\n`;
+}
+report += '\n';
+
+// Sensory
+const senses = ['tactile','vestibular','proprioception','auditory','visual','oral'];
+const sensoryRows = senses.map(s=>{
+  const val = radioVal('sen-'+s);
+  return val ? `${s.charAt(0).toUpperCase()+s.slice(1)}: ${val}` : null;
+}).filter(Boolean);
+const sensoryNotes = v('sensory-notes');
+if(sensoryRows.length || sensoryNotes){
+  report += `SENSORY PROFILE\n`;
+  sensoryRows.forEach(r=>report+=`${r}\n`);
+  if(sensoryNotes) report += `${sensoryNotes}\n`;
+  report += '\n';
+}
+
+// Cognitive
+if(cogObs.length || v('cog-notes')){
+  report += `COGNITIVE INTEGRATION AND ADL\n`;
+  cogObs.forEach(c=>report+=`• ${c}\n`);
+  if(v('cog-notes')) report += v('cog-notes') + '\n';
+  report += '\n';
+}
+
+// Goals
+const goalItems = document.querySelectorAll('#goals-list .goal-item');
+if(goalItems.length){
+  report += `THERAPY GOALS\n`;
+  goalItems.forEach((item, idx) => {
+    const domain = item.querySelector('[id$="-domain"]')?.value;
+    const assist = item.querySelector('[id$="-assist"]')?.value;
+    const task = item.querySelector('[id$="-task"]')?.value;
+    const criteria = item.querySelector('[id$="-criteria"]')?.value;
+    if(!domain && !task) return;
+    let goal = `${idx+1}. ${firstName} will demonstrate improved ${domain||'[domain]'}`;
+    if(task) goal += ` to ${task}`;
+    if(assist) goal += `, with ${assist}`;
+    if(criteria) goal += `, in ${criteria}`;
+    goal += '.';
+    report += goal + '\n';
+  });
+  report += '\n';
+}
+```
+
+} else {
+// PROGRESS REPORT
+const followupDate = v(‘pt-followup-date’) ? formatDate(v(‘pt-followup-date’)) : ‘’;
+const initialDate = v(‘pt-initial-date’) ? formatDate(v(‘pt-initial-date’)) : ‘’;
+const sessions = v(‘pt-sessions’);
+const sessFreq = v(‘pt-freq’);
+const progStatus = v(‘prog-status’);
+const extraConcerns = v(‘concerns-extra’);
+
+```
+report += `OCCUPATIONAL THERAPY PROGRESS REPORT\n`;
+report += `${'─'.repeat(56)}\n\n`;
+report += `Name: ${name}${gender?' | Gender: '+gender:''}${reg?' | Reg. No: '+reg:''}\n`;
+if(v('pt-dob')) report += `Date of Birth: ${formatDate(v('pt-dob'))}`;
+if(age) report += ` | Age: ${age}`;
+report += '\n';
+if(initialDate) report += `Date of Initial Assessment: ${initialDate}`;
+if(followupDate) report += ` | Date of Follow Up: ${followupDate}`;
+report += '\n';
+if(v('pt-school')||v('pt-std')) report += `School: ${v('pt-school')||'&#x2014;'}${v('pt-std')?' | Std: '+v('pt-std'):''}\n`;
+if(v('pt-referral')) report += `Referred by: ${v('pt-referral')}\n`;
+if(v('pt-diagnosis')) report += `Diagnosis: ${v('pt-diagnosis')}\n\n`;
+
+// Brief background
+report += `BRIEF BACKGROUND\n`;
+report += `${firstName} has been attending Occupational Therapy services`;
+if(sessFreq) report += ` ${sessFreq}`;
+if(sessions) report += `. ${pronoun.sub} has attended ${sessions} session${sessions!=='1'?'s':''} so far`;
+report += '.\n\n';
+
+// Present concerns
+const concerns = checkedAll();
+if(concerns.length || extraConcerns){
+  report += `PRESENT CONCERNS\n`;
+  concerns.forEach(c=>report+=`${c}\n`);
+  if(extraConcerns) report += `${extraConcerns}\n`;
+  report += '\n';
+}
+
+// Current status
+if(progStatus){
+  report += `CURRENT STATUS\n${progStatus}\n\n`;
+}
+
+// Goals table
+const progRows = document.querySelectorAll('#prog-goals-body tr');
+const hasGoals = Array.from(progRows).some(r=>{
+  const tds = r.querySelectorAll('td');
+  return tds[0]?.querySelector('textarea')?.value?.trim();
+});
+if(hasGoals){
+  report += `GOALS REVIEW\n`;
+  report += `${'─'.repeat(20)}\n`;
+  progRows.forEach((row,i)=>{
+    const tds = row.querySelectorAll('td');
+    const prev = tds[0]?.querySelector('textarea')?.value?.trim();
+    const achiev = tds[1]?.querySelector('select')?.value?.trim();
+    const newGoal = tds[2]?.querySelector('textarea')?.value?.trim();
+    if(!prev) return;
+    report += `\nPrevious Goal ${i+1}: ${prev}\n`;
+    if(achiev) report += `Level of Achievement: ${achiev}\n`;
+    if(newGoal) report += `New Goal: ${newGoal}\n`;
+  });
+  report += '\n';
+}
+```
+
+}
+
+// Recommendations — both report types
+if(freq || frame || recNotes){
+report += `SUGGESTIONS AND RECOMMENDATIONS\n`;
+if(freq||frame) report += `${name.split(' ')[0]} will benefit from ${freq||'continued Occupational Therapy'}`;
+if(frame) report += ` using ${frame} frame of reference`;
+report += ` to address the above-mentioned concerns and increase ${pronoun.pos} functional participation.\n`;
+if(recNotes) report += `${recNotes}\n`;
+report += ‘\n’;
+}
+report += `Feel free to contact us for any further information.\n\n`;
+if(therapistName) report += `${therapistName}${therapistDesig?'\n'+therapistDesig:''}\n`;
+if(supervisor) report += `Reviewed by: ${supervisor}\n`;
+report += `SRCC, Haji Ali, Mumbai`;
+
+document.getElementById(‘preview-body’).textContent = report;
+document.getElementById(‘preview-body’).classList.remove(‘preview-empty’);
+document.getElementById(‘preview-body’).style.fontFamily = “‘DM Mono’, monospace”;
+document.getElementById(‘preview-body’).style.fontSize = ‘11px’;
+document.getElementById(‘preview-body’).style.lineHeight = ‘1.65’;
+
+// scroll preview to top
+document.getElementById(‘preview-body’).scrollTop = 0;
+}
+
+function formatDate(d){
+if(!d) return ‘’;
+const parts = d.split(’-’);
+if(parts.length===3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+return d;
+}
+
+function copyReport(){
+const text = document.getElementById(‘preview-body’).textContent;
+if(!text || text.includes(‘Fill in the form’)) return;
+navigator.clipboard.writeText(text).then(()=>{
+const btn = document.querySelector(’.preview-copy’);
+btn.textContent = ‘Copied!’;
+setTimeout(()=>btn.textContent=‘Copy’, 2000);
+});
+}
+</script>
+
+</body>
+</html>
