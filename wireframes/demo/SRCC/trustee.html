@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trustee / Director — RehabCare Clinic</title>
+<title>Trustee / Director -- RehabCare Clinic</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -51,16 +50,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 /* STAT ROW */
 .stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.stat-card{background:#fff;border:1px solid var(–border);border-radius:10px;padding:16px}
-.stat-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);margin-bottom:6px}
-.stat-val{font-family:‘DM Mono’,monospace;font-size:26px;font-weight:500;line-height:1}
-.stat-sub{font-size:10.5px;color:var(–text-muted);margin-top:5px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px}
+.stat-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px}
+.stat-val{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;line-height:1}
+.stat-sub{font-size:10.5px;color:var(--text-muted);margin-top:5px}
 
 /* CARD */
-.card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden}
-.card-hd{padding:14px 20px;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between}
-.card-title{font-size:13px;font-weight:600;color:var(–text-primary);display:flex;align-items:center;gap:8px}
-.card-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:10px;background:var(–surface);color:var(–text-secondary);border:1px solid var(–border)}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card-hd{padding:14px 20px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:8px}
+.card-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:10px;background:var(--surface);color:var(--text-secondary);border:1px solid var(--border)}
 .card-body{padding:18px}
 
 /* REVENUE */
@@ -68,49 +67,49 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .rev-block{padding:16px;border-radius:10px;text-align:center}
 .rev-exp{background:#EFF6FF;border:1px solid #BFDBFE}
 .rev-col{background:#F0FDF4;border:1px solid #BBF7D0}
-.rev-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);margin-bottom:5px}
-.rev-v{font-family:‘DM Mono’,monospace;font-size:26px;font-weight:600;line-height:1}
-.rev-s{font-size:11px;color:var(–text-muted);margin-top:3px}
+.rev-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:5px}
+.rev-v{font-family:'DM Mono',monospace;font-size:26px;font-weight:600;line-height:1}
+.rev-s{font-size:11px;color:var(--text-muted);margin-top:3px}
 .out-bar{display:flex;align-items:center;justify-content:space-between;padding:14px;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;margin-bottom:12px}
 .out-lbl{font-size:12.5px;font-weight:600;color:#991B1B}
 .out-sub{font-size:11px;color:#B91C1C;margin-top:2px}
-.out-v{font-family:‘DM Mono’,monospace;font-size:22px;font-weight:700;color:#991B1B}
+.out-v{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:#991B1B}
 
 /* WEEK BAR CHART */
 .week-chart{display:flex;align-items:flex-end;gap:12px;height:100px;padding:0 4px}
 .week-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
-.week-bar-bg{width:100%;background:var(–surface2);border-radius:6px;overflow:hidden;position:relative}
-.week-bar-fill{border-radius:6px;background:linear-gradient(180deg,var(–teal),#0B7A71);transition:height 0.3s}
-.week-bar-coll{position:absolute;bottom:0;left:0;right:0;background:var(–green);opacity:0.6;border-radius:0 0 6px 6px}
-.week-day{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–text-muted);font-weight:500}
-.week-val{font-size:10px;font-weight:600;color:var(–text-primary)}
+.week-bar-bg{width:100%;background:var(--surface2);border-radius:6px;overflow:hidden;position:relative}
+.week-bar-fill{border-radius:6px;background:linear-gradient(180deg,var(--teal),#0B7A71);transition:height 0.3s}
+.week-bar-coll{position:absolute;bottom:0;left:0;right:0;background:var(--green);opacity:0.6;border-radius:0 0 6px 6px}
+.week-day{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);font-weight:500}
+.week-val{font-size:10px;font-weight:600;color:var(--text-primary)}
 
 /* THERAPIST TABLE */
 .t-table{width:100%;border-collapse:collapse}
-.t-table th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);padding:10px 16px;text-align:left;border-bottom:1px solid var(–border);background:#F8FAFC}
-.t-table td{padding:12px 16px;font-size:12.5px;border-bottom:1px solid var(–border-light);vertical-align:middle}
+.t-table th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);background:#F8FAFC}
+.t-table td{padding:12px 16px;font-size:12.5px;border-bottom:1px solid var(--border-light);vertical-align:middle}
 .t-table tr:last-child td{border-bottom:none}
 .t-table tr:hover td{background:#FAFBFD}
 .bar-inline{display:flex;align-items:center;gap:8px}
-.b-wrap{width:80px;height:6px;background:var(–surface2);border-radius:100px;overflow:hidden}
+.b-wrap{width:80px;height:6px;background:var(--surface2);border-radius:100px;overflow:hidden}
 .b-fill{height:100%;border-radius:100px}
 
 /* INTEGRITY */
 .int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.int-item{padding:16px;background:#F8FAFC;border:1px solid var(–border-light);border-radius:10px;text-align:center}
+.int-item{padding:16px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:10px;text-align:center}
 .int-icon{font-size:28px;margin-bottom:8px}
-.int-title{font-size:12px;font-weight:600;color:var(–text-primary);margin-bottom:4px}
+.int-title{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px}
 .int-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:8px;margin-top:4px}
 .ib-g{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
 .ib-a{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
-.int-sub{font-size:10.5px;color:var(–text-muted);margin-top:5px;line-height:1.4}
+.int-sub{font-size:10.5px;color:var(--text-muted);margin-top:5px;line-height:1.4}
 
 /* AUDIT */
-.audit-item{padding:12px 20px;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between}
+.audit-item{padding:12px 20px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
 .audit-item:last-child{border-bottom:none}
 .audit-icon{font-size:14px;margin-right:10px}
-.audit-desc{font-size:12.5px;font-weight:500;color:var(–text-primary)}
-.audit-meta{font-size:11px;color:var(–text-muted);margin-top:2px}
+.audit-desc{font-size:12.5px;font-weight:500;color:var(--text-primary)}
+.audit-meta{font-size:11px;color:var(--text-muted);margin-top:2px}
 .audit-tag{font-size:11px;font-weight:500;padding:2px 9px;border-radius:8px;border:1px solid;white-space:nowrap}
 .at-g{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
 .at-b{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE}
@@ -130,17 +129,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 /* NO-SHOW */
 .ns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .ns-card{padding:16px;border-radius:10px;border:1px solid;text-align:center}
-.ns-num{font-family:‘DM Mono’,monospace;font-size:32px;font-weight:500;line-height:1;margin-bottom:4px}
+.ns-num{font-family:'DM Mono',monospace;font-size:32px;font-weight:500;line-height:1;margin-bottom:4px}
 .ns-lbl{font-size:12px;font-weight:600;margin-bottom:3px}
 .ns-sub{font-size:11px}
 
 /* MTD SUMMARY */
 .mtd-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.mtd-card{background:var(–surface);border:1px solid var(–border-light);border-radius:8px;padding:14px;text-align:center}
-.mtd-val{font-family:‘DM Mono’,monospace;font-size:20px;font-weight:600;line-height:1;margin-bottom:3px}
-.mtd-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted)}
+.mtd-card{background:var(--surface);border:1px solid var(--border-light);border-radius:8px;padding:14px;text-align:center}
+.mtd-val{font-family:'DM Mono',monospace;font-size:20px;font-weight:600;line-height:1;margin-bottom:3px}
+.mtd-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted)}
 </style>
-
 </head>
 <body>
 
@@ -164,6 +162,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
     <a class="nav-item" href="#"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><path d="M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138"/></svg>System Integrity</a>
     <a class="nav-item" href="#"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 10h6M7 7h3"/></svg>Audit Trail</a>
     <div class="nav-sec">Navigation</div>
+    <a class="nav-item" href="reports.html"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 14l4-4 4 4 4-8"/></svg>Reports &amp; Analytics</a>
     <a class="nav-item" href="index.html"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Main Menu</a>
   </div>
   <div class="sb-footer">
@@ -178,7 +177,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
   <div class="topbar">
     <div>
       <div class="topbar-title">Facility Control Dashboard</div>
-      <div class="topbar-sub">RehabCare Clinic — Governance &amp; Oversight View</div>
+      <div class="topbar-sub">RehabCare Clinic -- Governance &amp; Oversight View</div>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <div class="pill pill-g"><div class="dot"></div>Live · Mon 17 Mar 2025</div>
@@ -189,435 +188,433 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
   <div class="content">
 
-```
-<!-- DAILY SNAPSHOT -->
-<div class="sec-lbl">Daily Facility Snapshot</div>
-<div class="stat-row">
-  <div class="stat-card" style="border-top:3px solid #2563EB">
-    <div class="stat-lbl">Scheduled Today</div>
-    <div class="stat-val" style="color:#2563EB">87</div>
-    <div class="stat-sub">Across 8 therapists</div>
-  </div>
-  <div class="stat-card" style="border-top:3px solid var(--green)">
-    <div class="stat-lbl">Completed</div>
-    <div class="stat-val" style="color:var(--green)">42</div>
-    <div class="stat-sub">As of 10:48 AM</div>
-  </div>
-  <div class="stat-card" style="border-top:3px solid var(--rose)">
-    <div class="stat-lbl">No-Shows</div>
-    <div class="stat-val" style="color:var(--rose)">3</div>
-    <div class="stat-sub">3.4% rate · recovering</div>
-  </div>
-  <div class="stat-card" style="border-top:3px solid var(--amber)">
-    <div class="stat-lbl">Revenue Expected</div>
-    <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px">₹1,04,400</div>
-    <div class="stat-sub">87 × ₹1,200</div>
-  </div>
-  <div class="stat-card" style="border-top:3px solid var(--green)">
-    <div class="stat-lbl">Collected</div>
-    <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px;color:var(--green)">₹50,400</div>
-    <div class="stat-sub">48.3% — day ongoing</div>
-  </div>
-  <div class="stat-card" style="border-top:3px solid var(--rose)">
-    <div class="stat-lbl">Outstanding</div>
-    <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px;color:var(--rose)">₹54,000</div>
-    <div class="stat-sub">Collection in progress</div>
-  </div>
-</div>
+    <!-- DAILY SNAPSHOT -->
+    <div class="sec-lbl">Daily Facility Snapshot</div>
+    <div class="stat-row">
+      <div class="stat-card" style="border-top:3px solid #2563EB">
+        <div class="stat-lbl">Scheduled Today</div>
+        <div class="stat-val" style="color:#2563EB">87</div>
+        <div class="stat-sub">Across 8 therapists</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--green)">
+        <div class="stat-lbl">Completed</div>
+        <div class="stat-val" style="color:var(--green)">42</div>
+        <div class="stat-sub">As of 10:48 AM</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--rose)">
+        <div class="stat-lbl">No-Shows</div>
+        <div class="stat-val" style="color:var(--rose)">3</div>
+        <div class="stat-sub">3.4% rate · recovering</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--amber)">
+        <div class="stat-lbl">Revenue Expected</div>
+        <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px">₹1,04,400</div>
+        <div class="stat-sub">87 × ₹1,200</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--green)">
+        <div class="stat-lbl">Collected</div>
+        <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px;color:var(--green)">₹50,400</div>
+        <div class="stat-sub">48.3% -- day ongoing</div>
+      </div>
+      <div class="stat-card" style="border-top:3px solid var(--rose)">
+        <div class="stat-lbl">Outstanding</div>
+        <div class="stat-val" style="font-size:18px;letter-spacing:-0.5px;color:var(--rose)">₹54,000</div>
+        <div class="stat-sub">Collection in progress</div>
+      </div>
+    </div>
 
-<!-- REVENUE + WEEK TREND -->
-<div class="grid-2">
+    <!-- REVENUE + WEEK TREND -->
+    <div class="grid-2">
 
-  <div class="card">
-    <div class="card-hd">
-      <div class="card-title">Revenue Detail — Today</div>
-      <div class="card-badge">17 Mar 2025</div>
-    </div>
-    <div class="card-body">
-      <div class="rev-compare">
-        <div class="rev-block rev-exp">
-          <div class="rev-lbl">Expected</div>
-          <div class="rev-v" style="color:#1D4ED8">₹1,04,400</div>
-          <div class="rev-s">87 sessions billed</div>
+      <div class="card">
+        <div class="card-hd">
+          <div class="card-title">Revenue Detail -- Today</div>
+          <div class="card-badge">17 Mar 2025</div>
         </div>
-        <div style="font-size:14px;font-weight:700;color:var(--text-muted)">vs</div>
-        <div class="rev-block rev-col">
-          <div class="rev-lbl">Collected</div>
-          <div class="rev-v" style="color:#15803D">₹50,400</div>
-          <div class="rev-s">42 payments confirmed</div>
+        <div class="card-body">
+          <div class="rev-compare">
+            <div class="rev-block rev-exp">
+              <div class="rev-lbl">Expected</div>
+              <div class="rev-v" style="color:#1D4ED8">₹1,04,400</div>
+              <div class="rev-s">87 sessions billed</div>
+            </div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-muted)">vs</div>
+            <div class="rev-block rev-col">
+              <div class="rev-lbl">Collected</div>
+              <div class="rev-v" style="color:#15803D">₹50,400</div>
+              <div class="rev-s">42 payments confirmed</div>
+            </div>
+          </div>
+          <div class="out-bar">
+            <div>
+              <div class="out-lbl">Outstanding Balance -- Today</div>
+              <div class="out-sub">45 sessions pending · 3 no-shows under review</div>
+            </div>
+            <div class="out-v">₹54,000</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+            <div style="padding:12px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px">Billing Gate</div>
+              <div style="font-size:12.5px;font-weight:600;color:var(--text-primary)">No sessions billed without approved program on file</div>
+            </div>
+            <div style="padding:12px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px">Collection Rate</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">48.3%</div>
+              <div style="font-size:11px;color:var(--text-muted)">as of 10:48 AM · day ongoing</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="out-bar">
-        <div>
-          <div class="out-lbl">Outstanding Balance — Today</div>
-          <div class="out-sub">45 sessions pending · 3 no-shows under review</div>
-        </div>
-        <div class="out-v">₹54,000</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-        <div style="padding:12px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:8px">
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px">Billing Gate</div>
-          <div style="font-size:12.5px;font-weight:600;color:var(--text-primary)">No sessions billed without approved program on file</div>
-        </div>
-        <div style="padding:12px;background:#F8FAFC;border:1px solid var(--border-light);border-radius:8px">
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px">Collection Rate</div>
-          <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">48.3%</div>
-          <div style="font-size:11px;color:var(--text-muted)">as of 10:48 AM · day ongoing</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-hd">
-      <div class="card-title">Revenue Trend — This Week</div>
-      <div class="card-badge">Mar 17–21, 2025</div>
-    </div>
-    <div class="card-body">
-      <div class="week-chart">
-        <div class="week-bar-wrap">
-          <div class="week-val">₹97K</div>
-          <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:78%"></div></div>
-          <div class="week-day">Mon 10</div>
+      <div class="card">
+        <div class="card-hd">
+          <div class="card-title">Revenue Trend -- This Week</div>
+          <div class="card-badge">Mar 17--21, 2025</div>
         </div>
-        <div class="week-bar-wrap">
-          <div class="week-val">₹1.02L</div>
-          <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:91%"></div></div>
-          <div class="week-day">Tue 11</div>
-        </div>
-        <div class="week-bar-wrap">
-          <div class="week-val">₹89K</div>
-          <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:87%"></div><div class="week-bar-coll" style="height:70%"></div></div>
-          <div class="week-day">Wed 12</div>
-        </div>
-        <div class="week-bar-wrap">
-          <div class="week-val">₹1.04L</div>
-          <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:85%"></div></div>
-          <div class="week-day">Thu 13</div>
-        </div>
-        <div class="week-bar-wrap">
-          <div class="week-val">₹96K</div>
-          <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:93%"></div><div class="week-bar-coll" style="height:80%"></div></div>
-          <div class="week-day">Fri 14</div>
+        <div class="card-body">
+          <div class="week-chart">
+            <div class="week-bar-wrap">
+              <div class="week-val">₹97K</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:78%"></div></div>
+              <div class="week-day">Mon 10</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹1.02L</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:91%"></div></div>
+              <div class="week-day">Tue 11</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹89K</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:87%"></div><div class="week-bar-coll" style="height:70%"></div></div>
+              <div class="week-day">Wed 12</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹1.04L</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:100%"></div><div class="week-bar-coll" style="height:85%"></div></div>
+              <div class="week-day">Thu 13</div>
+            </div>
+            <div class="week-bar-wrap">
+              <div class="week-val">₹96K</div>
+              <div class="week-bar-bg" style="height:80px"><div class="week-bar-fill" style="height:93%"></div><div class="week-bar-coll" style="height:80%"></div></div>
+              <div class="week-day">Fri 14</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:14px;font-size:11.5px">
+            <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:6px;background:var(--teal);border-radius:2px"></div>Expected</div>
+            <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:6px;background:var(--green);border-radius:2px;opacity:0.7"></div>Collected</div>
+          </div>
+          <div class="mtd-row" style="margin-top:14px">
+            <div class="mtd-card"><div class="mtd-val" style="color:var(--teal)">₹4.88L</div><div class="mtd-lbl">MTD Expected</div></div>
+            <div class="mtd-card"><div class="mtd-val" style="color:var(--green)">₹4.04L</div><div class="mtd-lbl">MTD Collected</div></div>
+            <div class="mtd-card"><div class="mtd-val" style="color:var(--rose)">₹84K</div><div class="mtd-lbl">MTD Outstanding</div></div>
+            <div class="mtd-card"><div class="mtd-val">82.8%</div><div class="mtd-lbl">Collection Rate</div></div>
+          </div>
         </div>
       </div>
-      <div style="display:flex;gap:16px;margin-top:14px;font-size:11.5px">
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:6px;background:var(--teal);border-radius:2px"></div>Expected</div>
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:6px;background:var(--green);border-radius:2px;opacity:0.7"></div>Collected</div>
-      </div>
-      <div class="mtd-row" style="margin-top:14px">
-        <div class="mtd-card"><div class="mtd-val" style="color:var(--teal)">₹4.88L</div><div class="mtd-lbl">MTD Expected</div></div>
-        <div class="mtd-card"><div class="mtd-val" style="color:var(--green)">₹4.04L</div><div class="mtd-lbl">MTD Collected</div></div>
-        <div class="mtd-card"><div class="mtd-val" style="color:var(--rose)">₹84K</div><div class="mtd-lbl">MTD Outstanding</div></div>
-        <div class="mtd-card"><div class="mtd-val">82.8%</div><div class="mtd-lbl">Collection Rate</div></div>
-      </div>
-    </div>
-  </div>
 
-</div>
+    </div>
 
-<!-- THERAPIST ACCOUNTABILITY -->
-<div class="sec-lbl">Therapist Accountability — Week of 17 Mar 2025</div>
-<div class="card">
-  <div class="card-hd">
-    <div class="card-title">Therapist Productivity Overview</div>
-    <div class="card-badge">8 Active Therapists</div>
-  </div>
-  <table class="t-table">
-    <thead>
-      <tr>
-        <th>Therapist</th>
-        <th>Sessions This Week</th>
-        <th>Note Compliance</th>
-        <th>Program Adherence</th>
-        <th>No-Show Flags</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><div style="font-weight:600">Dr. Priya Nair</div><div style="font-size:11px;color:var(--text-muted)">Sr. Physio · HOD</div></td>
-        <td><span style="font-family:'DM Mono',monospace;font-weight:600">53</span> <span style="font-size:11px;color:var(--text-muted)">/ 53 planned</span></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">100%</span><div class="b-wrap"><div class="b-fill" style="width:100%;background:var(--green)"></div></div></div></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">95%</span><div class="b-wrap"><div class="b-fill" style="width:95%;background:var(--green)"></div></div></div></td>
-        <td style="color:var(--green)">0</td>
-        <td><span class="sp sp-g">Excellent</span></td>
-      </tr>
-      <tr>
-        <td><div style="font-weight:600">Ms. Ananya Desai</div><div style="font-size:11px;color:var(--text-muted)">Occupational Therapist</div></td>
-        <td><span style="font-family:'DM Mono',monospace;font-weight:600">38</span> <span style="font-size:11px;color:var(--text-muted)">/ 46 planned</span></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">97%</span><div class="b-wrap"><div class="b-fill" style="width:97%;background:#2563EB"></div></div></div></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">90%</span><div class="b-wrap"><div class="b-fill" style="width:90%;background:#2563EB"></div></div></div></td>
-        <td style="color:var(--amber)">1</td>
-        <td><span class="sp" style="background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE">Good · 1 Leave</span></td>
-      </tr>
-      <tr>
-        <td><div style="font-weight:600">Mr. Rohan Mehta</div><div style="font-size:11px;color:var(--text-muted)">Speech Therapist</div></td>
-        <td><span style="font-family:'DM Mono',monospace;font-weight:600">53</span> <span style="font-size:11px;color:var(--text-muted)">/ 53 planned</span></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">96%</span><div class="b-wrap"><div class="b-fill" style="width:96%;background:#2563EB"></div></div></div></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">88%</span><div class="b-wrap"><div class="b-fill" style="width:88%;background:#2563EB"></div></div></div></td>
-        <td style="color:var(--green)">0</td>
-        <td><span class="sp" style="background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE">Good</span></td>
-      </tr>
-      <tr>
-        <td><div style="font-weight:600">Ms. Kavya Shetty</div><div style="font-size:11px;color:var(--text-muted)">ABA Therapist</div></td>
-        <td><span style="font-family:'DM Mono',monospace;font-weight:600">52</span> <span style="font-size:11px;color:var(--text-muted)">/ 52 planned</span></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--amber)">84%</span><div class="b-wrap"><div class="b-fill" style="width:84%;background:var(--amber)"></div></div></div></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--amber)">76%</span><div class="b-wrap"><div class="b-fill" style="width:76%;background:var(--amber)"></div></div></div></td>
-        <td style="color:var(--amber)">1</td>
-        <td><span class="sp sp-a">Review</span></td>
-      </tr>
-      <tr>
-        <td><div style="font-weight:600">Mr. Vikram Iyer</div><div style="font-size:11px;color:var(--text-muted)">Neuro Physiotherapist</div></td>
-        <td><span style="font-family:'DM Mono',monospace;font-weight:600">44</span> <span style="font-size:11px;color:var(--text-muted)">/ 50 planned</span></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--rose)">78%</span><div class="b-wrap"><div class="b-fill" style="width:78%;background:var(--rose)"></div></div></div></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--rose)">62%</span><div class="b-wrap"><div class="b-fill" style="width:62%;background:var(--rose)"></div></div></div></td>
-        <td style="color:var(--rose);font-weight:600">3</td>
-        <td><span class="sp sp-r">Action Required</span></td>
-      </tr>
-      <tr>
-        <td><div style="font-weight:600">Ms. Sneha Kulkarni</div><div style="font-size:11px;color:var(--text-muted)">Special Educator</div></td>
-        <td><span style="font-family:'DM Mono',monospace;font-weight:600">48</span> <span style="font-size:11px;color:var(--text-muted)">/ 48 planned</span></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">98%</span><div class="b-wrap"><div class="b-fill" style="width:98%;background:var(--green)"></div></div></div></td>
-        <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">92%</span><div class="b-wrap"><div class="b-fill" style="width:92%;background:var(--green)"></div></div></div></td>
-        <td style="color:var(--green)">0</td>
-        <td><span class="sp sp-g">Excellent</span></td>
-      </tr>
-    </tbody>
-  </table>
-  <div style="padding:12px 20px;background:#FEF2F2;border-top:1px solid #FECACA;font-size:11.5px;color:#991B1B;display:flex;align-items:center;gap:8px">
-    ⚠ <strong>Mr. Vikram Iyer:</strong> Note compliance 78% (threshold 80%) + program adherence 62% (threshold 75%) + 3 no-show flags. System auto-flagged for Director review. Clinical review by HOD + HR follow-up by Admin required this week.
-  </div>
-</div>
+    <!-- THERAPIST ACCOUNTABILITY -->
+    <div class="sec-lbl">Therapist Accountability -- Week of 17 Mar 2025</div>
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-title">Therapist Productivity Overview</div>
+        <div class="card-badge">8 Active Therapists</div>
+      </div>
+      <table class="t-table">
+        <thead>
+          <tr>
+            <th>Therapist</th>
+            <th>Sessions This Week</th>
+            <th>Note Compliance</th>
+            <th>Program Adherence</th>
+            <th>No-Show Flags</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div style="font-weight:600">Dr. Priya Nair</div><div style="font-size:11px;color:var(--text-muted)">Sr. Physio · HOD</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">53</span> <span style="font-size:11px;color:var(--text-muted)">/ 53 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">100%</span><div class="b-wrap"><div class="b-fill" style="width:100%;background:var(--green)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">95%</span><div class="b-wrap"><div class="b-fill" style="width:95%;background:var(--green)"></div></div></div></td>
+            <td style="color:var(--green)">0</td>
+            <td><span class="sp sp-g">Excellent</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Ms. Ananya Desai</div><div style="font-size:11px;color:var(--text-muted)">Occupational Therapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">38</span> <span style="font-size:11px;color:var(--text-muted)">/ 46 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">97%</span><div class="b-wrap"><div class="b-fill" style="width:97%;background:#2563EB"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">90%</span><div class="b-wrap"><div class="b-fill" style="width:90%;background:#2563EB"></div></div></div></td>
+            <td style="color:var(--amber)">1</td>
+            <td><span class="sp" style="background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE">Good · 1 Leave</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Mr. Rohan Mehta</div><div style="font-size:11px;color:var(--text-muted)">Speech Therapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">53</span> <span style="font-size:11px;color:var(--text-muted)">/ 53 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">96%</span><div class="b-wrap"><div class="b-fill" style="width:96%;background:#2563EB"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:#2563EB">88%</span><div class="b-wrap"><div class="b-fill" style="width:88%;background:#2563EB"></div></div></div></td>
+            <td style="color:var(--green)">0</td>
+            <td><span class="sp" style="background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE">Good</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Ms. Kavya Shetty</div><div style="font-size:11px;color:var(--text-muted)">ABA Therapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">52</span> <span style="font-size:11px;color:var(--text-muted)">/ 52 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--amber)">84%</span><div class="b-wrap"><div class="b-fill" style="width:84%;background:var(--amber)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--amber)">76%</span><div class="b-wrap"><div class="b-fill" style="width:76%;background:var(--amber)"></div></div></div></td>
+            <td style="color:var(--amber)">1</td>
+            <td><span class="sp sp-a">Review</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Mr. Vikram Iyer</div><div style="font-size:11px;color:var(--text-muted)">Neuro Physiotherapist</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">44</span> <span style="font-size:11px;color:var(--text-muted)">/ 50 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--rose)">78%</span><div class="b-wrap"><div class="b-fill" style="width:78%;background:var(--rose)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--rose)">62%</span><div class="b-wrap"><div class="b-fill" style="width:62%;background:var(--rose)"></div></div></div></td>
+            <td style="color:var(--rose);font-weight:600">3</td>
+            <td><span class="sp sp-r">Action Required</span></td>
+          </tr>
+          <tr>
+            <td><div style="font-weight:600">Ms. Sneha Kulkarni</div><div style="font-size:11px;color:var(--text-muted)">Special Educator</div></td>
+            <td><span style="font-family:'DM Mono',monospace;font-weight:600">48</span> <span style="font-size:11px;color:var(--text-muted)">/ 48 planned</span></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">98%</span><div class="b-wrap"><div class="b-fill" style="width:98%;background:var(--green)"></div></div></div></td>
+            <td><div class="bar-inline"><span style="font-weight:600;color:var(--green)">92%</span><div class="b-wrap"><div class="b-fill" style="width:92%;background:var(--green)"></div></div></div></td>
+            <td style="color:var(--green)">0</td>
+            <td><span class="sp sp-g">Excellent</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:12px 20px;background:#FEF2F2;border-top:1px solid #FECACA;font-size:11.5px;color:#991B1B;display:flex;align-items:center;gap:8px">
+        ⚠ <strong>Mr. Vikram Iyer:</strong> Note compliance 78% (threshold 80%) + program adherence 62% (threshold 75%) + 3 no-show flags. System auto-flagged for Director review. Clinical review by HOD + HR follow-up by Admin required this week.
+      </div>
+    </div>
 
-<!-- NO-SHOW + SLOT -->
-<div class="grid-2">
-  <div class="card">
-    <div class="card-hd"><div class="card-title">No-Show &amp; Slot Utilisation — Today</div><div class="card-badge">Financial Leakage Tracking</div></div>
-    <div class="card-body">
-      <div class="ns-grid" style="margin-bottom:14px">
-        <div class="ns-card" style="background:#FEF2F2;border-color:#FECACA">
-          <div class="ns-num" style="color:#991B1B">5</div>
-          <div class="ns-lbl" style="color:#991B1B">Cancellations</div>
-          <div class="ns-sub" style="color:#B91C1C">Notified today</div>
-        </div>
-        <div class="ns-card" style="background:#F0FDF4;border-color:#BBF7D0">
-          <div class="ns-num" style="color:#166534">3</div>
-          <div class="ns-lbl" style="color:#166534">Slots Refilled</div>
-          <div class="ns-sub" style="color:#166534">From waitlist</div>
-        </div>
-        <div class="ns-card" style="background:#FFFBEB;border-color:#FDE68A">
-          <div class="ns-num" style="color:#92400E">2</div>
-          <div class="ns-lbl" style="color:#92400E">Slots Lost</div>
-          <div class="ns-sub" style="color:#92400E">₹2,400 unrecovered</div>
+    <!-- NO-SHOW + SLOT -->
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-hd"><div class="card-title">No-Show &amp; Slot Utilisation -- Today</div><div class="card-badge">Financial Leakage Tracking</div></div>
+        <div class="card-body">
+          <div class="ns-grid" style="margin-bottom:14px">
+            <div class="ns-card" style="background:#FEF2F2;border-color:#FECACA">
+              <div class="ns-num" style="color:#991B1B">5</div>
+              <div class="ns-lbl" style="color:#991B1B">Cancellations</div>
+              <div class="ns-sub" style="color:#B91C1C">Notified today</div>
+            </div>
+            <div class="ns-card" style="background:#F0FDF4;border-color:#BBF7D0">
+              <div class="ns-num" style="color:#166534">3</div>
+              <div class="ns-lbl" style="color:#166534">Slots Refilled</div>
+              <div class="ns-sub" style="color:#166534">From waitlist</div>
+            </div>
+            <div class="ns-card" style="background:#FFFBEB;border-color:#FDE68A">
+              <div class="ns-num" style="color:#92400E">2</div>
+              <div class="ns-lbl" style="color:#92400E">Slots Lost</div>
+              <div class="ns-sub" style="color:#92400E">₹2,400 unrecovered</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="padding:12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">No-Show Rate</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--amber)">3.4%</div>
+              <div style="font-size:11px;color:var(--text-muted)">3 of 87 sessions</div>
+            </div>
+            <div style="padding:12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px">
+              <div style="font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Slot Recovery</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">60%</div>
+              <div style="font-size:11px;color:var(--text-muted)">3 of 5 slots refilled</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div style="padding:12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px">
-          <div style="font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">No-Show Rate</div>
-          <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--amber)">3.4%</div>
-          <div style="font-size:11px;color:var(--text-muted)">3 of 87 sessions</div>
-        </div>
-        <div style="padding:12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px">
-          <div style="font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Slot Recovery</div>
-          <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">60%</div>
-          <div style="font-size:11px;color:var(--text-muted)">3 of 5 slots refilled</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-hd"><div class="card-title">Cancellation Credit Logic</div></div>
-    <div class="card-body">
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span>Clinic Retained (Refilled)</span><strong style="color:var(--green)">₹18,000 / month</strong></div>
-        <div style="height:8px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:73%;height:100%;border-radius:100px;background:var(--green)"></div></div>
-      </div>
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span>Therapist Credited (Idle)</span><strong style="color:#2563EB">₹6,000 / month</strong></div>
-        <div style="height:8px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:24%;height:100%;border-radius:100px;background:#2563EB"></div></div>
-      </div>
-      <div style="padding:10px 12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:12px;color:#166534">
-        ✓ <strong>Refill rate 75%</strong> — 15 of 20 cancelled slots recovered via waitlist. Revenue protection is working.
-      </div>
-      <div style="padding:10px 12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px;font-size:12px;color:var(--text-secondary);margin-top:8px">
-        <strong>Therapist credit rule:</strong> Where a slot is idle because the cancellation was not escalated to front desk within the 2-hour refill window, a credit flag is logged against the responsible therapist and reviewed weekly by the Director.
+      <div class="card">
+        <div class="card-hd"><div class="card-title">Cancellation Credit Logic</div></div>
+        <div class="card-body">
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span>Clinic Retained (Refilled)</span><strong style="color:var(--green)">₹18,000 / month</strong></div>
+            <div style="height:8px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:73%;height:100%;border-radius:100px;background:var(--green)"></div></div>
+          </div>
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span>Therapist Credited (Idle)</span><strong style="color:#2563EB">₹6,000 / month</strong></div>
+            <div style="height:8px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:24%;height:100%;border-radius:100px;background:#2563EB"></div></div>
+          </div>
+          <div style="padding:10px 12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:12px;color:#166534">
+            ✓ <strong>Refill rate 75%</strong> -- 15 of 20 cancelled slots recovered via waitlist. Revenue protection is working.
+          </div>
+          <div style="padding:10px 12px;background:var(--surface);border:1px solid var(--border-light);border-radius:8px;font-size:12px;color:var(--text-secondary);margin-top:8px">
+            <strong>Therapist credit rule:</strong> Where a slot is idle because the cancellation was not escalated to front desk within the 2-hour refill window, a credit flag is logged against the responsible therapist and reviewed weekly by the Director.
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- SYSTEM INTEGRITY -->
-<div class="sec-lbl">System Integrity &amp; Governance Controls</div>
-<div class="card">
-  <div class="card-hd">
-    <div class="card-title">✦ Governance Controls Status</div>
-    <div style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:#166534;font-weight:500;background:#F0FDF4;border:1px solid #BBF7D0;padding:4px 10px;border-radius:10px">
-      <div class="dot" style="background:#166534"></div> All Systems Operational
+    <!-- SYSTEM INTEGRITY -->
+    <div class="sec-lbl">System Integrity &amp; Governance Controls</div>
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-title">✦ Governance Controls Status</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:#166534;font-weight:500;background:#F0FDF4;border:1px solid #BBF7D0;padding:4px 10px;border-radius:10px">
+          <div class="dot" style="background:#166534"></div> All Systems Operational
+        </div>
+      </div>
+      <div class="int-grid" style="padding:16px">
+        <div class="int-item">
+          <div class="int-icon">🔒</div>
+          <div class="int-title">Audit Log</div>
+          <div class="int-badge ib-g">Enabled</div>
+          <div class="int-sub">All user actions timestamped &amp; stored with user ID</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">🛡</div>
+          <div class="int-title">Role-Based Access</div>
+          <div class="int-badge ib-g">Enforced</div>
+          <div class="int-sub">5 roles active -- Trustee, Admin, HOD, Therapist, Front Desk</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">📋</div>
+          <div class="int-title">Clinical Modification</div>
+          <div class="int-badge ib-g">HOD / ST Only</div>
+          <div class="int-sub">No program or milestone change without HOD approval</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">💳</div>
+          <div class="int-title">Billing Gate</div>
+          <div class="int-badge ib-g">Program-Locked</div>
+          <div class="int-sub">No billing generated without approved program on file</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">📝</div>
+          <div class="int-title">Session Note Gate</div>
+          <div class="int-badge ib-g">Enforced</div>
+          <div class="int-sub">Session cannot close without clinical note on file</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">⚙️</div>
+          <div class="int-title">Exception Approvals</div>
+          <div class="int-badge ib-g">Admin-Gated</div>
+          <div class="int-sub">No discount or waiver without Admin queue approval</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">🔄</div>
+          <div class="int-title">Plan Change Gate</div>
+          <div class="int-badge ib-g">Dual-Gate</div>
+          <div class="int-sub">HOD approves clinically, Admin executes operationally</div>
+        </div>
+        <div class="int-item">
+          <div class="int-icon">⚠</div>
+          <div class="int-title">Deviation Tracking</div>
+          <div class="int-badge ib-a">1 Flagged</div>
+          <div class="int-sub">Mr. Vikram Iyer at 38% -- above 30% threshold</div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="int-grid" style="padding:16px">
-    <div class="int-item">
-      <div class="int-icon">🔒</div>
-      <div class="int-title">Audit Log</div>
-      <div class="int-badge ib-g">Enabled</div>
-      <div class="int-sub">All user actions timestamped &amp; stored with user ID</div>
-    </div>
-    <div class="int-item">
-      <div class="int-icon">🛡</div>
-      <div class="int-title">Role-Based Access</div>
-      <div class="int-badge ib-g">Enforced</div>
-      <div class="int-sub">5 roles active — Trustee, Admin, HOD, Therapist, Front Desk</div>
-    </div>
-    <div class="int-item">
-      <div class="int-icon">📋</div>
-      <div class="int-title">Clinical Modification</div>
-      <div class="int-badge ib-g">HOD / ST Only</div>
-      <div class="int-sub">No program or milestone change without HOD approval</div>
-    </div>
-    <div class="int-item">
-      <div class="int-icon">💳</div>
-      <div class="int-title">Billing Gate</div>
-      <div class="int-badge ib-g">Program-Locked</div>
-      <div class="int-sub">No billing generated without approved program on file</div>
-    </div>
-    <div class="int-item">
-      <div class="int-icon">📝</div>
-      <div class="int-title">Session Note Gate</div>
-      <div class="int-badge ib-g">Enforced</div>
-      <div class="int-sub">Session cannot close without clinical note on file</div>
-    </div>
-    <div class="int-item">
-      <div class="int-icon">⚙️</div>
-      <div class="int-title">Exception Approvals</div>
-      <div class="int-badge ib-g">Admin-Gated</div>
-      <div class="int-sub">No discount or waiver without Admin queue approval</div>
-    </div>
-    <div class="int-item">
-      <div class="int-icon">🔄</div>
-      <div class="int-title">Plan Change Gate</div>
-      <div class="int-badge ib-g">Dual-Gate</div>
-      <div class="int-sub">HOD approves clinically, Admin executes operationally</div>
-    </div>
-    <div class="int-item">
-      <div class="int-icon">⚠</div>
-      <div class="int-title">Deviation Tracking</div>
-      <div class="int-badge ib-a">1 Flagged</div>
-      <div class="int-sub">Mr. Vikram Iyer at 38% — above 30% threshold</div>
-    </div>
-  </div>
-</div>
 
-<!-- AUDIT TRAIL -->
-<div class="sec-lbl">Recent Audit Events</div>
-<div class="card">
-  <div class="card-hd">
-    <div class="card-title">Audit Trail — Last 10 Actions</div>
-    <div class="card-badge">Tamper-Proof Log</div>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">🗒</span>
-      <div>
-        <div class="audit-desc">Session note submitted — Aarav Sharma · Session 15</div>
-        <div class="audit-meta">Ms. Ananya Desai · 17 Mar 2025 · 09:58 AM</div>
+    <!-- AUDIT TRAIL -->
+    <div class="sec-lbl">Recent Audit Events</div>
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-title">Audit Trail -- Last 10 Actions</div>
+        <div class="card-badge">Tamper-Proof Log</div>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🗒</span>
+          <div>
+            <div class="audit-desc">Session note submitted -- Yuvan Singh · Session 15</div>
+            <div class="audit-meta">Ms. Ananya Desai · 17 Mar 2025 · 09:58 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Compliant</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">✅</span>
+          <div>
+            <div class="audit-desc">Program published -- Amaira Patil · OT+Physio+SI · ₹48,000</div>
+            <div class="audit-meta">Admin: Sunita Rao · 16 Mar 2025 · 4:15 PM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-b">Published</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🔁</span>
+          <div>
+            <div class="audit-desc">Plan change approved -- Yuvan Singh · OT 2x→3x/week</div>
+            <div class="audit-meta">Dr. Priya Nair (HOD) · 16 Mar 2025 · 11:30 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Approved</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">⚑</span>
+          <div>
+            <div class="audit-desc">Note compliance flag raised -- Mr. Vikram Iyer · 3 overdue notes</div>
+            <div class="audit-meta">System auto-flag · 17 Mar 2025 · 04:00 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-a">Action Pending</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">💳</span>
+          <div>
+            <div class="audit-desc">Payment recorded -- Vansh Kataria · ₹1,200 · Session 32</div>
+            <div class="audit-meta">Front Desk: Pooja Mane · 17 Mar 2025 · 09:12 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Recorded</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🔁</span>
+          <div>
+            <div class="audit-desc">Milestone 50% achieved -- Yuvan Singh · Bilateral coordination</div>
+            <div class="audit-meta">Dr. Priya Nair (HOD) · 15 Mar 2025 · 3:45 PM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-b">Milestone Logged</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">✖</span>
+          <div>
+            <div class="audit-desc">No-show recorded -- Zain Sayyed · OT 10:00 AM · auto-marked T+15</div>
+            <div class="audit-meta">System · 17 Mar 2025 · 10:15 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-a">Recovery Pending</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">⚙️</span>
+          <div>
+            <div class="audit-desc">Exception approved -- 10% sibling discount · Diya Choudhary</div>
+            <div class="audit-meta">Admin: Sunita Rao · 16 Mar 2025 · 2:00 PM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Approved</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">📋</span>
+          <div>
+            <div class="audit-desc">Evaluation recorded -- Vansh Kataria · GMFCS Level II · Dr. Priya Nair</div>
+            <div class="audit-meta">Dr. Priya Nair (HOD) · 01 Sep 2024 · 10:00 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-g">Compliant</span>
+      </div>
+      <div class="audit-item">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="audit-icon">🔒</span>
+          <div>
+            <div class="audit-desc">Admin access attempt to clinical content -- BLOCKED by system</div>
+            <div class="audit-meta">Admin: Sunita Rao attempted edit on Yuvan Singh program · 14 Mar 2025 · 11:22 AM</div>
+          </div>
+        </div>
+        <span class="audit-tag at-r">Blocked -- Logged</span>
       </div>
     </div>
-    <span class="audit-tag at-g">Compliant</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">✅</span>
-      <div>
-        <div class="audit-desc">Program published — Riya Patel · Physio+OT+EI · ₹48,000</div>
-        <div class="audit-meta">Admin: Sunita Rao · 16 Mar 2025 · 4:15 PM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-b">Published</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">🔁</span>
-      <div>
-        <div class="audit-desc">Plan change approved — Aarav Sharma · OT 2x→3x/week</div>
-        <div class="audit-meta">Dr. Priya Nair (HOD) · 16 Mar 2025 · 11:30 AM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-g">Approved</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">⚑</span>
-      <div>
-        <div class="audit-desc">Note compliance flag raised — Mr. Vikram Iyer · 3 overdue notes</div>
-        <div class="audit-meta">System auto-flag · 17 Mar 2025 · 04:00 AM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-a">Action Pending</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">💳</span>
-      <div>
-        <div class="audit-desc">Payment recorded — Kabir Malhotra · ₹1,200 · Session 32</div>
-        <div class="audit-meta">Front Desk: Pooja Mane · 17 Mar 2025 · 09:12 AM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-g">Recorded</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">🔁</span>
-      <div>
-        <div class="audit-desc">Milestone 50% achieved — Aarav Sharma · Bilateral coordination</div>
-        <div class="audit-meta">Dr. Priya Nair (HOD) · 15 Mar 2025 · 3:45 PM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-b">Milestone Logged</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">✖</span>
-      <div>
-        <div class="audit-desc">No-show recorded — Aryan Thakur · OT 10:00 AM · auto-marked T+15</div>
-        <div class="audit-meta">System · 17 Mar 2025 · 10:15 AM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-a">Recovery Pending</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">⚙️</span>
-      <div>
-        <div class="audit-desc">Exception approved — 10% sibling discount · Diya Choudhary</div>
-        <div class="audit-meta">Admin: Sunita Rao · 16 Mar 2025 · 2:00 PM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-g">Approved</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">📋</span>
-      <div>
-        <div class="audit-desc">Evaluation recorded — Kabir Malhotra · GMFCS Level II · Dr. Priya Nair</div>
-        <div class="audit-meta">Dr. Priya Nair (HOD) · 01 Sep 2024 · 10:00 AM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-g">Compliant</span>
-  </div>
-  <div class="audit-item">
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <span class="audit-icon">🔒</span>
-      <div>
-        <div class="audit-desc">Admin access attempt to clinical content — BLOCKED by system</div>
-        <div class="audit-meta">Admin: Sunita Rao attempted edit on Aarav Sharma program · 14 Mar 2025 · 11:22 AM</div>
-      </div>
-    </div>
-    <span class="audit-tag at-r">Blocked — Logged</span>
-  </div>
-</div>
-```
 
   </div>
 </main>
