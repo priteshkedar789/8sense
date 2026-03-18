@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,41 +19,41 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;min-heig
 
 /* HERO HEADER */
 .hero{
-background:linear-gradient(135deg,#0B1F3A 0%,#142F54 50%,#0D4A44 100%);
-padding:60px 5% 50px;
-position:relative;overflow:hidden;
-border-bottom:1px solid rgba(255,255,255,0.08);
+  background:linear-gradient(135deg,#0B1F3A 0%,#142F54 50%,#0D4A44 100%);
+  padding:60px 5% 50px;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 .hero::before{
-content:’’;position:absolute;inset:0;
-background:radial-gradient(ellipse at 80% 20%,rgba(13,148,136,0.15) 0%,transparent 60%),
-radial-gradient(ellipse at 20% 80%,rgba(201,132,26,0.1) 0%,transparent 60%);
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 20%,rgba(13,148,136,0.15) 0%,transparent 60%),
+             radial-gradient(ellipse at 20% 80%,rgba(201,132,26,0.1) 0%,transparent 60%);
 }
 .hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto}
 .clinic-badge{
-display:inline-flex;align-items:center;gap:8px;
-background:rgba(13,148,136,0.15);border:1px solid rgba(13,148,136,0.35);
-color:#5EEAD4;padding:6px 14px;border-radius:100px;
-font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(13,148,136,0.15);border:1px solid rgba(13,148,136,0.35);
+  color:#5EEAD4;padding:6px 14px;border-radius:100px;
+  font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;
 }
-.clinic-badge::before{content:’’;width:6px;height:6px;background:#14B8A6;border-radius:50%;animation:pulse 2s infinite}
+.clinic-badge::before{content:'';width:6px;height:6px;background:#14B8A6;border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
 .hero h1{
-font-family:‘Playfair Display’,serif;
-font-size:clamp(2.5rem,5vw,4rem);
-font-weight:900;line-height:1.05;
-letter-spacing:-0.02em;margin-bottom:14px;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:900;line-height:1.05;
+  letter-spacing:-0.02em;margin-bottom:14px;
 }
 .hero h1 span{color:#14B8A6}
 .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.6);line-height:1.6;max-width:600px;margin-bottom:30px}
 .hero-stats{display:flex;gap:32px;flex-wrap:wrap}
-.hero-stat .num{font-family:‘DM Mono’,monospace;font-size:1.8rem;font-weight:500;color:#14B8A6}
+.hero-stat .num{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:#14B8A6}
 .hero-stat .lbl{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
 
 /* SYSTEM STATUS */
 .status-bar{
-background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);
-padding:14px 5%;
+  background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:14px 5%;
 }
 .status-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .status-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)}
@@ -66,90 +65,90 @@ padding:14px 5%;
 
 /* SECTION */
 .section-label{
-font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:0.14em;
-text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:20px;
-display:flex;align-items:center;gap:10px;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;
+  text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
 }
-.section-label::after{content:’’;flex:1;height:1px;background:rgba(255,255,255,0.08)}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08)}
 
 /* ROLE CARDS */
 .roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
 .role-card{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:16px;padding:28px;
-text-decoration:none;color:#fff;
-transition:all 0.25s;position:relative;overflow:hidden;
-display:flex;flex-direction:column;gap:16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;padding:28px;
+  text-decoration:none;color:#fff;
+  transition:all 0.25s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:16px;
 }
 .role-card::before{
-content:’’;position:absolute;top:0;left:0;right:0;height:3px;
-background:var(–accent-color,#14B8A6);
-transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent-color,#14B8A6);
+  transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
 }
 .role-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.15);transform:translateY(-3px)}
 .role-card:hover::before{transform:scaleX(1)}
 
 .role-icon{
-width:52px;height:52px;border-radius:14px;
-display:flex;align-items:center;justify-content:center;font-size:22px;
-background:var(–icon-bg,rgba(13,148,136,0.15));
-border:1px solid var(–icon-border,rgba(13,148,136,0.25));
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  background:var(--icon-bg,rgba(13,148,136,0.15));
+  border:1px solid var(--icon-border,rgba(13,148,136,0.25));
 }
-.role-name{font-family:‘Playfair Display’,serif;font-size:1.15rem;font-weight:700}
+.role-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700}
 .role-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6}
 .role-features{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:4px}
 .role-features li{
-font-size:11.5px;color:rgba(255,255,255,0.4);
-display:flex;align-items:center;gap:7px;
+  font-size:11.5px;color:rgba(255,255,255,0.4);
+  display:flex;align-items:center;gap:7px;
 }
-.role-features li::before{content:‘→’;color:var(–accent-color,#14B8A6);font-size:10px}
+.role-features li::before{content:'→';color:var(--accent-color,#14B8A6);font-size:10px}
 .role-launch{
-margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07);
-font-size:12px;font-weight:600;color:var(–accent-color,#14B8A6);
-display:flex;align-items:center;gap:6px;letter-spacing:0.04em;
+  margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07);
+  font-size:12px;font-weight:600;color:var(--accent-color,#14B8A6);
+  display:flex;align-items:center;gap:6px;letter-spacing:0.04em;
 }
 
 /* TEAL */
-.card-teal{–accent-color:#14B8A6;–icon-bg:rgba(13,148,136,0.15);–icon-border:rgba(13,148,136,0.25)}
+.card-teal{--accent-color:#14B8A6;--icon-bg:rgba(13,148,136,0.15);--icon-border:rgba(13,148,136,0.25)}
 /* AMBER */
-.card-amber{–accent-color:#E09A30;–icon-bg:rgba(201,132,26,0.15);–icon-border:rgba(201,132,26,0.25)}
+.card-amber{--accent-color:#E09A30;--icon-bg:rgba(201,132,26,0.15);--icon-border:rgba(201,132,26,0.25)}
 /* BLUE */
-.card-blue{–accent-color:#60A5FA;–icon-bg:rgba(37,99,235,0.15);–icon-border:rgba(37,99,235,0.25)}
+.card-blue{--accent-color:#60A5FA;--icon-bg:rgba(37,99,235,0.15);--icon-border:rgba(37,99,235,0.25)}
 /* GREEN */
-.card-green{–accent-color:#34D399;–icon-bg:rgba(5,150,105,0.15);–icon-border:rgba(5,150,105,0.25)}
+.card-green{--accent-color:#34D399;--icon-bg:rgba(5,150,105,0.15);--icon-border:rgba(5,150,105,0.25)}
 /* PURPLE */
-.card-purple{–accent-color:#A78BFA;–icon-bg:rgba(124,58,237,0.15);–icon-border:rgba(124,58,237,0.25)}
+.card-purple{--accent-color:#A78BFA;--icon-bg:rgba(124,58,237,0.15);--icon-border:rgba(124,58,237,0.25)}
 /* ROSE */
-.card-rose{–accent-color:#FB7185;–icon-bg:rgba(220,38,38,0.15);–icon-border:rgba(220,38,38,0.25)}
+.card-rose{--accent-color:#FB7185;--icon-bg:rgba(220,38,38,0.15);--icon-border:rgba(220,38,38,0.25)}
 /* SKY */
-.card-sky{–accent-color:#38BDF8;–icon-bg:rgba(14,165,233,0.15);–icon-border:rgba(14,165,233,0.25)}
+.card-sky{--accent-color:#38BDF8;--icon-bg:rgba(14,165,233,0.15);--icon-border:rgba(14,165,233,0.25)}
 /* INDIGO */
-.card-indigo{–accent-color:#818CF8;–icon-bg:rgba(99,102,241,0.15);–icon-border:rgba(99,102,241,0.25)}
+.card-indigo{--accent-color:#818CF8;--icon-bg:rgba(99,102,241,0.15);--icon-border:rgba(99,102,241,0.25)}
 /* ORANGE */
-.card-orange{–accent-color:#FB923C;–icon-bg:rgba(249,115,22,0.15);–icon-border:rgba(249,115,22,0.25)}
+.card-orange{--accent-color:#FB923C;--icon-bg:rgba(249,115,22,0.15);--icon-border:rgba(249,115,22,0.25)}
 
 /* NEW MODULE BADGE */
 .new-badge{
-position:absolute;top:14px;right:14px;
-background:rgba(201,132,26,0.2);border:1px solid rgba(201,132,26,0.4);
-color:#E09A30;font-size:10px;font-weight:700;letter-spacing:0.08em;
-text-transform:uppercase;padding:3px 8px;border-radius:4px;
+  position:absolute;top:14px;right:14px;
+  background:rgba(201,132,26,0.2);border:1px solid rgba(201,132,26,0.4);
+  color:#E09A30;font-size:10px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;padding:3px 8px;border-radius:4px;
 }
 
 /* SYSTEM OVERVIEW */
 .overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
 .overview-card{
-background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
-border-radius:12px;padding:20px;text-align:center;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:20px;text-align:center;
 }
-.overview-num{font-family:‘DM Mono’,monospace;font-size:2rem;font-weight:500;line-height:1;color:#14B8A6}
+.overview-num{font-family:'DM Mono',monospace;font-size:2rem;font-weight:500;line-height:1;color:#14B8A6}
 .overview-lbl{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
 
 /* GAP LEGEND */
 .legend{
-background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
-border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
 }
 .legend-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)}
 .legend-dot{width:8px;height:8px;border-radius:2px}
@@ -158,15 +157,14 @@ border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:24px;fl
 
 /* FOOTER */
 footer{
-border-top:1px solid rgba(255,255,255,0.06);
-padding:24px 5%;text-align:center;
-font-size:12px;color:rgba(255,255,255,0.25);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:24px 5%;text-align:center;
+  font-size:12px;color:rgba(255,255,255,0.25);
 }
 
 @media(max-width:1024px){.roles-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.roles-grid{grid-template-columns:1fr}.overview-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
-
 </head>
 <body>
 
@@ -210,168 +208,168 @@ font-size:12px;color:rgba(255,255,255,0.25);
 
   <div class="roles-grid">
 
-<a href="front-desk.html" class="role-card card-teal">
-  <div class="role-icon">🖥️</div>
-  <div>
-    <div class="role-name">Front Desk</div>
-    <div class="role-desc">High-volume daily operations — check-in, scheduling, payment collection, slot refill, and child routing across all therapy departments.</div>
-  </div>
-  <ul class="role-features">
-    <li>Live schedule grid (87 sessions / day)</li>
-    <li>Check-in / Check-out with timestamp</li>
-    <li>Cancellation → Refill queue with timer</li>
-    <li>Outstanding balance alerts at checkout</li>
-    <li>Child routing and handoff tracking</li>
-  </ul>
-  <div class="role-launch">Launch Front Desk →</div>
-</a>
+    <a href="front-desk.html" class="role-card card-teal">
+      <div class="role-icon">🖥️</div>
+      <div>
+        <div class="role-name">Front Desk</div>
+        <div class="role-desc">High-volume daily operations — check-in, scheduling, payment collection, slot refill, and child routing across all therapy departments.</div>
+      </div>
+      <ul class="role-features">
+        <li>Live schedule grid (87 sessions / day)</li>
+        <li>Check-in / Check-out with timestamp</li>
+        <li>Cancellation → Refill queue with timer</li>
+        <li>Outstanding balance alerts at checkout</li>
+        <li>Child routing and handoff tracking</li>
+      </ul>
+      <div class="role-launch">Launch Front Desk →</div>
+    </a>
 
-<a href="therapist.html" class="role-card card-blue">
-  <div class="role-icon">🩺</div>
-  <div>
-    <div class="role-name">Therapist</div>
-    <div class="role-desc">Session execution workspace — prescribed activities, completion tracking, mandatory deviation capture, clinical note gate, and post-session handoff confirmation.</div>
-  </div>
-  <ul class="role-features">
-    <li>Prescribed activity checklist per session</li>
-    <li>Completed / Partial / Skipped per activity</li>
-    <li>Mandatory deviation reason (mandatory field)</li>
-    <li>Clinical note gate — note required before close</li>
-    <li>Handoff confirmation screen</li>
-  </ul>
-  <div class="role-launch">Launch Therapist View →</div>
-</a>
+    <a href="therapist.html" class="role-card card-blue">
+      <div class="role-icon">🩺</div>
+      <div>
+        <div class="role-name">Therapist</div>
+        <div class="role-desc">Session execution workspace — prescribed activities, completion tracking, mandatory deviation capture, clinical note gate, and post-session handoff confirmation.</div>
+      </div>
+      <ul class="role-features">
+        <li>Prescribed activity checklist per session</li>
+        <li>Completed / Partial / Skipped per activity</li>
+        <li>Mandatory deviation reason (mandatory field)</li>
+        <li>Clinical note gate — note required before close</li>
+        <li>Handoff confirmation screen</li>
+      </ul>
+      <div class="role-launch">Launch Therapist View →</div>
+    </a>
 
-<a href="hod.html" class="role-card card-green">
-  <div class="role-icon">🎓</div>
-  <div>
-    <div class="role-name">HOD / Senior Therapist</div>
-    <div class="role-desc">Clinical authority — evaluation recording, program design with phase-based activities and milestones, plan change approval queue, therapist deviation monitoring.</div>
-  </div>
-  <ul class="role-features">
-    <li>Evaluation → Program Design → Approval gate</li>
-    <li>Phase-based activity and milestone definition</li>
-    <li>Plan change review queue (approve / reject)</li>
-    <li>Therapist deviation monitoring (clinic-wide)</li>
-    <li>Video progress library management</li>
-  </ul>
-  <div class="role-launch">Launch HOD View →</div>
-</a>
+    <a href="hod.html" class="role-card card-green">
+      <div class="role-icon">🎓</div>
+      <div>
+        <div class="role-name">HOD / Senior Therapist</div>
+        <div class="role-desc">Clinical authority — evaluation recording, program design with phase-based activities and milestones, plan change approval queue, therapist deviation monitoring.</div>
+      </div>
+      <ul class="role-features">
+        <li>Evaluation → Program Design → Approval gate</li>
+        <li>Phase-based activity and milestone definition</li>
+        <li>Plan change review queue (approve / reject)</li>
+        <li>Therapist deviation monitoring (clinic-wide)</li>
+        <li>Video progress library management</li>
+      </ul>
+      <div class="role-launch">Launch HOD View →</div>
+    </a>
 
-<a href="admin.html" class="role-card card-amber">
-  <div class="role-icon">⚙️</div>
-  <div>
-    <div class="role-name">Admin</div>
-    <div class="role-desc">Operational control — master scheduling, program publication, exception approvals, therapist HR tracking, daily operations oversight, no-show management.</div>
-  </div>
-  <ul class="role-features">
-    <li>Master schedule with leave management</li>
-    <li>Program publication gate (post ST approval)</li>
-    <li>Exception queue — waivers, discounts, overrides</li>
-    <li>No-show recovery workflow</li>
-    <li>Therapist HR — attendance, payroll preview</li>
-  </ul>
-  <div class="role-launch">Launch Admin View →</div>
-</a>
+    <a href="admin.html" class="role-card card-amber">
+      <div class="role-icon">⚙️</div>
+      <div>
+        <div class="role-name">Admin</div>
+        <div class="role-desc">Operational control — master scheduling, program publication, exception approvals, therapist HR tracking, daily operations oversight, no-show management.</div>
+      </div>
+      <ul class="role-features">
+        <li>Master schedule with leave management</li>
+        <li>Program publication gate (post ST approval)</li>
+        <li>Exception queue — waivers, discounts, overrides</li>
+        <li>No-show recovery workflow</li>
+        <li>Therapist HR — attendance, payroll preview</li>
+      </ul>
+      <div class="role-launch">Launch Admin View →</div>
+    </a>
 
-<a href="trustee.html" class="role-card card-purple">
-  <div class="role-icon">📊</div>
-  <div>
-    <div class="role-name">Trustee / Director</div>
-    <div class="role-desc">Governance and financial oversight — revenue vs collection, therapist accountability, system integrity indicators, audit trail, and compliance status.</div>
-  </div>
-  <ul class="role-features">
-    <li>Daily / weekly revenue reconciliation</li>
-    <li>Therapist note compliance rates</li>
-    <li>No-show rate and revenue at risk</li>
-    <li>Audit trail — all user actions logged</li>
-    <li>System integrity and RBAC status</li>
-  </ul>
-  <div class="role-launch">Launch Trustee View →</div>
-</a>
+    <a href="trustee.html" class="role-card card-purple">
+      <div class="role-icon">📊</div>
+      <div>
+        <div class="role-name">Trustee / Director</div>
+        <div class="role-desc">Governance and financial oversight — revenue vs collection, therapist accountability, system integrity indicators, audit trail, and compliance status.</div>
+      </div>
+      <ul class="role-features">
+        <li>Daily / weekly revenue reconciliation</li>
+        <li>Therapist note compliance rates</li>
+        <li>No-show rate and revenue at risk</li>
+        <li>Audit trail — all user actions logged</li>
+        <li>System integrity and RBAC status</li>
+      </ul>
+      <div class="role-launch">Launch Trustee View →</div>
+    </a>
 
-<a href="parent-portal.html" class="role-card card-rose">
-  <div class="role-icon">📱</div>
-  <div>
-    <div class="role-name">Parent Portal</div>
-    <div class="role-desc">Mobile-first family interface — child progress, session balance, appointment management, billing with GST receipt download, therapist homework tracking.</div>
-  </div>
-  <ul class="role-features">
-    <li>OTP login — secure, no password</li>
-    <li>Live session progress and milestones</li>
-    <li>Outstanding balance and Pay Now</li>
-    <li>GST receipt download per transaction</li>
-    <li>Therapist homework and progress notes</li>
-  </ul>
-  <div class="role-launch">Launch Parent Portal →</div>
-</a>
+    <a href="parent-portal.html" class="role-card card-rose">
+      <div class="role-icon">📱</div>
+      <div>
+        <div class="role-name">Parent Portal</div>
+        <div class="role-desc">Mobile-first family interface — child progress, session balance, appointment management, billing with GST receipt download, therapist homework tracking.</div>
+      </div>
+      <ul class="role-features">
+        <li>OTP login — secure, no password</li>
+        <li>Live session progress and milestones</li>
+        <li>Outstanding balance and Pay Now</li>
+        <li>GST receipt download per transaction</li>
+        <li>Therapist homework and progress notes</li>
+      </ul>
+      <div class="role-launch">Launch Parent Portal →</div>
+    </a>
 
-<a href="inquiry.html" class="role-card card-sky">
-  <span class="new-badge">New Module</span>
-  <div class="role-icon">📋</div>
-  <div>
-    <div class="role-name">Inquiry & CRM</div>
-    <div class="role-desc">New SOP module — captures every inquiry from walk-in, referral, call, or WhatsApp. Assigns ownership, sets follow-up SLA, and tracks conversion to registration.</div>
-  </div>
-  <ul class="role-features">
-    <li>Inquiry intake with source tracking</li>
-    <li>Assigned staff + SLA countdown timer</li>
-    <li>Conversion funnel KPIs (Inquiry → Reg → Active)</li>
-    <li>Referral source analysis</li>
-    <li>Lost inquiry reason capture</li>
-  </ul>
-  <div class="role-launch">Launch Inquiry CRM →</div>
-</a>
+    <a href="inquiry.html" class="role-card card-sky">
+      <span class="new-badge">New Module</span>
+      <div class="role-icon">📋</div>
+      <div>
+        <div class="role-name">Inquiry & CRM</div>
+        <div class="role-desc">New SOP module — captures every inquiry from walk-in, referral, call, or WhatsApp. Assigns ownership, sets follow-up SLA, and tracks conversion to registration.</div>
+      </div>
+      <ul class="role-features">
+        <li>Inquiry intake with source tracking</li>
+        <li>Assigned staff + SLA countdown timer</li>
+        <li>Conversion funnel KPIs (Inquiry → Reg → Active)</li>
+        <li>Referral source analysis</li>
+        <li>Lost inquiry reason capture</li>
+      </ul>
+      <div class="role-launch">Launch Inquiry CRM →</div>
+    </a>
 
-<a href="billing.html" class="role-card card-orange">
-  <span class="new-badge">New Module</span>
-  <div class="role-icon">🧾</div>
-  <div>
-    <div class="role-name">Billing & Invoicing</div>
-    <div class="role-desc">New SOP module — package purchase flow, GST-compliant invoice generation, session ledger, outstanding ageing report, TPA authorization tracking.</div>
-  </div>
-  <ul class="role-features">
-    <li>Package quotation and purchase workflow</li>
-    <li>GST invoice with GSTIN / SAC code</li>
-    <li>Session ledger — consumed vs remaining</li>
-    <li>Outstanding ageing by patient</li>
-    <li>TPA authorization number capture</li>
-  </ul>
-  <div class="role-launch">Launch Billing Module →</div>
-</a>
+    <a href="billing.html" class="role-card card-orange">
+      <span class="new-badge">New Module</span>
+      <div class="role-icon">🧾</div>
+      <div>
+        <div class="role-name">Billing & Invoicing</div>
+        <div class="role-desc">New SOP module — package purchase flow, GST-compliant invoice generation, session ledger, outstanding ageing report, TPA authorization tracking.</div>
+      </div>
+      <ul class="role-features">
+        <li>Package quotation and purchase workflow</li>
+        <li>GST invoice with GSTIN / SAC code</li>
+        <li>Session ledger — consumed vs remaining</li>
+        <li>Outstanding ageing by patient</li>
+        <li>TPA authorization number capture</li>
+      </ul>
+      <div class="role-launch">Launch Billing Module →</div>
+    </a>
 
-<a href="reports.html" class="role-card card-indigo">
-  <span class="new-badge">New Module</span>
-  <div class="role-icon">📈</div>
-  <div>
-    <div class="role-name">Reports & Analytics</div>
-    <div class="role-desc">Dedicated reporting centre — 7 report types covering patient progress, therapist performance, clinical compliance, operations, finance, and discharge summaries.</div>
-  </div>
-  <ul class="role-features">
-    <li>Patient Progress Report (per-patient clinical)</li>
-    <li>Therapist Performance Scorecard</li>
-    <li>Session Compliance & Deviation Report</li>
-    <li>Clinic Operations & Financial Summary</li>
-    <li>No-Show & Cancellation Report</li>
-    <li>Discharge Summary (print-ready)</li>
-  </ul>
-  <div class="role-launch">Launch Reports →</div>
-</a>
+    <a href="reports.html" class="role-card card-indigo">
+      <span class="new-badge">New Module</span>
+      <div class="role-icon">📈</div>
+      <div>
+        <div class="role-name">Reports & Analytics</div>
+        <div class="role-desc">Dedicated reporting centre — 7 report types covering patient progress, therapist performance, clinical compliance, operations, finance, and discharge summaries.</div>
+      </div>
+      <ul class="role-features">
+        <li>Patient Progress Report (per-patient clinical)</li>
+        <li>Therapist Performance Scorecard</li>
+        <li>Session Compliance & Deviation Report</li>
+        <li>Clinic Operations & Financial Summary</li>
+        <li>No-Show & Cancellation Report</li>
+        <li>Discharge Summary (print-ready)</li>
+      </ul>
+      <div class="role-launch">Launch Reports →</div>
+    </a>
 
-<a href="hod.html#protocols" class="role-card" style="--accent-color:#38BDF8;--icon-bg:rgba(14,165,233,0.15);--icon-border:rgba(14,165,233,0.25)">
-  <div class="role-icon">📚</div>
-  <div>
-    <div class="role-name">Protocol Library</div>
-    <div class="role-desc">Clinical protocol management — standardised therapy protocols, version control, linking to program activities. Accessed via the HOD module.</div>
-  </div>
-  <ul class="role-features">
-    <li>Therapy protocols by discipline</li>
-    <li>Version-controlled clinical content</li>
-    <li>Linked to program activity templates</li>
-    <li>Senior Therapist management only</li>
-  </ul>
-  <div class="role-launch" style="color:#38BDF8">Open via HOD Module →</div>
-</a>
+    <a href="hod.html#protocols" class="role-card" style="--accent-color:#38BDF8;--icon-bg:rgba(14,165,233,0.15);--icon-border:rgba(14,165,233,0.25)">
+      <div class="role-icon">📚</div>
+      <div>
+        <div class="role-name">Protocol Library</div>
+        <div class="role-desc">Clinical protocol management — standardised therapy protocols, version control, linking to program activities. Accessed via the HOD module.</div>
+      </div>
+      <ul class="role-features">
+        <li>Therapy protocols by discipline</li>
+        <li>Version-controlled clinical content</li>
+        <li>Linked to program activity templates</li>
+        <li>Senior Therapist management only</li>
+      </ul>
+      <div class="role-launch" style="color:#38BDF8">Open via HOD Module →</div>
+    </a>
 
   </div>
 
