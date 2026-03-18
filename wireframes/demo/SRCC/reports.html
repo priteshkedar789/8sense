@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,10 +17,10 @@
 body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text-primary);min-height:100vh;display:flex}
 
 /* ─── SIDEBAR ─── */
-.sidebar{width:var(--sidebar);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
+.sidebar{width:var(–sidebar);background:var(–navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
 .sidebar-brand{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .brand-wrap{display:flex;align-items:center;gap:10px}
-.brand-mark{width:34px;height:34px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-weight:700}
+.brand-mark{width:34px;height:34px;background:var(–teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:‘Playfair Display’,serif;font-size:14px;color:#fff;font-weight:700}
 .brand-name{font-size:13px;font-weight:600;color:#fff}
 .brand-sub{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
 .sidebar-role{margin:12px;padding:10px 12px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:8px}
@@ -36,114 +37,114 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .nav-item.active .report-type-badge{background:rgba(196,181,253,0.2);color:#C4B5FD}
 .sidebar-footer{margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,0.07)}
 .user-mini{display:flex;align-items:center;gap:9px}
-.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(–purple),var(–navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
 .user-info-name{font-size:11.5px;font-weight:500;color:#fff}
 .user-info-role{font-size:10px;color:rgba(255,255,255,0.35)}
 
 /* ─── MAIN ─── */
-.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
-.topbar{background:#fff;border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:50;flex-shrink:0}
+.main{margin-left:var(–sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(–border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:50;flex-shrink:0}
 .topbar-left{display:flex;align-items:center;gap:14px}
-.topbar-title{font-size:14.5px;font-weight:600;color:var(--text-primary)}
-.report-breadcrumb{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px}
-.report-breadcrumb span{color:var(--text-primary);font-weight:500}
+.topbar-title{font-size:14.5px;font-weight:600;color:var(–text-primary)}
+.report-breadcrumb{font-size:12px;color:var(–text-muted);display:flex;align-items:center;gap:6px}
+.report-breadcrumb span{color:var(–text-primary);font-weight:500}
 .topbar-actions{display:flex;align-items:center;gap:8px}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.15s}
-.btn-purple{background:var(--purple);color:#fff}.btn-purple:hover{background:#6D28D9}
-.btn-ghost{background:#fff;color:var(--text-secondary);border:1px solid var(--border)}.btn-ghost:hover{background:var(--surface)}
-.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#047857}
-.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-mid)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
+.btn-purple{background:var(–purple);color:#fff}.btn-purple:hover{background:#6D28D9}
+.btn-ghost{background:#fff;color:var(–text-secondary);border:1px solid var(–border)}.btn-ghost:hover{background:var(–surface)}
+.btn-green{background:var(–green);color:#fff}.btn-green:hover{background:#047857}
+.btn-navy{background:var(–navy);color:#fff}.btn-navy:hover{background:var(–navy-mid)}
 .content{flex:1;padding:24px 28px;display:flex;flex-direction:column;gap:0}
 
 /* ─── REPORT CONTAINER ─── */
-.report-container{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.04)}
+.report-container{background:#fff;border:1px solid var(–border);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.04)}
 
 /* ─── REPORT TOOLBAR ─── */
-.report-toolbar{padding:14px 20px;background:#F8FAFC;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.report-toolbar{padding:14px 20px;background:#F8FAFC;border-bottom:1px solid var(–border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .report-toolbar-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .filter-group{display:flex;align-items:center;gap:6px}
-.filter-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted)}
-.filter-select{padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-primary);background:#fff;outline:none;cursor:pointer}
-.filter-select:focus{border-color:var(--purple)}
+.filter-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted)}
+.filter-select{padding:5px 10px;border:1px solid var(–border);border-radius:6px;font-size:12px;font-family:‘DM Sans’,sans-serif;color:var(–text-primary);background:#fff;outline:none;cursor:pointer}
+.filter-select:focus{border-color:var(–purple)}
 
 /* ─── REPORT BODY ─── */
 .report-body{padding:32px 40px}
 
 /* ─── REPORT HEADER ─── */
-.report-header-block{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;padding-bottom:22px;border-bottom:2px solid var(--navy)}
-.report-clinic-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-.report-clinic-meta{font-size:11.5px;color:var(--text-muted);line-height:1.7}
-.report-type-tag{background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:6px;letter-spacing:0.04em;text-transform:uppercase;display:inline-block;margin-bottom:8px}
+.report-header-block{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;padding-bottom:22px;border-bottom:2px solid var(–navy)}
+.report-clinic-name{font-family:‘Playfair Display’,serif;font-size:1.5rem;font-weight:700;color:var(–navy);margin-bottom:4px}
+.report-clinic-meta{font-size:11.5px;color:var(–text-muted);line-height:1.7}
+.report-type-tag{background:var(–navy);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:6px;letter-spacing:0.04em;text-transform:uppercase;display:inline-block;margin-bottom:8px}
 .report-meta-block{text-align:right}
-.report-meta-row{font-size:12px;color:var(--text-secondary);margin-bottom:2px}
-.report-meta-row strong{color:var(--text-primary)}
+.report-meta-row{font-size:12px;color:var(–text-secondary);margin-bottom:2px}
+.report-meta-row strong{color:var(–text-primary)}
 
 /* ─── REPORT SECTIONS ─── */
 .r-section{margin-bottom:26px}
-.r-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--purple);border-bottom:1px solid var(--border-light);padding-bottom:7px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.r-section-title::before{content:'';width:3px;height:14px;background:var(--purple);border-radius:2px;flex-shrink:0}
+.r-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(–purple);border-bottom:1px solid var(–border-light);padding-bottom:7px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.r-section-title::before{content:’’;width:3px;height:14px;background:var(–purple);border-radius:2px;flex-shrink:0}
 
 /* ─── PATIENT HEADER ─── */
-.patient-block{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:start;background:var(--surface);border:1px solid var(--border-light);border-radius:10px;padding:16px}
-.patient-avatar-rpt{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:700;flex-shrink:0}
-.patient-name-rpt{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:5px}
+.patient-block{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:start;background:var(–surface);border:1px solid var(–border-light);border-radius:10px;padding:16px}
+.patient-avatar-rpt{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(–navy),var(–navy-mid));display:flex;align-items:center;justify-content:center;font-family:‘Playfair Display’,serif;font-size:20px;color:#fff;font-weight:700;flex-shrink:0}
+.patient-name-rpt{font-family:‘Playfair Display’,serif;font-size:1.2rem;font-weight:700;color:var(–text-primary);margin-bottom:5px}
 .patient-tags-rpt{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
 .ptag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;border:1px solid}
 .ptag-diag{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE}
 .ptag-active{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
 .ptag-therapy{background:#F5F3FF;color:#5B21B6;border-color:#DDD6FE}
 .detail-pairs{display:grid;grid-template-columns:repeat(4,auto);gap:0}
-.dp{padding-right:20px;border-right:1px solid var(--border-light);margin-right:20px}
+.dp{padding-right:20px;border-right:1px solid var(–border-light);margin-right:20px}
 .dp:last-child{border-right:none;margin-right:0;padding-right:0}
-.dp-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px}
-.dp-val{font-size:12.5px;font-weight:600;color:var(--text-primary)}
+.dp-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);margin-bottom:2px}
+.dp-val{font-size:12.5px;font-weight:600;color:var(–text-primary)}
 .progress-summary-block{text-align:right}
-.prog-num{font-family:'DM Mono',monospace;font-size:2rem;font-weight:600;color:var(--purple);line-height:1}
-.prog-sub{font-size:11px;color:var(--text-muted);margin-top:3px}
-.prog-bar-rpt{width:160px;height:8px;background:var(--surface2);border-radius:100px;overflow:hidden;margin:6px 0 0 auto}
-.prog-bar-fill-rpt{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--purple),#A78BFA)}
+.prog-num{font-family:‘DM Mono’,monospace;font-size:2rem;font-weight:600;color:var(–purple);line-height:1}
+.prog-sub{font-size:11px;color:var(–text-muted);margin-top:3px}
+.prog-bar-rpt{width:160px;height:8px;background:var(–surface2);border-radius:100px;overflow:hidden;margin:6px 0 0 auto}
+.prog-bar-fill-rpt{height:100%;border-radius:100px;background:linear-gradient(90deg,var(–purple),#A78BFA)}
 
 /* ─── DATA TABLE ─── */
 .rpt-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:4px}
-.rpt-table th{background:#F8FAFC;padding:9px 12px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border)}
-.rpt-table td{padding:10px 12px;border-bottom:1px solid var(--border-light);vertical-align:middle}
+.rpt-table th{background:#F8FAFC;padding:9px 12px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);border-bottom:1px solid var(–border)}
+.rpt-table td{padding:10px 12px;border-bottom:1px solid var(–border-light);vertical-align:middle}
 .rpt-table tr:last-child td{border-bottom:none}
 .rpt-table tr:hover td{background:#FAFBFD}
-.rpt-table tfoot td{background:#F8FAFC;font-weight:600;border-top:2px solid var(--border)}
+.rpt-table tfoot td{background:#F8FAFC;font-weight:600;border-top:2px solid var(–border)}
 
 /* ─── MILESTONE TIMELINE ─── */
 .milestone-timeline{display:flex;align-items:flex-start;gap:0;position:relative;padding:16px 0 8px}
-.milestone-timeline::before{content:'';position:absolute;top:28px;left:20px;right:20px;height:2px;background:var(--border);z-index:0}
+.milestone-timeline::before{content:’’;position:absolute;top:28px;left:20px;right:20px;height:2px;background:var(–border);z-index:0}
 .mt-node{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
 .mt-circle{width:42px;height:42px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-bottom:8px;background:#fff}
-.mt-circle.achieved{background:var(--teal);border-color:var(--teal);color:#fff}
-.mt-circle.active{background:#fff;border-color:var(--purple);color:var(--purple);box-shadow:0 0 0 4px rgba(124,58,237,0.12)}
-.mt-circle.pending{background:#fff;border-color:var(--border);color:var(--text-muted)}
-.mt-pct{font-size:11.5px;font-weight:700;color:var(--text-primary);margin-bottom:2px}
-.mt-desc{font-size:10.5px;color:var(--text-muted);text-align:center;max-width:80px;line-height:1.4}
+.mt-circle.achieved{background:var(–teal);border-color:var(–teal);color:#fff}
+.mt-circle.active{background:#fff;border-color:var(–purple);color:var(–purple);box-shadow:0 0 0 4px rgba(124,58,237,0.12)}
+.mt-circle.pending{background:#fff;border-color:var(–border);color:var(–text-muted)}
+.mt-pct{font-size:11.5px;font-weight:700;color:var(–text-primary);margin-bottom:2px}
+.mt-desc{font-size:10.5px;color:var(–text-muted);text-align:center;max-width:80px;line-height:1.4}
 .mt-date-tag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;margin-top:4px}
 .mt-achieved-tag{background:#F0FDFA;color:#0F766E;border:1px solid #99F6E4}
 .mt-active-tag{background:#F5F3FF;color:#5B21B6;border:1px solid #DDD6FE}
-.mt-pending-tag{background:var(--surface2);color:var(--text-muted);border:1px solid var(--border)}
+.mt-pending-tag{background:var(–surface2);color:var(–text-muted);border:1px solid var(–border)}
 
 /* ─── SCORE CARDS ─── */
 .score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.score-card{padding:14px;background:var(--surface);border:1px solid var(--border-light);border-radius:10px;text-align:center}
-.score-num{font-family:'DM Mono',monospace;font-size:2rem;font-weight:600;line-height:1;margin-bottom:4px}
-.score-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted)}
-.score-sub{font-size:11px;color:var(--text-muted);margin-top:3px}
+.score-card{padding:14px;background:var(–surface);border:1px solid var(–border-light);border-radius:10px;text-align:center}
+.score-num{font-family:‘DM Mono’,monospace;font-size:2rem;font-weight:600;line-height:1;margin-bottom:4px}
+.score-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted)}
+.score-sub{font-size:11px;color:var(–text-muted);margin-top:3px}
 
 /* ─── RATING BAR ─── */
-.rating-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-light);font-size:12.5px}
+.rating-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(–border-light);font-size:12.5px}
 .rating-row:last-child{border-bottom:none}
-.rating-label{flex:1;color:var(--text-primary);font-weight:500}
-.rating-bar-wrap{width:140px;height:8px;background:var(--surface2);border-radius:100px;overflow:hidden;flex-shrink:0}
+.rating-label{flex:1;color:var(–text-primary);font-weight:500}
+.rating-bar-wrap{width:140px;height:8px;background:var(–surface2);border-radius:100px;overflow:hidden;flex-shrink:0}
 .rating-bar-fill{height:100%;border-radius:100px}
-.rating-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;min-width:38px;text-align:right}
-.bar-green{background:var(--green)}
-.bar-teal{background:var(--teal)}
-.bar-amber{background:var(--amber)}
-.bar-rose{background:var(--rose)}
+.rating-val{font-family:‘DM Mono’,monospace;font-size:13px;font-weight:600;min-width:38px;text-align:right}
+.bar-green{background:var(–green)}
+.bar-teal{background:var(–teal)}
+.bar-amber{background:var(–amber)}
+.bar-rose{background:var(–rose)}
 .bar-blue{background:#2563EB}
 
 /* ─── STATUS PILLS ─── */
@@ -158,8 +159,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .bar-chart-wrap{display:flex;align-items:flex-end;gap:8px;height:80px}
 .bar-chart-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
 .bc-bar{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:height 0.3s}
-.bc-lbl{font-size:10px;color:var(--text-muted);font-weight:500}
-.bc-val{font-size:10px;font-family:'DM Mono',monospace;font-weight:600;color:var(--text-primary)}
+.bc-lbl{font-size:10px;color:var(–text-muted);font-weight:500}
+.bc-val{font-size:10px;font-family:‘DM Mono’,monospace;font-weight:600;color:var(–text-primary)}
 
 /* ─── SUMMARY BOX ─── */
 .summary-box{padding:14px 16px;border-radius:10px;font-size:13px;line-height:1.7;border:1px solid}
@@ -170,9 +171,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .sb-purple{background:#F5F3FF;border-color:#DDD6FE;color:#5B21B6}
 
 /* ─── CLINICAL NOTE STYLE ─── */
-.clinical-note-block{padding:14px 16px;background:#F8FAFC;border-left:3px solid var(--purple);border-radius:0 8px 8px 0;font-size:12.5px;color:var(--text-secondary);line-height:1.7;font-style:italic;margin-bottom:10px}
-.cn-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:5px;font-style:normal}
-.cn-author{font-size:11px;color:var(--text-muted);margin-top:6px;font-style:normal}
+.clinical-note-block{padding:14px 16px;background:#F8FAFC;border-left:3px solid var(–purple);border-radius:0 8px 8px 0;font-size:12.5px;color:var(–text-secondary);line-height:1.7;font-style:italic;margin-bottom:10px}
+.cn-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);margin-bottom:5px;font-style:normal}
+.cn-author{font-size:11px;color:var(–text-muted);margin-top:6px;font-style:normal}
 
 /* ─── GRID ─── */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -180,12 +181,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 /* ─── PRINT STYLES ─── */
 @media print{
-  .sidebar,.topbar,.report-toolbar,.no-print{display:none!important}
-  .main{margin-left:0}
-  .content{padding:0}
-  .report-container{border:none;box-shadow:none}
-  .report-body{padding:20px 24px}
-  body{background:#fff}
+.sidebar,.topbar,.report-toolbar,.no-print{display:none!important}
+.main{margin-left:0}
+.content{padding:0}
+.report-container{border:none;box-shadow:none}
+.report-body{padding:20px 24px}
+body{background:#fff}
 }
 
 /* ─── REPORT TYPE VISIBILITY ─── */
@@ -194,22 +195,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 /* ─── PERFORMANCE GAUGE (CSS) ─── */
 .gauge-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.gauge-item{text-align:center;padding:14px 10px;background:var(--surface);border:1px solid var(--border-light);border-radius:10px}
-.gauge-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:14px;font-weight:700;margin:0 auto 8px;border:4px solid}
-.gc-excellent{border-color:var(--green);color:var(--green)}
+.gauge-item{text-align:center;padding:14px 10px;background:var(–surface);border:1px solid var(–border-light);border-radius:10px}
+.gauge-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:‘DM Mono’,monospace;font-size:14px;font-weight:700;margin:0 auto 8px;border:4px solid}
+.gc-excellent{border-color:var(–green);color:var(–green)}
 .gc-good{border-color:#2563EB;color:#2563EB}
-.gc-warn{border-color:var(--amber);color:var(--amber)}
-.gc-poor{border-color:var(--rose);color:var(--rose)}
-.gauge-label{font-size:11.5px;font-weight:600;color:var(--text-primary)}
-.gauge-sub{font-size:10px;color:var(--text-muted);margin-top:2px}
+.gc-warn{border-color:var(–amber);color:var(–amber)}
+.gc-poor{border-color:var(–rose);color:var(–rose)}
+.gauge-label{font-size:11.5px;font-weight:600;color:var(–text-primary)}
+.gauge-sub{font-size:10px;color:var(–text-muted);margin-top:2px}
 
 /* ─── WATERMARK ─── */
-.report-watermark{text-align:center;padding:16px 0 0;font-size:10.5px;color:var(--text-muted);border-top:1px solid var(--border-light);margin-top:24px}
+.report-watermark{text-align:center;padding:16px 0 0;font-size:10.5px;color:var(–text-muted);border-top:1px solid var(–border-light);margin-top:24px}
 </style>
+
 </head>
 <body>
 
 <!-- SIDEBAR -->
+
 <aside class="sidebar">
   <div class="sidebar-brand">
     <div class="brand-wrap">
@@ -282,6 +285,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 </aside>
 
 <!-- MAIN -->
+
 <main class="main">
   <div class="topbar">
     <div class="topbar-left">
@@ -299,838 +303,843 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
   <div class="content">
     <div class="report-container">
 
-      <!-- REPORT TOOLBAR -->
-      <div class="report-toolbar no-print">
-        <div class="report-toolbar-left">
-          <div class="filter-group">
-            <div class="filter-lbl">Patient</div>
-            <select class="filter-select" onchange="updatePatient(this.value)">
-              <option value="aarav">Yuvan Singh (ASD)</option>
-              <option value="kabir">Vansh Kataria (CP)</option>
-              <option value="meera">Saisha Shinde (ASD+SPD)</option>
-              <option value="zara">Theia Pithawala (Language)</option>
-              <option value="ishaan">Saifuddin Contractorwala (ADHD)</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <div class="filter-lbl">Period</div>
-            <select class="filter-select">
-              <option>Jan -- Mar 2025</option>
-              <option>Oct -- Dec 2024</option>
-              <option>Full Programme</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <div class="filter-lbl">Therapist</div>
-            <select class="filter-select">
-              <option>All Therapists</option>
-              <option>Ms. Ananya Desai (OT)</option>
-              <option>Ms. Kavya Shetty (ABA)</option>
-              <option>Mr. Rohan Mehta (Speech)</option>
-            </select>
+```
+  <!-- REPORT TOOLBAR -->
+  <div class="report-toolbar no-print">
+    <div class="report-toolbar-left">
+      <div class="filter-group">
+        <div class="filter-lbl">Patient</div>
+        <select class="filter-select" onchange="updatePatient(this.value)">
+          <option value="aarav">Nihal Shaikh (ASD)</option>
+          <option value="kabir">Kabir Ansari (CP)</option>
+          <option value="meera">Zara Menon (ASD+SPD)</option>
+          <option value="zara">Aarav Patil (Language)</option>
+          <option value="ishaan">Rehan Khan (ADHD)</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-lbl">Period</div>
+        <select class="filter-select">
+          <option>Jan -- Mar 2025</option>
+          <option>Oct -- Dec 2024</option>
+          <option>Full Programme</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-lbl">Therapist</div>
+        <select class="filter-select">
+          <option>All Therapists</option>
+          <option>Ms. Ananya Desai (OT)</option>
+          <option>Ms. Kavya Shetty (ABA)</option>
+          <option>Mr. Rohan Mehta (Speech)</option>
+        </select>
+      </div>
+    </div>
+    <div style="font-size:11.5px;color:var(--text-muted);font-family:'DM Mono',monospace">Generated: 17 Mar 2025 · 10:48 AM</div>
+  </div>
+
+  <div class="report-body">
+
+    <!-- ════════════════════════════════════════════
+         REPORT 1: PATIENT PROGRESS REPORT
+         ════════════════════════════════════════════ -->
+    <div class="report-view active" id="report-patient-progress">
+
+      <div class="report-header-block">
+        <div>
+          <div class="report-clinic-name">RehabCare Clinic</div>
+          <div class="report-clinic-meta">
+            42, Marine Drive Complex, Mumbai -- 400002<br>
+            Phone: +91 22-1234-5678 · Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="255740554a5751566557404d4447464457400b4c4b">[email&#160;protected]</a> · GSTIN: 27AABCR1234D1ZX
           </div>
         </div>
-        <div style="font-size:11.5px;color:var(--text-muted);font-family:'DM Mono',monospace">Generated: 17 Mar 2025 · 10:48 AM</div>
+        <div class="report-meta-block">
+          <div class="report-type-tag">Patient Progress Report</div>
+          <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-PPR-0047</div>
+          <div class="report-meta-row"><strong>Period:</strong> Jan -- Mar 2025</div>
+          <div class="report-meta-row"><strong>Prepared by:</strong> Ms. Ananya Desai</div>
+          <div class="report-meta-row"><strong>Reviewed by:</strong> Dr. Priya Nair (HOD)</div>
+          <div class="report-meta-row"><strong>Date:</strong> 17 Mar 2025</div>
+        </div>
       </div>
 
-      <div class="report-body">
-
-        <!-- ════════════════════════════════════════════
-             REPORT 1: PATIENT PROGRESS REPORT
-             ════════════════════════════════════════════ -->
-        <div class="report-view active" id="report-patient-progress">
-
-          <div class="report-header-block">
-            <div>
-              <div class="report-clinic-name">RehabCare Clinic</div>
-              <div class="report-clinic-meta">
-                42, Marine Drive Complex, Mumbai -- 400002<br>
-                Phone: +91 22-1234-5678 · Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="255740554a5751566557404d4447464457400b4c4b">[email&#160;protected]</a> · GSTIN: 27AABCR1234D1ZX
-              </div>
+      <div class="r-section">
+        <div class="r-section-title">Patient Information</div>
+        <div class="patient-block">
+          <div class="patient-avatar-rpt" id="rpt-avatar">AS</div>
+          <div>
+            <div class="patient-name-rpt" id="rpt-patient-name">Nihal Shaikh</div>
+            <div class="patient-tags-rpt">
+              <span class="ptag ptag-diag" id="rpt-diagnosis">ASD</span>
+              <span class="ptag ptag-therapy">OT · ABA · Speech</span>
+              <span class="ptag ptag-active">Active</span>
             </div>
-            <div class="report-meta-block">
-              <div class="report-type-tag">Patient Progress Report</div>
-              <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-PPR-0047</div>
-              <div class="report-meta-row"><strong>Period:</strong> Jan -- Mar 2025</div>
-              <div class="report-meta-row"><strong>Prepared by:</strong> Ms. Ananya Desai</div>
-              <div class="report-meta-row"><strong>Reviewed by:</strong> Dr. Priya Nair (HOD)</div>
-              <div class="report-meta-row"><strong>Date:</strong> 17 Mar 2025</div>
+            <div class="detail-pairs">
+              <div class="dp"><div class="dp-lbl">Patient ID</div><div class="dp-val" id="rpt-pid">PAT-2025-0693</div></div>
+              <div class="dp"><div class="dp-lbl">Age</div><div class="dp-val">5y 9m</div></div>
+              <div class="dp"><div class="dp-lbl">Programme Start</div><div class="dp-val">06 Jan 2025</div></div>
+              <div class="dp"><div class="dp-lbl">Primary Therapist</div><div class="dp-val">Ms. Ananya Desai</div></div>
             </div>
           </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Patient Information</div>
-            <div class="patient-block">
-              <div class="patient-avatar-rpt" id="rpt-avatar">AS</div>
-              <div>
-                <div class="patient-name-rpt" id="rpt-patient-name">Yuvan Singh</div>
-                <div class="patient-tags-rpt">
-                  <span class="ptag ptag-diag" id="rpt-diagnosis">ASD</span>
-                  <span class="ptag ptag-therapy">OT · ABA · Speech</span>
-                  <span class="ptag ptag-active">Active</span>
-                </div>
-                <div class="detail-pairs">
-                  <div class="dp"><div class="dp-lbl">Patient ID</div><div class="dp-val" id="rpt-pid">PAT-2025-0693</div></div>
-                  <div class="dp"><div class="dp-lbl">Age</div><div class="dp-val">5y 9m</div></div>
-                  <div class="dp"><div class="dp-lbl">Programme Start</div><div class="dp-val">06 Jan 2025</div></div>
-                  <div class="dp"><div class="dp-lbl">Primary Therapist</div><div class="dp-val">Ms. Ananya Desai</div></div>
-                </div>
-              </div>
-              <div class="progress-summary-block">
-                <div class="prog-num" id="rpt-sessions">15 <span style="font-size:1rem;color:var(--text-muted)">/ 30</span></div>
-                <div class="prog-sub">Sessions Completed</div>
-                <div class="prog-bar-rpt"><div class="prog-bar-fill-rpt" id="rpt-prog-fill" style="width:50%"></div></div>
-                <div style="font-size:11px;color:var(--text-muted);margin-top:4px;text-align:right">50% programme complete</div>
-              </div>
-            </div>
+          <div class="progress-summary-block">
+            <div class="prog-num" id="rpt-sessions">15 <span style="font-size:1rem;color:var(--text-muted)">/ 30</span></div>
+            <div class="prog-sub">Sessions Completed</div>
+            <div class="prog-bar-rpt"><div class="prog-bar-fill-rpt" id="rpt-prog-fill" style="width:50%"></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px;text-align:right">50% programme complete</div>
           </div>
+        </div>
+      </div>
 
-          <div class="r-section">
-            <div class="r-section-title">Programme Milestones</div>
-            <div class="milestone-timeline">
-              <div class="mt-node">
-                <div class="mt-circle achieved">✓</div>
-                <div class="mt-pct">25%</div>
-                <div class="mt-desc">Sensory Foundation</div>
-                <div class="mt-date-tag mt-achieved-tag">Achieved · Feb</div>
-              </div>
-              <div class="mt-node">
-                <div class="mt-circle active">●</div>
-                <div class="mt-pct">50%</div>
-                <div class="mt-desc">Bilateral Coordination</div>
-                <div class="mt-date-tag mt-active-tag">In Progress</div>
-              </div>
-              <div class="mt-node">
-                <div class="mt-circle pending">○</div>
-                <div class="mt-pct">75%</div>
-                <div class="mt-desc">Fine Motor Integration</div>
-                <div class="mt-date-tag mt-pending-tag">Pending</div>
-              </div>
-              <div class="mt-node">
-                <div class="mt-circle pending">○</div>
-                <div class="mt-pct">100%</div>
-                <div class="mt-desc">Discharge Readiness</div>
-                <div class="mt-date-tag mt-pending-tag">Pending</div>
-              </div>
-            </div>
-            <div class="summary-box sb-green" style="margin-top:12px">
-              ✓ <strong>Milestone 1 achieved ahead of schedule</strong> -- Aarav tolerated tactile input without withdrawal by Session 12 (target was Session 15). Bilateral hand use for 30-second tasks is at 80% -- milestone 2 expected by Session 18.
-            </div>
+      <div class="r-section">
+        <div class="r-section-title">Programme Milestones</div>
+        <div class="milestone-timeline">
+          <div class="mt-node">
+            <div class="mt-circle achieved">✓</div>
+            <div class="mt-pct">25%</div>
+            <div class="mt-desc">Sensory Foundation</div>
+            <div class="mt-date-tag mt-achieved-tag">Achieved · Feb</div>
           </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Session-Level Delivery -- Last 10 Sessions</div>
-            <table class="rpt-table">
-              <thead>
-                <tr>
-                  <th>#</th><th>Date</th><th>Therapist</th><th>Therapy</th>
-                  <th>Activities Prescribed</th><th>Activities Completed</th><th>Deviations</th><th>Note Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>15</td><td>17 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>14</td><td>15 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>4</td><td style="color:var(--amber)">1 (time)</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>13</td><td>13 Mar</td><td>Ms. Kavya</td><td>ABA</td><td>4</td><td>4</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>12</td><td>10 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>11</td><td>08 Mar</td><td>Mr. Rohan</td><td>Speech</td><td>3</td><td>3</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>10</td><td>06 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>3</td><td style="color:var(--rose)">2 (fatigue)</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>9</td><td>03 Mar</td><td>Ms. Kavya</td><td>ABA</td><td>4</td><td>4</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>8</td><td>01 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>7</td><td>27 Feb</td><td>Mr. Rohan</td><td>Speech</td><td>3</td><td>2</td><td style="color:var(--amber)">1 (behaviour)</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-                <tr><td>6</td><td>25 Feb</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
-              </tbody>
-              <tfoot>
-                <tr><td colspan="4"><strong>Total (Sessions 6--15)</strong></td><td><strong>44</strong></td><td><strong>40</strong></td><td style="color:var(--amber)"><strong>4 deviations</strong></td><td><strong>100% complete</strong></td></tr>
-              </tfoot>
-            </table>
-            <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Activity adherence rate: 90.9% · Note compliance: 100% · All deviations documented with clinical reason.</div>
+          <div class="mt-node">
+            <div class="mt-circle active">●</div>
+            <div class="mt-pct">50%</div>
+            <div class="mt-desc">Bilateral Coordination</div>
+            <div class="mt-date-tag mt-active-tag">In Progress</div>
           </div>
-
-          <div class="grid-2">
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Therapist Observations -- Yuvan Singh</div>
-              <div class="clinical-note-block">
-                <div class="cn-label">Clinical Note -- Ms. Ananya Desai (OT) · Session 15</div>
-                "Aarav demonstrates significantly improved vestibular tolerance -- sustained linear swing input for 14 minutes today without distress cues (baseline: 4 minutes at Session 1). Bilateral hand use is emerging spontaneously during play tasks. Fine motor precision on clothespeg transfer improved from 8/20 to 17/20 pegs over last 5 sessions. Parent reports Aarav is initiating dressing tasks at home -- a functional generalisation milestone."
-                <div class="cn-author">-- Ms. Ananya Desai, OT · 17 Mar 2025 · 09:58 AM</div>
-              </div>
-              <div class="clinical-note-block">
-                <div class="cn-label">ABA Progress Note -- Ms. Kavya Shetty (ABA) · Session 13</div>
-                "DTT compliance rate improved from 45% to 78% over past 8 sessions. Aarav now follows 2-step instructions with 85% accuracy. Social initiation (NET context) increased from 0 to 3 spontaneous approaches per session. Stereotypy frequency reduced by approximately 40% during structured activities."
-                <div class="cn-author">-- Ms. Kavya Shetty, ABA Therapist · 13 Mar 2025</div>
-              </div>
-            </div>
-
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Programme Adherence Metrics</div>
-              <div class="rating-row"><span class="rating-label">OT Activity Adherence</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:91%"></div></div><span class="rating-val" style="color:var(--green)">91%</span></div>
-              <div class="rating-row"><span class="rating-label">ABA Protocol Adherence</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-teal" style="width:88%"></div></div><span class="rating-val" style="color:var(--teal)">88%</span></div>
-              <div class="rating-row"><span class="rating-label">Speech Adherence</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-blue" style="width:83%"></div></div><span class="rating-val" style="color:#2563EB">83%</span></div>
-              <div class="rating-row"><span class="rating-label">Note Completion (SLA)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:100%"></div></div><span class="rating-val" style="color:var(--green)">100%</span></div>
-              <div class="rating-row"><span class="rating-label">Parent Home Practice</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-amber" style="width:71%"></div></div><span class="rating-val" style="color:var(--amber)">71%</span></div>
-              <div style="margin-top:14px">
-                <div class="r-section-title">Attendance Summary</div>
-                <div class="score-grid" style="grid-template-columns:repeat(3,1fr)">
-                  <div class="score-card"><div class="score-num" style="color:var(--green)">15</div><div class="score-lbl">Attended</div></div>
-                  <div class="score-card"><div class="score-num" style="color:var(--rose)">1</div><div class="score-lbl">No-Shows</div></div>
-                  <div class="score-card"><div class="score-num" style="color:var(--amber)">1</div><div class="score-lbl">Cancelled</div></div>
-                </div>
-              </div>
-            </div>
+          <div class="mt-node">
+            <div class="mt-circle pending">○</div>
+            <div class="mt-pct">75%</div>
+            <div class="mt-desc">Fine Motor Integration</div>
+            <div class="mt-date-tag mt-pending-tag">Pending</div>
           </div>
-
-          <div class="r-section" style="margin-top:20px">
-            <div class="r-section-title">Clinical Recommendations &amp; Next Steps</div>
-            <div class="summary-box sb-purple">
-              <strong>Recommendation by Ms. Ananya Desai (OT) · Reviewed by Dr. Priya Nair (HOD):</strong><br><br>
-              1. <strong>Continue current OT protocol</strong> at 2×/week. Plan change request for 3×/week submitted -- pending HOD review (PC-2025-003).<br>
-              2. <strong>ABA:</strong> Progress to Phase 2 (Natural Environment Teaching / NET focus) from Session 16. Kavya to update programme plan.<br>
-              3. <strong>Speech:</strong> PECS Level 3 target -- verbal approximation for 3 core vocabulary items. Review at 20-session mark.<br>
-              4. <strong>Parent coaching:</strong> Schedule 30-minute parent training session to reinforce home practice compliance (currently 71%).<br>
-              5. <strong>Next milestone review:</strong> Session 20 (approx. 7 Apr 2025) -- 50% milestone assessment by HOD.
-            </div>
+          <div class="mt-node">
+            <div class="mt-circle pending">○</div>
+            <div class="mt-pct">100%</div>
+            <div class="mt-desc">Discharge Readiness</div>
+            <div class="mt-date-tag mt-pending-tag">Pending</div>
           </div>
+        </div>
+        <div class="summary-box sb-green" style="margin-top:12px">
+          ✓ <strong>Milestone 1 achieved ahead of schedule</strong> -- Aarav tolerated tactile input without withdrawal by Session 12 (target was Session 15). Bilateral hand use for 30-second tasks is at 80% -- milestone 2 expected by Session 18.
+        </div>
+      </div>
 
-          <div class="report-watermark no-print">RehabCare Clinic · System-Generated Report · RPT-2025-PPR-0047 · All clinical decisions rest with the treating therapist · Not a diagnostic document</div>
+      <div class="r-section">
+        <div class="r-section-title">Session-Level Delivery -- Last 10 Sessions</div>
+        <table class="rpt-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Date</th><th>Therapist</th><th>Therapy</th>
+              <th>Activities Prescribed</th><th>Activities Completed</th><th>Deviations</th><th>Note Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>15</td><td>17 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>14</td><td>15 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>4</td><td style="color:var(--amber)">1 (time)</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>13</td><td>13 Mar</td><td>Ms. Kavya</td><td>ABA</td><td>4</td><td>4</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>12</td><td>10 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>11</td><td>08 Mar</td><td>Mr. Rohan</td><td>Speech</td><td>3</td><td>3</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>10</td><td>06 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>3</td><td style="color:var(--rose)">2 (fatigue)</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>9</td><td>03 Mar</td><td>Ms. Kavya</td><td>ABA</td><td>4</td><td>4</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>8</td><td>01 Mar</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>7</td><td>27 Feb</td><td>Mr. Rohan</td><td>Speech</td><td>3</td><td>2</td><td style="color:var(--amber)">1 (behaviour)</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+            <tr><td>6</td><td>25 Feb</td><td>Ms. Ananya</td><td>OT</td><td>5</td><td>5</td><td style="color:var(--green)">0</td><td><span class="sp sp-g">Done ✓</span></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="4"><strong>Total (Sessions 6--15)</strong></td><td><strong>44</strong></td><td><strong>40</strong></td><td style="color:var(--amber)"><strong>4 deviations</strong></td><td><strong>100% complete</strong></td></tr>
+          </tfoot>
+        </table>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Activity adherence rate: 90.9% · Note compliance: 100% · All deviations documented with clinical reason.</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Therapist Observations -- Nihal Shaikh</div>
+          <div class="clinical-note-block">
+            <div class="cn-label">Clinical Note -- Ms. Ananya Desai (OT) · Session 15</div>
+            "Aarav demonstrates significantly improved vestibular tolerance -- sustained linear swing input for 14 minutes today without distress cues (baseline: 4 minutes at Session 1). Bilateral hand use is emerging spontaneously during play tasks. Fine motor precision on clothespeg transfer improved from 8/20 to 17/20 pegs over last 5 sessions. Parent reports Aarav is initiating dressing tasks at home -- a functional generalisation milestone."
+            <div class="cn-author">-- Ms. Ananya Desai, OT · 17 Mar 2025 · 09:58 AM</div>
+          </div>
+          <div class="clinical-note-block">
+            <div class="cn-label">ABA Progress Note -- Ms. Kavya Shetty (ABA) · Session 13</div>
+            "DTT compliance rate improved from 45% to 78% over past 8 sessions. Aarav now follows 2-step instructions with 85% accuracy. Social initiation (NET context) increased from 0 to 3 spontaneous approaches per session. Stereotypy frequency reduced by approximately 40% during structured activities."
+            <div class="cn-author">-- Ms. Kavya Shetty, ABA Therapist · 13 Mar 2025</div>
+          </div>
         </div>
 
-
-        <!-- ════════════════════════════════════════════
-             REPORT 2: THERAPIST PERFORMANCE
-             ════════════════════════════════════════════ -->
-        <div class="report-view" id="report-therapist-performance">
-
-          <div class="report-header-block">
-            <div>
-              <div class="report-clinic-name">RehabCare Clinic</div>
-              <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002<br>Phone: +91 22-1234-5678</div>
-            </div>
-            <div class="report-meta-block">
-              <div class="report-type-tag">Therapist Performance Scorecard</div>
-              <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-TPS-0018</div>
-              <div class="report-meta-row"><strong>Period:</strong> March 2025 (MTD)</div>
-              <div class="report-meta-row"><strong>Prepared by:</strong> Dr. Priya Nair (HOD)</div>
-              <div class="report-meta-row"><strong>Date:</strong> 17 Mar 2025</div>
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Programme Adherence Metrics</div>
+          <div class="rating-row"><span class="rating-label">OT Activity Adherence</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:91%"></div></div><span class="rating-val" style="color:var(--green)">91%</span></div>
+          <div class="rating-row"><span class="rating-label">ABA Protocol Adherence</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-teal" style="width:88%"></div></div><span class="rating-val" style="color:var(--teal)">88%</span></div>
+          <div class="rating-row"><span class="rating-label">Speech Adherence</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-blue" style="width:83%"></div></div><span class="rating-val" style="color:#2563EB">83%</span></div>
+          <div class="rating-row"><span class="rating-label">Note Completion (SLA)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:100%"></div></div><span class="rating-val" style="color:var(--green)">100%</span></div>
+          <div class="rating-row"><span class="rating-label">Parent Home Practice</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-amber" style="width:71%"></div></div><span class="rating-val" style="color:var(--amber)">71%</span></div>
+          <div style="margin-top:14px">
+            <div class="r-section-title">Attendance Summary</div>
+            <div class="score-grid" style="grid-template-columns:repeat(3,1fr)">
+              <div class="score-card"><div class="score-num" style="color:var(--green)">15</div><div class="score-lbl">Attended</div></div>
+              <div class="score-card"><div class="score-num" style="color:var(--rose)">1</div><div class="score-lbl">No-Shows</div></div>
+              <div class="score-card"><div class="score-num" style="color:var(--amber)">1</div><div class="score-lbl">Cancelled</div></div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="r-section">
-            <div class="r-section-title">Performance Gauges -- All Therapists</div>
-            <div class="gauge-row">
-              <div class="gauge-item">
-                <div class="gauge-circle gc-excellent">92%</div>
-                <div class="gauge-label">Ms. Ananya Desai</div>
-                <div class="gauge-sub">OT · Overall Score</div>
-                <div style="margin-top:6px"><span class="sp sp-g">Excellent</span></div>
-              </div>
-              <div class="gauge-item">
-                <div class="gauge-circle gc-good">84%</div>
-                <div class="gauge-label">Mr. Rohan Mehta</div>
-                <div class="gauge-sub">Speech · Overall Score</div>
-                <div style="margin-top:6px"><span class="sp sp-b">Good</span></div>
-              </div>
-              <div class="gauge-item">
-                <div class="gauge-circle gc-good">88%</div>
-                <div class="gauge-label">Dr. Priya Nair</div>
-                <div class="gauge-sub">Physio · Overall Score</div>
-                <div style="margin-top:6px"><span class="sp sp-g">Excellent</span></div>
-              </div>
-              <div class="gauge-item">
-                <div class="gauge-circle gc-warn">71%</div>
-                <div class="gauge-label">Ms. Kavya Shetty</div>
-                <div class="gauge-sub">ABA · Overall Score</div>
-                <div style="margin-top:6px"><span class="sp sp-a">Monitor</span></div>
-              </div>
-              <div class="gauge-item">
-                <div class="gauge-circle gc-poor">58%</div>
-                <div class="gauge-label">Mr. Vikram Iyer</div>
-                <div class="gauge-sub">Neuro Physio · Overall</div>
-                <div style="margin-top:6px"><span class="sp sp-r">Action Required</span></div>
-              </div>
-            </div>
+      <div class="r-section" style="margin-top:20px">
+        <div class="r-section-title">Clinical Recommendations &amp; Next Steps</div>
+        <div class="summary-box sb-purple">
+          <strong>Recommendation by Ms. Ananya Desai (OT) · Reviewed by Dr. Priya Nair (HOD):</strong><br><br>
+          1. <strong>Continue current OT protocol</strong> at 2×/week. Plan change request for 3×/week submitted -- pending HOD review (PC-2025-003).<br>
+          2. <strong>ABA:</strong> Progress to Phase 2 (Natural Environment Teaching / NET focus) from Session 16. Kavya to update programme plan.<br>
+          3. <strong>Speech:</strong> PECS Level 3 target -- verbal approximation for 3 core vocabulary items. Review at 20-session mark.<br>
+          4. <strong>Parent coaching:</strong> Schedule 30-minute parent training session to reinforce home practice compliance (currently 71%).<br>
+          5. <strong>Next milestone review:</strong> Session 20 (approx. 7 Apr 2025) -- 50% milestone assessment by HOD.
+        </div>
+      </div>
+
+      <div class="report-watermark no-print">RehabCare Clinic · System-Generated Report · RPT-2025-PPR-0047 · All clinical decisions rest with the treating therapist · Not a diagnostic document</div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════════
+         REPORT 2: THERAPIST PERFORMANCE
+         ════════════════════════════════════════════ -->
+    <div class="report-view" id="report-therapist-performance">
+
+      <div class="report-header-block">
+        <div>
+          <div class="report-clinic-name">RehabCare Clinic</div>
+          <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002<br>Phone: +91 22-1234-5678</div>
+        </div>
+        <div class="report-meta-block">
+          <div class="report-type-tag">Therapist Performance Scorecard</div>
+          <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-TPS-0018</div>
+          <div class="report-meta-row"><strong>Period:</strong> March 2025 (MTD)</div>
+          <div class="report-meta-row"><strong>Prepared by:</strong> Dr. Priya Nair (HOD)</div>
+          <div class="report-meta-row"><strong>Date:</strong> 17 Mar 2025</div>
+        </div>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Performance Gauges -- All Therapists</div>
+        <div class="gauge-row">
+          <div class="gauge-item">
+            <div class="gauge-circle gc-excellent">92%</div>
+            <div class="gauge-label">Ms. Ananya Desai</div>
+            <div class="gauge-sub">OT · Overall Score</div>
+            <div style="margin-top:6px"><span class="sp sp-g">Excellent</span></div>
           </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Detailed Performance Matrix -- March 2025</div>
-            <table class="rpt-table">
-              <thead>
-                <tr>
-                  <th>Therapist</th><th>Role</th><th>Sessions MTD</th><th>Utilisation</th>
-                  <th>Note Compliance</th><th>Programme Deviation</th><th>Milestone Rate</th>
-                  <th>No-Show Flags</th><th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight:600">Dr. Priya Nair</td><td style="color:var(--text-muted)">Sr. Physio · HOD</td>
-                  <td style="font-family:'DM Mono',monospace;font-weight:600">53</td>
-                  <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--green)">92%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:92%;height:100%;background:var(--green);border-radius:100px"></div></div></div></td>
-                  <td><span class="sp sp-g">100%</span></td>
-                  <td style="color:var(--green);font-weight:600">5%</td>
-                  <td style="color:var(--green);font-weight:600">95%</td>
-                  <td style="color:var(--green)">0</td>
-                  <td><span class="sp sp-g">Excellent</span></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600">Ms. Ananya Desai</td><td style="color:var(--text-muted)">Occupational Therapist</td>
-                  <td style="font-family:'DM Mono',monospace;font-weight:600">38</td>
-                  <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:#2563EB">85%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:85%;height:100%;background:#2563EB;border-radius:100px"></div></div></div></td>
-                  <td><span class="sp sp-g">97%</span></td>
-                  <td style="color:var(--green);font-weight:600">5%</td>
-                  <td style="color:var(--green);font-weight:600">92%</td>
-                  <td style="color:var(--amber)">1</td>
-                  <td><span class="sp sp-g">Excellent</span></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600">Mr. Rohan Mehta</td><td style="color:var(--text-muted)">Speech Therapist</td>
-                  <td style="font-family:'DM Mono',monospace;font-weight:600">53</td>
-                  <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:#2563EB">88%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:88%;height:100%;background:#2563EB;border-radius:100px"></div></div></div></td>
-                  <td><span class="sp sp-g">96%</span></td>
-                  <td style="color:#2563EB;font-weight:600">12%</td>
-                  <td style="color:#2563EB;font-weight:600">88%</td>
-                  <td style="color:var(--green)">0</td>
-                  <td><span class="sp sp-b">Good</span></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600">Ms. Kavya Shetty</td><td style="color:var(--text-muted)">ABA Therapist</td>
-                  <td style="font-family:'DM Mono',monospace;font-weight:600">52</td>
-                  <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--amber)">80%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:80%;height:100%;background:var(--amber);border-radius:100px"></div></div></div></td>
-                  <td><span class="sp sp-a">84%</span></td>
-                  <td style="color:var(--amber);font-weight:600">24%</td>
-                  <td style="color:var(--amber);font-weight:600">76%</td>
-                  <td style="color:var(--amber)">1</td>
-                  <td><span class="sp sp-a">Monitor</span></td>
-                </tr>
-                <tr style="background:#FEF9FA">
-                  <td style="font-weight:600">Mr. Vikram Iyer</td><td style="color:var(--text-muted)">Neuro Physiotherapist</td>
-                  <td style="font-family:'DM Mono',monospace;font-weight:600">44</td>
-                  <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--rose)">72%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:72%;height:100%;background:var(--rose);border-radius:100px"></div></div></div></td>
-                  <td><span class="sp sp-r">78%</span></td>
-                  <td style="color:var(--rose);font-weight:600">38% ⚠</td>
-                  <td style="color:var(--rose);font-weight:600">62%</td>
-                  <td style="color:var(--rose);font-weight:600">3</td>
-                  <td><span class="sp sp-r">Action Required</span></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600">Ms. Sneha Kulkarni</td><td style="color:var(--text-muted)">Special Educator</td>
-                  <td style="font-family:'DM Mono',monospace;font-weight:600">48</td>
-                  <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--green)">91%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:91%;height:100%;background:var(--green);border-radius:100px"></div></div></div></td>
-                  <td><span class="sp sp-g">98%</span></td>
-                  <td style="color:var(--green);font-weight:600">8%</td>
-                  <td style="color:var(--green);font-weight:600">91%</td>
-                  <td style="color:var(--green)">0</td>
-                  <td><span class="sp sp-g">Excellent</span></td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="gauge-item">
+            <div class="gauge-circle gc-good">84%</div>
+            <div class="gauge-label">Mr. Rohan Mehta</div>
+            <div class="gauge-sub">Speech · Overall Score</div>
+            <div style="margin-top:6px"><span class="sp sp-b">Good</span></div>
           </div>
-
-          <div class="grid-2">
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Session Volume Trend -- Sessions / Week</div>
-              <div class="bar-chart-wrap" style="margin-bottom:8px">
-                <div class="bar-chart-item"><div class="bc-val">241</div><div class="bc-bar" style="height:80px;background:var(--teal)"></div><div class="bc-lbl">W1</div></div>
-                <div class="bar-chart-item"><div class="bc-val">228</div><div class="bc-bar" style="height:76px;background:var(--teal)"></div><div class="bc-lbl">W2</div></div>
-                <div class="bar-chart-item"><div class="bc-val">247</div><div class="bc-bar" style="height:82px;background:var(--teal)"></div><div class="bc-lbl">W3 (Mon)</div></div>
-                <div class="bar-chart-item"><div class="bc-val">87</div><div class="bc-bar" style="height:29px;background:rgba(13,148,136,0.4)"></div><div class="bc-lbl">W3 today</div></div>
-              </div>
-              <div style="font-size:11px;color:var(--text-muted)">W3 bar shows sessions delivered up to Mon 17 Mar only.</div>
-            </div>
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Corrective Actions Required</div>
-              <div class="summary-box sb-red" style="margin-bottom:10px">
-                <strong>Mr. Vikram Iyer -- Immediate Action:</strong><br>
-                Programme deviation 38% (threshold: 30%). Note compliance 78% (threshold: 80%). 3 no-show flags in 3 weeks. Clinical supervision visit required this week (HOD). HR performance discussion required (Admin). Written improvement plan to be issued by 21 Mar.
-              </div>
-              <div class="summary-box sb-amber">
-                <strong>Ms. Kavya Shetty -- Monitor:</strong><br>
-                Programme deviation 24% -- approaching threshold. Note SLA compliance 84%. HOD to conduct informal check-in before end of month. Re-assess at April review.
-              </div>
-            </div>
+          <div class="gauge-item">
+            <div class="gauge-circle gc-good">88%</div>
+            <div class="gauge-label">Dr. Priya Nair</div>
+            <div class="gauge-sub">Physio · Overall Score</div>
+            <div style="margin-top:6px"><span class="sp sp-g">Excellent</span></div>
           </div>
+          <div class="gauge-item">
+            <div class="gauge-circle gc-warn">71%</div>
+            <div class="gauge-label">Ms. Kavya Shetty</div>
+            <div class="gauge-sub">ABA · Overall Score</div>
+            <div style="margin-top:6px"><span class="sp sp-a">Monitor</span></div>
+          </div>
+          <div class="gauge-item">
+            <div class="gauge-circle gc-poor">58%</div>
+            <div class="gauge-label">Mr. Vikram Iyer</div>
+            <div class="gauge-sub">Neuro Physio · Overall</div>
+            <div style="margin-top:6px"><span class="sp sp-r">Action Required</span></div>
+          </div>
+        </div>
+      </div>
 
-          <div class="report-watermark no-print">RehabCare Clinic · Therapist Performance Scorecard · RPT-2025-TPS-0018 · Confidential HR Document · For Internal Use Only</div>
+      <div class="r-section">
+        <div class="r-section-title">Detailed Performance Matrix -- March 2025</div>
+        <table class="rpt-table">
+          <thead>
+            <tr>
+              <th>Therapist</th><th>Role</th><th>Sessions MTD</th><th>Utilisation</th>
+              <th>Note Compliance</th><th>Programme Deviation</th><th>Milestone Rate</th>
+              <th>No-Show Flags</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600">Dr. Priya Nair</td><td style="color:var(--text-muted)">Sr. Physio · HOD</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600">53</td>
+              <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--green)">92%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:92%;height:100%;background:var(--green);border-radius:100px"></div></div></div></td>
+              <td><span class="sp sp-g">100%</span></td>
+              <td style="color:var(--green);font-weight:600">5%</td>
+              <td style="color:var(--green);font-weight:600">95%</td>
+              <td style="color:var(--green)">0</td>
+              <td><span class="sp sp-g">Excellent</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Ms. Ananya Desai</td><td style="color:var(--text-muted)">Occupational Therapist</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600">38</td>
+              <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:#2563EB">85%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:85%;height:100%;background:#2563EB;border-radius:100px"></div></div></div></td>
+              <td><span class="sp sp-g">97%</span></td>
+              <td style="color:var(--green);font-weight:600">5%</td>
+              <td style="color:var(--green);font-weight:600">92%</td>
+              <td style="color:var(--amber)">1</td>
+              <td><span class="sp sp-g">Excellent</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Mr. Rohan Mehta</td><td style="color:var(--text-muted)">Speech Therapist</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600">53</td>
+              <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:#2563EB">88%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:88%;height:100%;background:#2563EB;border-radius:100px"></div></div></div></td>
+              <td><span class="sp sp-g">96%</span></td>
+              <td style="color:#2563EB;font-weight:600">12%</td>
+              <td style="color:#2563EB;font-weight:600">88%</td>
+              <td style="color:var(--green)">0</td>
+              <td><span class="sp sp-b">Good</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Ms. Kavya Shetty</td><td style="color:var(--text-muted)">ABA Therapist</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600">52</td>
+              <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--amber)">80%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:80%;height:100%;background:var(--amber);border-radius:100px"></div></div></div></td>
+              <td><span class="sp sp-a">84%</span></td>
+              <td style="color:var(--amber);font-weight:600">24%</td>
+              <td style="color:var(--amber);font-weight:600">76%</td>
+              <td style="color:var(--amber)">1</td>
+              <td><span class="sp sp-a">Monitor</span></td>
+            </tr>
+            <tr style="background:#FEF9FA">
+              <td style="font-weight:600">Mr. Vikram Iyer</td><td style="color:var(--text-muted)">Neuro Physiotherapist</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600">44</td>
+              <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--rose)">72%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:72%;height:100%;background:var(--rose);border-radius:100px"></div></div></div></td>
+              <td><span class="sp sp-r">78%</span></td>
+              <td style="color:var(--rose);font-weight:600">38% ⚠</td>
+              <td style="color:var(--rose);font-weight:600">62%</td>
+              <td style="color:var(--rose);font-weight:600">3</td>
+              <td><span class="sp sp-r">Action Required</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Ms. Sneha Kulkarni</td><td style="color:var(--text-muted)">Special Educator</td>
+              <td style="font-family:'DM Mono',monospace;font-weight:600">48</td>
+              <td><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:var(--green)">91%</span><div style="width:50px;height:5px;background:var(--surface2);border-radius:100px"><div style="width:91%;height:100%;background:var(--green);border-radius:100px"></div></div></div></td>
+              <td><span class="sp sp-g">98%</span></td>
+              <td style="color:var(--green);font-weight:600">8%</td>
+              <td style="color:var(--green);font-weight:600">91%</td>
+              <td style="color:var(--green)">0</td>
+              <td><span class="sp sp-g">Excellent</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-2">
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Session Volume Trend -- Sessions / Week</div>
+          <div class="bar-chart-wrap" style="margin-bottom:8px">
+            <div class="bar-chart-item"><div class="bc-val">241</div><div class="bc-bar" style="height:80px;background:var(--teal)"></div><div class="bc-lbl">W1</div></div>
+            <div class="bar-chart-item"><div class="bc-val">228</div><div class="bc-bar" style="height:76px;background:var(--teal)"></div><div class="bc-lbl">W2</div></div>
+            <div class="bar-chart-item"><div class="bc-val">247</div><div class="bc-bar" style="height:82px;background:var(--teal)"></div><div class="bc-lbl">W3 (Mon)</div></div>
+            <div class="bar-chart-item"><div class="bc-val">87</div><div class="bc-bar" style="height:29px;background:rgba(13,148,136,0.4)"></div><div class="bc-lbl">W3 today</div></div>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted)">W3 bar shows sessions delivered up to Mon 17 Mar only.</div>
+        </div>
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Corrective Actions Required</div>
+          <div class="summary-box sb-red" style="margin-bottom:10px">
+            <strong>Mr. Vikram Iyer -- Immediate Action:</strong><br>
+            Programme deviation 38% (threshold: 30%). Note compliance 78% (threshold: 80%). 3 no-show flags in 3 weeks. Clinical supervision visit required this week (HOD). HR performance discussion required (Admin). Written improvement plan to be issued by 21 Mar.
+          </div>
+          <div class="summary-box sb-amber">
+            <strong>Ms. Kavya Shetty -- Monitor:</strong><br>
+            Programme deviation 24% -- approaching threshold. Note SLA compliance 84%. HOD to conduct informal check-in before end of month. Re-assess at April review.
+          </div>
+        </div>
+      </div>
+
+      <div class="report-watermark no-print">RehabCare Clinic · Therapist Performance Scorecard · RPT-2025-TPS-0018 · Confidential HR Document · For Internal Use Only</div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════════
+         REPORT 3: CLINIC OPERATIONS
+         ════════════════════════════════════════════ -->
+    <div class="report-view" id="report-clinic-ops">
+
+      <div class="report-header-block">
+        <div>
+          <div class="report-clinic-name">RehabCare Clinic</div>
+          <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002</div>
+        </div>
+        <div class="report-meta-block">
+          <div class="report-type-tag">Clinic Operations Report</div>
+          <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-OPS-0031</div>
+          <div class="report-meta-row"><strong>Period:</strong> 01 -- 17 Mar 2025</div>
+          <div class="report-meta-row"><strong>Prepared by:</strong> Admin -- Isha Chaudhary</div>
+        </div>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Month-to-Date Operational KPIs</div>
+        <div class="score-grid" style="grid-template-columns:repeat(6,1fr)">
+          <div class="score-card"><div class="score-num" style="color:var(--teal)">841</div><div class="score-lbl">Sessions Delivered</div><div class="score-sub">87/day avg</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--green)">91%</div><div class="score-lbl">Slot Utilisation</div><div class="score-sub">Industry avg: 75%</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--amber)">3.2%</div><div class="score-lbl">No-Show Rate</div><div class="score-sub">Target: &lt;5%</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--teal)">74%</div><div class="score-lbl">Refill Rate</div><div class="score-sub">Target: &gt;60%</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--green)">97%</div><div class="score-lbl">Note Compliance</div><div class="score-sub">Target: &gt;90%</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--green)">8</div><div class="score-lbl">Active Therapists</div><div class="score-sub">1 on leave (1 day)</div></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Daily Session Volume -- March 2025</div>
+          <div class="bar-chart-wrap" style="height:100px;margin-bottom:8px">
+            <div class="bar-chart-item"><div class="bc-val">82</div><div class="bc-bar" style="height:82px;background:var(--teal);opacity:0.9"></div><div class="bc-lbl">Mon 03</div></div>
+            <div class="bar-chart-item"><div class="bc-val">88</div><div class="bc-bar" style="height:88px;background:var(--teal)"></div><div class="bc-lbl">Tue 04</div></div>
+            <div class="bar-chart-item"><div class="bc-val">76</div><div class="bc-bar" style="height:76px;background:var(--teal);opacity:0.85"></div><div class="bc-lbl">Wed 05</div></div>
+            <div class="bar-chart-item"><div class="bc-val">90</div><div class="bc-bar" style="height:90px;background:var(--teal)"></div><div class="bc-lbl">Thu 06</div></div>
+            <div class="bar-chart-item"><div class="bc-val">86</div><div class="bc-bar" style="height:86px;background:var(--teal)"></div><div class="bc-lbl">Fri 07</div></div>
+            <div class="bar-chart-item"><div class="bc-val">85</div><div class="bc-bar" style="height:85px;background:var(--teal);opacity:0.8"></div><div class="bc-lbl">Mon 10</div></div>
+            <div class="bar-chart-item"><div class="bc-val">91</div><div class="bc-bar" style="height:91px;background:var(--teal)"></div><div class="bc-lbl">Tue 11</div></div>
+            <div class="bar-chart-item"><div class="bc-val">79</div><div class="bc-bar" style="height:79px;background:var(--amber);opacity:0.8"></div><div class="bc-lbl">Wed 12</div></div>
+            <div class="bar-chart-item"><div class="bc-val">89</div><div class="bc-bar" style="height:89px;background:var(--teal)"></div><div class="bc-lbl">Thu 13</div></div>
+            <div class="bar-chart-item"><div class="bc-val">87</div><div class="bc-bar" style="height:87px;background:rgba(13,148,136,0.5);border:1.5px dashed var(--teal)"></div><div class="bc-lbl">Mon 17</div></div>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted)">Wed 12 lower due to Ms. Ananya leave day. Mon 17 shows partial day.</div>
+        </div>
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Therapy Domain Breakdown -- Sessions Delivered</div>
+          <table class="rpt-table" style="font-size:12px">
+            <thead><tr><th>Therapy Type</th><th>Sessions</th><th>% of Total</th><th>Therapists</th></tr></thead>
+            <tbody>
+              <tr><td>Physiotherapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">198</td><td>23.5%</td><td>Dr. Priya Nair, Mr. Vikram</td></tr>
+              <tr><td>Occupational Therapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">167</td><td>19.9%</td><td>Ms. Ananya Desai</td></tr>
+              <tr><td>ABA Therapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">154</td><td>18.3%</td><td>Ms. Kavya Shetty</td></tr>
+              <tr><td>Speech Therapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">142</td><td>16.9%</td><td>Mr. Rohan Mehta</td></tr>
+              <tr><td>Special Education</td><td style="font-family:'DM Mono',monospace;font-weight:600">112</td><td>13.3%</td><td>Ms. Sneha Kulkarni</td></tr>
+              <tr><td>Sensory Integration</td><td style="font-family:'DM Mono',monospace;font-weight:600">68</td><td>8.1%</td><td>Ms. Ananya (dual)</td></tr>
+            </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>841</strong></td><td><strong>100%</strong></td><td></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="r-section" style="margin-top:18px">
+        <div class="r-section-title">Operational Highlights &amp; Action Items</div>
+        <div class="summary-box sb-green" style="margin-bottom:10px">
+          ✓ <strong>Slot Utilisation 91%</strong> -- Above industry benchmark of 75%. Waitlist management and same-day refill protocol working effectively. 74% of cancelled slots successfully refilled this month -- clinic retained ₹18,000 in revenue that would otherwise have been lost.
+        </div>
+        <div class="summary-box sb-amber">
+          ⚠ <strong>Wed 12 low-volume day (79 sessions)</strong> -- attributed to single therapist leave (Ms. Ananya). Recommend building a cover protocol for OT sessions when primary OT is absent -- 8 sessions rescheduled same-week rather than refilled, resulting in ₹9,600 revenue deferral.
+        </div>
+      </div>
+
+      <div class="report-watermark no-print">RehabCare Clinic · Clinic Operations Report · RPT-2025-OPS-0031</div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════════
+         REPORT 4: SESSION COMPLIANCE
+         ════════════════════════════════════════════ -->
+    <div class="report-view" id="report-session-compliance">
+
+      <div class="report-header-block">
+        <div>
+          <div class="report-clinic-name">RehabCare Clinic</div>
+          <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002</div>
+        </div>
+        <div class="report-meta-block">
+          <div class="report-type-tag">Session Compliance Report</div>
+          <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-SCR-0009</div>
+          <div class="report-meta-row"><strong>Period:</strong> March 2025</div>
+          <div class="report-meta-row"><strong>Prepared by:</strong> System Auto-Report</div>
+        </div>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Note Completion SLA -- By Therapist (4-Hour Policy)</div>
+        <table class="rpt-table">
+          <thead>
+            <tr><th>Therapist</th><th>Sessions Delivered</th><th>Notes On Time (&lt;4hr)</th><th>Notes Late (4--24hr)</th><th>Notes Missing</th><th>Compliance %</th><th>SLA Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-weight:600">Dr. Priya Nair</td><td>53</td><td style="color:var(--green)">53</td><td style="color:var(--green)">0</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">100%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
+            <tr><td style="font-weight:600">Ms. Ananya Desai</td><td>38</td><td style="color:var(--green)">37</td><td style="color:var(--amber)">1</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">97.4%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
+            <tr><td style="font-weight:600">Mr. Rohan Mehta</td><td>53</td><td style="color:var(--green)">51</td><td style="color:var(--amber)">2</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">96.2%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
+            <tr><td style="font-weight:600">Ms. Kavya Shetty</td><td>52</td><td style="color:var(--amber)">44</td><td style="color:var(--amber)">7</td><td style="color:var(--amber)">1</td><td style="font-weight:700;color:var(--amber)">84.6%</td><td><span class="sp sp-a">⚠ Monitor</span></td></tr>
+            <tr style="background:#FEF9FA"><td style="font-weight:600">Mr. Vikram Iyer</td><td>44</td><td style="color:var(--rose)">32</td><td style="color:var(--rose)">9</td><td style="color:var(--rose)">3</td><td style="font-weight:700;color:var(--rose)">72.7%</td><td><span class="sp sp-r">✗ Non-Compliant</span></td></tr>
+            <tr><td style="font-weight:600">Ms. Sneha Kulkarni</td><td>48</td><td style="color:var(--green)">47</td><td style="color:var(--green)">1</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">97.9%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td><strong>CLINIC TOTAL</strong></td><td><strong>288</strong></td><td><strong>264</strong></td><td><strong>20</strong></td><td><strong>4</strong></td><td><strong>91.7%</strong></td><td><span class="sp sp-g">✓ Above Target</span></td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Programme Adherence vs Protocol -- Deviation Analysis</div>
+        <div class="rating-row"><span class="rating-label">Dr. Priya Nair (Physio)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:95%"></div></div><span class="rating-val" style="color:var(--green)">95%</span><span class="sp sp-g" style="margin-left:8px">On Track</span></div>
+        <div class="rating-row"><span class="rating-label">Ms. Ananya Desai (OT)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:95%"></div></div><span class="rating-val" style="color:var(--green)">95%</span><span class="sp sp-g" style="margin-left:8px">On Track</span></div>
+        <div class="rating-row"><span class="rating-label">Mr. Rohan Mehta (Speech)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-blue" style="width:88%"></div></div><span class="rating-val" style="color:#2563EB">88%</span><span class="sp sp-b" style="margin-left:8px">Good</span></div>
+        <div class="rating-row"><span class="rating-label">Ms. Kavya Shetty (ABA)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-amber" style="width:76%"></div></div><span class="rating-val" style="color:var(--amber)">76%</span><span class="sp sp-a" style="margin-left:8px">Monitor</span></div>
+        <div class="rating-row"><span class="rating-label">Mr. Vikram Iyer (Neuro Physio)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-rose" style="width:62%"></div></div><span class="rating-val" style="color:var(--rose)">62%</span><span class="sp sp-r" style="margin-left:8px">⚠ Below Threshold</span></div>
+        <div class="rating-row"><span class="rating-label">Ms. Sneha Kulkarni (SpEd)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:92%"></div></div><span class="rating-val" style="color:var(--green)">92%</span><span class="sp sp-g" style="margin-left:8px">Excellent</span></div>
+        <div style="margin-top:12px;font-size:11px;color:var(--text-muted)">Adherence = prescribed activities delivered / total prescribed × 100%. Deviations require documented clinical reason -- all above are logged. Threshold for review: &lt;80%.</div>
+      </div>
+
+      <div class="report-watermark no-print">RehabCare Clinic · Session Compliance Report · RPT-2025-SCR-0009 · Auto-generated by System</div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════════
+         REPORT 5: NO-SHOW & CANCELLATION
+         ════════════════════════════════════════════ -->
+    <div class="report-view" id="report-noshow-report">
+
+      <div class="report-header-block">
+        <div>
+          <div class="report-clinic-name">RehabCare Clinic</div>
+          <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002</div>
+        </div>
+        <div class="report-meta-block">
+          <div class="report-type-tag">No-Show &amp; Cancellation Report</div>
+          <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-NSR-0012</div>
+          <div class="report-meta-row"><strong>Period:</strong> 01 -- 17 Mar 2025</div>
+          <div class="report-meta-row"><strong>Prepared by:</strong> Admin -- Isha Chaudhary</div>
+        </div>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Summary KPIs</div>
+        <div class="score-grid">
+          <div class="score-card"><div class="score-num" style="color:var(--rose)">27</div><div class="score-lbl">Total No-Shows</div><div class="score-sub">3.2% of 841 sessions</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--amber)">41</div><div class="score-lbl">Cancellations</div><div class="score-sub">20 same-day</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--green)">31</div><div class="score-lbl">Slots Refilled</div><div class="score-sub">75.6% refill rate</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--rose)">10</div><div class="score-lbl">Idle Slots</div><div class="score-sub">₹12,000 lost</div></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">No-Shows by Therapy Type</div>
+          <table class="rpt-table" style="font-size:12px">
+            <thead><tr><th>Therapy</th><th>No-Shows</th><th>Rate</th><th>Charged</th><th>Waived</th></tr></thead>
+            <tbody>
+              <tr><td>OT</td><td>8</td><td style="color:var(--amber)">4.8%</td><td>5</td><td>3</td></tr>
+              <tr><td>ABA Therapy</td><td>7</td><td style="color:var(--amber)">4.5%</td><td>6</td><td>1</td></tr>
+              <tr><td>Physiotherapy</td><td>6</td><td style="color:var(--green)">3.0%</td><td>5</td><td>1</td></tr>
+              <tr><td>Speech</td><td>4</td><td style="color:var(--green)">2.8%</td><td>3</td><td>1</td></tr>
+              <tr><td>Special Education</td><td>2</td><td style="color:var(--green)">1.8%</td><td>2</td><td>0</td></tr>
+            </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>27</strong></td><td><strong>3.2%</strong></td><td><strong>21</strong></td><td><strong>6</strong></td></tr></tfoot>
+          </table>
         </div>
 
-
-        <!-- ════════════════════════════════════════════
-             REPORT 3: CLINIC OPERATIONS
-             ════════════════════════════════════════════ -->
-        <div class="report-view" id="report-clinic-ops">
-
-          <div class="report-header-block">
-            <div>
-              <div class="report-clinic-name">RehabCare Clinic</div>
-              <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002</div>
-            </div>
-            <div class="report-meta-block">
-              <div class="report-type-tag">Clinic Operations Report</div>
-              <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-OPS-0031</div>
-              <div class="report-meta-row"><strong>Period:</strong> 01 -- 17 Mar 2025</div>
-              <div class="report-meta-row"><strong>Prepared by:</strong> Admin -- Sunita Rao</div>
-            </div>
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Cancellation Revenue Recovery</div>
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span>Clinic Retained (Refilled Slots)</span><strong style="color:var(--green)">₹37,200</strong></div>
+            <div style="height:10px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:75%;height:100%;background:var(--green);border-radius:100px"></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:3px">31 slots × ₹1,200</div>
           </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Month-to-Date Operational KPIs</div>
-            <div class="score-grid" style="grid-template-columns:repeat(6,1fr)">
-              <div class="score-card"><div class="score-num" style="color:var(--teal)">841</div><div class="score-lbl">Sessions Delivered</div><div class="score-sub">87/day avg</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--green)">91%</div><div class="score-lbl">Slot Utilisation</div><div class="score-sub">Industry avg: 75%</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--amber)">3.2%</div><div class="score-lbl">No-Show Rate</div><div class="score-sub">Target: &lt;5%</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--teal)">74%</div><div class="score-lbl">Refill Rate</div><div class="score-sub">Target: &gt;60%</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--green)">97%</div><div class="score-lbl">Note Compliance</div><div class="score-sub">Target: &gt;90%</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--green)">8</div><div class="score-lbl">Active Therapists</div><div class="score-sub">1 on leave (1 day)</div></div>
-            </div>
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span>Therapist Credited (Idle Slots)</span><strong style="color:#2563EB">₹7,200</strong></div>
+            <div style="height:10px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:19%;height:100%;background:#2563EB;border-radius:100px"></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:3px">6 idle slots × ₹1,200</div>
           </div>
-
-          <div class="grid-2">
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Daily Session Volume -- March 2025</div>
-              <div class="bar-chart-wrap" style="height:100px;margin-bottom:8px">
-                <div class="bar-chart-item"><div class="bc-val">82</div><div class="bc-bar" style="height:82px;background:var(--teal);opacity:0.9"></div><div class="bc-lbl">Mon 03</div></div>
-                <div class="bar-chart-item"><div class="bc-val">88</div><div class="bc-bar" style="height:88px;background:var(--teal)"></div><div class="bc-lbl">Tue 04</div></div>
-                <div class="bar-chart-item"><div class="bc-val">76</div><div class="bc-bar" style="height:76px;background:var(--teal);opacity:0.85"></div><div class="bc-lbl">Wed 05</div></div>
-                <div class="bar-chart-item"><div class="bc-val">90</div><div class="bc-bar" style="height:90px;background:var(--teal)"></div><div class="bc-lbl">Thu 06</div></div>
-                <div class="bar-chart-item"><div class="bc-val">86</div><div class="bc-bar" style="height:86px;background:var(--teal)"></div><div class="bc-lbl">Fri 07</div></div>
-                <div class="bar-chart-item"><div class="bc-val">85</div><div class="bc-bar" style="height:85px;background:var(--teal);opacity:0.8"></div><div class="bc-lbl">Mon 10</div></div>
-                <div class="bar-chart-item"><div class="bc-val">91</div><div class="bc-bar" style="height:91px;background:var(--teal)"></div><div class="bc-lbl">Tue 11</div></div>
-                <div class="bar-chart-item"><div class="bc-val">79</div><div class="bc-bar" style="height:79px;background:var(--amber);opacity:0.8"></div><div class="bc-lbl">Wed 12</div></div>
-                <div class="bar-chart-item"><div class="bc-val">89</div><div class="bc-bar" style="height:89px;background:var(--teal)"></div><div class="bc-lbl">Thu 13</div></div>
-                <div class="bar-chart-item"><div class="bc-val">87</div><div class="bc-bar" style="height:87px;background:rgba(13,148,136,0.5);border:1.5px dashed var(--teal)"></div><div class="bc-lbl">Mon 17</div></div>
-              </div>
-              <div style="font-size:11px;color:var(--text-muted)">Wed 12 lower due to Ms. Ananya leave day. Mon 17 shows partial day.</div>
-            </div>
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Therapy Domain Breakdown -- Sessions Delivered</div>
-              <table class="rpt-table" style="font-size:12px">
-                <thead><tr><th>Therapy Type</th><th>Sessions</th><th>% of Total</th><th>Therapists</th></tr></thead>
-                <tbody>
-                  <tr><td>Physiotherapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">198</td><td>23.5%</td><td>Dr. Priya Nair, Mr. Vikram</td></tr>
-                  <tr><td>Occupational Therapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">167</td><td>19.9%</td><td>Ms. Ananya Desai</td></tr>
-                  <tr><td>ABA Therapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">154</td><td>18.3%</td><td>Ms. Kavya Shetty</td></tr>
-                  <tr><td>Speech Therapy</td><td style="font-family:'DM Mono',monospace;font-weight:600">142</td><td>16.9%</td><td>Mr. Rohan Mehta</td></tr>
-                  <tr><td>Special Education</td><td style="font-family:'DM Mono',monospace;font-weight:600">112</td><td>13.3%</td><td>Ms. Sneha Kulkarni</td></tr>
-                  <tr><td>Sensory Integration</td><td style="font-family:'DM Mono',monospace;font-weight:600">68</td><td>8.1%</td><td>Ms. Ananya (dual)</td></tr>
-                </tbody>
-                <tfoot><tr><td><strong>Total</strong></td><td><strong>841</strong></td><td><strong>100%</strong></td><td></td></tr></tfoot>
-              </table>
-            </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span>Revenue Lost (Idle -- Unrecovered)</span><strong style="color:var(--rose)">₹12,000</strong></div>
+            <div style="height:10px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:24%;height:100%;background:var(--rose);border-radius:100px"></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:3px">10 idle slots × ₹1,200 -- unrecovered</div>
           </div>
-
-          <div class="r-section" style="margin-top:18px">
-            <div class="r-section-title">Operational Highlights &amp; Action Items</div>
-            <div class="summary-box sb-green" style="margin-bottom:10px">
-              ✓ <strong>Slot Utilisation 91%</strong> -- Above industry benchmark of 75%. Waitlist management and same-day refill protocol working effectively. 74% of cancelled slots successfully refilled this month -- clinic retained ₹18,000 in revenue that would otherwise have been lost.
-            </div>
-            <div class="summary-box sb-amber">
-              ⚠ <strong>Wed 12 low-volume day (79 sessions)</strong> -- attributed to single therapist leave (Ms. Ananya). Recommend building a cover protocol for OT sessions when primary OT is absent -- 8 sessions rescheduled same-week rather than refilled, resulting in ₹9,600 revenue deferral.
-            </div>
+          <div style="margin-top:12px;padding:10px 12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:12px;color:#166534">
+            ✓ <strong>Refill Rate 75.6%</strong> -- significantly above industry benchmark of 40--50%. Waitlist management SOP is working.
           </div>
+        </div>
+      </div>
 
-          <div class="report-watermark no-print">RehabCare Clinic · Clinic Operations Report · RPT-2025-OPS-0031</div>
+      <div class="r-section" style="margin-top:18px">
+        <div class="r-section-title">Repeat No-Show Patients -- Escalation List</div>
+        <table class="rpt-table">
+          <thead><tr><th>Patient</th><th>No-Shows (MTD)</th><th>Last No-Show</th><th>Outstanding Balance</th><th>Action Taken</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600">Vivaan Bose</td><td style="color:var(--rose);font-weight:600">3</td><td>17 Mar 2025</td><td style="color:var(--rose)">₹2,400</td><td>Called × 2 · WhatsApp sent</td><td><span class="sp sp-r">Escalate</span></td></tr>
+            <tr><td style="font-weight:600">Zara Menon</td><td style="color:var(--amber);font-weight:600">2</td><td>10 Mar 2025</td><td style="color:var(--amber)">₹3,600</td><td>1 charge applied · 1 waived</td><td><span class="sp sp-a">Monitor</span></td></tr>
+            <tr><td style="font-weight:600">Unknown (Dhruv Sinha)</td><td style="color:var(--amber);font-weight:600">1</td><td>17 Mar 2025</td><td style="color:var(--text-muted)">N/A (new)</td><td>Rebooking call pending</td><td><span class="sp sp-a">Follow-Up</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="report-watermark no-print">RehabCare Clinic · No-Show &amp; Cancellation Report · RPT-2025-NSR-0012</div>
+    </div>
+
+
+    <!-- ════════════════════════════════════════════
+         REPORT 6: FINANCIAL SUMMARY
+         ════════════════════════════════════════════ -->
+    <div class="report-view" id="report-financial">
+
+      <div class="report-header-block">
+        <div>
+          <div class="report-clinic-name">RehabCare Clinic</div>
+          <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002 · GSTIN: 27AABCR1234D1ZX</div>
+        </div>
+        <div class="report-meta-block">
+          <div class="report-type-tag">Financial Summary Report</div>
+          <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-FIN-0022</div>
+          <div class="report-meta-row"><strong>Period:</strong> 01 -- 17 Mar 2025</div>
+          <div class="report-meta-row"><strong>Prepared by:</strong> Admin -- Isha Chaudhary</div>
+        </div>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Revenue Overview</div>
+        <div class="score-grid" style="grid-template-columns:repeat(5,1fr)">
+          <div class="score-card"><div class="score-num" style="color:var(--teal);font-size:1.5rem">₹10.09L</div><div class="score-lbl">Expected Revenue</div><div class="score-sub">841 sessions × ₹1,200</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--green);font-size:1.5rem">₹8.35L</div><div class="score-lbl">Collected</div><div class="score-sub">82.7% collection rate</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--rose);font-size:1.5rem">₹1.74L</div><div class="score-lbl">Outstanding</div><div class="score-sub">12 patients overdue</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--purple);font-size:1.5rem">₹1.50L</div><div class="score-lbl">GST Collected</div><div class="score-sub">18% on services</div></div>
+          <div class="score-card"><div class="score-num" style="color:var(--amber);font-size:1.5rem">₹2.94L</div><div class="score-lbl">Packages Sold</div><div class="score-sub">6 new packages</div></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Daily Collections -- March 1--17</div>
+          <div class="bar-chart-wrap" style="height:90px;margin-bottom:8px">
+            <div class="bar-chart-item"><div class="bc-bar" style="height:82px;background:var(--green)"></div><div class="bc-lbl">03</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:90px;background:var(--green)"></div><div class="bc-lbl">04</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:68px;background:var(--green);opacity:0.8"></div><div class="bc-lbl">05</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:88px;background:var(--green)"></div><div class="bc-lbl">06</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:79px;background:var(--green)"></div><div class="bc-lbl">07</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:84px;background:var(--green)"></div><div class="bc-lbl">10</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:90px;background:var(--green)"></div><div class="bc-lbl">11</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:62px;background:var(--amber);opacity:0.9"></div><div class="bc-lbl">12</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:85px;background:var(--green)"></div><div class="bc-lbl">13</div></div>
+            <div class="bar-chart-item"><div class="bc-bar" style="height:50px;background:rgba(5,150,105,0.45);border:1.5px dashed var(--green)"></div><div class="bc-lbl">17</div></div>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted)">17 Mar shown as partial day (10:48 AM cutoff)</div>
         </div>
 
-
-        <!-- ════════════════════════════════════════════
-             REPORT 4: SESSION COMPLIANCE
-             ════════════════════════════════════════════ -->
-        <div class="report-view" id="report-session-compliance">
-
-          <div class="report-header-block">
-            <div>
-              <div class="report-clinic-name">RehabCare Clinic</div>
-              <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002</div>
-            </div>
-            <div class="report-meta-block">
-              <div class="report-type-tag">Session Compliance Report</div>
-              <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-SCR-0009</div>
-              <div class="report-meta-row"><strong>Period:</strong> March 2025</div>
-              <div class="report-meta-row"><strong>Prepared by:</strong> System Auto-Report</div>
-            </div>
-          </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Note Completion SLA -- By Therapist (4-Hour Policy)</div>
-            <table class="rpt-table">
-              <thead>
-                <tr><th>Therapist</th><th>Sessions Delivered</th><th>Notes On Time (&lt;4hr)</th><th>Notes Late (4--24hr)</th><th>Notes Missing</th><th>Compliance %</th><th>SLA Status</th></tr>
-              </thead>
-              <tbody>
-                <tr><td style="font-weight:600">Dr. Priya Nair</td><td>53</td><td style="color:var(--green)">53</td><td style="color:var(--green)">0</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">100%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
-                <tr><td style="font-weight:600">Ms. Ananya Desai</td><td>38</td><td style="color:var(--green)">37</td><td style="color:var(--amber)">1</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">97.4%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
-                <tr><td style="font-weight:600">Mr. Rohan Mehta</td><td>53</td><td style="color:var(--green)">51</td><td style="color:var(--amber)">2</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">96.2%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
-                <tr><td style="font-weight:600">Ms. Kavya Shetty</td><td>52</td><td style="color:var(--amber)">44</td><td style="color:var(--amber)">7</td><td style="color:var(--amber)">1</td><td style="font-weight:700;color:var(--amber)">84.6%</td><td><span class="sp sp-a">⚠ Monitor</span></td></tr>
-                <tr style="background:#FEF9FA"><td style="font-weight:600">Mr. Vikram Iyer</td><td>44</td><td style="color:var(--rose)">32</td><td style="color:var(--rose)">9</td><td style="color:var(--rose)">3</td><td style="font-weight:700;color:var(--rose)">72.7%</td><td><span class="sp sp-r">✗ Non-Compliant</span></td></tr>
-                <tr><td style="font-weight:600">Ms. Sneha Kulkarni</td><td>48</td><td style="color:var(--green)">47</td><td style="color:var(--green)">1</td><td style="color:var(--green)">0</td><td style="font-weight:700;color:var(--green)">97.9%</td><td><span class="sp sp-g">✓ Compliant</span></td></tr>
-              </tbody>
-              <tfoot>
-                <tr><td><strong>CLINIC TOTAL</strong></td><td><strong>288</strong></td><td><strong>264</strong></td><td><strong>20</strong></td><td><strong>4</strong></td><td><strong>91.7%</strong></td><td><span class="sp sp-g">✓ Above Target</span></td></tr>
-              </tfoot>
-            </table>
-          </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Programme Adherence vs Protocol -- Deviation Analysis</div>
-            <div class="rating-row"><span class="rating-label">Dr. Priya Nair (Physio)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:95%"></div></div><span class="rating-val" style="color:var(--green)">95%</span><span class="sp sp-g" style="margin-left:8px">On Track</span></div>
-            <div class="rating-row"><span class="rating-label">Ms. Ananya Desai (OT)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:95%"></div></div><span class="rating-val" style="color:var(--green)">95%</span><span class="sp sp-g" style="margin-left:8px">On Track</span></div>
-            <div class="rating-row"><span class="rating-label">Mr. Rohan Mehta (Speech)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-blue" style="width:88%"></div></div><span class="rating-val" style="color:#2563EB">88%</span><span class="sp sp-b" style="margin-left:8px">Good</span></div>
-            <div class="rating-row"><span class="rating-label">Ms. Kavya Shetty (ABA)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-amber" style="width:76%"></div></div><span class="rating-val" style="color:var(--amber)">76%</span><span class="sp sp-a" style="margin-left:8px">Monitor</span></div>
-            <div class="rating-row"><span class="rating-label">Mr. Vikram Iyer (Neuro Physio)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-rose" style="width:62%"></div></div><span class="rating-val" style="color:var(--rose)">62%</span><span class="sp sp-r" style="margin-left:8px">⚠ Below Threshold</span></div>
-            <div class="rating-row"><span class="rating-label">Ms. Sneha Kulkarni (SpEd)</span><div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" style="width:92%"></div></div><span class="rating-val" style="color:var(--green)">92%</span><span class="sp sp-g" style="margin-left:8px">Excellent</span></div>
-            <div style="margin-top:12px;font-size:11px;color:var(--text-muted)">Adherence = prescribed activities delivered / total prescribed × 100%. Deviations require documented clinical reason -- all above are logged. Threshold for review: &lt;80%.</div>
-          </div>
-
-          <div class="report-watermark no-print">RehabCare Clinic · Session Compliance Report · RPT-2025-SCR-0009 · Auto-generated by System</div>
+        <div class="r-section" style="margin-bottom:0">
+          <div class="r-section-title">Outstanding Ageing Summary</div>
+          <table class="rpt-table" style="font-size:12px">
+            <thead><tr><th>Ageing Bucket</th><th>Patients</th><th>Amount</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>0 -- 7 days</td><td>23</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹27,600</td><td><span class="sp sp-g">Routine</span></td></tr>
+              <tr><td>8 -- 15 days</td><td>14</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹16,800</td><td><span class="sp sp-a">Reminder SMS</span></td></tr>
+              <tr><td>16 -- 30 days</td><td>6</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--orange)">₹7,200</td><td><span class="sp sp-a">Call + Notice</span></td></tr>
+              <tr><td>30+ days</td><td>4</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">₹4,800</td><td><span class="sp sp-r">Booking Hold</span></td></tr>
+            </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>47</strong></td><td><strong>₹56,400</strong></td><td></td></tr></tfoot>
+          </table>
         </div>
+      </div>
+
+      <div class="r-section" style="margin-top:18px">
+        <div class="r-section-title">Package Sales -- March 2025</div>
+        <table class="rpt-table">
+          <thead><tr><th>Invoice No.</th><th>Patient</th><th>Package</th><th>Base Amount</th><th>GST 18%</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td style="font-family:'DM Mono',monospace">INV-2025-0089</td><td>Nihal Shaikh</td><td>OT 30 Sessions</td><td>₹36,000</td><td>₹6,480</td><td style="font-weight:600">₹42,480</td><td><span class="sp sp-g">Paid</span></td></tr>
+            <tr><td style="font-family:'DM Mono',monospace">INV-2025-0082</td><td>Zara Menon</td><td>ABA 60 Sessions</td><td>₹72,000</td><td>₹12,960</td><td style="font-weight:600">₹84,960</td><td><span class="sp sp-g">Paid</span></td></tr>
+            <tr><td style="font-family:'DM Mono',monospace">INV-2025-0078</td><td>Kabir Ansari</td><td>Physio 50 Sessions</td><td>₹60,000</td><td>₹10,800</td><td style="font-weight:600">₹70,800</td><td><span class="sp sp-g">Paid</span></td></tr>
+            <tr><td style="font-family:'DM Mono',monospace">INV-2025-0091</td><td>Riya Kapoor</td><td>OT+Physio+SI 40 Sessions</td><td>₹48,000</td><td>₹8,640</td><td style="font-weight:600">₹56,640</td><td><span class="sp sp-b">Pending</span></td></tr>
+            <tr><td style="font-family:'DM Mono',monospace">INV-2025-0085</td><td>Aarav Patil</td><td>Speech 20 Sessions</td><td>₹24,000</td><td>₹4,320</td><td style="font-weight:600">₹28,320</td><td><span class="sp sp-g">Paid</span></td></tr>
+            <tr><td style="font-family:'DM Mono',monospace">INV-2025-0092</td><td>Dhruv Sinha</td><td>OT+Behavioral 30 Sessions</td><td>₹36,000</td><td>₹6,480</td><td style="font-weight:600">₹42,480</td><td><span class="sp sp-a">Awaiting Publish</span></td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="3"><strong>Total</strong></td><td><strong>₹2,76,000</strong></td><td><strong>₹49,680</strong></td><td><strong>₹3,25,680</strong></td><td></td></tr></tfoot>
+        </table>
+      </div>
+
+      <div class="report-watermark no-print">RehabCare Clinic · Financial Summary Report · RPT-2025-FIN-0022 · Confidential · For Internal Use Only</div>
+    </div>
 
 
-        <!-- ════════════════════════════════════════════
-             REPORT 5: NO-SHOW & CANCELLATION
-             ════════════════════════════════════════════ -->
-        <div class="report-view" id="report-noshow-report">
+    <!-- ════════════════════════════════════════════
+         REPORT 7: DISCHARGE SUMMARY
+         ════════════════════════════════════════════ -->
+    <div class="report-view" id="report-discharge">
 
-          <div class="report-header-block">
-            <div>
-              <div class="report-clinic-name">RehabCare Clinic</div>
-              <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002</div>
-            </div>
-            <div class="report-meta-block">
-              <div class="report-type-tag">No-Show &amp; Cancellation Report</div>
-              <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-NSR-0012</div>
-              <div class="report-meta-row"><strong>Period:</strong> 01 -- 17 Mar 2025</div>
-              <div class="report-meta-row"><strong>Prepared by:</strong> Admin -- Sunita Rao</div>
-            </div>
-          </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Summary KPIs</div>
-            <div class="score-grid">
-              <div class="score-card"><div class="score-num" style="color:var(--rose)">27</div><div class="score-lbl">Total No-Shows</div><div class="score-sub">3.2% of 841 sessions</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--amber)">41</div><div class="score-lbl">Cancellations</div><div class="score-sub">20 same-day</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--green)">31</div><div class="score-lbl">Slots Refilled</div><div class="score-sub">75.6% refill rate</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--rose)">10</div><div class="score-lbl">Idle Slots</div><div class="score-sub">₹12,000 lost</div></div>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">No-Shows by Therapy Type</div>
-              <table class="rpt-table" style="font-size:12px">
-                <thead><tr><th>Therapy</th><th>No-Shows</th><th>Rate</th><th>Charged</th><th>Waived</th></tr></thead>
-                <tbody>
-                  <tr><td>OT</td><td>8</td><td style="color:var(--amber)">4.8%</td><td>5</td><td>3</td></tr>
-                  <tr><td>ABA Therapy</td><td>7</td><td style="color:var(--amber)">4.5%</td><td>6</td><td>1</td></tr>
-                  <tr><td>Physiotherapy</td><td>6</td><td style="color:var(--green)">3.0%</td><td>5</td><td>1</td></tr>
-                  <tr><td>Speech</td><td>4</td><td style="color:var(--green)">2.8%</td><td>3</td><td>1</td></tr>
-                  <tr><td>Special Education</td><td>2</td><td style="color:var(--green)">1.8%</td><td>2</td><td>0</td></tr>
-                </tbody>
-                <tfoot><tr><td><strong>Total</strong></td><td><strong>27</strong></td><td><strong>3.2%</strong></td><td><strong>21</strong></td><td><strong>6</strong></td></tr></tfoot>
-              </table>
-            </div>
-
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Cancellation Revenue Recovery</div>
-              <div style="margin-bottom:12px">
-                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span>Clinic Retained (Refilled Slots)</span><strong style="color:var(--green)">₹37,200</strong></div>
-                <div style="height:10px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:75%;height:100%;background:var(--green);border-radius:100px"></div></div>
-                <div style="font-size:11px;color:var(--text-muted);margin-top:3px">31 slots × ₹1,200</div>
-              </div>
-              <div style="margin-bottom:12px">
-                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span>Therapist Credited (Idle Slots)</span><strong style="color:#2563EB">₹7,200</strong></div>
-                <div style="height:10px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:19%;height:100%;background:#2563EB;border-radius:100px"></div></div>
-                <div style="font-size:11px;color:var(--text-muted);margin-top:3px">6 idle slots × ₹1,200</div>
-              </div>
-              <div>
-                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span>Revenue Lost (Idle -- Unrecovered)</span><strong style="color:var(--rose)">₹12,000</strong></div>
-                <div style="height:10px;background:var(--surface2);border-radius:100px;overflow:hidden"><div style="width:24%;height:100%;background:var(--rose);border-radius:100px"></div></div>
-                <div style="font-size:11px;color:var(--text-muted);margin-top:3px">10 idle slots × ₹1,200 -- unrecovered</div>
-              </div>
-              <div style="margin-top:12px;padding:10px 12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:12px;color:#166534">
-                ✓ <strong>Refill Rate 75.6%</strong> -- significantly above industry benchmark of 40--50%. Waitlist management SOP is working.
-              </div>
-            </div>
-          </div>
-
-          <div class="r-section" style="margin-top:18px">
-            <div class="r-section-title">Repeat No-Show Patients -- Escalation List</div>
-            <table class="rpt-table">
-              <thead><tr><th>Patient</th><th>No-Shows (MTD)</th><th>Last No-Show</th><th>Outstanding Balance</th><th>Action Taken</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td style="font-weight:600">Zain Sayyed</td><td style="color:var(--rose);font-weight:600">3</td><td>17 Mar 2025</td><td style="color:var(--rose)">₹2,400</td><td>Called × 2 · WhatsApp sent</td><td><span class="sp sp-r">Escalate</span></td></tr>
-                <tr><td style="font-weight:600">Saisha Shinde</td><td style="color:var(--amber);font-weight:600">2</td><td>10 Mar 2025</td><td style="color:var(--amber)">₹3,600</td><td>1 charge applied · 1 waived</td><td><span class="sp sp-a">Monitor</span></td></tr>
-                <tr><td style="font-weight:600">Unknown (Neel Sharma)</td><td style="color:var(--amber);font-weight:600">1</td><td>17 Mar 2025</td><td style="color:var(--text-muted)">N/A (new)</td><td>Rebooking call pending</td><td><span class="sp sp-a">Follow-Up</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="report-watermark no-print">RehabCare Clinic · No-Show &amp; Cancellation Report · RPT-2025-NSR-0012</div>
+      <div class="report-header-block">
+        <div>
+          <div class="report-clinic-name">RehabCare Clinic</div>
+          <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002<br>Tel: +91 22-1234-5678</div>
         </div>
-
-
-        <!-- ════════════════════════════════════════════
-             REPORT 6: FINANCIAL SUMMARY
-             ════════════════════════════════════════════ -->
-        <div class="report-view" id="report-financial">
-
-          <div class="report-header-block">
-            <div>
-              <div class="report-clinic-name">RehabCare Clinic</div>
-              <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002 · GSTIN: 27AABCR1234D1ZX</div>
-            </div>
-            <div class="report-meta-block">
-              <div class="report-type-tag">Financial Summary Report</div>
-              <div class="report-meta-row"><strong>Report ID:</strong> RPT-2025-FIN-0022</div>
-              <div class="report-meta-row"><strong>Period:</strong> 01 -- 17 Mar 2025</div>
-              <div class="report-meta-row"><strong>Prepared by:</strong> Admin -- Sunita Rao</div>
-            </div>
-          </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Revenue Overview</div>
-            <div class="score-grid" style="grid-template-columns:repeat(5,1fr)">
-              <div class="score-card"><div class="score-num" style="color:var(--teal);font-size:1.5rem">₹10.09L</div><div class="score-lbl">Expected Revenue</div><div class="score-sub">841 sessions × ₹1,200</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--green);font-size:1.5rem">₹8.35L</div><div class="score-lbl">Collected</div><div class="score-sub">82.7% collection rate</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--rose);font-size:1.5rem">₹1.74L</div><div class="score-lbl">Outstanding</div><div class="score-sub">12 patients overdue</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--purple);font-size:1.5rem">₹1.50L</div><div class="score-lbl">GST Collected</div><div class="score-sub">18% on services</div></div>
-              <div class="score-card"><div class="score-num" style="color:var(--amber);font-size:1.5rem">₹2.94L</div><div class="score-lbl">Packages Sold</div><div class="score-sub">6 new packages</div></div>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Daily Collections -- March 1--17</div>
-              <div class="bar-chart-wrap" style="height:90px;margin-bottom:8px">
-                <div class="bar-chart-item"><div class="bc-bar" style="height:82px;background:var(--green)"></div><div class="bc-lbl">03</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:90px;background:var(--green)"></div><div class="bc-lbl">04</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:68px;background:var(--green);opacity:0.8"></div><div class="bc-lbl">05</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:88px;background:var(--green)"></div><div class="bc-lbl">06</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:79px;background:var(--green)"></div><div class="bc-lbl">07</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:84px;background:var(--green)"></div><div class="bc-lbl">10</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:90px;background:var(--green)"></div><div class="bc-lbl">11</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:62px;background:var(--amber);opacity:0.9"></div><div class="bc-lbl">12</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:85px;background:var(--green)"></div><div class="bc-lbl">13</div></div>
-                <div class="bar-chart-item"><div class="bc-bar" style="height:50px;background:rgba(5,150,105,0.45);border:1.5px dashed var(--green)"></div><div class="bc-lbl">17</div></div>
-              </div>
-              <div style="font-size:11px;color:var(--text-muted)">17 Mar shown as partial day (10:48 AM cutoff)</div>
-            </div>
-
-            <div class="r-section" style="margin-bottom:0">
-              <div class="r-section-title">Outstanding Ageing Summary</div>
-              <table class="rpt-table" style="font-size:12px">
-                <thead><tr><th>Ageing Bucket</th><th>Patients</th><th>Amount</th><th>Action</th></tr></thead>
-                <tbody>
-                  <tr><td>0 -- 7 days</td><td>23</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green)">₹27,600</td><td><span class="sp sp-g">Routine</span></td></tr>
-                  <tr><td>8 -- 15 days</td><td>14</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--amber)">₹16,800</td><td><span class="sp sp-a">Reminder SMS</span></td></tr>
-                  <tr><td>16 -- 30 days</td><td>6</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--orange)">₹7,200</td><td><span class="sp sp-a">Call + Notice</span></td></tr>
-                  <tr><td>30+ days</td><td>4</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--rose)">₹4,800</td><td><span class="sp sp-r">Booking Hold</span></td></tr>
-                </tbody>
-                <tfoot><tr><td><strong>Total</strong></td><td><strong>47</strong></td><td><strong>₹56,400</strong></td><td></td></tr></tfoot>
-              </table>
-            </div>
-          </div>
-
-          <div class="r-section" style="margin-top:18px">
-            <div class="r-section-title">Package Sales -- March 2025</div>
-            <table class="rpt-table">
-              <thead><tr><th>Invoice No.</th><th>Patient</th><th>Package</th><th>Base Amount</th><th>GST 18%</th><th>Total</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td style="font-family:'DM Mono',monospace">INV-2025-0089</td><td>Yuvan Singh</td><td>OT 30 Sessions</td><td>₹36,000</td><td>₹6,480</td><td style="font-weight:600">₹42,480</td><td><span class="sp sp-g">Paid</span></td></tr>
-                <tr><td style="font-family:'DM Mono',monospace">INV-2025-0082</td><td>Saisha Shinde</td><td>ABA 60 Sessions</td><td>₹72,000</td><td>₹12,960</td><td style="font-weight:600">₹84,960</td><td><span class="sp sp-g">Paid</span></td></tr>
-                <tr><td style="font-family:'DM Mono',monospace">INV-2025-0078</td><td>Vansh Kataria</td><td>Physio 50 Sessions</td><td>₹60,000</td><td>₹10,800</td><td style="font-weight:600">₹70,800</td><td><span class="sp sp-g">Paid</span></td></tr>
-                <tr><td style="font-family:'DM Mono',monospace">INV-2025-0091</td><td>Amaira Patil</td><td>OT+Physio+SI 40 Sessions</td><td>₹48,000</td><td>₹8,640</td><td style="font-weight:600">₹56,640</td><td><span class="sp sp-b">Pending</span></td></tr>
-                <tr><td style="font-family:'DM Mono',monospace">INV-2025-0085</td><td>Theia Pithawala</td><td>Speech 20 Sessions</td><td>₹24,000</td><td>₹4,320</td><td style="font-weight:600">₹28,320</td><td><span class="sp sp-g">Paid</span></td></tr>
-                <tr><td style="font-family:'DM Mono',monospace">INV-2025-0092</td><td>Neel Sharma</td><td>OT+Behavioral 30 Sessions</td><td>₹36,000</td><td>₹6,480</td><td style="font-weight:600">₹42,480</td><td><span class="sp sp-a">Awaiting Publish</span></td></tr>
-              </tbody>
-              <tfoot><tr><td colspan="3"><strong>Total</strong></td><td><strong>₹2,76,000</strong></td><td><strong>₹49,680</strong></td><td><strong>₹3,25,680</strong></td><td></td></tr></tfoot>
-            </table>
-          </div>
-
-          <div class="report-watermark no-print">RehabCare Clinic · Financial Summary Report · RPT-2025-FIN-0022 · Confidential · For Internal Use Only</div>
+        <div class="report-meta-block">
+          <div class="report-type-tag">Discharge Summary</div>
+          <div class="report-meta-row"><strong>Report ID:</strong> DSC-2025-0008</div>
+          <div class="report-meta-row"><strong>Discharge Date:</strong> 17 Mar 2025</div>
+          <div class="report-meta-row"><strong>Treating Therapist:</strong> Dr. Priya Nair</div>
+          <div class="report-meta-row"><strong>HOD Sign-off:</strong> Dr. Priya Nair</div>
         </div>
+      </div>
 
-
-        <!-- ════════════════════════════════════════════
-             REPORT 7: DISCHARGE SUMMARY
-             ════════════════════════════════════════════ -->
-        <div class="report-view" id="report-discharge">
-
-          <div class="report-header-block">
-            <div>
-              <div class="report-clinic-name">RehabCare Clinic</div>
-              <div class="report-clinic-meta">42, Marine Drive Complex, Mumbai -- 400002<br>Tel: +91 22-1234-5678</div>
+      <div class="r-section">
+        <div class="r-section-title">Patient Information</div>
+        <div class="patient-block">
+          <div class="patient-avatar-rpt">IN</div>
+          <div>
+            <div class="patient-name-rpt">Rehan Khan</div>
+            <div class="patient-tags-rpt">
+              <span class="ptag ptag-diag">ADHD + Fine Motor Delay</span>
+              <span class="ptag ptag-therapy">OT · Behavioural</span>
+              <span class="ptag" style="background:#F0FDF4;color:#166534;border-color:#BBF7D0">Discharged -- Goals Met</span>
             </div>
-            <div class="report-meta-block">
-              <div class="report-type-tag">Discharge Summary</div>
-              <div class="report-meta-row"><strong>Report ID:</strong> DSC-2025-0008</div>
-              <div class="report-meta-row"><strong>Discharge Date:</strong> 17 Mar 2025</div>
-              <div class="report-meta-row"><strong>Treating Therapist:</strong> Dr. Priya Nair</div>
-              <div class="report-meta-row"><strong>HOD Sign-off:</strong> Dr. Priya Nair</div>
-            </div>
-          </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Patient Information</div>
-            <div class="patient-block">
-              <div class="patient-avatar-rpt">IN</div>
-              <div>
-                <div class="patient-name-rpt">Saifuddin Contractorwala</div>
-                <div class="patient-tags-rpt">
-                  <span class="ptag ptag-diag">ADHD + Fine Motor Delay</span>
-                  <span class="ptag ptag-therapy">OT · Behavioural</span>
-                  <span class="ptag" style="background:#F0FDF4;color:#166534;border-color:#BBF7D0">Discharged -- Goals Met</span>
-                </div>
-                <div class="detail-pairs">
-                  <div class="dp"><div class="dp-lbl">Patient ID</div><div class="dp-val">PAT-2025-0019</div></div>
-                  <div class="dp"><div class="dp-lbl">Age at Admission</div><div class="dp-val">6y 1m</div></div>
-                  <div class="dp"><div class="dp-lbl">Programme Start</div><div class="dp-val">01 Sep 2024</div></div>
-                  <div class="dp"><div class="dp-lbl">Programme End</div><div class="dp-val">17 Mar 2025</div></div>
-                </div>
-              </div>
-              <div class="progress-summary-block">
-                <div class="prog-num">30 <span style="font-size:1rem;color:var(--text-muted)">/ 30</span></div>
-                <div class="prog-sub">All Sessions Completed</div>
-                <div class="prog-bar-rpt"><div class="prog-bar-fill-rpt" style="width:100%;background:linear-gradient(90deg,var(--green),#34D399)"></div></div>
-                <div style="font-size:11px;color:var(--green);margin-top:4px;text-align:right;font-weight:600">100% -- Goals Met</div>
-              </div>
+            <div class="detail-pairs">
+              <div class="dp"><div class="dp-lbl">Patient ID</div><div class="dp-val">PAT-2025-0019</div></div>
+              <div class="dp"><div class="dp-lbl">Age at Admission</div><div class="dp-val">6y 1m</div></div>
+              <div class="dp"><div class="dp-lbl">Programme Start</div><div class="dp-val">01 Sep 2024</div></div>
+              <div class="dp"><div class="dp-lbl">Programme End</div><div class="dp-val">17 Mar 2025</div></div>
             </div>
           </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Goals at Admission vs Outcomes at Discharge</div>
-            <table class="rpt-table">
-              <thead><tr><th>Goal at Admission</th><th>Target Criterion</th><th>Outcome</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td>Sustained task engagement (desk activities)</td>
-                  <td>10 minutes without redirection</td>
-                  <td>Consistently 12--15 minutes with minimal redirection (2 prompts avg)</td>
-                  <td><span class="sp sp-g">✓ Goal Met</span></td>
-                </tr>
-                <tr>
-                  <td>Fine motor precision -- writing readiness</td>
-                  <td>Grip strength &amp; pencil control for 15-minute writing task</td>
-                  <td>Pre-writing patterns completed with age-appropriate accuracy. Grip normalised.</td>
-                  <td><span class="sp sp-g">✓ Goal Met</span></td>
-                </tr>
-                <tr>
-                  <td>Impulse control -- classroom settings</td>
-                  <td>3+ transitions per day without behavioural disruption</td>
-                  <td>Parent and teacher report 4--5 daily transitions managed independently. Rare incidents (&lt;1/week).</td>
-                  <td><span class="sp sp-g">✓ Goal Met</span></td>
-                </tr>
-                <tr>
-                  <td>Bilateral coordination</td>
-                  <td>Age-appropriate bilateral tasks (cutting, threading)</td>
-                  <td>Scissors skill: cutting on curved lines with &lt;5mm deviation. Threading 10mm beads independently.</td>
-                  <td><span class="sp sp-g">✓ Goal Met</span></td>
-                </tr>
-                <tr>
-                  <td>Sensory regulation</td>
-                  <td>Self-regulation strategies used independently</td>
-                  <td>Uses sensory break strategy spontaneously in 3 of 5 observed sessions. Parent confirms home generalization.</td>
-                  <td><span class="sp sp-g">✓ Goal Met</span></td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="progress-summary-block">
+            <div class="prog-num">30 <span style="font-size:1rem;color:var(--text-muted)">/ 30</span></div>
+            <div class="prog-sub">All Sessions Completed</div>
+            <div class="prog-bar-rpt"><div class="prog-bar-fill-rpt" style="width:100%;background:linear-gradient(90deg,var(--green),#34D399)"></div></div>
+            <div style="font-size:11px;color:var(--green);margin-top:4px;text-align:right;font-weight:600">100% -- Goals Met</div>
           </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Discharge Clinical Note</div>
-            <div class="clinical-note-block">
-              <div class="cn-label">Final Clinical Note -- Dr. Priya Nair (HOD) · 17 Mar 2025</div>
-              "Ishaan has made excellent progress over 30 sessions. On admission, he presented with significant difficulty sustaining attention for more than 3--4 minutes on structured tasks and showed marked fine motor difficulties consistent with developmental coordination disorder features co-occurring with ADHD. Over the programme, targeted OT intervention with sensory integration elements and behavioural strategies has produced measurable, functional gains across all five goal domains. His classroom teacher (via parent report) notes marked improvement in ability to sit through lessons and complete written tasks. Fine motor precision has normalised for his age range. Parent has been trained in a home sensory diet and transition routine. Formal discharge is appropriate. No further OT intervention recommended at this time -- reassess in 6 months."
-              <div class="cn-author">-- Dr. Priya Nair, Sr. Physiotherapist &amp; HOD · 17 Mar 2025 · Digitally signed</div>
-            </div>
-          </div>
-
-          <div class="r-section">
-            <div class="r-section-title">Recommendations at Discharge</div>
-            <div class="summary-box sb-blue">
-              1. <strong>School:</strong> Share discharge summary with class teacher. Recommend 5-minute sensory break every 45 minutes for 3 months post-discharge -- review with teacher.<br><br>
-              2. <strong>Home programme:</strong> Continue 10-minute daily sensory diet as practised in sessions (provided as written handout to parent today).<br><br>
-              3. <strong>Follow-up:</strong> 6-month re-assessment scheduled for September 2025. If regression observed, contact clinic for earlier review.<br><br>
-              4. <strong>Transition to mainstream:</strong> Ishaan is school-ready for standard class participation without additional support. No special education placement required at this time.
-            </div>
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:24px;padding-top:16px;border-top:1px solid var(--border)">
-            <div style="text-align:center;font-size:12px;color:var(--text-muted)">
-              <div style="height:40px;border-bottom:1px solid var(--text-muted);margin-bottom:6px"></div>
-              <div>Treating Therapist</div>
-              <div style="font-weight:600;color:var(--text-primary)">Dr. Priya Nair</div>
-            </div>
-            <div style="text-align:center;font-size:12px;color:var(--text-muted)">
-              <div style="height:40px;border-bottom:1px solid var(--text-muted);margin-bottom:6px"></div>
-              <div>HOD / Clinical Lead</div>
-              <div style="font-weight:600;color:var(--text-primary)">Dr. Priya Nair</div>
-            </div>
-            <div style="text-align:center;font-size:12px;color:var(--text-muted)">
-              <div style="height:40px;border-bottom:1px solid var(--text-muted);margin-bottom:6px"></div>
-              <div>Parent / Guardian Signature</div>
-              <div style="font-weight:600;color:var(--text-primary)">Mr. / Mrs. Nair</div>
-            </div>
-          </div>
-
-          <div class="report-watermark no-print">RehabCare Clinic · Discharge Summary · DSC-2025-0008 · Confidential Clinical Document · Issued to Patient and Retained in System Records</div>
         </div>
+      </div>
 
-      </div><!-- /report-body -->
-    </div><!-- /report-container -->
+      <div class="r-section">
+        <div class="r-section-title">Goals at Admission vs Outcomes at Discharge</div>
+        <table class="rpt-table">
+          <thead><tr><th>Goal at Admission</th><th>Target Criterion</th><th>Outcome</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Sustained task engagement (desk activities)</td>
+              <td>10 minutes without redirection</td>
+              <td>Consistently 12--15 minutes with minimal redirection (2 prompts avg)</td>
+              <td><span class="sp sp-g">✓ Goal Met</span></td>
+            </tr>
+            <tr>
+              <td>Fine motor precision -- writing readiness</td>
+              <td>Grip strength &amp; pencil control for 15-minute writing task</td>
+              <td>Pre-writing patterns completed with age-appropriate accuracy. Grip normalised.</td>
+              <td><span class="sp sp-g">✓ Goal Met</span></td>
+            </tr>
+            <tr>
+              <td>Impulse control -- classroom settings</td>
+              <td>3+ transitions per day without behavioural disruption</td>
+              <td>Parent and teacher report 4--5 daily transitions managed independently. Rare incidents (&lt;1/week).</td>
+              <td><span class="sp sp-g">✓ Goal Met</span></td>
+            </tr>
+            <tr>
+              <td>Bilateral coordination</td>
+              <td>Age-appropriate bilateral tasks (cutting, threading)</td>
+              <td>Scissors skill: cutting on curved lines with &lt;5mm deviation. Threading 10mm beads independently.</td>
+              <td><span class="sp sp-g">✓ Goal Met</span></td>
+            </tr>
+            <tr>
+              <td>Sensory regulation</td>
+              <td>Self-regulation strategies used independently</td>
+              <td>Uses sensory break strategy spontaneously in 3 of 5 observed sessions. Parent confirms home generalization.</td>
+              <td><span class="sp sp-g">✓ Goal Met</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Discharge Clinical Note</div>
+        <div class="clinical-note-block">
+          <div class="cn-label">Final Clinical Note -- Dr. Priya Nair (HOD) · 17 Mar 2025</div>
+          "Ishaan has made excellent progress over 30 sessions. On admission, he presented with significant difficulty sustaining attention for more than 3--4 minutes on structured tasks and showed marked fine motor difficulties consistent with developmental coordination disorder features co-occurring with ADHD. Over the programme, targeted OT intervention with sensory integration elements and behavioural strategies has produced measurable, functional gains across all five goal domains. His classroom teacher (via parent report) notes marked improvement in ability to sit through lessons and complete written tasks. Fine motor precision has normalised for his age range. Parent has been trained in a home sensory diet and transition routine. Formal discharge is appropriate. No further OT intervention recommended at this time -- reassess in 6 months."
+          <div class="cn-author">-- Dr. Priya Nair, Sr. Physiotherapist &amp; HOD · 17 Mar 2025 · Digitally signed</div>
+        </div>
+      </div>
+
+      <div class="r-section">
+        <div class="r-section-title">Recommendations at Discharge</div>
+        <div class="summary-box sb-blue">
+          1. <strong>School:</strong> Share discharge summary with class teacher. Recommend 5-minute sensory break every 45 minutes for 3 months post-discharge -- review with teacher.<br><br>
+          2. <strong>Home programme:</strong> Continue 10-minute daily sensory diet as practised in sessions (provided as written handout to parent today).<br><br>
+          3. <strong>Follow-up:</strong> 6-month re-assessment scheduled for September 2025. If regression observed, contact clinic for earlier review.<br><br>
+          4. <strong>Transition to mainstream:</strong> Ishaan is school-ready for standard class participation without additional support. No special education placement required at this time.
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:24px;padding-top:16px;border-top:1px solid var(--border)">
+        <div style="text-align:center;font-size:12px;color:var(--text-muted)">
+          <div style="height:40px;border-bottom:1px solid var(--text-muted);margin-bottom:6px"></div>
+          <div>Treating Therapist</div>
+          <div style="font-weight:600;color:var(--text-primary)">Dr. Priya Nair</div>
+        </div>
+        <div style="text-align:center;font-size:12px;color:var(--text-muted)">
+          <div style="height:40px;border-bottom:1px solid var(--text-muted);margin-bottom:6px"></div>
+          <div>HOD / Clinical Lead</div>
+          <div style="font-weight:600;color:var(--text-primary)">Dr. Priya Nair</div>
+        </div>
+        <div style="text-align:center;font-size:12px;color:var(--text-muted)">
+          <div style="height:40px;border-bottom:1px solid var(--text-muted);margin-bottom:6px"></div>
+          <div>Parent / Guardian Signature</div>
+          <div style="font-weight:600;color:var(--text-primary)">Mr. / Mrs. Nair</div>
+        </div>
+      </div>
+
+      <div class="report-watermark no-print">RehabCare Clinic · Discharge Summary · DSC-2025-0008 · Confidential Clinical Document · Issued to Patient and Retained in System Records</div>
+    </div>
+
+  </div><!-- /report-body -->
+</div><!-- /report-container -->
+```
+
   </div><!-- /content -->
 </main>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 const reportLabels = {
-  'patient-progress': 'Patient Progress Report',
-  'therapist-performance': 'Therapist Performance Scorecard',
-  'clinic-ops': 'Clinic Operations Report',
-  'session-compliance': 'Session Compliance Report',
-  'noshow-report': 'No-Show & Cancellation Report',
-  'financial': 'Financial Summary Report',
-  'discharge': 'Discharge Summary'
+‘patient-progress’: ‘Patient Progress Report’,
+‘therapist-performance’: ‘Therapist Performance Scorecard’,
+‘clinic-ops’: ‘Clinic Operations Report’,
+‘session-compliance’: ‘Session Compliance Report’,
+‘noshow-report’: ‘No-Show & Cancellation Report’,
+‘financial’: ‘Financial Summary Report’,
+‘discharge’: ‘Discharge Summary’
 };
 
 function showReport(id) {
-  // Update report views
-  document.querySelectorAll('.report-view').forEach(v => v.classList.remove('active'));
-  const target = document.getElementById('report-' + id);
-  if (target) target.classList.add('active');
+// Update report views
+document.querySelectorAll(’.report-view’).forEach(v => v.classList.remove(‘active’));
+const target = document.getElementById(‘report-’ + id);
+if (target) target.classList.add(‘active’);
 
-  // Update nav
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const btn = document.querySelector('[data-report="' + id + '"]');
-  if (btn) btn.classList.add('active');
+// Update nav
+document.querySelectorAll(’.nav-item’).forEach(n => n.classList.remove(‘active’));
+const btn = document.querySelector(’[data-report=”’ + id + ‘”]’);
+if (btn) btn.classList.add(‘active’);
 
-  // Update breadcrumb
-  document.getElementById('breadcrumb-label').textContent = reportLabels[id] || id;
+// Update breadcrumb
+document.getElementById(‘breadcrumb-label’).textContent = reportLabels[id] || id;
 
-  // Show/hide patient filter based on report type
-  const patientFilterRow = document.querySelector('.report-toolbar-left');
-  window.scrollTo(0, 0);
+// Show/hide patient filter based on report type
+const patientFilterRow = document.querySelector(’.report-toolbar-left’);
+window.scrollTo(0, 0);
 }
 
 // Patient data for dynamic update
 const patientData = {
-  aarav:  { name: 'Yuvan Singh',    init: 'AS', pid: 'PAT-2025-0693', diag: 'ASD',  sessions: '15', total: '30', pct: '50%',  fill: '50%' },
-  kabir:  { name: 'Vansh Kataria',  init: 'KM', pid: 'PAT-2024-0748', diag: 'Developmental Delay (CP)', sessions: '32', total: '50', pct: '64%',  fill: '64%' },
-  meera:  { name: 'Saisha Shinde',     init: 'MJ', pid: 'PAT-2024-0575', diag: 'ASD + SPD',           sessions: '18', total: '60', pct: '30%',  fill: '30%' },
-  zara:   { name: 'Theia Pithawala',     init: 'ZS', pid: 'PAT-2023-0057', diag: 'Expressive Sensory Processing Difficulties', sessions: '12', total: '20', pct: '60%', fill: '60%' },
-  ishaan: { name: 'Saifuddin Contractorwala',     init: 'IN', pid: 'PAT-2025-0019', diag: 'ADHD + Fine Motor',   sessions: '22', total: '30', pct: '73%',  fill: '73%' },
+aarav:  { name: ‘Nihal Shaikh’,    init: ‘AS’, pid: ‘PAT-2025-0693’, diag: ‘ASD’,  sessions: ‘15’, total: ‘30’, pct: ‘50%’,  fill: ‘50%’ },
+kabir:  { name: ‘Kabir Ansari’,  init: ‘KM’, pid: ‘PAT-2024-0748’, diag: ‘Developmental Delay (CP)’, sessions: ‘32’, total: ‘50’, pct: ‘64%’,  fill: ‘64%’ },
+meera:  { name: ‘Zara Menon’,     init: ‘MJ’, pid: ‘PAT-2024-0575’, diag: ‘ASD + SPD’,           sessions: ‘18’, total: ‘60’, pct: ‘30%’,  fill: ‘30%’ },
+zara:   { name: ‘Aarav Patil’,     init: ‘ZS’, pid: ‘PAT-2023-0057’, diag: ‘Expressive Sensory Processing Difficulties’, sessions: ‘12’, total: ‘20’, pct: ‘60%’, fill: ‘60%’ },
+ishaan: { name: ‘Rehan Khan’,     init: ‘IN’, pid: ‘PAT-2025-0019’, diag: ‘ADHD + Fine Motor’,   sessions: ‘22’, total: ‘30’, pct: ‘73%’,  fill: ‘73%’ },
 };
 
 function updatePatient(key) {
-  const d = patientData[key];
-  if (!d) return;
-  const el = (id) => document.getElementById(id);
-  if (el('rpt-avatar'))       el('rpt-avatar').textContent = d.init;
-  if (el('rpt-patient-name')) el('rpt-patient-name').textContent = d.name;
-  if (el('rpt-pid'))          el('rpt-pid').textContent = d.pid;
-  if (el('rpt-diagnosis'))    el('rpt-diagnosis').textContent = d.diag;
-  if (el('rpt-sessions'))
-    el('rpt-sessions').innerHTML = d.sessions + ' <span style="font-size:1rem;color:var(--text-muted)">/ ' + d.total + '</span>';
-  if (el('rpt-prog-fill'))
-    el('rpt-prog-fill').style.width = d.fill;
+const d = patientData[key];
+if (!d) return;
+const el = (id) => document.getElementById(id);
+if (el(‘rpt-avatar’))       el(‘rpt-avatar’).textContent = d.init;
+if (el(‘rpt-patient-name’)) el(‘rpt-patient-name’).textContent = d.name;
+if (el(‘rpt-pid’))          el(‘rpt-pid’).textContent = d.pid;
+if (el(‘rpt-diagnosis’))    el(‘rpt-diagnosis’).textContent = d.diag;
+if (el(‘rpt-sessions’))
+el(‘rpt-sessions’).innerHTML = d.sessions + ’ <span style="font-size:1rem;color:var(--text-muted)">/ ’ + d.total + ‘</span>’;
+if (el(‘rpt-prog-fill’))
+el(‘rpt-prog-fill’).style.width = d.fill;
 }
 </script>
+
 </body>
 </html>
