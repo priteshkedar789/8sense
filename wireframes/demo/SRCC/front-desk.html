@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,10 +21,10 @@
 body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text-primary);min-height:100vh;display:flex}
 
 /* SIDEBAR */
-.sidebar{width:var(--sidebar);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
+.sidebar{width:var(–sidebar);background:var(–navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100}
 .sidebar-brand{padding:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .brand-wrap{display:flex;align-items:center;gap:10px}
-.brand-mark{width:34px;height:34px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-weight:700}
+.brand-mark{width:34px;height:34px;background:var(–teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:‘Playfair Display’,serif;font-size:14px;color:#fff;font-weight:700}
 .brand-name{font-size:13px;font-weight:600;color:#fff}
 .brand-sub{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
 .sidebar-role{margin:12px;padding:10px 12px;background:rgba(13,148,136,0.15);border:1px solid rgba(13,148,136,0.25);border-radius:8px}
@@ -38,16 +39,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .nav-badge{margin-left:auto;background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px}
 .sidebar-footer{margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,0.07)}
 .user-mini{display:flex;align-items:center;gap:9px}
-.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(–teal),var(–navy-mid));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
 .user-info-name{font-size:11.5px;font-weight:500;color:#fff}
 .user-info-role{font-size:10px;color:rgba(255,255,255,0.35)}
 
 /* MAIN */
-.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
-.topbar{background:#fff;border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50}
+.main{margin-left:var(–sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(–border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50}
 .topbar-left{display:flex;align-items:center;gap:16px}
-.topbar-title{font-size:14.5px;font-weight:600;color:var(--text-primary)}
-.topbar-date{font-size:12px;color:var(--text-muted);font-family:'DM Mono',monospace}
+.topbar-title{font-size:14.5px;font-weight:600;color:var(–text-primary)}
+.topbar-date{font-size:12px;color:var(–text-muted);font-family:‘DM Mono’,monospace}
 .topbar-right{display:flex;align-items:center;gap:12px}
 .pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500}
 .pill-green{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0}
@@ -56,13 +57,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .pill-blue{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
 .dot-live{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.search-box{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12.5px;color:var(--text-muted);width:220px}
-.search-box input{background:none;border:none;outline:none;font-size:12.5px;color:var(--text-primary);width:100%;font-family:'DM Sans',sans-serif}
-.search-box input::placeholder{color:var(--text-muted)}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.15s}
-.btn-primary{background:var(--navy);color:#fff}
-.btn-primary:hover{background:var(--navy-mid)}
-.btn-teal{background:var(--teal);color:#fff}
+.search-box{display:flex;align-items:center;gap:8px;background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:6px 12px;font-size:12.5px;color:var(–text-muted);width:220px}
+.search-box input{background:none;border:none;outline:none;font-size:12.5px;color:var(–text-primary);width:100%;font-family:‘DM Sans’,sans-serif}
+.search-box input::placeholder{color:var(–text-muted)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:600;cursor:pointer;border:none;font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
+.btn-primary{background:var(–navy);color:#fff}
+.btn-primary:hover{background:var(–navy-mid)}
+.btn-teal{background:var(–teal);color:#fff}
 .btn-teal:hover{background:#0B7A71}
 
 /* CONTENT */
@@ -70,31 +71,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 /* KPI ROW */
 .kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.kpi-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px}
-.kpi-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px}
-.kpi-value{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--text-primary);line-height:1}
-.kpi-sub{font-size:10.5px;color:var(--text-muted);margin-top:4px}
-.kpi-card.border-teal{border-top:3px solid var(--teal)}
-.kpi-card.border-green{border-top:3px solid var(--green)}
-.kpi-card.border-amber{border-top:3px solid var(--amber)}
-.kpi-card.border-red{border-top:3px solid var(--rose)}
+.kpi-card{background:#fff;border:1px solid var(–border);border-radius:10px;padding:14px 16px}
+.kpi-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);margin-bottom:4px}
+.kpi-value{font-family:‘DM Mono’,monospace;font-size:22px;font-weight:500;color:var(–text-primary);line-height:1}
+.kpi-sub{font-size:10.5px;color:var(–text-muted);margin-top:4px}
+.kpi-card.border-teal{border-top:3px solid var(–teal)}
+.kpi-card.border-green{border-top:3px solid var(–green)}
+.kpi-card.border-amber{border-top:3px solid var(–amber)}
+.kpi-card.border-red{border-top:3px solid var(–rose)}
 .kpi-card.border-blue{border-top:3px solid #2563EB}
 
 /* LAYOUT */
 .layout-row{display:grid;grid-template-columns:1fr 260px;gap:16px;flex:1;min-height:0}
 
 /* SCHEDULE */
-.schedule-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.card-header{padding:12px 18px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
-.card-title{font-size:13px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:8px}
-.card-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:10px;background:var(--surface);color:var(--text-secondary);border:1px solid var(--border)}
+.schedule-card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.card-header{padding:12px 18px;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600;color:var(–text-primary);display:flex;align-items:center;gap:8px}
+.card-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:10px;background:var(–surface);color:var(–text-secondary);border:1px solid var(–border)}
 
 .schedule-wrap{overflow-x:auto;flex:1}
 .schedule-table{width:100%;border-collapse:collapse;min-width:900px}
 .schedule-table thead tr{background:#F8FAFC}
-.schedule-table th{padding:9px 12px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border);white-space:nowrap}
-.time-col{width:72px;background:#F8FAFC;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);padding:4px 10px;border-right:1px solid var(--border-light);vertical-align:top}
-.schedule-table td{padding:4px;border-bottom:1px solid var(--border-light);vertical-align:top;min-width:150px}
+.schedule-table th{padding:9px 12px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(–text-muted);border-bottom:1px solid var(–border);white-space:nowrap}
+.time-col{width:72px;background:#F8FAFC;font-family:‘DM Mono’,monospace;font-size:11px;font-weight:500;color:var(–text-muted);padding:4px 10px;border-right:1px solid var(–border-light);vertical-align:top}
+.schedule-table td{padding:4px;border-bottom:1px solid var(–border-light);vertical-align:top;min-width:150px}
 .schedule-table tr:last-child td{border-bottom:none}
 
 .slot{border-radius:7px;padding:8px 10px;height:64px;cursor:pointer;transition:all 0.15s;border-left:3px solid transparent;display:flex;flex-direction:column;justify-content:space-between}
@@ -104,10 +105,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .slot-in-session{background:#F0F9FF;border-left-color:#0EA5E9}
 .slot-cancelled{background:#FEF2F2;border-left-color:#DC2626;opacity:0.7}
 .slot-unconfirmed{background:#FFFBEB;border-left-color:#D97706}
-.slot-empty{border:1.5px dashed var(--border);background:transparent;height:64px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0.5;transition:opacity 0.15s}
-.slot-empty:hover{opacity:1;background:var(--surface)}
-.slot-patient{font-size:12px;font-weight:600;color:var(--text-primary)}
-.slot-therapy{font-size:10px;color:var(--text-secondary)}
+.slot-empty{border:1.5px dashed var(–border);background:transparent;height:64px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0.5;transition:opacity 0.15s}
+.slot-empty:hover{opacity:1;background:var(–surface)}
+.slot-patient{font-size:12px;font-weight:600;color:var(–text-primary)}
+.slot-therapy{font-size:10px;color:var(–text-secondary)}
 .slot-footer{display:flex;align-items:center;justify-content:space-between}
 .slot-status-tag{font-size:9.5px;font-weight:600;padding:1px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:0.04em}
 .tag-confirmed{background:#BBF7D0;color:#166534}
@@ -127,19 +128,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .refill-count{background:#DC2626;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px}
 .refill-item{padding:10px 14px;border-bottom:1px solid #FEF2F2}
 .refill-item:last-child{border-bottom:none}
-.refill-time{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--text-primary)}
-.refill-therapy{font-size:11px;color:var(--text-secondary);margin-top:1px}
-.refill-therapist{font-size:11px;color:var(--text-muted)}
+.refill-time{font-family:‘DM Mono’,monospace;font-size:13px;font-weight:600;color:var(–text-primary)}
+.refill-therapy{font-size:11px;color:var(–text-secondary);margin-top:1px}
+.refill-therapist{font-size:11px;color:var(–text-muted)}
 .refill-timer{font-size:11px;font-weight:700;color:#DC2626;animation:pulse 1.5s infinite}
-.refill-btn{width:100%;padding:7px;margin-top:8px;background:#fff;border:1.5px solid #FECACA;color:#DC2626;font-size:11.5px;font-weight:700;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.refill-btn{width:100%;padding:7px;margin-top:8px;background:#fff;border:1.5px solid #FECACA;color:#DC2626;font-size:11.5px;font-weight:700;border-radius:6px;cursor:pointer;font-family:‘DM Sans’,sans-serif;transition:all 0.15s}
 .refill-btn:hover{background:#DC2626;color:#fff;border-color:#DC2626}
 
 /* CHILD FLOW */
-.flow-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;flex:1}
-.flow-item{padding:10px 14px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between}
+.flow-card{background:#fff;border:1px solid var(–border);border-radius:12px;overflow:hidden;flex:1}
+.flow-item{padding:10px 14px;border-bottom:1px solid var(–border-light);display:flex;align-items:center;justify-content:space-between}
 .flow-item:last-child{border-bottom:none}
-.flow-name{font-size:12.5px;font-weight:600;color:var(--text-primary)}
-.flow-location{font-size:10.5px;color:var(--text-muted);margin-top:1px}
+.flow-name{font-size:12.5px;font-weight:600;color:var(–text-primary)}
+.flow-location{font-size:10.5px;color:var(–text-muted);margin-top:1px}
 .flow-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;border:1px solid;white-space:nowrap}
 .flow-in-session{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE}
 .flow-between{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
@@ -150,16 +151,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .drawer-overlay.open{opacity:1;pointer-events:all}
 .drawer{position:fixed;top:0;right:0;width:380px;height:100vh;background:#fff;box-shadow:-8px 0 40px rgba(0,0,0,0.15);z-index:201;transform:translateX(100%);transition:transform 0.25s;display:flex;flex-direction:column}
 .drawer.open{transform:translateX(0)}
-.drawer-header{padding:16px 20px;border-bottom:1px solid var(--border);background:#F8FAFC;display:flex;align-items:center;justify-content:space-between}
-.drawer-title{font-size:15px;font-weight:700;color:var(--text-primary)}
-.drawer-close{width:28px;height:28px;border-radius:50%;border:none;background:var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text-muted)}
+.drawer-header{padding:16px 20px;border-bottom:1px solid var(–border);background:#F8FAFC;display:flex;align-items:center;justify-content:space-between}
+.drawer-title{font-size:15px;font-weight:700;color:var(–text-primary)}
+.drawer-close{width:28px;height:28px;border-radius:50%;border:none;background:var(–border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(–text-muted)}
 .drawer-body{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
-.drawer-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px}
-.drawer-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px}
-.drawer-patient-name{font-size:18px;font-weight:700;color:var(--text-primary)}
-.drawer-patient-meta{font-size:12px;color:var(--text-muted)}
+.drawer-footer{padding:14px 20px;border-top:1px solid var(–border);display:flex;flex-direction:column;gap:8px}
+.drawer-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(–text-muted);margin-bottom:6px}
+.drawer-patient-name{font-size:18px;font-weight:700;color:var(–text-primary)}
+.drawer-patient-meta{font-size:12px;color:var(–text-muted)}
 .action-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.action-btn{padding:12px;border-radius:10px;border:1.5px solid;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all 0.15s;text-align:center}
+.action-btn{padding:12px;border-radius:10px;border:1.5px solid;cursor:pointer;font-family:‘DM Sans’,sans-serif;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all 0.15s;text-align:center}
 .action-btn:hover{transform:translateY(-1px)}
 .action-btn .icon{font-size:20px}
 .action-btn .label{font-size:11.5px;font-weight:700}
@@ -168,22 +169,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .action-checkin:hover{background:#BBF7D0}
 .action-payment{background:#EFF6FF;border-color:#BFDBFE;color:#1D4ED8}
 .action-payment:hover{background:#BFDBFE}
-.action-reschedule{background:#F8FAFC;border-color:var(--border);color:var(--text-secondary)}
+.action-reschedule{background:#F8FAFC;border-color:var(–border);color:var(–text-secondary)}
 .action-cancel{background:#FEF2F2;border-color:#FECACA;color:#991B1B}
 .outstanding-bar{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px}
 .outstanding-label{font-size:11px;font-weight:700;color:#78350F;text-transform:uppercase;letter-spacing:0.05em}
-.outstanding-amount{font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:#B45309;margin:4px 0}
+.outstanding-amount{font-family:‘DM Mono’,monospace;font-size:22px;font-weight:600;color:#B45309;margin:4px 0}
 .outstanding-note{font-size:11px;color:#92400E}
-.plan-bar-wrap{background:var(--surface2);border-radius:4px;height:8px;overflow:hidden;margin:6px 0}
-.plan-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--teal-light))}
-.routing-block{background:var(--surface);border-radius:8px;padding:12px}
-.routing-current{font-size:12px;font-weight:600;color:var(--text-primary)}
-.routing-next{font-size:12px;font-weight:700;color:var(--teal);margin-top:8px}
-.routing-arrow{text-align:center;color:var(--text-muted);font-size:16px;margin:4px 0}
+.plan-bar-wrap{background:var(–surface2);border-radius:4px;height:8px;overflow:hidden;margin:6px 0}
+.plan-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(–teal),var(–teal-light))}
+.routing-block{background:var(–surface);border-radius:8px;padding:12px}
+.routing-current{font-size:12px;font-weight:600;color:var(–text-primary)}
+.routing-next{font-size:12px;font-weight:700;color:var(–teal);margin-top:8px}
+.routing-arrow{text-align:center;color:var(–text-muted);font-size:16px;margin:4px 0}
 .info-row{display:flex;justify-content:space-between;font-size:12.5px}
-.info-row .key{color:var(--text-muted)}
-.info-row .val{font-weight:500;color:var(--text-primary)}
+.info-row .key{color:var(–text-muted)}
+.info-row .val{font-weight:500;color:var(–text-primary)}
 </style>
+
 </head>
 <body>
 
@@ -257,191 +259,194 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
   <div class="content">
 
-    <!-- KPI ROW -->
-    <div class="kpi-row">
-      <div class="kpi-card border-blue">
-        <div class="kpi-label">Scheduled Today</div>
-        <div class="kpi-value" style="color:#2563EB">87</div>
-        <div class="kpi-sub">Across 8 therapists</div>
+```
+<!-- KPI ROW -->
+<div class="kpi-row">
+  <div class="kpi-card border-blue">
+    <div class="kpi-label">Scheduled Today</div>
+    <div class="kpi-value" style="color:#2563EB">87</div>
+    <div class="kpi-sub">Across 8 therapists</div>
+  </div>
+  <div class="kpi-card border-green">
+    <div class="kpi-label">Completed</div>
+    <div class="kpi-value" style="color:var(--green)">42</div>
+    <div class="kpi-sub">As of 10:48 AM</div>
+  </div>
+  <div class="kpi-card border-red">
+    <div class="kpi-label">Refill Needed</div>
+    <div class="kpi-value" style="color:var(--rose)">2</div>
+    <div class="kpi-sub" style="color:#DC2626;font-weight:500">Immediate action required</div>
+  </div>
+  <div class="kpi-card border-amber">
+    <div class="kpi-label">Collections Today</div>
+    <div class="kpi-value" style="font-size:18px;letter-spacing:-0.5px">₹50,400</div>
+    <div class="kpi-sub">of ₹1,04,400 expected</div>
+  </div>
+  <div class="kpi-card border-teal">
+    <div class="kpi-label">Children In-Clinic</div>
+    <div class="kpi-value" style="color:var(--teal)">14</div>
+    <div class="kpi-sub">3 ready for pickup</div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout-row" style="flex:1">
+
+  <!-- SCHEDULE -->
+  <div class="schedule-card">
+    <div class="card-header">
+      <div class="card-title">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#8896A9" stroke-width="1.8"><rect x="3" y="4" width="14" height="14" rx="2"/><path d="M16 2v4M8 2v4M3 10h14"/></svg>
+        Live Schedule Grid -- All Departments
       </div>
-      <div class="kpi-card border-green">
-        <div class="kpi-label">Completed</div>
-        <div class="kpi-value" style="color:var(--green)">42</div>
-        <div class="kpi-sub">As of 10:48 AM</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span class="pill pill-green" style="font-size:10px">Confirmed</span>
+        <span class="pill pill-blue" style="font-size:10px">Checked-In</span>
+        <span class="pill pill-amber" style="font-size:10px">Unconfirmed</span>
+        <span class="pill pill-red" style="font-size:10px">Cancelled</span>
       </div>
-      <div class="kpi-card border-red">
-        <div class="kpi-label">Refill Needed</div>
-        <div class="kpi-value" style="color:var(--rose)">2</div>
-        <div class="kpi-sub" style="color:#DC2626;font-weight:500">Immediate action required</div>
+    </div>
+    <div class="schedule-wrap">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th style="width:72px">Time</th>
+            <th>Dr. Priya Nair<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Physio / HOD</span></th>
+            <th>Ms. Ananya Desai<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">OT</span></th>
+            <th>Mr. Rohan Mehta<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Speech</span></th>
+            <th>Ms. Kavya Shetty<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">ABA</span></th>
+            <th>Dr. Arjun Pillai<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Psychology</span></th>
+            <th>Ms. Sneha Kulkarni<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Sp.Ed</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 9:00 AM -->
+          <tr>
+            <td class="time-col">9:00</td>
+            <td><div class="slot slot-in-session" onclick="openDrawer('Kabir Ansari','Physio','9:00 AM','Dr. Priya Nair','Neuro Physio','in_session','₹2,400','Speech 10:00 AM','32/50')"><div class="slot-patient">Kabir Ansari</div><div class="slot-therapy">Neuro Physiotherapy</div><div class="slot-footer"><span class="slot-status-tag tag-in-session">In Session</span></div></div></td>
+            <td><div class="slot slot-checked-in" onclick="openDrawer('Nihal Shaikh','OT','9:00 AM','Ms. Ananya Desai','Occupational Therapy','checked_in','₹3,600','ABA 10:00 AM','14/30')"><div class="slot-patient">Nihal Shaikh</div><div class="slot-therapy">Occupational Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-checked-in">Checked In</span></div></div></td>
+            <td><div class="slot slot-confirmed" onclick="openDrawer('Aarav Patil','Speech','9:00 AM','Mr. Rohan Mehta','Speech Therapy','confirmed','₹0','--','12/20')"><div class="slot-patient">Aarav Patil</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-in-session" onclick="openDrawer('Zara Menon','ABA','9:00 AM','Ms. Kavya Shetty','ABA Therapy','in_session','₹1,200','Sensory 10:30 AM','18/60')"><div class="slot-patient">Zara Menon</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-in-session">In Session</span></div></div></td>
+            <td><div class="slot-empty" onclick="openEmptySlot('Dr. Arjun Pillai','9:00 AM')">+</div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Rehan Khan</div><div class="slot-therapy">Special Education</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+          </tr>
+          <!-- 10:00 AM -->
+          <tr>
+            <td class="time-col">10:00</td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Riya Kapoor</div><div class="slot-therapy">Physiotherapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-cancelled" onclick="openDrawer('Vivaan Bose','OT','10:00 AM','Ms. Ananya Desai','Occupational Therapy','cancelled','₹0','--','6/24')"><div class="slot-patient">Vivaan Bose</div><div class="slot-therapy">OT -- Cancelled</div><div class="slot-footer"><span class="slot-status-tag tag-cancelled">Cancelled</span><span class="refill-pulse">REFILL!</span></div></div></td>
+            <td><div class="slot slot-checked-in"><div class="slot-patient">Nihal Shaikh</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-checked-in">Checked In</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Dev Malhotra</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-unconfirmed"><div class="slot-patient">New Patient</div><div class="slot-therapy">Initial Assessment</div><div class="slot-footer"><span class="slot-status-tag tag-unconfirmed">Unconfirmed</span></div></div></td>
+            <td><div class="slot-empty">+</div></td>
+          </tr>
+          <!-- 11:00 AM -->
+          <tr>
+            <td class="time-col">11:00</td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Zara Menon</div><div class="slot-therapy">Sensory Integration</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Kabir Ansari</div><div class="slot-therapy">Sensory OT</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-cancelled"><div class="slot-patient">Aarav Patil</div><div class="slot-therapy">Audio Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-cancelled">Cancelled</span><span class="refill-pulse">REFILL!</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Nihal Shaikh</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-unconfirmed"><div class="slot-patient">Rehan Khan</div><div class="slot-therapy">Behavioral Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-unconfirmed">Unconfirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Riya Kapoor</div><div class="slot-therapy">Early Intervention</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+          </tr>
+          <!-- 12:00 PM -->
+          <tr>
+            <td class="time-col">12:00</td>
+            <td><div class="slot-empty">+</div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Dev Malhotra</div><div class="slot-therapy">Occupational Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Zara Menon</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot-empty">+</div></td>
+            <td><div class="slot-empty">+</div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Vivaan Bose</div><div class="slot-therapy">Special Education</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+          </tr>
+          <!-- 2:00 PM -->
+          <tr>
+            <td class="time-col">2:00</td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Rehan Khan</div><div class="slot-therapy">Aquatic Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Riya Kapoor</div><div class="slot-therapy">OT</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-unconfirmed"><div class="slot-patient">Kabir Ansari</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-unconfirmed">Unconfirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Dev Malhotra</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Nihal Shaikh</div><div class="slot-therapy">Psychology</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Zara Menon</div><div class="slot-therapy">Remedial Education</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+          </tr>
+          <!-- 3:00 PM -->
+          <tr>
+            <td class="time-col">3:00</td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Vivaan Bose</div><div class="slot-therapy">Physio</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Zara Menon</div><div class="slot-therapy">OT</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Rehan Khan</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+            <td><div class="slot-empty">+</div></td>
+            <td><div class="slot-empty">+</div></td>
+            <td><div class="slot slot-confirmed"><div class="slot-patient">Kabir Ansari</div><div class="slot-therapy">Sp.Ed</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SIDE PANELS -->
+  <div class="side-panels">
+
+    <!-- REFILL QUEUE -->
+    <div class="refill-card">
+      <div class="refill-header">
+        <div class="refill-header-title">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Refill Queue
+        </div>
+        <span class="refill-count">2 Urgent</span>
       </div>
-      <div class="kpi-card border-amber">
-        <div class="kpi-label">Collections Today</div>
-        <div class="kpi-value" style="font-size:18px;letter-spacing:-0.5px">₹50,400</div>
-        <div class="kpi-sub">of ₹1,04,400 expected</div>
+      <div class="refill-item">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div>
+            <div class="refill-time">10:00 AM</div>
+            <div class="refill-therapy">OT -- Ms. Ananya Desai</div>
+            <div class="refill-therapist">Vivaan Bose cancelled</div>
+          </div>
+          <div class="refill-timer">⏱ 32 min</div>
+        </div>
+        <button class="refill-btn" onclick="alert('Waitlist pulled: Preethi R. offered slot -- confirming via SMS')">Fill Slot from Waitlist</button>
       </div>
-      <div class="kpi-card border-teal">
-        <div class="kpi-label">Children In-Clinic</div>
-        <div class="kpi-value" style="color:var(--teal)">14</div>
-        <div class="kpi-sub">3 ready for pickup</div>
+      <div class="refill-item">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div>
+            <div class="refill-time">11:00 AM</div>
+            <div class="refill-therapy">Audio -- Mr. Rohan Mehta</div>
+            <div class="refill-therapist">Aarav Patil cancelled</div>
+          </div>
+          <div class="refill-timer">⏱ 58 min</div>
+        </div>
+        <button class="refill-btn" onclick="alert('Waitlist pulled: Nandan V. offered slot -- confirming via SMS')">Fill Slot from Waitlist</button>
       </div>
     </div>
 
-    <!-- MAIN LAYOUT -->
-    <div class="layout-row" style="flex:1">
-
-      <!-- SCHEDULE -->
-      <div class="schedule-card">
-        <div class="card-header">
-          <div class="card-title">
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#8896A9" stroke-width="1.8"><rect x="3" y="4" width="14" height="14" rx="2"/><path d="M16 2v4M8 2v4M3 10h14"/></svg>
-            Live Schedule Grid -- All Departments
-          </div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <span class="pill pill-green" style="font-size:10px">Confirmed</span>
-            <span class="pill pill-blue" style="font-size:10px">Checked-In</span>
-            <span class="pill pill-amber" style="font-size:10px">Unconfirmed</span>
-            <span class="pill pill-red" style="font-size:10px">Cancelled</span>
-          </div>
-        </div>
-        <div class="schedule-wrap">
-          <table class="schedule-table">
-            <thead>
-              <tr>
-                <th style="width:72px">Time</th>
-                <th>Dr. Priya Nair<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Physio / HOD</span></th>
-                <th>Ms. Ananya Desai<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">OT</span></th>
-                <th>Mr. Rohan Mehta<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Speech</span></th>
-                <th>Ms. Kavya Shetty<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">ABA</span></th>
-                <th>Dr. Arjun Pillai<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Psychology</span></th>
-                <th>Ms. Sneha Kulkarni<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">Sp.Ed</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 9:00 AM -->
-              <tr>
-                <td class="time-col">9:00</td>
-                <td><div class="slot slot-in-session" onclick="openDrawer('Vansh Kataria','Physio','9:00 AM','Dr. Priya Nair','Neuro Physio','in_session','₹2,400','Speech 10:00 AM','32/50')"><div class="slot-patient">Vansh Kataria</div><div class="slot-therapy">Neuro Physiotherapy</div><div class="slot-footer"><span class="slot-status-tag tag-in-session">In Session</span></div></div></td>
-                <td><div class="slot slot-checked-in" onclick="openDrawer('Yuvan Singh','OT','9:00 AM','Ms. Ananya Desai','Occupational Therapy','checked_in','₹3,600','ABA 10:00 AM','14/30')"><div class="slot-patient">Yuvan Singh</div><div class="slot-therapy">Occupational Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-checked-in">Checked In</span></div></div></td>
-                <td><div class="slot slot-confirmed" onclick="openDrawer('Theia Pithawala','Speech','9:00 AM','Mr. Rohan Mehta','Speech Therapy','confirmed','₹0','--','12/20')"><div class="slot-patient">Theia Pithawala</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-in-session" onclick="openDrawer('Saisha Shinde','ABA','9:00 AM','Ms. Kavya Shetty','ABA Therapy','in_session','₹1,200','Sensory 10:30 AM','18/60')"><div class="slot-patient">Saisha Shinde</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-in-session">In Session</span></div></div></td>
-                <td><div class="slot-empty" onclick="openEmptySlot('Dr. Arjun Pillai','9:00 AM')">+</div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Saifuddin Contractorwala</div><div class="slot-therapy">Special Education</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-              </tr>
-              <!-- 10:00 AM -->
-              <tr>
-                <td class="time-col">10:00</td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Amaira Patil</div><div class="slot-therapy">Physiotherapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-cancelled" onclick="openDrawer('Zain Sayyed','OT','10:00 AM','Ms. Ananya Desai','Occupational Therapy','cancelled','₹0','--','6/24')"><div class="slot-patient">Zain Sayyed</div><div class="slot-therapy">OT -- Cancelled</div><div class="slot-footer"><span class="slot-status-tag tag-cancelled">Cancelled</span><span class="refill-pulse">REFILL!</span></div></div></td>
-                <td><div class="slot slot-checked-in"><div class="slot-patient">Yuvan Singh</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-checked-in">Checked In</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Umar Pathanwala</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-unconfirmed"><div class="slot-patient">New Patient</div><div class="slot-therapy">Initial Assessment</div><div class="slot-footer"><span class="slot-status-tag tag-unconfirmed">Unconfirmed</span></div></div></td>
-                <td><div class="slot-empty">+</div></td>
-              </tr>
-              <!-- 11:00 AM -->
-              <tr>
-                <td class="time-col">11:00</td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Saisha Shinde</div><div class="slot-therapy">Sensory Integration</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Vansh Kataria</div><div class="slot-therapy">Sensory OT</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-cancelled"><div class="slot-patient">Theia Pithawala</div><div class="slot-therapy">Audio Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-cancelled">Cancelled</span><span class="refill-pulse">REFILL!</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Yuvan Singh</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-unconfirmed"><div class="slot-patient">Saifuddin Contractorwala</div><div class="slot-therapy">Behavioral Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-unconfirmed">Unconfirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Amaira Patil</div><div class="slot-therapy">Early Intervention</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-              </tr>
-              <!-- 12:00 PM -->
-              <tr>
-                <td class="time-col">12:00</td>
-                <td><div class="slot-empty">+</div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Umar Pathanwala</div><div class="slot-therapy">Occupational Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Saisha Shinde</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot-empty">+</div></td>
-                <td><div class="slot-empty">+</div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Zain Sayyed</div><div class="slot-therapy">Special Education</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-              </tr>
-              <!-- 2:00 PM -->
-              <tr>
-                <td class="time-col">2:00</td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Saifuddin Contractorwala</div><div class="slot-therapy">Aquatic Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Amaira Patil</div><div class="slot-therapy">OT</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-unconfirmed"><div class="slot-patient">Vansh Kataria</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-unconfirmed">Unconfirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Umar Pathanwala</div><div class="slot-therapy">ABA Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Yuvan Singh</div><div class="slot-therapy">Psychology</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Saisha Shinde</div><div class="slot-therapy">Remedial Education</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-              </tr>
-              <!-- 3:00 PM -->
-              <tr>
-                <td class="time-col">3:00</td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Zain Sayyed</div><div class="slot-therapy">Physio</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Saisha Shinde</div><div class="slot-therapy">OT</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Saifuddin Contractorwala</div><div class="slot-therapy">Speech Therapy</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-                <td><div class="slot-empty">+</div></td>
-                <td><div class="slot-empty">+</div></td>
-                <td><div class="slot slot-confirmed"><div class="slot-patient">Vansh Kataria</div><div class="slot-therapy">Sp.Ed</div><div class="slot-footer"><span class="slot-status-tag tag-confirmed">Confirmed</span></div></div></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <!-- CHILD FLOW -->
+    <div class="flow-card">
+      <div class="card-header" style="padding:10px 14px">
+        <div class="card-title" style="font-size:12px">Child Flow -- In-Clinic</div>
+        <span style="font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace">14 Active</span>
       </div>
+      <div class="flow-item"><div><div class="flow-name">Nihal Shaikh</div><div class="flow-location">Speech -- Room B</div></div><span class="flow-status flow-in-session">In Session</span></div>
+      <div class="flow-item"><div><div class="flow-name">Kabir Ansari</div><div class="flow-location">Physio -- Room A</div></div><span class="flow-status flow-in-session">In Session</span></div>
+      <div class="flow-item"><div><div class="flow-name">Zara Menon</div><div class="flow-location">ABA -- Room D</div></div><span class="flow-status flow-in-session">In Session</span></div>
+      <div class="flow-item"><div><div class="flow-name">Aarav Patil</div><div class="flow-location">Waiting Area</div></div><span class="flow-status flow-between">Between Sessions</span></div>
+      <div class="flow-item"><div><div class="flow-name">Riya Kapoor</div><div class="flow-location">Waiting Area</div></div><span class="flow-status flow-between">Between Sessions</span></div>
+      <div class="flow-item"><div><div class="flow-name">Dev Malhotra</div><div class="flow-location">Reception</div></div><span class="flow-status flow-pickup">Ready Pickup</span></div>
+      <div class="flow-item"><div><div class="flow-name">Vivaan Bose</div><div class="flow-location">Reception</div></div><span class="flow-status flow-pickup">Ready Pickup</span></div>
+      <div class="flow-item"><div><div class="flow-name">Rehan Khan</div><div class="flow-location">OT Room C</div></div><span class="flow-status flow-in-session">In Session</span></div>
+    </div>
 
-      <!-- SIDE PANELS -->
-      <div class="side-panels">
+  </div><!-- /side-panels -->
 
-        <!-- REFILL QUEUE -->
-        <div class="refill-card">
-          <div class="refill-header">
-            <div class="refill-header-title">
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-              Refill Queue
-            </div>
-            <span class="refill-count">2 Urgent</span>
-          </div>
-          <div class="refill-item">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <div>
-                <div class="refill-time">10:00 AM</div>
-                <div class="refill-therapy">OT -- Ms. Ananya Desai</div>
-                <div class="refill-therapist">Zain Sayyed cancelled</div>
-              </div>
-              <div class="refill-timer">⏱ 32 min</div>
-            </div>
-            <button class="refill-btn" onclick="alert('Waitlist pulled: Preethi R. offered slot -- confirming via SMS')">Fill Slot from Waitlist</button>
-          </div>
-          <div class="refill-item">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <div>
-                <div class="refill-time">11:00 AM</div>
-                <div class="refill-therapy">Audio -- Mr. Rohan Mehta</div>
-                <div class="refill-therapist">Theia Pithawala cancelled</div>
-              </div>
-              <div class="refill-timer">⏱ 58 min</div>
-            </div>
-            <button class="refill-btn" onclick="alert('Waitlist pulled: Nandan V. offered slot -- confirming via SMS')">Fill Slot from Waitlist</button>
-          </div>
-        </div>
-
-        <!-- CHILD FLOW -->
-        <div class="flow-card">
-          <div class="card-header" style="padding:10px 14px">
-            <div class="card-title" style="font-size:12px">Child Flow -- In-Clinic</div>
-            <span style="font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace">14 Active</span>
-          </div>
-          <div class="flow-item"><div><div class="flow-name">Yuvan Singh</div><div class="flow-location">Speech -- Room B</div></div><span class="flow-status flow-in-session">In Session</span></div>
-          <div class="flow-item"><div><div class="flow-name">Vansh Kataria</div><div class="flow-location">Physio -- Room A</div></div><span class="flow-status flow-in-session">In Session</span></div>
-          <div class="flow-item"><div><div class="flow-name">Saisha Shinde</div><div class="flow-location">ABA -- Room D</div></div><span class="flow-status flow-in-session">In Session</span></div>
-          <div class="flow-item"><div><div class="flow-name">Theia Pithawala</div><div class="flow-location">Waiting Area</div></div><span class="flow-status flow-between">Between Sessions</span></div>
-          <div class="flow-item"><div><div class="flow-name">Amaira Patil</div><div class="flow-location">Waiting Area</div></div><span class="flow-status flow-between">Between Sessions</span></div>
-          <div class="flow-item"><div><div class="flow-name">Umar Pathanwala</div><div class="flow-location">Reception</div></div><span class="flow-status flow-pickup">Ready Pickup</span></div>
-          <div class="flow-item"><div><div class="flow-name">Zain Sayyed</div><div class="flow-location">Reception</div></div><span class="flow-status flow-pickup">Ready Pickup</span></div>
-          <div class="flow-item"><div><div class="flow-name">Saifuddin Contractorwala</div><div class="flow-location">OT Room C</div></div><span class="flow-status flow-in-session">In Session</span></div>
-        </div>
-
-      </div><!-- /side-panels -->
-
-    </div><!-- /layout-row -->
+</div><!-- /layout-row -->
+```
 
   </div><!-- /content -->
 </main>
 
 <!-- DRAWER OVERLAY -->
+
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="patientDrawer">
   <div class="drawer-header">
@@ -535,5 +540,6 @@ function closeDrawer(){
   document.getElementById('patientDrawer').classList.remove('open');
 }
 </script>
+
 </body>
 </html>
