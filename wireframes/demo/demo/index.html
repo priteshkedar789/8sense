@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASE — Centre for Autism & Special Education | Internal Management System</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ========== SIDEBAR ========== -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-badge">CASE · SRCC</div>
+    <div class="brand-name">CASE<br>Management</div>
+    <div class="brand-sub">Internal Operations System</div>
+  </div>
+  <div class="sidebar-user">
+    <div class="user-avatar">AD</div>
+    <div>
+      <div class="user-name">Admin Staff</div>
+      <div class="user-role">System Administrator</div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">Operations</div>
+  <div class="nav-item" data-page="dashboard" onclick="nav('dashboard')"><span class="icon">⊞</span> Dashboard</div>
+  <div class="nav-item" data-page="inquiries" onclick="nav('inquiries')"><span class="icon">📥</span> Inquiries &amp; Intake <span class="nav-badge" id="inq-badge">3</span></div>
+  <div class="nav-item" data-page="students" onclick="nav('students')"><span class="icon">🎓</span> Students</div>
+  <div class="nav-item" data-page="staff" onclick="nav('staff')"><span class="icon">👩‍🏫</span> Staff &amp; Educators</div>
+  <div class="nav-item" data-page="classes" onclick="nav('classes')"><span class="icon">🏫</span> Classrooms</div>
+
+  <div class="sidebar-section">Academic</div>
+  <div class="nav-item" data-page="timetable" onclick="nav('timetable')"><span class="icon">📅</span> Timetable</div>
+  <div class="nav-item" data-page="attendance" onclick="nav('attendance')"><span class="icon">✅</span> Attendance</div>
+
+  <div class="sidebar-section">Records</div>
+  <div class="nav-item" data-page="documents" onclick="nav('documents')"><span class="icon">📂</span> Documents</div>
+  <div class="nav-item" data-page="notes" onclick="nav('notes')"><span class="icon">📝</span> Therapist Notes</div>
+
+  <div class="sidebar-section">Administration</div>
+  <div class="nav-item" data-page="fees" onclick="nav('fees')"><span class="icon">💳</span> Fees &amp; Concessions</div>
+  <div class="nav-item" data-page="hr" onclick="nav('hr')"><span class="icon">👥</span> HR &amp; Staff</div>
+  <div class="nav-item" data-page="auth" onclick="nav('auth')"><span class="icon">🔐</span> Roles &amp; Access</div>
+</nav>
+
+<!-- ========== MAIN AREA ========== -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div>
+      <div class="topbar-title" id="page-title">Dashboard</div>
+    </div>
+    <div class="topbar-actions">
+      <div class="search-bar"><span style="color:var(--text3)">🔍</span><input placeholder="Search students, docs…" /></div>
+      <div style="position:relative">
+        <button class="btn btn-ghost" style="border-radius:50%;padding:7px">🔔</button>
+        <span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--accent2);border-radius:50%;border:2px solid var(--bg)"></span>
+      </div>
+      <button class="btn btn-primary" id="topbar-cta" onclick="ctaAction()">+ New Inquiry</button>
+    </div>
+  </div>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <div class="page" id="pg-dashboard">
+    <div class="notice-bar">⚠️ <strong>Internal system only.</strong> Access restricted to CASE staff. Parents do not have login access.</div>
+
+    <div class="stats-grid-5">
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-value" id="dash-students">10</div>
+        <div class="stat-label">Enrolled Students</div>
+        <div class="stat-change">Across 3 classrooms</div>
+      </div>
+      <div class="stat-card amber">
+        <div class="stat-icon">🏫</div>
+        <div class="stat-value" id="dash-classes">3</div>
+        <div class="stat-label">Active Classrooms</div>
+        <div class="stat-change">SSE + NIOS tracks</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-icon">📥</div>
+        <div class="stat-value" id="dash-inquiries">3</div>
+        <div class="stat-label">Pending Inquiries</div>
+        <div class="stat-change warn">Action required</div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-icon">💳</div>
+        <div class="stat-value" id="dash-fees">4</div>
+        <div class="stat-label">Fees Pending</div>
+        <div class="stat-change danger">4 accounts</div>
+      </div>
+      <div class="stat-card amber">
+        <div class="stat-icon">📄</div>
+        <div class="stat-value" id="dash-docs">8</div>
+        <div class="stat-label">Docs Needed</div>
+        <div class="stat-change warn">Missing / Pending upload</div>
+      </div>
+    </div>
+
+    <div class="two-col mb-20">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📥 Recent Inquiries</span>
+          <button class="btn btn-ghost" style="font-size:11px" onclick="nav('inquiries')">View Pipeline →</button>
+        </div>
+        <div class="card-body" style="padding-top:8px" id="dash-inquiries-list">
+          <div class="empty-state">Loading…</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🔔 Recent Activity</span>
+          <span class="badge badge-blue">Live</span>
+        </div>
+        <div class="card-body" style="padding-top:8px" id="activity-feed"></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">💳 Fee Summary — Current Term</span>
+          <button class="btn btn-ghost" style="font-size:11px" onclick="nav('fees')">Manage →</button>
+        </div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+            <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:12px;text-align:center">
+              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--accent3)" id="dash-fee-collected">—</div>
+              <div class="text-xs text-muted">Collected</div>
+            </div>
+            <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:12px;text-align:center">
+              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--accent2)" id="dash-fee-pending">—</div>
+              <div class="text-xs text-muted">Pending</div>
+            </div>
+            <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:12px;text-align:center">
+              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#9B59B6">3</div>
+              <div class="text-xs text-muted">Concessions Active</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📊 Board Track Distribution</span>
+        </div>
+        <div class="card-body">
+          <div style="display:flex;gap:20px;align-items:center">
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>SSE Board</span><span class="font-bold" style="color:var(--accent)">6 students</span></div>
+              <div class="progress mb-16"><div class="progress-bar" style="width:60%"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>NIOS Board</span><span class="font-bold" style="color:#9B59B6">4 students</span></div>
+              <div class="progress"><div class="progress-bar" style="width:40%;background:#9B59B6"></div></div>
+            </div>
+            <div style="text-align:center;flex-shrink:0">
+              <div style="width:70px;height:70px;border-radius:50%;background:conic-gradient(var(--accent) 0% 60%,#9B59B6 60% 100%);position:relative">
+                <div style="position:absolute;inset:14px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--text)">10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== INQUIRIES ===================== -->
+  <div class="page" id="pg-inquiries">
+    <div class="section-header mb-20">
+      <div>
+        <div class="section-title">Inquiry &amp; Intake Pipeline</div>
+        <div class="text-xs text-muted mt-8">Track walk-in inquiries from first contact to admission or rejection</div>
+      </div>
+      <button class="btn btn-primary" onclick="openInquiryModal()">+ New Inquiry</button>
+    </div>
+
+    <div class="kanban-board">
+      <div class="kanban-col col-new">
+        <div class="kanban-col-header">
+          <span class="kanban-col-title">New Inquiry</span>
+          <span class="kanban-count" id="kanban-count-new">0</span>
+        </div>
+        <div id="kanban-new"></div>
+      </div>
+      <div class="kanban-col col-assessment">
+        <div class="kanban-col-header">
+          <span class="kanban-col-title">Assessment Scheduled</span>
+          <span class="kanban-count" id="kanban-count-assessment">0</span>
+        </div>
+        <div id="kanban-assessment"></div>
+      </div>
+      <div class="kanban-col col-review">
+        <div class="kanban-col-header">
+          <span class="kanban-col-title">Under Review</span>
+          <span class="kanban-count" id="kanban-count-review">0</span>
+        </div>
+        <div id="kanban-review"></div>
+      </div>
+      <div class="kanban-col col-closed">
+        <div class="kanban-col-header">
+          <span class="kanban-col-title">Admitted / Closed</span>
+          <span class="kanban-count" id="kanban-count-admitted">0</span>
+        </div>
+        <div id="kanban-admitted"></div>
+        <div class="kanban-col-header" style="margin-top:12px;border-bottom-color:var(--danger)">
+          <span class="kanban-col-title" style="color:var(--danger)">Not Admitted</span>
+          <span class="kanban-count" id="kanban-count-rejected">0</span>
+        </div>
+        <div id="kanban-rejected"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== STUDENTS ===================== -->
+  <div class="page" id="pg-students">
+    <div class="section-header mb-16">
+      <div class="tab-row">
+        <button class="tab-btn stu-tab active" data-filter="all" onclick="filterStudentTab('all')">All Students</button>
+        <button class="tab-btn stu-tab" data-filter="Rainbow Room" onclick="filterStudentTab('Rainbow Room')">🌈 Rainbow</button>
+        <button class="tab-btn stu-tab" data-filter="Sunshine Room" onclick="filterStudentTab('Sunshine Room')">☀️ Sunshine</button>
+        <button class="tab-btn stu-tab" data-filter="Ocean Room" onclick="filterStudentTab('Ocean Room')">🌊 Ocean</button>
+        <button class="tab-btn stu-tab" data-filter="sse" onclick="filterStudentTab('sse')">SSE Board</button>
+        <button class="tab-btn stu-tab" data-filter="nios" onclick="filterStudentTab('nios')">NIOS Board</button>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div class="search-bar">
+          <span style="color:var(--text3)">🔍</span>
+          <input id="student-search" placeholder="Search name, ID, disability…" oninput="searchStudents(this.value)" />
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Student</th><th>ID</th><th>Classroom</th><th>Class Educator</th>
+            <th>Board Track</th><th>Class Level</th><th>Enrolled</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="student-tbody"></tbody>
+        </table>
+      </div>
+      <div style="padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <span class="text-xs text-muted" id="student-count">Showing all 10 students</span>
+        <button class="btn btn-sm btn-outline" onclick="openInquiryModal()">+ New Student Inquiry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CHILD PROFILE ===================== -->
+  <div class="page" id="pg-profile">
+    <div class="profile-header">
+      <div class="profile-avatar" id="profile-avatar">
+        <span id="profile-avatar-text">AS</span>
+      </div>
+      <div class="profile-info">
+        <div class="profile-name" id="profile-name">Student Name</div>
+        <div class="profile-meta" id="profile-meta">CASE-XXX · Age — · DOB: —</div>
+        <div class="profile-tags">
+          <span class="profile-tag" id="profile-track-tag">SSE Board</span>
+          <span class="profile-tag" id="profile-level-tag">Level I</span>
+          <span class="profile-tag" id="profile-status-tag">Active</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-left:auto">
+        <button class="btn btn-outline" onclick="printProfile()">🖨 Print Profile</button>
+        <button class="btn btn-outline profile-back" onclick="nav('students')">← All Students</button>
+      </div>
+    </div>
+
+    <!-- Profile Tabs -->
+    <div style="margin-bottom:20px">
+      <div class="tab-row" style="width:fit-content">
+        <button class="tab-btn profile-tab-btn active" data-tab="overview" onclick="profileTab('overview')">📋 Overview</button>
+        <button class="tab-btn profile-tab-btn" data-tab="docs" onclick="profileTab('docs')">📂 Documents</button>
+        <button class="tab-btn profile-tab-btn" data-tab="notes" onclick="profileTab('notes')">📝 Staff Notes</button>
+      </div>
+    </div>
+
+    <!-- TAB: OVERVIEW -->
+    <div id="ptab-overview">
+      <div class="two-col mb-20">
+        <div class="card">
+          <div class="card-header"><span class="card-title">🧒 Disability &amp; Certification</span></div>
+          <div class="card-body">
+            <div class="info-grid">
+              <div class="info-item"><div class="info-item-label">Primary Disability</div><div class="info-item-value" id="pf-disability">—</div></div>
+              <div class="info-item"><div class="info-item-label">Certification Date</div><div class="info-item-value" id="pf-certdate">—</div></div>
+              <div class="info-item"><div class="info-item-label">Certifying Body</div><div class="info-item-value" id="pf-certboard">—</div></div>
+            </div>
+            <div class="hr-bar"></div>
+            <div class="info-grid">
+              <div class="info-item"><div class="info-item-label">Board Concession</div><div class="info-item-value" id="pf-concession">—</div></div>
+              <div class="info-item"><div class="info-item-label">Concession Reason</div><div class="info-item-value" id="pf-conc-reason">—</div></div>
+              <div class="info-item"><div class="info-item-label">Approval Status</div><div id="pf-conc-status">—</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">🏫 Class &amp; Contact Details</span></div>
+          <div class="card-body">
+            <div class="info-grid">
+              <div class="info-item"><div class="info-item-label">Assigned Classroom</div><div class="info-item-value" id="pf-room">—</div></div>
+              <div class="info-item"><div class="info-item-label">Class Educator</div><div class="info-item-value" id="pf-educator">—</div></div>
+              <div class="info-item"><div class="info-item-label">Fee Status</div><div id="pf-fee-status">—</div></div>
+            </div>
+            <div class="hr-bar"></div>
+            <div class="info-grid">
+              <div class="info-item"><div class="info-item-label">Parent / Guardian</div><div class="info-item-value" id="pf-parent">—</div></div>
+              <div class="info-item"><div class="info-item-label">Contact Number</div><div class="info-item-value" id="pf-contact">—</div></div>
+              <div class="info-item"><div class="info-item-label">Donation Funded</div><div class="info-item-value" id="pf-donation">—</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick actions in profile -->
+      <div class="card mb-20">
+        <div class="card-body" style="padding:14px 20px">
+          <div class="flex items-center gap-8">
+            <span class="text-xs text-muted font-bold">Quick Actions:</span>
+            <button class="btn btn-sm btn-outline" onclick="profileTab('docs')">📂 View Documents</button>
+            <button class="btn btn-sm btn-outline" onclick="profileTab('notes')">📝 Add Note</button>
+            <button class="btn btn-sm btn-ghost" onclick="nav('fees')">💳 View Fees</button>
+            <button class="btn btn-sm btn-ghost" onclick="nav('timetable')">📅 View Timetable</button>
+            <button class="btn btn-sm btn-ghost" onclick="printProfile()">🖨 Print Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: DOCUMENTS -->
+    <div id="ptab-docs" style="display:none">
+      <div class="card mb-16">
+        <div class="card-body" id="board-readiness"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📂 Student Documents</span>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-sm btn-ghost" onclick="printDocChecklist()">🖨 Print Checklist</button>
+            <button class="btn btn-sm btn-primary" onclick="showToast('Document request notification sent to parent.','success')">📤 Request from Parent</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Document</th><th>Type</th><th>Board</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+            <tbody id="profile-docs-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: NOTES -->
+    <div id="ptab-notes" style="display:none">
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><span class="card-title">📝 Staff Notes (Internal)</span></div>
+          <div class="card-body" id="profile-notes-list"></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">➕ Add Note</span></div>
+          <div class="card-body">
+            <div class="notice-bar" style="margin-bottom:12px">🔒 These notes are internal only and not visible to parents or students.</div>
+            <div class="form-group">
+              <label class="form-label">Staff Member</label>
+              <select class="form-input" id="note-role">
+                <option>Ms. Priya Kulkarni (Special Educator)</option>
+                <option>Ms. Sangeeta Mane (Special Educator)</option>
+                <option>Mr. Rohan Desai (Special Educator)</option>
+                <option>Ms. Anita Naik (Occupational Therapist)</option>
+                <option>Ms. Kavita Shah (Speech Therapist)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Observation Type</label>
+              <select class="form-input" id="note-type">
+                <option>Progress</option>
+                <option>Concern</option>
+                <option>Behavioral Concern</option>
+                <option>Observation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Note</label>
+              <textarea class="form-input" id="note-text" rows="5" placeholder="Enter observation or progress note…"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%" onclick="addNoteToProfile()">💾 Save Note</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== STAFF ===================== -->
+  <div class="page" id="pg-staff">
+    <div class="section-header mb-16">
+      <div class="tab-row">
+        <button class="tab-btn staff-tab active" data-filter="all" onclick="renderStaff('all')">All Staff</button>
+        <button class="tab-btn staff-tab" data-filter="educator" onclick="renderStaff('educator')">Educators</button>
+        <button class="tab-btn staff-tab" data-filter="therapist" onclick="renderStaff('therapist')">Therapists</button>
+        <button class="tab-btn staff-tab" data-filter="admin" onclick="renderStaff('admin')">Admin</button>
+      </div>
+      <button class="btn btn-primary">+ Add Staff</button>
+    </div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Staff Member</th><th>Emp. ID</th><th>Department</th><th>Specialization</th><th>Assigned Classes</th><th>Qualification</th><th>Joining</th><th>Status</th></tr></thead>
+          <tbody id="staff-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CLASSROOMS ===================== -->
+  <div class="page" id="pg-classes">
+    <div class="section-header mb-20">
+      <div>
+        <div class="section-title">Classrooms</div>
+        <div class="text-xs text-muted mt-8">School-model grouping. Each classroom follows a fixed class timetable aligned to board syllabus.</div>
+      </div>
+      <button class="btn btn-primary">+ New Classroom</button>
+    </div>
+    <div class="three-col" id="classes-grid"></div>
+  </div>
+
+  <!-- ===================== TIMETABLE ===================== -->
+  <div class="page" id="pg-timetable">
+    <div class="section-header mb-16">
+      <div id="tt-class-tabs" class="tab-row"></div>
+      <div style="display:flex;gap:8px">
+        <span class="text-xs text-muted" style="align-self:center">Apr 20 – Apr 25, 2025</span>
+        <button class="btn btn-primary" onclick="printTimetable()">🖨 Print Timetable</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="scroll-x" id="timetable-grid"></div>
+      <div style="padding:12px 16px;background:var(--surface2);display:flex;gap:16px;flex-wrap:wrap">
+        <span class="text-xs text-muted">Legend:</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:10px;height:10px;background:#EAF4FB;border:1px solid #acd8ee;border-radius:2px"></span>Language / Literacy</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:10px;height:10px;background:#FEF6EC;border:1px solid #f0c98a;border-radius:2px"></span>Mathematics</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:10px;height:10px;background:#EBF7F2;border:1px solid #9de0be;border-radius:2px"></span>English / Science</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:10px;height:10px;background:#F4EEFF;border:1px solid #c4b0e8;border-radius:2px"></span>Social Studies / Group</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:10px;height:10px;background:#FEF0F0;border:1px solid #f0adad;border-radius:2px"></span>Therapy Sessions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ATTENDANCE ===================== -->
+  <div class="page" id="pg-attendance">
+    <div class="section-header mb-16">
+      <div class="tab-row">
+        <button class="tab-btn att-tab active" data-view="mark" onclick="switchAttView('mark')">Mark Attendance</button>
+        <button class="tab-btn att-tab" data-view="summary" onclick="switchAttView('summary')">Monthly Summary</button>
+      </div>
+      <div style="display:flex;gap:8px">
+        <input type="date" class="form-input" id="att-date" style="width:145px" value="2025-04-20">
+        <select class="form-input" id="att-class-select" style="width:155px" onchange="renderAttendanceContent()">
+          <option>Rainbow Room</option>
+          <option>Sunshine Room</option>
+          <option>Ocean Room</option>
+        </select>
+        <button class="btn btn-primary" onclick="saveAttendance()">💾 Save Attendance</button>
+      </div>
+    </div>
+
+    <!-- Mark Attendance section -->
+    <div id="att-mark-section">
+      <div class="card">
+        <div class="card-header"><span class="card-title">🗓️ Mark Attendance — Rainbow Room · Apr 20, 2025</span></div>
+        <div class="card-body" style="padding:0">
+          <table>
+            <thead><tr><th>Student</th><th>Board Track</th><th>Status</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#2E7D9F">AS</div>Arjun Sharma</div></td>
+                <td><span class="badge badge-blue">SSE Board</span></td>
+                <td><div style="display:flex;gap:4px">
+                  <button class="btn btn-sm att-btn btn-primary" onclick="markAttendance(this,'present')">Present</button>
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'absent')">Absent</button>
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'late')">Late</button>
+                </div></td>
+                <td><input class="form-input" placeholder="Optional…" style="font-size:11px;padding:5px 8px;width:150px"></td>
+              </tr>
+              <tr>
+                <td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#E8913A">RP</div>Riya Patel</div></td>
+                <td><span class="badge badge-purple">NIOS Board</span></td>
+                <td><div style="display:flex;gap:4px">
+                  <button class="btn btn-sm att-btn btn-primary" onclick="markAttendance(this,'present')">Present</button>
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'absent')">Absent</button>
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'late')">Late</button>
+                </div></td>
+                <td><input class="form-input" placeholder="Optional…" style="font-size:11px;padding:5px 8px;width:150px"></td>
+              </tr>
+              <tr>
+                <td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#4CAF7D">MG</div>Meera Gupta</div></td>
+                <td><span class="badge badge-purple">NIOS Board</span></td>
+                <td><div style="display:flex;gap:4px">
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'present')">Present</button>
+                  <button class="btn btn-sm att-btn btn-danger" onclick="markAttendance(this,'absent')">Absent</button>
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'late')">Late</button>
+                </div></td>
+                <td><input class="form-input" placeholder="Parent informed…" style="font-size:11px;padding:5px 8px;width:150px"></td>
+              </tr>
+              <tr>
+                <td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#9B59B6">AV</div>Aarav Verma</div></td>
+                <td><span class="badge badge-blue">SSE Board</span></td>
+                <td><div style="display:flex;gap:4px">
+                  <button class="btn btn-sm att-btn btn-primary" onclick="markAttendance(this,'present')">Present</button>
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'absent')">Absent</button>
+                  <button class="btn btn-sm att-btn btn-ghost" onclick="markAttendance(this,'late')">Late</button>
+                </div></td>
+                <td><input class="form-input" placeholder="Optional…" style="font-size:11px;padding:5px 8px;width:150px"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Summary section -->
+    <div id="att-summary-section" style="display:none">
+      <div id="att-summary-grid"></div>
+    </div>
+  </div>
+
+  <!-- ===================== DOCUMENTS ===================== -->
+  <div class="page" id="pg-documents">
+    <div class="section-header mb-16">
+      <div>
+        <div class="section-title">Document Repository</div>
+        <div class="text-xs text-muted mt-8">All student documents — certifications, board forms, ID proofs, assessment reports</div>
+      </div>
+      <button class="btn btn-primary" onclick="showToast('Document request sent to parent contacts.','success')">+ Request Document</button>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-bottom:16px;align-items:center;flex-wrap:wrap">
+      <div class="tab-row">
+        <button class="tab-btn docs-filter-btn active" data-filter="all" onclick="filterDocs('all')">All Docs</button>
+        <button class="tab-btn docs-filter-btn" data-filter="missing" onclick="filterDocs('missing')">Missing</button>
+        <button class="tab-btn docs-filter-btn" data-filter="pending" onclick="filterDocs('pending')">Pending Upload</button>
+        <button class="tab-btn docs-filter-btn" data-filter="verified" onclick="filterDocs('verified')">Verified</button>
+        <button class="tab-btn docs-filter-btn" data-filter="board" onclick="filterDocs('board')">Board Forms</button>
+      </div>
+      <div class="search-bar" style="margin-left:auto">
+        <span style="color:var(--text3)">🔍</span>
+        <input id="doc-search" placeholder="Search student or doc name…" oninput="searchDocs(this.value)" style="width:180px" />
+      </div>
+      <span class="text-xs text-muted" id="docs-count">— documents</span>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Student</th><th>Document</th><th>Type</th><th>Required For</th><th>Status</th><th>Last Updated</th><th>Actions</th></tr></thead>
+          <tbody id="docs-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== THERAPIST NOTES ===================== -->
+  <div class="page" id="pg-notes">
+    <div class="section-header mb-16">
+      <div>
+        <div class="section-title">Therapist &amp; Educator Notes</div>
+        <div class="text-xs text-muted mt-8">Internal notes from special educators, speech therapists, and occupational therapists</div>
+      </div>
+    </div>
+    <div class="tab-row mb-16">
+      <button class="tab-btn notes-tab active" data-filter="all" onclick="renderNotes('all')">All Notes</button>
+      <button class="tab-btn notes-tab" data-filter="progress" onclick="renderNotes('progress')">Progress</button>
+      <button class="tab-btn notes-tab" data-filter="concern" onclick="renderNotes('concern')">Concerns</button>
+      <button class="tab-btn notes-tab" data-filter="speech" onclick="renderNotes('speech')">Speech</button>
+      <button class="tab-btn notes-tab" data-filter="ot" onclick="renderNotes('ot')">OT</button>
+    </div>
+    <div class="col-7-3">
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">📝 All Notes (Latest First)</span>
+            <span class="badge badge-gray">Internal Only</span>
+          </div>
+          <div class="card-body" id="notes-list"></div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">➕ Add New Note</span></div>
+          <div class="card-body">
+            <div class="notice-bar" style="margin-bottom:12px">🔒 Internal only</div>
+            <div class="form-group">
+              <label class="form-label">Student</label>
+              <select class="form-input" id="add-note-student">
+                <option value="">— Select Student —</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Staff / Role</label>
+              <select class="form-input" id="add-note-role">
+                <option>Ms. Priya Kulkarni (Special Educator)</option>
+                <option>Ms. Sangeeta Mane (Special Educator)</option>
+                <option>Mr. Rohan Desai (Special Educator)</option>
+                <option>Ms. Anita Naik (Occupational Therapist)</option>
+                <option>Ms. Kavita Shah (Speech Therapist)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Observation Type</label>
+              <select class="form-input" id="add-note-type">
+                <option>Progress</option>
+                <option>Concern</option>
+                <option>Behavioral Concern</option>
+                <option>Observation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Note</label>
+              <textarea class="form-input" id="add-note-text" rows="5" placeholder="Describe the observation, progress, or concern…"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%" onclick="submitNote()">💾 Save Note</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== FEES ===================== -->
+  <div class="page" id="pg-fees">
+    <div class="section-header mb-16">
+      <div class="tab-row">
+        <button class="tab-btn fee-tab active" data-filter="all" onclick="renderFees('all')">All Accounts</button>
+        <button class="tab-btn fee-tab" data-filter="concessions" onclick="renderFees('concessions')">Concessions</button>
+        <button class="tab-btn fee-tab" data-filter="overdue" onclick="renderFees('overdue')">Overdue / Partial</button>
+      </div>
+      <button class="btn btn-primary" onclick="openPaymentModal(null)">+ Record Payment</button>
+    </div>
+
+    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="stat-card"><div class="stat-icon">📊</div><div class="stat-value" id="fees-total">—</div><div class="stat-label">Total Term Fees</div></div>
+      <div class="stat-card green"><div class="stat-icon">✅</div><div class="stat-value" id="fees-collected">—</div><div class="stat-label">Collected</div></div>
+      <div class="stat-card red"><div class="stat-icon">⏳</div><div class="stat-value" id="fees-pending">—</div><div class="stat-label">Pending / Overdue</div></div>
+      <div class="stat-card amber"><div class="stat-icon">💛</div><div class="stat-value" id="fees-concessions">—</div><div class="stat-label">Concession Cases</div></div>
+    </div>
+
+    <div class="notice-bar mb-16">💡 Highlighted rows indicate donation-funded or economic background concession cases.</div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Student</th><th>Term Fee</th><th>Concession Applied</th>
+            <th>Paid</th><th>Balance</th><th>Status</th><th>Action</th>
+          </tr></thead>
+          <tbody id="fees-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HR ===================== -->
+  <div class="page" id="pg-hr">
+    <div class="section-header mb-16">
+      <div class="tab-row">
+        <button class="tab-btn active">All Staff</button>
+        <button class="tab-btn">Departments</button>
+        <button class="tab-btn">Contracts</button>
+      </div>
+      <button class="btn btn-primary">+ Add Staff</button>
+    </div>
+    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-value">6</div><div class="stat-label">Total Staff</div></div>
+      <div class="stat-card amber"><div class="stat-icon">🏫</div><div class="stat-value">3</div><div class="stat-label">Special Educators</div></div>
+      <div class="stat-card green"><div class="stat-icon">⚕️</div><div class="stat-value">2</div><div class="stat-label">Therapists</div></div>
+      <div class="stat-card"><div class="stat-icon">💼</div><div class="stat-value">1</div><div class="stat-label">Admin</div></div>
+    </div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Staff Member</th><th>Emp. ID</th><th>Department</th><th>Designation</th><th>Salary</th><th>Joining</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#2E7D9F">PK</div><div><div class="font-bold text-sm">Ms. Priya Kulkarni</div><div class="text-xs text-muted">B.Ed (Special Ed), RCI Certified</div></div></div></td><td class="font-mono" style="font-size:11px">EMP-001</td><td>Special Education</td><td>Sr. Special Educator</td><td>₹42,000/mo</td><td>Mar 2021</td><td><span class="badge badge-green">Active</span></td></tr>
+            <tr><td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#E8913A">SM</div><div><div class="font-bold text-sm">Ms. Sangeeta Mane</div><div class="text-xs text-muted">M.Sc. Psychology, RCI Registered</div></div></div></td><td class="font-mono" style="font-size:11px">EMP-002</td><td>Special Education</td><td>Special Educator</td><td>₹35,000/mo</td><td>Jun 2022</td><td><span class="badge badge-green">Active</span></td></tr>
+            <tr><td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#4CAF7D">RD</div><div><div class="font-bold text-sm">Mr. Rohan Desai</div><div class="text-xs text-muted">B.Ed (Sp. Ed), NIMH Diploma</div></div></div></td><td class="font-mono" style="font-size:11px">EMP-003</td><td>Special Education</td><td>Special Educator</td><td>₹30,000/mo</td><td>Jan 2023</td><td><span class="badge badge-green">Active</span></td></tr>
+            <tr><td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#9B59B6">AN</div><div><div class="font-bold text-sm">Ms. Anita Naik</div><div class="text-xs text-muted">B.OT, AIOTA Member</div></div></div></td><td class="font-mono" style="font-size:11px">EMP-004</td><td>Therapy</td><td>Occupational Therapist</td><td>₹45,000/mo</td><td>Aug 2022</td><td><span class="badge badge-green">Active</span></td></tr>
+            <tr><td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#D95C5C">KS</div><div><div class="font-bold text-sm">Ms. Kavita Shah</div><div class="text-xs text-muted">M.Sc. Audiology &amp; SLP</div></div></div></td><td class="font-mono" style="font-size:11px">EMP-005</td><td>Therapy</td><td>Speech &amp; Language Pathologist</td><td>₹48,000/mo</td><td>Nov 2021</td><td><span class="badge badge-amber">On Leave</span></td></tr>
+            <tr><td><div class="flex items-center gap-8"><div class="avatar avatar-sm" style="background:#16A085">PS</div><div><div class="font-bold text-sm">Ms. Prerna Singh</div><div class="text-xs text-muted">B.Com, Admin Coordinator</div></div></div></td><td class="font-mono" style="font-size:11px">EMP-006</td><td>Administration</td><td>Admin Coordinator</td><td>₹22,000/mo</td><td>Feb 2022</td><td><span class="badge badge-green">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ROLES & ACCESS ===================== -->
+  <div class="page" id="pg-auth">
+    <div class="section-header mb-16">
+      <div class="tab-row">
+        <button class="tab-btn active">Role Matrix</button>
+        <button class="tab-btn">Active Sessions</button>
+      </div>
+    </div>
+    <div class="notice-bar mb-20">🔒 <strong>Internal-only system.</strong> Parents and students do not have access. Only CASE staff with assigned roles can log in.</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-header"><span class="card-title">🔐 Role-Based Access Matrix</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Module</th><th>Admin</th><th>HOD / Class Teacher</th><th>Therapist</th></tr></thead>
+            <tbody>
+              <tr><td>Child Profile</td><td><span class="badge badge-green">Full Access</span></td><td><span class="badge badge-blue">Own Class</span></td><td><span class="badge badge-blue">View + Notes</span></td></tr>
+              <tr><td>Documents</td><td><span class="badge badge-green">Full Access</span></td><td><span class="badge badge-blue">Own Class</span></td><td><span class="badge badge-gray">View Only</span></td></tr>
+              <tr><td>Attendance</td><td><span class="badge badge-green">Full Access</span></td><td><span class="badge badge-blue">Mark &amp; View</span></td><td><span class="badge badge-gray">View Only</span></td></tr>
+              <tr><td>Timetable</td><td><span class="badge badge-green">Create &amp; Edit</span></td><td><span class="badge badge-gray">View Only</span></td><td><span class="badge badge-gray">View Only</span></td></tr>
+              <tr><td>Fees &amp; Concessions</td><td><span class="badge badge-green">Full Access</span></td><td><span class="badge badge-red">No Access</span></td><td><span class="badge badge-red">No Access</span></td></tr>
+              <tr><td>Therapist Notes</td><td><span class="badge badge-green">Full Access</span></td><td><span class="badge badge-blue">Own Class</span></td><td><span class="badge badge-blue">Own Notes</span></td></tr>
+              <tr><td>Inquiries</td><td><span class="badge badge-green">Full Access</span></td><td><span class="badge badge-gray">View Only</span></td><td><span class="badge badge-red">No Access</span></td></tr>
+              <tr><td>HR &amp; Staff</td><td><span class="badge badge-green">Full Access</span></td><td><span class="badge badge-red">No Access</span></td><td><span class="badge badge-red">No Access</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">🔒 Active Sessions</span></div>
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+            <div class="avatar avatar-sm" style="background:#2E7D9F">AD</div>
+            <div style="flex:1"><div class="font-bold text-sm">Admin Staff</div><div class="text-xs text-muted">Chrome · Nashik · Now</div></div>
+            <button class="btn btn-sm btn-ghost">Revoke</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+            <div class="avatar avatar-sm" style="background:#E8913A">PK</div>
+            <div style="flex:1"><div class="font-bold text-sm">Ms. Priya Kulkarni</div><div class="text-xs text-muted">Mobile Safari · 12 min ago</div></div>
+            <button class="btn btn-sm btn-ghost">Revoke</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0">
+            <div class="avatar avatar-sm" style="background:#4CAF7D">SM</div>
+            <div style="flex:1"><div class="font-bold text-sm">Ms. Sangeeta Mane</div><div class="text-xs text-muted">Chrome · 1 hr ago</div></div>
+            <button class="btn btn-sm btn-ghost">Revoke</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ========== MODAL: NEW INQUIRY ========== -->
+<div id="modal-overlay" style="display:none" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title">📥 New Walk-in Inquiry</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="two-col">
+        <div class="form-group">
+          <label class="form-label">Child's Name *</label>
+          <input class="form-input" id="inq-child" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Age</label>
+          <input class="form-input" id="inq-age" type="number" placeholder="Age in years" min="3" max="25">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="form-group">
+          <label class="form-label">Parent / Guardian Name *</label>
+          <input class="form-input" id="inq-parent" placeholder="Parent full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contact Number *</label>
+          <input class="form-input" id="inq-contact" placeholder="Mobile number">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Suspected / Known Disability</label>
+        <select class="form-input" id="inq-disability">
+          <option>Autism Spectrum Disorder (ASD)</option>
+          <option>Intellectual Disability</option>
+          <option>Down Syndrome</option>
+          <option>ADHD</option>
+          <option>Learning Disability</option>
+          <option>Cerebral Palsy</option>
+          <option>Multiple Disabilities</option>
+          <option>Not Yet Assessed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Initial Notes</label>
+        <textarea class="form-input" id="inq-notes" rows="3" placeholder="Describe reason for inquiry, referral source, initial observations…"></textarea>
+      </div>
+      <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3)">
+        ℹ️ After saving, this inquiry will appear in the pipeline. Next step: schedule a CASE assessment to determine if the child fits the classroom model.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitInquiry()">💾 Save Inquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MODAL: RECORD PAYMENT ========== -->
+<div id="pay-modal" style="display:none" class="modal-overlay" onclick="if(event.target===this)closePayModal()">
+  <div class="modal-box" style="max-width:480px">
+    <div class="modal-header">
+      <span class="modal-title">💳 Record Fee Payment</span>
+      <button class="modal-close" onclick="closePayModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Show when opened from "+ Record Payment" button (generic) -->
+      <div id="pay-student-row" style="display:none">
+        <div class="form-group">
+          <label class="form-label">Select Student *</label>
+          <select class="form-input" id="pay-student-select">
+            <option value="">— Select Student —</option>
+          </select>
+        </div>
+      </div>
+      <!-- Show when opened from a specific student row -->
+      <div id="pay-info-row" style="display:none">
+        <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:16px">
+          <div class="text-xs text-muted mb-4">Recording payment for</div>
+          <div class="font-bold" id="pay-student-name">—</div>
+          <div style="margin-top:6px;display:flex;align-items:center;gap:8px">
+            <span class="text-xs text-muted">Outstanding balance:</span>
+            <span style="font-weight:700;color:var(--danger)" id="pay-balance-show">—</span>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="form-group">
+          <label class="form-label">Amount (₹) *</label>
+          <input class="form-input" id="pay-amount" type="number" placeholder="Enter amount" min="1">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Payment Date *</label>
+          <input class="form-input" id="pay-date" type="date" value="2025-04-20">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="form-group">
+          <label class="form-label">Payment Mode</label>
+          <select class="form-input" id="pay-mode">
+            <option>Cash</option>
+            <option>UPI / GPay</option>
+            <option>Bank Transfer / NEFT</option>
+            <option>Cheque</option>
+            <option>DD (Demand Draft)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Reference / Receipt No.</label>
+          <input class="form-input" id="pay-ref" placeholder="UPI ID, cheque no. etc.">
+        </div>
+      </div>
+      <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3)">
+        ℹ️ Partial payments are supported. The balance will be updated automatically. Print a receipt after recording.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closePayModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitPayment()">💾 Record Payment</button>
+    </div>
+  </div>
+</div>
+
+<div class="demo-watermark">DEMO · CASE · SRCC</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
